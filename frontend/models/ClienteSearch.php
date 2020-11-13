@@ -4,10 +4,10 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Cliente;
+use frontend\models\Cliente;
 
 /**
- * ClienteSearch represents the model behind the search form of `app\models\Cliente`.
+ * ClienteSearch represents the model behind the search form of `frontend\models\Cliente`.
  */
 class ClienteSearch extends Cliente
 {
@@ -17,8 +17,7 @@ class ClienteSearch extends Cliente
     public function rules()
     {
         return [
-            [['User_id', 'IDCliente', 'nif', 'num_tele'], 'integer'],
-            [['primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar'], 'safe'],
+            [['User_id', 'IDCliente', 'nif'], 'integer'],
         ];
     }
 
@@ -59,16 +58,9 @@ class ClienteSearch extends Cliente
         // grid filtering conditions
         $query->andFilterWhere([
             'User_id' => $this->User_id,
-            'dt_nascimento' => $this->dt_nascimento,
             'IDCliente' => $this->IDCliente,
             'nif' => $this->nif,
-            'num_tele' => $this->num_tele,
         ]);
-
-        $query->andFilterWhere(['like', 'primeiroNome', $this->primeiroNome])
-            ->andFilterWhere(['like', 'apelido', $this->apelido])
-            ->andFilterWhere(['like', 'sexo', $this->sexo])
-            ->andFilterWhere(['like', 'avatar', $this->avatar]);
 
         return $dataProvider;
     }

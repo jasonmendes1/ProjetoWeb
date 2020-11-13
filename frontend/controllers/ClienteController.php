@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Cliente;
+use frontend\models\Cliente;
 use frontend\models\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
