@@ -31,19 +31,19 @@ class regclienteTest extends \Codeception\Test\Unit
 
         $user->username = 'userteste';
         $user->email = 'userteste@gmail.com';
-        $this->password ='teste123';
-        $user->primeiroNome = 'User';
-        $user->apelido = 'teste';
-        $user->sexo = 'Masculino';
-        $user->num_tele = 123456789;
+        $password ='teste123';
+
+        $cliente->primeiroNome = 'User';
+        $cliente->apelido = 'teste';
+        $cliente->sexo = 'Masculino';
+        $cliente->num_tele = 123456789;
         $date = date_create();
         date_date_set($date,1999,12,27);
         $data = date_format($date,"Y-m-d");
-        $user->dt_nascimento = $data;
-        
+        $cliente->dt_nascimento = $data;
         $cliente->nif = 123456789;
 
-        $user->setPassword($this->password);
+        $user->setPassword($password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
@@ -52,6 +52,6 @@ class regclienteTest extends \Codeception\Test\Unit
         $cliente->save();
 
         $this->tester->seeInDatabase('user',['username' => 'userteste']);
-        $this->tester->seeInDatabase('cliente',['nif' => 123456789]);
+        $this->tester->seeInDatabase('cliente',['primeiroNome' => 'User']);
     }
 }
