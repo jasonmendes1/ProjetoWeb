@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Ementa;
+use frontend\models\Ementa;
 
 /**
  * EmentaSearch represents the model behind the search form of `app\models\Ementa`.

@@ -2,6 +2,9 @@
 
 namespace frontend\models;
 
+use frontend\models\ListaPlanos;
+use frontend\models\PlanosTreino;
+use frontend\models\Subscricao;
 use Yii;
 
 /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PlanosNutricao;
+use frontend\models\PlanosNutricao;
 
 /**
  * PlanosNutricaoSearch represents the model behind the search form of `app\models\PlanosNutricao`.
