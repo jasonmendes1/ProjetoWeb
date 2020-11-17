@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;testeaa
+namespace frontend\models;
 
 use Yii;
 
