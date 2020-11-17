@@ -14,7 +14,7 @@ use Yii;
  * @property Cliente $iDCliente
  * @property Planonutricao $iDPlano0
  */
-class Lista_Planos extends \yii\db\ActiveRecord
+class ListaPlanos extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

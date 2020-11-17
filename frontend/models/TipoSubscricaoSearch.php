@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PlanoTreino;
+use app\models\TipoSubscricao;
 
 /**
- * PlanoTreinoSearch represents the model behind the search form of `app\models\PlanoTreino`.
+ * TipoSubscricaoSearch represents the model behind the search form of `app\models\TipoSubscricao`.
  */
-class PlanoTreinoSearch extends PlanoTreino
+class TipoSubscricaoSearch extends TipoSubscricao
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class PlanoTreinoSearch extends PlanoTreino
     public function rules()
     {
         return [
-            [['IDPlanoTreino', 'repeticoes', 'serie', 'num_maquina', 'id_cliente'], 'integer'],
-            [['nome_exercicio', 'tempo', 'repouso', 'tempo_total'], 'safe'],
+            [['IDTipoSubscricao'], 'integer'],
+            [['tipo'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PlanoTreinoSearch extends PlanoTreino
      */
     public function search($params)
     {
-        $query = PlanoTreino::find();
+        $query = TipoSubscricao::find();
 
         // add conditions that should always apply here
 
@@ -58,17 +58,10 @@ class PlanoTreinoSearch extends PlanoTreino
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'IDPlanoTreino' => $this->IDPlanoTreino,
-            'repeticoes' => $this->repeticoes,
-            'tempo' => $this->tempo,
-            'serie' => $this->serie,
-            'repouso' => $this->repouso,
-            'tempo_total' => $this->tempo_total,
-            'num_maquina' => $this->num_maquina,
-            'id_cliente' => $this->id_cliente,
+            'IDTipoSubscricao' => $this->IDTipoSubscricao,
         ]);
 
-        $query->andFilterWhere(['like', 'nome_exercicio', $this->nome_exercicio]);
+        $query->andFilterWhere(['like', 'tipo', $this->tipo]);
 
         return $dataProvider;
     }

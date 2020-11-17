@@ -31,6 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'User_id',
             'IDCliente',
+            'primeiroNome',
+            'apelido',
+            'dt_nascimento',
+            'sexo',
+            'avatar',
+            'num_tele',
             'nif',
         ],
     ]) ?>

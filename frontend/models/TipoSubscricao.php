@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Subscricao[] $subscricaos
  */
-class Tipo_Subscricao extends \yii\db\ActiveRecord
+class TipoSubscricao extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

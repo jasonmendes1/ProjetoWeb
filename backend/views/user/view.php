@@ -39,12 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'updated_at',
             'verification_token',
-            'primeiroNome',
-            'apelido',
-            'dt_nascimento',
-            'sexo',
-            'avatar',
-            'num_tele',
         ],
     ]) ?>
 

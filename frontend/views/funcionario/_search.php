@@ -19,7 +19,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'IDFuncionario') ?>
 
-    <?= $form->field($model, 'cargo_id') ?>
+    <?= $form->field($model, 'primeiroNome') ?>
+
+    <?= $form->field($model, 'apelido') ?>
+
+    <?= $form->field($model, 'dt_nascimento') ?>
+
+    <?php // echo $form->field($model, 'sexo') ?>
+
+    <?php // echo $form->field($model, 'avatar') ?>
+
+    <?php // echo $form->field($model, 'num_tele') ?>
+
+    <?php // echo $form->field($model, 'cargo_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

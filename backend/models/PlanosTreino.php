@@ -20,7 +20,7 @@ use Yii;
  * @property ListaPlanos[] $listaPlanos
  * @property Cliente $cliente
  */
-class PlanoTreino extends \yii\db\ActiveRecord
+class PlanosTreino extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

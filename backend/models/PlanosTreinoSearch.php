@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PlanoNutricao;
+use app\models\PlanosTreino;
 
 /**
- * PlanoNutricaoSearch represents the model behind the search form of `app\models\PlanoNutricao`.
+ * PlanosTreinoSearch represents the model behind the search form of `app\models\PlanosTreino`.
  */
-class PlanoNutricaoSearch extends PlanoNutricao
+class PlanosTreinoSearch extends PlanosTreino
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,8 @@ class PlanoNutricaoSearch extends PlanoNutricao
     public function rules()
     {
         return [
-            [['IDPlanoNutricao', 'Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'IDNutricionista'], 'integer'],
+            [['IDPlanoTreino', 'repeticoes', 'serie', 'num_maquina', 'id_cliente'], 'integer'],
+            [['nome_exercicio', 'tempo', 'repouso', 'tempo_total'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class PlanoNutricaoSearch extends PlanoNutricao
      */
     public function search($params)
     {
-        $query = PlanoNutricao::find();
+        $query = PlanosTreino::find();
 
         // add conditions that should always apply here
 
@@ -57,15 +58,17 @@ class PlanoNutricaoSearch extends PlanoNutricao
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'IDPlanoNutricao' => $this->IDPlanoNutricao,
-            'Segunda' => $this->Segunda,
-            'Terca' => $this->Terca,
-            'Quarta' => $this->Quarta,
-            'Quinta' => $this->Quinta,
-            'Sexta' => $this->Sexta,
-            'Sabado' => $this->Sabado,
-            'IDNutricionista' => $this->IDNutricionista,
+            'IDPlanoTreino' => $this->IDPlanoTreino,
+            'repeticoes' => $this->repeticoes,
+            'tempo' => $this->tempo,
+            'serie' => $this->serie,
+            'repouso' => $this->repouso,
+            'tempo_total' => $this->tempo_total,
+            'num_maquina' => $this->num_maquina,
+            'id_cliente' => $this->id_cliente,
         ]);
+
+        $query->andFilterWhere(['like', 'nome_exercicio', $this->nome_exercicio]);
 
         return $dataProvider;
     }

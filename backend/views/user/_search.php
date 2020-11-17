@@ -35,18 +35,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'verification_token') ?>
 
-    <?php // echo $form->field($model, 'primeiroNome') ?>
-
-    <?php // echo $form->field($model, 'apelido') ?>
-
-    <?php // echo $form->field($model, 'dt_nascimento') ?>
-
-    <?php // echo $form->field($model, 'sexo') ?>
-
-    <?php // echo $form->field($model, 'avatar') ?>
-
-    <?php // echo $form->field($model, 'num_tele') ?>
-
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>

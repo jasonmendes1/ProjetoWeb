@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PlanoNutricao;
-use app\models\PlanoNutricaoSearch;
+use app\models\PlanosNutricao;
+use app\models\PlanosNutricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlanoNutricaoController implements the CRUD actions for PlanoNutricao model.
+ * PlanosNutricaoController implements the CRUD actions for PlanosNutricao model.
  */
-class PlanoNutricaoController extends Controller
+class PlanosNutricaoController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Lists all PlanoNutricao models.
+     * Lists all PlanosNutricao models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PlanoNutricaoSearch();
+        $searchModel = new PlanosNutricaoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Displays a single PlanoNutricao model.
+     * Displays a single PlanosNutricao model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Creates a new PlanoNutricao model.
+     * Creates a new PlanosNutricao model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PlanoNutricao();
+        $model = new PlanosNutricao();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDPlanoNutricao]);
@@ -76,7 +76,7 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Updates an existing PlanoNutricao model.
+     * Updates an existing PlanosNutricao model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Deletes an existing PlanoNutricao model.
+     * Deletes an existing PlanosNutricao model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class PlanoNutricaoController extends Controller
     }
 
     /**
-     * Finds the PlanoNutricao model based on its primary key value.
+     * Finds the PlanosNutricao model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return PlanoNutricao the loaded model
+     * @return PlanosNutricao the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PlanoNutricao::findOne($id)) !== null) {
+        if (($model = PlanosNutricao::findOne($id)) !== null) {
             return $model;
         }
 

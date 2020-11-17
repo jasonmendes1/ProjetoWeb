@@ -41,7 +41,7 @@ class Subscricao extends \yii\db\ActiveRecord
             [['data_subscricao', 'data_expirar'], 'safe'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
             [['id_desconto'], 'exist', 'skipOnError' => true, 'targetClass' => Desconto::className(), 'targetAttribute' => ['id_desconto' => 'IDDesconto']],
-            [['id_tipo'], 'exist', 'skipOnError' => true, 'targetClass' => Tipo_Subscricao::className(), 'targetAttribute' => ['id_tipo' => 'IDTipoSubscricao']],
+            [['id_tipo'], 'exist', 'skipOnError' => true, 'targetClass' => TipoSubscricao::className(), 'targetAttribute' => ['id_tipo' => 'IDTipoSubscricao']],
         ];
     }
 
@@ -88,6 +88,6 @@ class Subscricao extends \yii\db\ActiveRecord
      */
     public function getTipo()
     {
-        return $this->hasOne(Tipo_Subscricao::className(), ['IDTipoSubscricao' => 'id_tipo']);
+        return $this->hasOne(TipoSubscricao::className(), ['IDTipoSubscricao' => 'id_tipo']);
     }
 }

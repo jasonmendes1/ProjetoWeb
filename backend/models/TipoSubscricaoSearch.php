@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Tipo_Subscricao;
+use app\models\TipoSubscricao;
 
 /**
- * Tipo_SubscricaoSearch represents the model behind the search form of `app\models\Tipo_Subscricao`.
+ * TipoSubscricaoSearch represents the model behind the search form of `app\models\TipoSubscricao`.
  */
-class Tipo_SubscricaoSearch extends Tipo_Subscricao
+class TipoSubscricaoSearch extends TipoSubscricao
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class Tipo_SubscricaoSearch extends Tipo_Subscricao
      */
     public function search($params)
     {
-        $query = Tipo_Subscricao::find();
+        $query = TipoSubscricao::find();
 
         // add conditions that should always apply here
 
