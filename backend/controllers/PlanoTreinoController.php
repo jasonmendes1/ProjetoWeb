@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\PlanosTreino;
+use app\models\PlanosTreinoSearch;
 use Yii;
 use app\models\PlanoTreino;
 use app\models\PlanoTreinoSearch;
@@ -35,7 +37,7 @@ class PlanoTreinoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PlanoTreinoSearch();
+        $searchModel = new PlanosTreinoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +66,7 @@ class PlanoTreinoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new PlanoTreino();
+        $model = new PlanosTreino();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDPlanoTreino]);
@@ -118,7 +120,7 @@ class PlanoTreinoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = PlanoTreino::findOne($id)) !== null) {
+        if (($model = PlanosTreino::findOne($id)) !== null) {
             return $model;
         }
 

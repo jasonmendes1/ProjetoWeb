@@ -63,7 +63,7 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos()
     {
-        return $this->hasMany(Planonutricao::className(), ['Segunda' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Segunda' => 'IDEmenta']);
     }
 
     /**
@@ -73,7 +73,7 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos0()
     {
-        return $this->hasMany(Planonutricao::className(), ['Terca' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Terca' => 'IDEmenta']);
     }
 
     /**
@@ -83,7 +83,7 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos1()
     {
-        return $this->hasMany(Planonutricao::className(), ['Quarta' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Quarta' => 'IDEmenta']);
     }
 
     /**
@@ -93,7 +93,7 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos2()
     {
-        return $this->hasMany(Planonutricao::className(), ['Quinta' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Quinta' => 'IDEmenta']);
     }
 
     /**
@@ -103,7 +103,7 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos3()
     {
-        return $this->hasMany(Planonutricao::className(), ['Sexta' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Sexta' => 'IDEmenta']);
     }
 
     /**
@@ -113,6 +113,6 @@ class Ementa extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos4()
     {
-        return $this->hasMany(Planonutricao::className(), ['Sabado' => 'IDEmenta']);
+        return $this->hasMany(PlanosNutricao::className(), ['Sabado' => 'IDEmenta']);
     }
 }

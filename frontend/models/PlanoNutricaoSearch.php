@@ -39,7 +39,7 @@ class PlanoNutricaoSearch extends PlanoNutricao
      */
     public function search($params)
     {
-        $query = PlanoNutricao::find();
+        $query = PlanosNutricao::find();
 
         // add conditions that should always apply here
 

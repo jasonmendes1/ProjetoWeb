@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\PlanoNutricao;
 use app\models\PlanoNutricaoSearch;
+use app\models\PlanosNutricao;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -64,7 +65,7 @@ class PlanoNutricaoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new PlanoNutricao();
+        $model = new PlanosNutricao();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDPlanoNutricao]);
@@ -118,7 +119,7 @@ class PlanoNutricaoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = PlanoNutricao::findOne($id)) !== null) {
+        if (($model = PlanosNutricao::findOne($id)) !== null) {
             return $model;
         }
 

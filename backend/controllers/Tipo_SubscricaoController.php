@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Tipo_Subscricao;
 use app\models\Tipo_SubscricaoSearch;
+use app\models\TipoSubscricao;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +36,7 @@ class Tipo_SubscricaoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new Tipo_SubscricaoSearch();
+        $searchModel = new TipoSubscricao();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +65,7 @@ class Tipo_SubscricaoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Tipo_Subscricao();
+        $model = new TipoSubscricao();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDTipoSubscricao]);
@@ -118,7 +119,7 @@ class Tipo_SubscricaoController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Tipo_Subscricao::findOne($id)) !== null) {
+        if (($model = TipoSubscricao::findOne($id)) !== null) {
             return $model;
         }
 
