@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+
     public $primeiroNome;
     public $apelido;
     public $avatar;
@@ -22,6 +23,7 @@ class SignupForm extends Model
     public $userId;
     public $sexo;
     public $dt_nascimento;
+    public $data;
 
 
 
@@ -44,6 +46,14 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'num_tele', 'nif'], 'required'],
+            [['User_id', 'num_tele', 'nif'], 'integer'],
+            [['dt_nascimento'], 'safe'],
+            [['primeiroNome', 'apelido'], 'string', 'max' => 100],
+            [['sexo'], 'string', 'max' => 20],
+            [['avatar'], 'string', 'max' => 255],
+            [['User_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['User_id' => 'id']],
         ];
     }
 
@@ -61,6 +71,7 @@ class SignupForm extends Model
 
         $user->username = $this->username;
         $user->email = $this->email;
+        
         $cliente->primeiroNome = $this->primeiroNome;
         $cliente->apelido = $this->apelido;
         $cliente->dt_nascimento = $this->dt_nascimento;
@@ -83,7 +94,7 @@ class SignupForm extends Model
         $cliente->User_id = $user->id;
         $cliente->save();
 
-        return $user->save() && $cliente->save();
+        return $cliente->save();
 
         /*
         if (!$this->validate()) {
