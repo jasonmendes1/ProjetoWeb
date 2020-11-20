@@ -56,8 +56,26 @@ AppAsset::register($this);
             . '</li>';
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'items' => [
+            [
+                'label' => 'Home',
+                'url' => ['site/index'],
+            ],          
+            [
+                'label' => 'Cliente',
+                'items' => [
+                     ['label' => 'Planos de Treino', 'url' => '#'],
+                     ['label' => 'Planos de Nutrição', 'url' => '#'],
+                     '<li class="divider"></li>',
+                     ['label' => 'Horários Aulas', 'url' => '#'],                
+                    ],
+            ],
+            [
+                'label' => 'Outro',
+                'items' => $menuItems,
+            ]
+        ],
+            'options' => ['class' => 'navbar-nav navbar-right'],
     ]);
     NavBar::end();
     ?>
