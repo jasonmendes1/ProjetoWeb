@@ -4,6 +4,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use frontend\models\Cliente;
 
 /**
  * Signup form
@@ -13,6 +14,15 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $primeiroNome;
+    public $apelido;
+    public $avatar;
+    public $num_tele;
+    public $nif;
+    public $userId;
+    public $sexo;
+    public $dt_nascimento;
+
 
 
     /**
@@ -42,8 +52,40 @@ class SignupForm extends Model
      *
      * @return bool whether the creating new account was successful and email was sent
      */
-    public function signup()
+    public function signup($getAvatar)
     {
+        $avatardefaultdir = 'dirdefaultavatar';
+
+        $user = new User();
+        $cliente = new Cliente();
+
+        $user->username = $this->username;
+        $user->email = $this->email;
+        $cliente->primeiroNome = $this->primeiroNome;
+        $cliente->apelido = $this->apelido;
+        $cliente->dt_nascimento = $this->dt_nascimento;
+        $cliente->sexo = $this->sexo;
+        $cliente->num_tele = $this->num_tele;
+        $cliente->nif = $this->nif;
+
+        if($getAvatar == null){
+            $cliente->avatar = 'defaultAvatar';
+        }else{
+            $cliente->avatar = $avatardefaultdir . "/" . $getAvatar;
+        }
+
+        $user->setPassword($this->password);
+        $user->generateAuthKey();
+        $user->generateEmailVerificationToken();
+        $user->status = 10;
+
+        $user->save();
+        $cliente->User_id = $user->id;
+        $cliente->save();
+
+        return $user->save() && $cliente->save();
+
+        /*
         if (!$this->validate()) {
             return null;
         }
@@ -55,7 +97,7 @@ class SignupForm extends Model
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
         return $user->save() && $this->sendEmail($user);
-
+        */
     }
 
     /**

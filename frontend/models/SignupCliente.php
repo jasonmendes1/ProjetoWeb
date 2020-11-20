@@ -30,16 +30,16 @@ class SignupCliente extends Model{
         $user = new User();
         $cliente = new Cliente();
 
-        $user->username = $this->$username;
-        $user->password = $this->$password;
-        $user->primeiroNome = $this->$primeiroNome;
-        $user->apelido = $this->$apelido;
-        $user->email = $this->$email;
-        $user->sexo = $this->$sexo;
-        $user->num_tele = $this->$numtele;
+        $user->username = $this->username;
+        $user->password = $this->password;
+        $user->primeiroNome = $this->primeiroNome;
+        $user->apelido = $this->apelido;
+        $user->email = $this->email;
+        $user->sexo = $this->sexo;
+        $user->num_tele = $this->numtele;
         $user->dtNascimento = date('Y-m-d');
         
-        $cliente->nif = $this->$nif;
+        $cliente->nif = $this->nif;
 
         $user->setPassword($this->password);
         $user->generateAuthKey();

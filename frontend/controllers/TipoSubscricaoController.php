@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use app\models\TipoSubscricao;
-use app\models\TipoSubscricaoSearch;
+use frontend\models\TipoSubscricao;
+use frontend\models\TipoSubscricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

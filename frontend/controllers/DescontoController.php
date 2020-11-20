@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace afrontendpp\controllers;
 
 use Yii;
-use app\models\Desconto;
-use app\models\DescontoSearch;
+use frontend\models\Desconto;
+use frontend\models\DescontoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

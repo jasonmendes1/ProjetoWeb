@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use app\models\PlanosNutricao;
-use app\models\PlanosNutricaoSearch;
+use frontend\models\PlanosNutricao;
+use frontend\models\PlanosNutricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

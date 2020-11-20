@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use app\models\PlanosTreino;
-use app\models\PlanosTreinoSearch;
+use frontend\models\PlanosTreino;
+use frontend\models\PlanosTreinoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

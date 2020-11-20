@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use app\models\Funcionario;
-use app\models\FuncionarioSearch;
+use frontend\models\Funcionario;
+use frontend\models\FuncionarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

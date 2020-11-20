@@ -29,9 +29,9 @@ class regclienteTest extends \Codeception\Test\Unit
         $user = new User();
         $cliente = new Cliente();
 
-        $user->username = 'userteste';
-        $user->email = 'userteste@gmail.com';
-        $password ='teste123';
+        $user->username = 'userteste1';
+        $user->email = 'userteste1@gmail.com';
+        $this->password ='teste123';
 
         $cliente->primeiroNome = 'User';
         $cliente->apelido = 'teste';
@@ -42,8 +42,9 @@ class regclienteTest extends \Codeception\Test\Unit
         $data = date_format($date,"Y-m-d");
         $cliente->dt_nascimento = $data;
         $cliente->nif = 123456789;
+        $cliente->avatar = 'orfirufir';
 
-        $user->setPassword($password);
+        $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
