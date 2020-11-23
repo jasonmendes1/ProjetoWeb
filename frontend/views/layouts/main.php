@@ -74,9 +74,9 @@ AppAsset::register($this);
             [
                 'label' => 'Cliente',
                 'items' => [
-                    ['label' => 'Perfil', 'url' => '?r=cliente'],
-                     ['label' => 'Planos de Treino', 'url' => '#'],
-                     ['label' => 'Planos de Nutrição', 'url' => '#'],
+                    ['label' => 'Perfil', 'url' => 'index.php?r=cliente%2Fprofile'],
+                     ['label' => 'Planos de Treino', 'url' => 'index.php?r=planos-treino%2Fviewplanotreino'],
+                     ['label' => 'Planos de Nutrição', 'url' => 'index.php?r=planos-nutricao%2Fviewplanonutri'],
                      '<li class="divider"></li>',
                      ['label' => 'Horários Aulas', 'url' => '#'],
                     ],

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\User;
 use Yii;
 use frontend\models\Cliente;
 use frontend\models\ClienteSearch;
@@ -123,5 +124,11 @@ class ClienteController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionProfile($id){
+        $cliente = Cliente::find()->where(['IDCliente' => $id])->one();
+        $user = User::find()->where(['id' => $cliente->User_id])->one();
+        return $this->render('profile',['cliente' => $cliente, 'user' => $user]);
     }
 }

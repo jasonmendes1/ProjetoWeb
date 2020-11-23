@@ -124,4 +124,8 @@ class PlanosNutricaoController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionViewplanonutri(){
+        return $this->render('viewplanonutri');
+    }
 }
