@@ -28,13 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'avatar')->fileInput() ?>
 
-                <?= $form->field($model, 'primeiroNome')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'primeiroNome')->textInput() ?>
                 
-                <?= $form->field($model, 'apelido')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'apelido')->textInput() ?>
 
                 <?= $form->field($model,'dt_nascimento')->widget(DatePicker::className(),['dateFormat' => 'y-M-d']) ?>
 
-                <?= $form->field($model, 'sexo')->dropDownList(['a' =>'Selecionar Sexo...','b' => 'Masculino', 'c' => 'Feminino']) ?>
+                <?= $form->field($model, 'sexo')->dropDownList(['' =>'Selecionar Sexo...','Masculino' => 'Masculino', 'Feminino' => 'Feminino']) ?>
 
                 <?= $form->field($model, 'num_tele')->textInput(['autofocus' => true]) ?>
 

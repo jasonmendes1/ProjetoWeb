@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\models\Cliente;
 
 AppAsset::register($this);
 ?>
@@ -35,29 +36,57 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Cliente', 'url' => ['/cliente/create']],
-    ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
+        $login[] = ['label' => 'Registar', 'url' => ['/site/signup']];
+        $login[] = ['label' => 'Fazer Login', 'url' => ['/site/login']];
+        $nomecliente[] = ['label' => 'Cliente'];
+        } else {
+        $login[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                Yii::$app->user->identity->avatar,
+              // Yii::$app->cliente->avatar, // AVATAR DO CLIENTE NO BOTAO LOGOUT
+              // $cliente = Cliente::find()->where(['user_id' => Yii::$app->user->id])->one(),
+              // $foto = $cliente->avatar,
                 'Logout (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
+        $nomecliente[] = ['label' => Yii::$app->user->identity->username];
     }
+/*
+    if (Yii::$app->user->isGuest) {
+        $nomecliente[] = ['label' => 'Cliente'];
+    } else {
+        $nomecliente[] = ['label' => Yii::$app->user->identity->username];
+    }
+*/
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'items' => [
+            [
+                'label' => 'Ginásio',
+                'url' => ['site/about']           
+            ],
+            [
+                'label' => 'Contacto',
+                'url' => ['site/contact']
+            ],
+            [
+                'label' => 'Cliente',
+                'items' => [
+                    ['label' => 'Perfil', 'url' => '?r=cliente'],
+                     ['label' => 'Planos de Treino', 'url' => '#'],
+                     ['label' => 'Planos de Nutrição', 'url' => '#'],
+                     '<li class="divider"></li>',
+                     ['label' => 'Horários Aulas', 'url' => '#'],
+                    ],
+            ],
+            [
+                'label' => 'Registar/Login',
+                'items' => $login,
+            ]
+        ],
+            'options' => ['class' => 'navbar-nav navbar-right'],
     ]);
     NavBar::end();
     ?>
