@@ -126,9 +126,11 @@ class ClienteController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionProfile($id){
-        $cliente = Cliente::find()->where(['IDCliente' => $id])->one();
+    public function actionProfile(){
+
+        $cliente = $this->findModel(Yii::$app->user->identity->getId());
         $user = User::find()->where(['id' => $cliente->User_id])->one();
+
         return $this->render('profile',['cliente' => $cliente, 'user' => $user]);
     }
 }
