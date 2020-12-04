@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Fitness League',
+        'brandLabel' => Html::img('@web/images/logo_temp.png', ['alt'=>Yii::$app->name], ['style=width:2%;']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
