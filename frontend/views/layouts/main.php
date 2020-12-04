@@ -65,7 +65,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'items' => [
             [
-                'label' => 'Área Clientes',
+                'label' => 'Bem Vindo ' . Yii::$app->user->identity->username,
                 'items' => [
                     ['label' => 'Ver Perfil', 
                     'url' => 'cliente/profile'],
@@ -90,10 +90,6 @@ AppAsset::register($this);
             ],
         ],
         'options' => ['class' => 'navbar-nav navbar-right'],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $nomecliente, 
     ]);
     echo Nav::widget([  
         'items' => [
