@@ -30,16 +30,16 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/images/logo_temp.png', ['alt'=>Yii::$app->name], ['style=width:2%;']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     if (Yii::$app->user->isGuest) {
-        $login[] = ['label' => 'Registar', 'url' => ['/site/signup']];
         $login[] = ['label' => 'Fazer Login', 'url' => ['/site/login']];
-        $nomecliente[] = ['label' => 'Cliente'];
+        $login[] = ['label' => 'Registar', 'url' => ['/site/signup']];
+        $nomecliente[] = ['label' => 'Área Clientes'];
         } else {
         $login[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
@@ -61,21 +61,16 @@ AppAsset::register($this);
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
     }
 */
+
     echo Nav::widget([
         'items' => [
             [
-                'label' => 'Ginásio',
-                'url' => ['site/about']           
-            ],
-            [
-                'label' => 'Contacto',
-                'url' => ['site/contact']
-            ],
-            [
-                'label' => 'Cliente',
+                'label' => 'Área Clientes',
                 'items' => [
-                    ['label' => 'Perfil', 
-                    'url' => 'site/perfil'],
+                    ['label' => 'Ver Perfil', 
+                    'url' => 'cliente/profile'],
+
+                    '<li class="divider"></li>',    
 
                      ['label' => 'Planos de Treino', 
                      'url' => 'planos-treino/index'],
@@ -92,9 +87,26 @@ AppAsset::register($this);
             [
                 'label' => 'Registar/Login',
                 'items' => $login,
-            ]
+            ],
         ],
-            'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-right'],
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $nomecliente, 
+    ]);
+    echo Nav::widget([  
+        'items' => [
+            [
+                'label' => 'Ginásio',
+                'url' => ['site/about']           
+            ],
+            [
+                'label' => 'Contacto',
+                'url' => ['site/contact']
+            ],
+        ],
+        'options' => ['class' => 'navbar-nav navbar-right'],
     ]);
     NavBar::end();
     ?>
