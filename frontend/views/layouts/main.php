@@ -75,7 +75,7 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-        $ifguest = Cliente::find(Yii::$app->user->identity->getId());
+        $ifguest = Cliente::findOne(Yii::$app->user->identity->getId())->primeiroNome;
 
         echo Nav::widget([
             'items' => [
