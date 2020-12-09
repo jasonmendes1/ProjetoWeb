@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use frontend\models\Cliente;
+use frontend\controllers\ClienteController;
 
 AppAsset::register($this);
 ?>
@@ -40,6 +41,27 @@ AppAsset::register($this);
         $login[] = ['label' => 'Fazer Login', 'url' => ['/site/login']];
         $login[] = ['label' => 'Registar', 'url' => ['/site/signup']];
         $nomecliente[] = ['label' => 'Área Clientes'];
+        $ifguest = 'Convidado';
+
+        echo Nav::widget([
+            'items' => [
+                [
+                    'label' => $ifguest,
+                    'items' => [
+                        ['label' => 'Fazer Login', 
+                        'url' => 'site/login'],
+                        ['label' => 'Registar', 
+                        'url' => 'site/signup'],
+                        ],
+                ],
+                [
+                    'label' => 'Registar/Login',
+                    'items' => $login,
+                ],
+            ],
+            'options' => ['class' => 'navbar-nav navbar-right'],
+        ]);
+
         } else {
         $login[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
@@ -53,6 +75,37 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
+        $ifguest = Cliente::find(Yii::$app->user->identity->getId());
+
+        echo Nav::widget([
+            'items' => [
+                [
+                    'label' => 'Bem Vindo ' . $ifguest,
+                    'items' => [
+                        ['label' => 'Ver Perfil', 
+                        'url' => 'cliente/profile'],
+    
+                        '<li class="divider"></li>',    
+    
+                         ['label' => 'Planos de Treino', 
+                         'url' => 'planos-treino/index'],
+    
+                         ['label' => 'Planos de Nutrição', 
+                         'url' => 'planos-nutricao/index'],
+    
+                         '<li class="divider"></li>',
+    
+                         ['label' => 'Horários Aulas', 
+                         'url' => '#'],
+                        ],
+                ],
+                [
+                    'label' => 'Registar/Login',
+                    'items' => $login,
+                ],
+            ],
+            'options' => ['class' => 'navbar-nav navbar-right'],
+        ]);
     }
 /*
     if (Yii::$app->user->isGuest) {
@@ -62,10 +115,11 @@ AppAsset::register($this);
     }
 */
 
+/*
     echo Nav::widget([
         'items' => [
             [
-                'label' => 'Bem Vindo ' . Yii::$app->user->identity->username,
+                'label' => 'Bem Vindo ' . $ifguest,
                 'items' => [
                     ['label' => 'Ver Perfil', 
                     'url' => 'cliente/profile'],
@@ -91,6 +145,7 @@ AppAsset::register($this);
         ],
         'options' => ['class' => 'navbar-nav navbar-right'],
     ]);
+    */
     echo Nav::widget([  
         'items' => [
             [
