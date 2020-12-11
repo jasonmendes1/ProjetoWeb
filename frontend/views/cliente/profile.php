@@ -86,22 +86,60 @@ use yii\models\Cliente;
             </div>
         </div>
         <div class="other-info">
-            <div class="info-PT">
+            <div class="Funci">
                 <div class="title">
                     <b>Personal Trainer</b>
                 </div>
-                <div class="PTinfo">
-                    <div class="PTinfobody">
-                        iigtg
+                <div class="Funcinfo">
+                    <div class="Funciavatar">
+                        <"Foto do Personal Trainer">
                     </div>
-                    <div class="PTinfobody">
-                        iigtg
+                    <div class="Funcinfobody">
+                        <div class="fbody">
+                            <div>
+                                Nome:
+                            </div>
+                            <div>
+                                Email:
+                            </div>
+                        </div>
+                        <div class="buttonsBox">
+                            <button class="button">
+                                Teste
+                            </button>
+                            <button class="button">
+                                Teste1
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="info-Nutri">
+            <div class="Funci">
                 <div class="title">
                     <b>Nutricionista</b>
+                </div>
+                <div class="Funcinfo">
+                    <div class="Funciavatar">
+                        <"Foto do Nutricionista">
+                    </div>
+                    <div class="Funcinfobody">
+                        <div class="fbody">
+                            <div>
+                                Nome:
+                            </div>
+                            <div>
+                                Email:
+                            </div>
+                        </div>
+                        <div class="buttonsBox">
+                            <button class = "button">
+                                Teste   
+                            </button>
+                            <button class="button">
+                                Teste1
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
