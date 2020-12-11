@@ -14,12 +14,12 @@ class SignupFuncionario extends Model{
     public $email;
     public $primeiroNome;
     public $apelido;
-    public $dtNascimento;
+    public $dt_nascimento;
     public $userId;
     public $sexo;
-    public $numtele;
-    public $cargoId;
-
+    public $num_tele;
+    public $cargo_id;
+    public $avatar;
 
     public function rules(){
         return [
@@ -48,6 +48,7 @@ class SignupFuncionario extends Model{
     }
 
     public function signup($getAvatar){
+
         $avatardefaultdir = '/web/ProjetoWeb/common/avatar';
 
         $user = new User();
@@ -55,14 +56,14 @@ class SignupFuncionario extends Model{
 
         $user->username = $this->username;
         $user->password = $this->password;
-        $user->primeiroNome = $this->primeiroNome;
-        $user->apelido = $this->apelido;
+        $funcionario->primeiroNome = $this->primeiroNome;
+        $funcionario->apelido = $this->apelido;
         $user->email = $this->email;
-        $user->sexo = $this->sexo;
-        $user->num_tele = $this->numtele;
-        $user->dtNascimento = date('Y-m-d');
+        $funcionario->sexo = $this->sexo;
+        $funcionario->num_tele = $this->num_tele;
+        $funcionario->dt_nascimento = date('Y-m-d');
 
-        $funcionario->cargo_id = $this->cargoId;
+        $funcionario->cargo_id = $this->cargo_id;
 
         if($getAvatar == null){
             $funcionario->avatar = '/web/ProjetoWeb/common/avatar/avatar-windows-10-person-ico-115628997732fatjfxg5s.png';
@@ -78,13 +79,12 @@ class SignupFuncionario extends Model{
 
         $user->save();
         $funcionario->User_id = $user->id;
-        $funcionario->save();
 
         $auth = Yii::$app->authManager;
         $authorRole = $auth->getRole('funcionario');
         $auth->assign($authorRole, $user->getId());
 
-        return $user->save();
+        return $funcionario->save();
     }
 }
 

@@ -2,8 +2,9 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \backend\models\SignupFuncionario */
+/* @var $model SignupFuncionario */
 
+use backend\models\SignupFuncionario;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
@@ -38,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'num_tele')->textInput(['autofocus' => true]) ?>
 
-            <?= $form->field($model, 'cargo_id')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'cargo_id')->dropDownList(['' =>'Selecionar Cargo...','1' => 'Personal Trainer', '2' => 'Nutricionista']) ?>
 
             <div class="form-group">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

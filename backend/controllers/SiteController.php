@@ -38,6 +38,11 @@ class SiteController extends Controller
                           'allow' => true,
                           'roles' => ['admin'],
                       ],
+                    [
+                        'actions' => ['signup'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
             'verbs' => [
@@ -112,7 +117,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionSignUp()
+    public function actionSignup()
     {
         $model = new SignupFuncionario();
         $getAvatar = UploadedFile::getInstance($model,'avatar');
