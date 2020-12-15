@@ -36,6 +36,17 @@ use yii\models\Cliente;
                 </div>
             </div>
         </div>
+        <div class="profile-btn">
+            <button>
+                Atualizar Inscrição
+            </button>
+            <button>
+                Pedir Personal Trainer
+            </button>
+            <button>
+                Pedir Nutricionista
+            </button>
+        </div>
     </div>
     <div class="profilebody">
         <div class="profile-body-info">
@@ -75,14 +86,6 @@ use yii\models\Cliente;
                 <div class="title">
                     <b>Índice de Massa Corporal:</b>
                 </div>
-                <div class="bodyinfo">
-                    <div class="innerbodyinfo">
-                        Texto 1
-                    </div>
-                    <div class="innerbodyinfo">
-                        Texto 2
-                    </div>
-                </div>
             </div>
         </div>
         <div class="other-info">
@@ -100,16 +103,17 @@ use yii\models\Cliente;
                                 Nome:
                             </div>
                             <div>
+                                Idade:
+                            </div>
+                            <div>
+                                Sexo:
+                            </div>
+                            <div>
+                                Num Telemovel:
+                            </div>
+                            <div>
                                 Email:
                             </div>
-                        </div>
-                        <div class="buttonsBox">
-                            <button class="button">
-                                Teste
-                            </button>
-                            <button class="button">
-                                Teste1
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -128,16 +132,17 @@ use yii\models\Cliente;
                                 Nome:
                             </div>
                             <div>
+                                Idade:
+                            </div>
+                            <div>
+                                Sexo:
+                            </div>
+                            <div>
+                                Num Telemovel:
+                            </div>
+                            <div>
                                 Email:
                             </div>
-                        </div>
-                        <div class="buttonsBox">
-                            <button class = "button">
-                                Teste   
-                            </button>
-                            <button class="button">
-                                Teste1
-                            </button>
                         </div>
                     </div>
                 </div>
