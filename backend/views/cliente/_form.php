@@ -28,6 +28,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nif')->textInput() ?>
 
+    <?= $form->field($model, 'altura')->textInput() ?>
+
+    <?= $form->field($model, 'peso')->textInput() ?>
+
+    <?= $form->field($model, 'massa_muscular')->textInput() ?>
+
+    <?= $form->field($model, 'massa_gorda')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

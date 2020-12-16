@@ -16,10 +16,13 @@ use Yii;
  * @property string $avatar
  * @property int $num_tele
  * @property int $nif
+ * @property float|null $altura
+ * @property float|null $peso
+ * @property int|null $massa_muscular
+ * @property int|null $massa_gorda
  *
  * @property User $user
  * @property ListaPlanos[] $listaPlanos
- * @property PlanosTreino[] $planosTreinos
  * @property Subscricao[] $subscricaos
  */
 class Cliente extends \yii\db\ActiveRecord
@@ -39,8 +42,9 @@ class Cliente extends \yii\db\ActiveRecord
     {
         return [
             [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar', 'num_tele', 'nif'], 'required'],
-            [['User_id', 'num_tele', 'nif'], 'integer'],
+            [['User_id', 'num_tele', 'nif', 'massa_muscular', 'massa_gorda'], 'integer'],
             [['dt_nascimento'], 'safe'],
+            [['altura', 'peso'], 'number'],
             [['primeiroNome', 'apelido'], 'string', 'max' => 100],
             [['sexo'], 'string', 'max' => 20],
             [['avatar'], 'string', 'max' => 255],
@@ -63,6 +67,10 @@ class Cliente extends \yii\db\ActiveRecord
             'avatar' => 'Avatar',
             'num_tele' => 'Num Tele',
             'nif' => 'Nif',
+            'altura' => 'Altura',
+            'peso' => 'Peso',
+            'massa_muscular' => 'Massa Muscular',
+            'massa_gorda' => 'Massa Gorda',
         ];
     }
 
@@ -84,16 +92,6 @@ class Cliente extends \yii\db\ActiveRecord
     public function getListaPlanos()
     {
         return $this->hasMany(ListaPlanos::className(), ['IDCliente' => 'IDCliente']);
-    }
-
-    /**
-     * Gets query for [[PlanosTreinos]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPlanosTreinos()
-    {
-        return $this->hasMany(PlanosTreino::className(), ['id_cliente' => 'IDCliente']);
     }
 
     /**

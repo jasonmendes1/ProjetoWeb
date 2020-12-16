@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'num_maquina') ?>
 
-    <?php // echo $form->field($model, 'id_cliente') ?>
+    <?php // echo $form->field($model, 'id_PT') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

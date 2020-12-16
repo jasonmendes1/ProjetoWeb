@@ -35,6 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'avatar',
             //'num_tele',
             //'nif',
+            //'altura',
+            //'peso',
+            //'massa_muscular',
+            //'massa_gorda',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

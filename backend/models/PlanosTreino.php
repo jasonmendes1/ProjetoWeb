@@ -15,10 +15,10 @@ use Yii;
  * @property string $repouso
  * @property string $tempo_total
  * @property int|null $num_maquina
- * @property int $id_cliente
+ * @property int $id_PT
  *
  * @property ListaPlanos[] $listaPlanos
- * @property Cliente $cliente
+ * @property Funcionario $pT
  */
 class PlanosTreino extends \yii\db\ActiveRecord
 {
@@ -36,11 +36,11 @@ class PlanosTreino extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome_exercicio', 'serie', 'repouso', 'tempo_total', 'id_cliente'], 'required'],
-            [['repeticoes', 'serie', 'num_maquina', 'id_cliente'], 'integer'],
+            [['nome_exercicio', 'serie', 'repouso', 'tempo_total', 'id_PT'], 'required'],
+            [['repeticoes', 'serie', 'num_maquina', 'id_PT'], 'integer'],
             [['tempo', 'repouso', 'tempo_total'], 'safe'],
             [['nome_exercicio'], 'string', 'max' => 255],
-            [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
+            [['id_PT'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['id_PT' => 'IDFuncionario']],
         ];
     }
 
@@ -58,7 +58,7 @@ class PlanosTreino extends \yii\db\ActiveRecord
             'repouso' => 'Repouso',
             'tempo_total' => 'Tempo Total',
             'num_maquina' => 'Num Maquina',
-            'id_cliente' => 'Id Cliente',
+            'id_PT' => 'Id Pt',
         ];
     }
 
@@ -73,12 +73,12 @@ class PlanosTreino extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Cliente]].
+     * Gets query for [[PT]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCliente()
+    public function getPT()
     {
-        return $this->hasOne(Cliente::className(), ['IDCliente' => 'id_cliente']);
+        return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'id_PT']);
     }
 }
