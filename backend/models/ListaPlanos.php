@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use frontend\models\PlanosNutricao;
 use Yii;
 
 /**
@@ -34,7 +35,7 @@ class ListaPlanos extends \yii\db\ActiveRecord
             [['IDPlano', 'IDCliente'], 'integer'],
             [['IDPlano'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosTreino::className(), 'targetAttribute' => ['IDPlano' => 'IDPlanoTreino']],
             [['IDCliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['IDCliente' => 'IDCliente']],
-            [['IDPlano'], 'exist', 'skipOnError' => true, 'targetClass' => Planonutricao::className(), 'targetAttribute' => ['IDPlano' => 'IDPlanoNutricao']],
+            [['IDPlano'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosNutricao::className(), 'targetAttribute' => ['IDPlano' => 'IDPlanoNutricao']],
         ];
     }
 
@@ -76,6 +77,6 @@ class ListaPlanos extends \yii\db\ActiveRecord
      */
     public function getIDPlano0()
     {
-        return $this->hasOne(Planonutricao::className(), ['IDPlanoNutricao' => 'IDPlano']);
+        return $this->hasOne(PlanosNutricao::className(), ['IDPlanoNutricao' => 'IDPlano']);
     }
 }
