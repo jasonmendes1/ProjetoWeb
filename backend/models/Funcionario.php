@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use frontend\models\PlanosNutricao;
 use Yii;
 
 /**
@@ -20,6 +21,7 @@ use Yii;
  * @property Cargo $cargo
  * @property User $user
  * @property Planonutricao[] $planonutricaos
+ * @property PlanosTreino[] $planosTreinos
  */
 class Funcionario extends \yii\db\ActiveRecord
 {
@@ -94,5 +96,15 @@ class Funcionario extends \yii\db\ActiveRecord
     public function getPlanonutricaos()
     {
         return $this->hasMany(PlanosNutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
+    }
+
+    /**
+     * Gets query for [[PlanosTreinos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlanosTreinos()
+    {
+        return $this->hasMany(PlanosTreino::className(), ['id_PT' => 'IDFuncionario']);
     }
 }

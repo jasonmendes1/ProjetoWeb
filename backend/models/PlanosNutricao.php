@@ -25,7 +25,7 @@ use Yii;
  * @property Ementa $sabado
  * @property Funcionario $iDNutricionista
  */
-class PlanosNutricao extends \yii\db\ActiveRecord
+class Planosnutricao extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

@@ -17,8 +17,9 @@ class ClienteSearch extends Cliente
     public function rules()
     {
         return [
-            [['User_id', 'IDCliente', 'num_tele', 'nif'], 'integer'],
+            [['User_id', 'IDCliente', 'num_tele', 'nif', 'massa_muscular', 'massa_gorda'], 'integer'],
             [['primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar'], 'safe'],
+            [['altura', 'peso'], 'number'],
         ];
     }
 
@@ -63,6 +64,10 @@ class ClienteSearch extends Cliente
             'dt_nascimento' => $this->dt_nascimento,
             'num_tele' => $this->num_tele,
             'nif' => $this->nif,
+            'altura' => $this->altura,
+            'peso' => $this->peso,
+            'massa_muscular' => $this->massa_muscular,
+            'massa_gorda' => $this->massa_gorda,
         ]);
 
         $query->andFilterWhere(['like', 'primeiroNome', $this->primeiroNome])

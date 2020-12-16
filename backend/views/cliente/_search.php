@@ -33,6 +33,14 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'nif') ?>
 
+    <?php // echo $form->field($model, 'altura') ?>
+
+    <?php // echo $form->field($model, 'peso') ?>
+
+    <?php // echo $form->field($model, 'massa_muscular') ?>
+
+    <?php // echo $form->field($model, 'massa_gorda') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>

@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'repouso',
             'tempo_total',
             'num_maquina',
-            'id_cliente',
+            'id_PT',
         ],
     ]) ?>
 

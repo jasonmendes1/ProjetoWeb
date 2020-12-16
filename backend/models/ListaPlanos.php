@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use frontend\models\PlanosNutricao;
 use Yii;
 
 /**
@@ -76,6 +77,6 @@ class ListaPlanos extends \yii\db\ActiveRecord
      */
     public function getIDPlano0()
     {
-        return $this->hasOne(Planosnutricao::className(), ['IDPlanoNutricao' => 'IDPlano']);
+        return $this->hasOne(PlanosNutricao::className(), ['IDPlanoNutricao' => 'IDPlano']);
     }
 }

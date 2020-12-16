@@ -14,12 +14,12 @@ use Yii;
  * @property string|null $Lanche2
  * @property string|null $Jantar
  *
- * @property Planonutricao[] $planonutricaos
- * @property Planonutricao[] $planonutricaos0
- * @property Planonutricao[] $planonutricaos1
- * @property Planonutricao[] $planonutricaos2
- * @property Planonutricao[] $planonutricaos3
- * @property Planonutricao[] $planonutricaos4
+ * @property Planosnutricao[] $planonutricaos
+ * @property Planosnutricao[] $planonutricaos0
+ * @property Planosnutricao[] $planonutricaos1
+ * @property Planosnutricao[] $planonutricaos2
+ * @property Planosnutricao[] $planonutricaos3
+ * @property Planosnutricao[] $planonutricaos4
  */
 class Ementa extends \yii\db\ActiveRecord
 {
