@@ -206,6 +206,7 @@ a.desc:after {
     display:flex;
     flex-direction: column;
     align-content: center;
+    border-top: solid;
     width: 100%;
     height: 70%;
     padding-left: 50px;
