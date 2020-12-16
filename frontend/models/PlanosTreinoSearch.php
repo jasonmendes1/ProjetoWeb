@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\PlanosTreino;
 
 /**
- * PlanosTreinoSearch represents the model behind the search form of `app\models\PlanosTreino`.
+ * PlanosTreinoSearch represents the model behind the search form of `frontend\models\PlanosTreino`.
  */
 class PlanosTreinoSearch extends PlanosTreino
 {
@@ -17,7 +17,7 @@ class PlanosTreinoSearch extends PlanosTreino
     public function rules()
     {
         return [
-            [['IDPlanoTreino', 'repeticoes', 'serie', 'num_maquina', 'id_cliente'], 'integer'],
+            [['IDPlanoTreino', 'repeticoes', 'serie', 'num_maquina', 'id_PT'], 'integer'],
             [['nome_exercicio', 'tempo', 'repouso', 'tempo_total'], 'safe'],
         ];
     }
@@ -65,7 +65,7 @@ class PlanosTreinoSearch extends PlanosTreino
             'repouso' => $this->repouso,
             'tempo_total' => $this->tempo_total,
             'num_maquina' => $this->num_maquina,
-            'id_cliente' => $this->id_cliente,
+            'id_PT' => $this->id_PT,
         ]);
 
         $query->andFilterWhere(['like', 'nome_exercicio', $this->nome_exercicio]);

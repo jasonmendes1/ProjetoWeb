@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PlanosNutricao */
+/* @var $model frontend\models\PlanosNutricao */
 
 $this->title = 'Update Planos Nutricao: ' . $model->IDPlanoNutricao;
 $this->params['breadcrumbs'][] = ['label' => 'Planos Nutricaos', 'url' => ['index']];

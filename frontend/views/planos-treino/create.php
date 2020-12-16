@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PlanosTreino */
+/* @var $model frontend\models\PlanosTreino */
 
 $this->title = 'Create Planos Treino';
 $this->params['breadcrumbs'][] = ['label' => 'Planos Treinos', 'url' => ['index']];

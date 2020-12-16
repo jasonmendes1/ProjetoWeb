@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PlanosTreino */
+/* @var $model frontend\models\PlanosTreino */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'num_maquina')->textInput() ?>
 
-    <?= $form->field($model, 'id_cliente')->textInput() ?>
+    <?= $form->field($model, 'id_PT')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

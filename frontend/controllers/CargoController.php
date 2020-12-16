@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Cargo;
-use app\models\CargoSearch;
+use frontend\models\Cargo;
+use frontend\models\CargoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

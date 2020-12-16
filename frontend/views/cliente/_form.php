@@ -4,13 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Cliente */
+/* @var $model frontend\models\Cliente */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="cliente-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'User_id')->textInput() ?>
 
     <?= $form->field($model, 'primeiroNome')->textInput(['maxlength' => true]) ?>
 
@@ -25,6 +27,14 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'num_tele')->textInput() ?>
 
     <?= $form->field($model, 'nif')->textInput() ?>
+
+    <?= $form->field($model, 'altura')->textInput() ?>
+
+    <?= $form->field($model, 'peso')->textInput() ?>
+
+    <?= $form->field($model, 'massa_muscular')->textInput() ?>
+
+    <?= $form->field($model, 'massa_gorda')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

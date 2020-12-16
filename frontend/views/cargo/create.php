@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Cargo */
+/* @var $model frontend\models\Cargo */
 
 $this->title = 'Create Cargo';
 $this->params['breadcrumbs'][] = ['label' => 'Cargos', 'url' => ['index']];

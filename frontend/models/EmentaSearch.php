@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\Ementa;
 
 /**
- * EmentaSearch represents the model behind the search form of `app\models\Ementa`.
+ * EmentaSearch represents the model behind the search form of `frontend\models\Ementa`.
  */
 class EmentaSearch extends Ementa
 {

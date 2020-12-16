@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PlanosTreino */
+/* @var $model frontend\models\PlanosTreino */
 
 $this->title = $model->IDPlanoTreino;
 $this->params['breadcrumbs'][] = ['label' => 'Planos Treinos', 'url' => ['index']];
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'repouso',
             'tempo_total',
             'num_maquina',
-            'id_cliente',
+            'id_PT',
         ],
     ]) ?>
 

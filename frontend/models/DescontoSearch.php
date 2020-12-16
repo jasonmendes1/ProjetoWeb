@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\Desconto;
 
 /**
- * DescontoSearch represents the model behind the search form of `app\models\Desconto`.
+ * DescontoSearch represents the model behind the search form of `frontend\models\Desconto`.
  */
 class DescontoSearch extends Desconto
 {

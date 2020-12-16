@@ -13,24 +13,24 @@ use yii\models\Cliente;
         </div>
         <div class="profile-info">
             <div class="profile-grid">
-                <div>
+                <div class="header-info">
                     <h4><b><?=$cliente->primeiroNome . " " . $cliente->apelido ?></b></h4>
                 </div>
-                <div>
+                <div class="header-info">
                     <h4>Data Nascimento: <?=$cliente->dt_nascimento?></h4>
                 </div>
-                <div>
+                <div class="header-info">
                     <h4>Subscrição:</h4>
                 </div>
             </div>
             <div class="profile-grid">
-                <div>
+                <div class="header-info">
                     <h4>Sexo: <?=$cliente->sexo?></h4>
                 </div>
-                <div>
+                <div class="header-info">
                     <h4>Email: <?=$user->email?></h4>
                 </div>
-                <div style="padding-left: 25px">
+                <div class="header-info" style="padding-left: 25px">
                     <h6>Feita a:</h6>
                     <h6>Expira a:</h6>
                 </div>

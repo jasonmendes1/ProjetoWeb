@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ClienteSearch */
+/* @var $searchModel frontend\models\ClienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Clientes';
@@ -35,6 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'avatar',
             //'num_tele',
             //'nif',
+            //'altura',
+            //'peso',
+            //'massa_muscular',
+            //'massa_gorda',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

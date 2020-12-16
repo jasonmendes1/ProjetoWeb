@@ -17,9 +17,12 @@ use Yii;
  * @property int $num_tele
  * @property int $cargo_id
  *
+ * @property ClienteFuncionarios[] $clienteFuncionarios
+ * @property ClienteFuncionarios[] $clienteFuncionarios0
  * @property Cargo $cargo
  * @property User $user
  * @property Planonutricao[] $planonutricaos
+ * @property PlanosTreino[] $planosTreinos
  */
 class Funcionario extends \yii\db\ActiveRecord
 {
@@ -67,6 +70,26 @@ class Funcionario extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[ClienteFuncionarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClienteFuncionarios()
+    {
+        return $this->hasMany(ClienteFuncionarios::className(), ['id_PT' => 'IDFuncionario']);
+    }
+
+    /**
+     * Gets query for [[ClienteFuncionarios0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClienteFuncionarios0()
+    {
+        return $this->hasMany(ClienteFuncionarios::className(), ['id_nutricionista' => 'IDFuncionario']);
+    }
+
+    /**
      * Gets query for [[Cargo]].
      *
      * @return \yii\db\ActiveQuery
@@ -93,6 +116,16 @@ class Funcionario extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos()
     {
-        return $this->hasMany(PlanosNutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
+        return $this->hasMany(Planonutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
+    }
+
+    /**
+     * Gets query for [[PlanosTreinos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPlanosTreinos()
+    {
+        return $this->hasMany(PlanosTreino::className(), ['id_PT' => 'IDFuncionario']);
     }
 }

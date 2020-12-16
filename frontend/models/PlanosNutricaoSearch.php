@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\PlanosNutricao;
 
 /**
- * PlanosNutricaoSearch represents the model behind the search form of `app\models\PlanosNutricao`.
+ * PlanosNutricaoSearch represents the model behind the search form of `frontend\models\PlanosNutricao`.
  */
 class PlanosNutricaoSearch extends PlanosNutricao
 {

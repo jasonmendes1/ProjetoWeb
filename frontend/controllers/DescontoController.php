@@ -1,6 +1,6 @@
 <?php
 
-namespace afrontendpp\controllers;
+namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Desconto;

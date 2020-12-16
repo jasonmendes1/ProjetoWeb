@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use frontend\models\Funcionario;
 
 /**
- * FuncionarioSearch represents the model behind the search form of `app\models\Funcionario`.
+ * FuncionarioSearch represents the model behind the search form of `frontend\models\Funcionario`.
  */
 class FuncionarioSearch extends Funcionario
 {
