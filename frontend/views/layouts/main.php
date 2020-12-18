@@ -54,10 +54,12 @@ AppAsset::register($this);
                         'url' => 'site/signup'],
                         ],
                 ],
+                /*
                 [
                     'label' => 'Registar/Login',
                     'items' => $login,
                 ],
+                */
             ],
             'options' => ['class' => 'navbar-nav navbar-right'],
         ]);
@@ -99,10 +101,12 @@ AppAsset::register($this);
                          'url' => '#'],
                         ],
                 ],
+                /*
                 [
                     'label' => 'Registar/Login',
                     'items' => $login,
                 ],
+                */
             ],
             'options' => ['class' => 'navbar-nav navbar-right'],
         ]);
