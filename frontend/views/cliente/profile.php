@@ -5,6 +5,40 @@ use yii\models\Cliente;
 
     $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
 
+    if($pt != null){
+        $ptavatar = $pt->avatar;
+        $ptnome = $pt->primeiroNome;
+        $ptnasci = $pt->dt_nascimento;
+        $ptsexo = $pt->sexo;
+        $ptnumtele = $pt->num_tele;
+        $ptemail = $pt->email;
+    }else{
+        $ptavatar = "";
+        $ptnome = "";
+        $ptnasci = "";
+        $ptsexo = "";
+        $ptnumtele = "";
+        $ptemail = "";
+    }
+
+    if($nutri != null){
+        $nutriavatar = $pt->avatar;
+        $nutrinome = $nutri->primeiroNome;
+        $nutrinasci = $nutri->dt_nascimento;
+        $nutrisexo = $nutri->sexo;
+        $nutrinumtele = $nutri->num_tele;
+        $nutriemail = $nutri->email;
+    }else{
+        $nutriavatar = "";
+        $nutrinome = "";
+        $nutrinasci = "";
+        $nutrisexo = "";
+        $nutrinumtele = "";
+        $nutriemail = "";
+    }
+     
+    
+
 ?>
 <div class="main">
     <div class="header">
@@ -110,19 +144,19 @@ use yii\models\Cliente;
                     <div class="Funcinfobody">
                         <div class="fbody">
                             <div>
-                                Nome:
+                                Nome: <?=$ptnome?>
                             </div>
                             <div>
-                                Idade:
+                                Idade: <?=$ptnasci?>
                             </div>
                             <div>
-                                Sexo:
+                                Sexo: <?=$ptsexo?>
                             </div>
                             <div>
-                                Num Telemovel:
+                                Num Telemovel: <?=$ptnumtele?>
                             </div>
                             <div>
-                                Email:
+                                Email: <?=$ptemail?>
                             </div>
                         </div>
                     </div>
@@ -139,19 +173,19 @@ use yii\models\Cliente;
                     <div class="Funcinfobody">
                         <div class="fbody">
                             <div>
-                                Nome:
+                                Nome: <?=$nutrinome?>
                             </div>
                             <div>
-                                Idade:
+                                Idade: <?=$nutrinasci?>
                             </div>
                             <div>
-                                Sexo:
+                                Sexo: <?=$nutrisexo?>
                             </div>
                             <div>
-                                Num Telemovel:
+                                Num Telemovel: <?=$nutrinumtele?>
                             </div>
                             <div>
-                                Email:
+                                Email: <?=$nutriemail?>
                             </div>
                         </div>
                     </div>
