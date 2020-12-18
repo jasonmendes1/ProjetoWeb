@@ -1,66 +1,38 @@
-<?php
-
-namespace frontend\tests\functional;
-
+<?php namespace frontend\tests\functional;
 use frontend\tests\FunctionalTester;
-use common\fixtures\UserFixture;
 
 class LoginCest
 {
-    /**
-     * Load fixtures before db transaction begin
-     * Called in _before()
-     * @see \Codeception\Module\Yii2::_before()
-     * @see \Codeception\Module\Yii2::loadFixtures()
-     * @return array
-     */
-    public function _fixtures()
+    public function tryCreateUser(FunctionalTester $I)
     {
-        return [
-            'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'login_data.php',
-            ],
-        ];
-    }
+        // Navegação desde Index até Registo
+        $I->amOnPage(\yii::$app->homeUrl);
+        $I->click('Convidado');
+        $I->click('Registar');
 
-    public function _before(FunctionalTester $I)
-    {
-        $I->amOnRoute('site/login');
-    }
+        // Inserção de Dados
+        $I->fillField('Username', 'userteste');
+        $I->fillField('Email', 'emailteste@emailteste.com');
+        $I->fillField('Password', 'passwordteste');
+        //$I->click('SignupForm[avatar]');
+       // $I->fillField('avatar', 'web/images/test.png');
+        $I->attachFile('#signupform-avatar', 'logo.png');
+        $I->fillField('Primeiro Nome', 'NomeTeste');
+        $I->fillField('Apelido', 'ApelidoTeste');
+        $I->fillField('Dt Nascimento', '1990-01-01');
 
-    protected function formParams($login, $password)
-    {
-        return [
-            'LoginForm[username]' => $login,
-            'LoginForm[password]' => $password,
-        ];
-    }
+        $option = $I->grabTextFrom('select option:nth-child(2)');
+        $I->selectOption("select", $option);
 
-    public function checkEmpty(FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', $this->formParams('', ''));
-        $I->seeValidationError('Username cannot be blank.');
-        $I->seeValidationError('Password cannot be blank.');
-    }
+        $I->fillField('Num Tele', '912345678');
+        $I->fillField('Nif', '123456789');
 
-    public function checkWrongPassword(FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
-        $I->seeValidationError('Incorrect username or password.');
-    }
+        //Final
+        $I->click('signup-button');
+        $I->seeRecord('frontend/models/Cliente', [
+            'primeiroNome' => 'NomeTeste'
+        ]);
+        $I->see('Thank you for registration. Please check your inbox for verification email.');
 
-    public function checkInactiveAccount(FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', $this->formParams('test.test', 'Test1234'));
-        $I->seeValidationError('Incorrect username or password');
-    }
-
-    public function checkValidLogin(FunctionalTester $I)
-    {
-        $I->submitForm('#login-form', $this->formParams('erau', 'password_0'));
-        $I->see('Logout (erau)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
     }
 }
