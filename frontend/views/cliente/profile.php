@@ -12,25 +12,27 @@ use yii\models\Cliente;
             <img src="<?=$cliente->avatar?>" align="left" style="border-radius: 10000px; width:100px; height:100px;">
         </div>
         <div class="profile-info">
-            <div class="profile-grid">
+            <div class="profile-grid-teste">
                 <div class="header-info">
                     <h4><b><?=$cliente->primeiroNome . " " . $cliente->apelido ?></b></h4>
                 </div>
                 <div class="header-info">
-                    <h4>Data Nascimento: <?=$cliente->dt_nascimento?></h4>
-                </div>
-                <div class="header-info">
-                    <h4>Subscrição:</h4>
-                </div>
-            </div>
-            <div class="profile-grid">
-                <div class="header-info">
                     <h4>Sexo: <?=$cliente->sexo?></h4>
+                </div>  
+            </div>
+            <div class="profile-grid-teste">
+                <div class="header-info">
+                    <h4>Data Nascimento: <?=$cliente->dt_nascimento?></h4>
                 </div>
                 <div class="header-info">
                     <h4>Email: <?=$user->email?></h4>
                 </div>
-                <div class="header-info" style="padding-left: 25px">
+            </div>
+            <div class="profile-grid-teste">
+                <div class="header-info">
+                    <h4>Subscrição:</h4>
+                </div>
+                <div class="header-info" style="padding-left:75px;">
                     <h6>Feita a:</h6>
                     <h6>Expira a:</h6>
                 </div>
@@ -55,7 +57,7 @@ use yii\models\Cliente;
                     <b>Altura:</b>
                 </div>
                 <div class="bodyinfo">
-                    Mostrar a Altura
+                    <?=$cliente->altura?> cm
                 </div>
             </div>    
             <div class="info-panel">
@@ -63,7 +65,7 @@ use yii\models\Cliente;
                     <b>Peso:</b>
                 </div>
                 <div class="bodyinfo">
-                    Mostrar o Peso
+                    <?=$cliente->peso?> Kg
                 </div>
             </div>      
             <div class="info-panel">
@@ -71,20 +73,28 @@ use yii\models\Cliente;
                     <b>Massa Muscular:</b>
                 </div>
                 <div class="bodyinfo">
-                    Mostrar a Massa Muscular
+                    <?=$cliente->massa_muscular?> %
                 </div>
             </div>
             <div class="info-panel">
                 <div class="title">
-                    <b>Massa Muscular:</b>
+                    <b>Massa Gorda:</b>
                 </div>
                 <div class="bodyinfo">
-                    Mostrar a Massa Gorda
+                    <?=$cliente->massa_gorda?> %
                 </div>
             </div>
             <div class="info-panel">
                 <div class="title">
                     <b>Índice de Massa Corporal:</b>
+                </div>
+                <div class="bodyinfo">
+                    <div>
+                        IMC: Kg/m²
+                    </div>
+                    <div>
+                        Classificação:
+                    </div>
                 </div>
             </div>
         </div>
