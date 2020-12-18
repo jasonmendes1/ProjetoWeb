@@ -153,14 +153,14 @@ a.desc:after {
 }
 
 .profile-info{
+    display:flex;
+    flex-direction: row;
     color: darkgray;
     width:78%;
 }
 
 .header-info{
-    display: flex;
-    width:100%;
-    height:100%;
+    padding-left: 50px;
 }
 
 .profile-btn{
@@ -171,11 +171,19 @@ a.desc:after {
     flex-direction: column;
 }
 
+.profile-grid-teste{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+    height:100%;
+}
+
 .profile-grid{
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    background-color: seashell;
+    align-items:center;
 }
 
 .profilebody{
@@ -212,6 +220,7 @@ a.desc:after {
 .bodyinfo{
     display:flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-content: center;
     border-top: solid;
     width: 100%;

@@ -64,7 +64,7 @@ class SignupForm extends Model
      */
     public function signup($getAvatar)
     {
-        $avatardefaultdir = '/web/ProjetoWeb/common/avatar';
+        $avatardefaultdir = '/web/ProjetoWeb/frontend/web/images';
 
         $user = new User();
         $cliente = new Cliente();
@@ -80,7 +80,7 @@ class SignupForm extends Model
         $cliente->nif = $this->nif;
 
         if($getAvatar == null){
-            $cliente->avatar = '/web/ProjetoWeb/common/avatar/avatar-windows-10-person-ico-115628997732fatjfxg5s.png';
+            $cliente->avatar = '/web/ProjetoWeb/frontend/web/images/avatar-windows-10-person-ico-115628997732fatjfxg5s.png';
         }else{
             $cliente->avatar = $avatardefaultdir . "/" . $getAvatar;
         }
