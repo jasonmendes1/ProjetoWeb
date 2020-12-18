@@ -27,12 +27,21 @@ class LoginCest
         $I->fillField('Num Tele', '912345678');
         $I->fillField('Nif', '123456789');
 
-        //Final
+        //Final Create
         $I->click('signup-button');
-        $I->seeRecord('frontend/models/Cliente', [
-            'primeiroNome' => 'NomeTeste'
-        ]);
         $I->see('Thank you for registration. Please check your inbox for verification email.');
 
+
+
+        // Login User
+        $I->click('Convidado');
+        $I->click('Fazer Login');
+        $I->fillField('Username', 'userteste');
+        $I->fillField('Password', 'passwordteste');
+        $I->click('Registar/Login');
+        $I->click('Logout (userteste)');
+        $I->dontSeeLink('Login');
+        $I->dontSeeLink('Signup');
     }
+
 }
