@@ -116,7 +116,7 @@ class Funcionario extends \yii\db\ActiveRecord
      */
     public function getPlanonutricaos()
     {
-        return $this->hasMany(Planonutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
+        return $this->hasMany(Planosnutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
     }
 
     /**

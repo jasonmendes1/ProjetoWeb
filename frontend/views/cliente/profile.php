@@ -19,7 +19,7 @@
     }
 
     if($nutri != null){
-        $nutriavatar = $pt->avatar;
+        $nutriavatar = $nutri->avatar;
         $nutrinome = $nutri->primeiroNome;
         $nutrinasci = $nutri->dt_nascimento;
         $nutrisexo = $nutri->sexo;
@@ -91,13 +91,13 @@
             </div>
         </div>
         <div class="profile-btn">
-            <button>
+            <button type="button" onclick="alert('Inscrição Atualizada, Ver como ligar função a button pelo controller')">
                 Atualizar Inscrição
             </button>
-            <button>
+            <button type="button" onclick="alert('Pedido de Personal Trainer enviado')">
                 Pedir Personal Trainer
             </button>
-            <button>
+            <button type="button" onclick="alert('Pedido de Nutricionista enviado')">
                 Pedir Nutricionista
             </button>
         </div>
