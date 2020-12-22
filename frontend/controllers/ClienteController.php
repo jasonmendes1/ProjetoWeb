@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use Codeception\Command\Console;
+use Codeception\PHPUnit\ConsolePrinter;
 use Yii;
 use frontend\models\Cliente;
 use frontend\models\ClienteSearch;
@@ -10,6 +12,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\Funcionario;
 use frontend\models\ClienteFuncionarios;
+use Symfony\Component\Console\Logger\ConsoleLogger;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * ClienteController implements the CRUD actions for Cliente model.
@@ -136,13 +140,12 @@ class ClienteController extends Controller
         
         if($cf != null){
             $pt = $cf->getPT();
-            $nutri = $cf->getNutricionista(); 
+            $nutri = $cf->getNutricionista();
         }else{
             $pt = "";
             $nutri = "";
         }
         
-
         return $this->render('profile', [
             'cliente' => $cliente, 
             'user' => $user,

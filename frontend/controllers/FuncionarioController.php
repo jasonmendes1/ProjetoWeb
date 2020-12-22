@@ -116,7 +116,7 @@ class FuncionarioController extends Controller
      * @return Funcionario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    public function findModel($id)
     {
         if (($model = Funcionario::findOne($id)) !== null) {
             return $model;
