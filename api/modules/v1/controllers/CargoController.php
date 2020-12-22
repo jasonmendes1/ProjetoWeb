@@ -32,4 +32,12 @@ class CargoController extends ActiveController
         $recs = $cargoModel::find()->all();
         return ['total' => count($recs)];
     }
+
+    public function actionCargocreate()
+    {
+        $cargoModel = new $this->modelClass;
+        $cargoModel->cargo= \Yii::$app->request->post('cargo');
+        $ret = $cargoModel->save();
+        return ['SaveError' => $ret];
+    }
 }

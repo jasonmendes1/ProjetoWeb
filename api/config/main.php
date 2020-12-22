@@ -44,16 +44,26 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cargo'], 'pluralize' => false,
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/default'], 'pluralize' => false,],
+
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                     ]
                 ],
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/userregisterandlogin'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'POST register' => 'registeruser', // 'xxxx' é 'actionXxxx'
+                        'POST login' => 'loginuser', // 'xxxx' é 'actionXxxx'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cargo'], 'pluralize' => false,
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'POST cargocreate' => 'cargocreate', // 'XXX' é 'actionXXX'
                     ]
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
