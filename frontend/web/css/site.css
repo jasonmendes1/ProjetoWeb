@@ -280,3 +280,8 @@ a.desc:after {
     width: 100%;
 }
 
+.IMCclass{
+    display:flex;
+    flex-direction: row;
+}
+

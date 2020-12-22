@@ -8,6 +8,8 @@ use frontend\models\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\Funcionario;
+use frontend\models\ClienteFuncionarios;
 
 /**
  * ClienteController implements the CRUD actions for Cliente model.
@@ -130,9 +132,22 @@ class ClienteController extends Controller
         $user = Yii::$app->user->identity;
         $cliente = $this->findModel(Yii::$app->user->identity->getId());
 
+        $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+        
+        if($cf != null){
+            $pt = $cf->getPT();
+            $nutri = $cf->getNutricionista(); 
+        }else{
+            $pt = "";
+            $nutri = "";
+        }
+        
+
         return $this->render('profile', [
             'cliente' => $cliente, 
             'user' => $user,
+            'pt' => $pt,
+            'nutri' => $nutri,
         ]);
     }
 }
