@@ -36,8 +36,29 @@ use yii\models\Cliente;
         $nutrinumtele = "";
         $nutriemail = "";
     }
-     
+
+    $altquad = $cliente->altura * $cliente->altura;
+    $IMC = round((($cliente->peso / $altquad)*10000),2);
     
+    if($IMC < 18.5){
+        $cls = "Abaixo do Peso";
+        $style = "padding-left:20px; color:#FAE40D";
+    }else if($IMC >= 18.5 && $IMC < 25){
+        $cls = "Peso Normal";
+        $style = "padding-left:20px; color:#72FE26";
+    }else if($IMC >= 25 && $IMC < 30){
+        $cls = "Sobrepeso";
+        $style = "padding-left:20px; color:#FAAB0D";
+    }else if($IMC >= 30 && $IMC < 35){
+        $cls = "Obesidade grau 1";
+        $style = "padding-left:20px; color:#FA8A0D";
+    }else if($IMC >= 35 && $IMC < 40){
+        $cls = "Obesidade grau 2";
+        $style = "padding-left:20px; color:#FA5F0D";
+    }else if($IMC >= 40){
+        $cls = "Obesidade grau 3";
+        $style = "padding-left:20px; color:#F0130C";
+    }
 
 ?>
 <div class="main">
@@ -124,10 +145,15 @@ use yii\models\Cliente;
                 </div>
                 <div class="bodyinfo">
                     <div>
-                        IMC: Kg/m²
+                        IMC: <?=$IMC?> Kg/m²
                     </div>
-                    <div>
-                        Classificação:
+                    <div class="IMCclass">
+                        <div>
+                            Classificação:
+                        </div>
+                        <div style="<?=$style?>">
+                            <?=$cls?>
+                        </div>
                     </div>
                 </div>
             </div>
