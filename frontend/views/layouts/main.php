@@ -72,7 +72,7 @@ AppAsset::register($this);
               // $cliente = Cliente::find()->where(['user_id' => Yii::$app->user->id])->one(),
               // $foto = $cliente->avatar,
                 'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
+                ['class' => 'btn btn-link logout', 'name' => 'logout-button']
             )
             . Html::endForm()
             . '</li>';

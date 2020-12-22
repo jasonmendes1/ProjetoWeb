@@ -2,13 +2,13 @@
 
 namespace api\modules\v1\controllers;
 
-use common\models\Cargo;
+use common\models\User;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
-class CargoController extends ActiveController
+class UserController extends ActiveController
 {
-    public $modelClass = 'common\models\Cargo';
+    public $modelClass = 'common\models\User';
 
     public function behaviors()
     {
@@ -28,8 +28,8 @@ class CargoController extends ActiveController
 
     public function actionTotal()
     {
-        $cargoModel = new $this->modelClass;
-        $recs = $cargoModel::find()->all();
+        $userModel = new $this->modelClass;
+        $recs = $userModel::find()->all();
         return ['total' => count($recs)];
     }
 }

@@ -1,21 +1,20 @@
 <?php
+
 $params = array_merge(
-    require __DIR__ . '/../../common/config/params.php',
-    require __DIR__ . '/../../common/config/params-local.php',
-    require __DIR__ . '/params.php',
-    require __DIR__ . '/params-local.php'
+    require(__DIR__ . '/../../common/config/params.php'),
+    require(__DIR__ . '/../../common/config/params-local.php'),
+    require(__DIR__ . '/params.php')
 );
 
 return [
-    'id' => 'app-backend',
-    'basePath' => dirname(__DIR__),
-    //'controllerNamespace' => 'api\modules\v1\controllers',
+    'id' => 'app-api',
+    'basePath' => dirname(__DIR__),    
     'bootstrap' => ['log'],
     'modules' => [
         'v1' => [
-            'basePath' => '@api\modules\v1',
-            'class' => 'api\modules\v1\Module',
-        ],
+            'basePath' => '@api/modules/v1',
+            'class' => 'api\modules\v1\Module'
+        ]
     ],
     'components' => [
         'request' => [
@@ -23,15 +22,13 @@ return [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ],
+            'enableCookieValidation' => true,
+            'cookieValidationKey' => 'bargest',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-        ],
-        'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -42,27 +39,76 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
-
         'urlManager' => [
-            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/default'], 'pluralize' => false,
-                ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cargo'], 'pluralize' => false,
+
                     'extraPatterns' => [
-                        'GET total' => 'total', // 'xxxx' é 'actionXxxx'
-                    ],
-                    'tokens' => [
-                        '{idcargo}' => '<idcargo:\\d+>',
-                    ],
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
                 ],
-            ],
-        ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/desconto'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/ementa'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/funcionario'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/planonutricao'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/planotreino'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/subscricao'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/tiposubscricao'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ]
+                ],
+            ],        
+        ]
     ],
     'params' => $params,
 ];
+
+
+
