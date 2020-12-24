@@ -261,6 +261,8 @@ a.desc:after {
     width:20%;
     border-top: solid;
     border-right: solid;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 .Funcinfobody{
@@ -285,3 +287,11 @@ a.desc:after {
     flex-direction: row;
 }
 
+
+.funcavatar{
+    display:flex;
+    align-content: center;
+    border-radius: 10000px; 
+    width:100px; 
+    height:100px;
+}

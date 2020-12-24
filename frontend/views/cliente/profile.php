@@ -4,11 +4,11 @@
 
     if($pt != null){
         $ptavatar = $pt->avatar;
-        $ptnome = $pt->primeiroNome;
+        $ptnome = $pt->primeiroNome . "" . $pt->apelido;
         $ptnasci = $pt->dt_nascimento;
         $ptsexo = $pt->sexo;
         $ptnumtele = $pt->num_tele;
-        $ptemail = $pt->email;
+        $ptemail = $pt->user->email;
     }else{
         $ptavatar = "";
         $ptnome = "";
@@ -20,11 +20,11 @@
 
     if($nutri != null){
         $nutriavatar = $nutri->avatar;
-        $nutrinome = $nutri->primeiroNome;
+        $nutrinome = $nutri->primeiroNome . "" . $nutri->apelido;
         $nutrinasci = $nutri->dt_nascimento;
         $nutrisexo = $nutri->sexo;
         $nutrinumtele = $nutri->num_tele;
-        $nutriemail = $nutri->email;
+        $nutriemail = $nutri->user->email;
     }else{
         $nutriavatar = "";
         $nutrinome = "";
@@ -162,7 +162,7 @@
                 </div>
                 <div class="Funcinfo">
                     <div class="Funciavatar">
-                        <"Foto do Personal Trainer">
+                        <img class="funcavatar" src="<?=$ptavatar?>" >
                     </div>
                     <div class="Funcinfobody">
                         <div class="fbody">
@@ -191,7 +191,7 @@
                 </div>
                 <div class="Funcinfo">
                     <div class="Funciavatar">
-                        <"Foto do Nutricionista">
+                        <img class="funcavatar" src="<?=$nutriavatar?>">
                     </div>
                     <div class="Funcinfobody">
                         <div class="fbody">

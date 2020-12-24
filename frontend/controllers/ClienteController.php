@@ -139,8 +139,8 @@ class ClienteController extends Controller
         $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
         
         if($cf != null){
-            $pt = $cf->getPT();
-            $nutri = $cf->getNutricionista();
+            $pt = $cf->pT;
+            $nutri = $cf->nutricionista;
         }else{
             $pt = "";
             $nutri = "";
