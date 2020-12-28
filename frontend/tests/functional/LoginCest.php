@@ -13,8 +13,8 @@ class LoginCest
         $I->fillField('Username', 'userteste');
         $I->fillField('Password', 'passwordteste');
         $I->see('Remember Me');
-        $I->click('Login');
-        $I->see('Fitness League');
+        $I->click('Login'); // NÃO CONSEGUE VER ESTE BOTÃO POR ALGUMA RAZÃO, FIXAR ISTO LATER
+        $I->see('O seu ginásio tecnológico');
         $I->click('Registar/Login');
         $I->click( 'logout-button');
     }
