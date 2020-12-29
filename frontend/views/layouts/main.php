@@ -90,10 +90,10 @@ AppAsset::register($this);
                         '<li class="divider"></li>',    
     
                          ['label' => 'Planos de Treino', 
-                         'url' => 'planos-treino/index'],
+                         'url' => 'planos-treino/planostreino'],
     
                          ['label' => 'Planos de Nutrição', 
-                         'url' => 'planos-nutricao/index'],
+                         'url' => 'planos-nutricao/planosnutri'],
     
                          '<li class="divider"></li>',
     

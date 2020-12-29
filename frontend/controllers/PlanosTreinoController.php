@@ -109,6 +109,10 @@ class PlanosTreinoController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionPlanostreino(){
+        return $this->render('planostreino');
+    }
+
     /**
      * Finds the PlanosTreino model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -123,5 +127,9 @@ class PlanosTreinoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function onclickteste(){
+        
     }
 }
