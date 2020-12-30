@@ -301,8 +301,11 @@ a.desc:after {
 /*Planos de Treino/Nutri*/
 .headerplanostreinonutri{
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    height: 15vh;
+    width:20%;
+    height:100%;
+    background-color: brown;
 }
 
 .semanabtn{
@@ -322,4 +325,60 @@ a.desc:after {
     justify-content: space-evenly;
 }
 
+.planostreinobody{
+    display: flex;
+    flex-direction: row;
+}
+
+.bodytreino{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+    height:100%;
+}
+
+.bodytreinoheader{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height:50px;
+    
+}
+
+.bodytreinobody{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.bodytreinoitem{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.itemtitle{
+    font-size: 15px;
+    height: 40px;
+    color: black;
+    text-align: center;
+    background-color: #4d4d4d;
+}
+
+.item:nth-child(even){
+    background-color: lightgrey;
+}
+
+
+th{
+    background-color: #4d4d4d;
+    color:black
+}
+
+tr:nth-child(even){
+    background-color:lightgrey;
+}
 /*Planos de Treino/Nutri*/

@@ -89,6 +89,56 @@
             </div> 
         </div>
     </div>
-    <div>
+    <div class="bodynutri">
     </div>
 </div>
+
+
+<div class="bodytreinobody">
+                <div class="bodytreinoitem">
+                    <div class="itemtitle">
+                        Nome Exercício
+                    </div>
+                    <div class="itembody">
+                        <div class="item">
+                            Teste
+                        </div>
+                        <div class="item">
+                            Teste1
+                        </div>
+                    </div>
+                </div>
+                <div class="bodytreinoitem">
+                    <div class="itemtitle">
+                        Reps  
+                    </div>
+                    <div class="itembody">
+                        
+                    </div>
+                </div>
+                <div class="bodytreinoitem">
+                    <div class="itemtitle">
+                        Tempo
+                    </div>
+                    <div class="itembody">
+                        
+                    </div>
+                </div>
+                <div class="bodytreinoitem">
+                    <div class="itemtitle">
+                        Nº Séries
+                    </div>
+                    <div class="itembody">
+                        
+                    </div>
+                </div>
+                <div class="bodytreinoitem">
+                    <div class="itemtitle">
+                        Feito
+                    </div>
+                    <div class="itembody">
+                        
+                    </div>
+                </div>
+            </div>
+            
