@@ -148,5 +148,4 @@ class ClienteTest extends \Codeception\Test\Unit
 
         $this->tester->dontSeeRecord('common\models\Cliente', ['primeiroNome' => 'JasonTeste']);
     }
-
 }
