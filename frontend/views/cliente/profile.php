@@ -34,29 +34,33 @@
         $nutriemail = "";
     }
 
-    $altquad = $cliente->altura * $cliente->altura;
-    $IMC = round((($cliente->peso / $altquad)*10000),2);
-
-    if($IMC < 18.5){
-        $cls = "Abaixo do Peso";
-        $style = "padding-left:15px; color:#FAE40D";
-    }else if($IMC >= 18.5 && $IMC < 25){
-        $cls = "Peso Normal";
-        $style = "padding-left:15px; color:#72FE26";
-    }else if($IMC >= 25 && $IMC < 30){
-        $cls = "Sobrepeso";
-        $style = "padding-left:15px; color:#FAAB0D";
-    }else if($IMC >= 30 && $IMC < 35){
-        $cls = "Obesidade grau 1";
-        $style = "padding-left:15px; color:#FA8A0D";
-    }else if($IMC >= 35 && $IMC < 40){
-        $cls = "Obesidade grau 2";
-        $style = "padding-left:15px; color:#FA5F0D";
-    }else if($IMC >= 40){
-        $cls = "Obesidade grau 3";
-        $style = "padding-left:15px; color:#F0130C";
+    if($cliente->altura != null && $cliente->peso != null){
+        $altquad = $cliente->altura * $cliente->altura;
+        $IMC = round((($cliente->peso / $altquad)*10000),2);
+    
+        if($IMC < 18.5){
+            $cls = "Abaixo do Peso";
+            $style = "padding-left:15px; color:#FAE40D";
+        }else if($IMC >= 18.5 && $IMC < 25){
+            $cls = "Peso Normal";
+            $style = "padding-left:15px; color:#72FE26";
+        }else if($IMC >= 25 && $IMC < 30){
+            $cls = "Sobrepeso";
+            $style = "padding-left:15px; color:#FAAB0D";
+        }else if($IMC >= 30 && $IMC < 35){
+            $cls = "Obesidade grau 1";
+            $style = "padding-left:15px; color:#FA8A0D";
+        }else if($IMC >= 35 && $IMC < 40){
+            $cls = "Obesidade grau 2";
+            $style = "padding-left:15px; color:#FA5F0D";
+        }else if($IMC >= 40){
+            $cls = "Obesidade grau 3";
+            $style = "padding-left:15px; color:#F0130C";
+        }    
+    }else{
+        $cls = "IMC não calculado";
     }
-
+    
 ?>
 <div class="main">
     <div class="header">

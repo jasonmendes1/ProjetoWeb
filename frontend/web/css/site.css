@@ -302,10 +302,11 @@ a.desc:after {
 .headerplanostreinonutri{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    background-color: grey;
+    border-right: solid;
     width:20%;
     height:100%;
-    background-color: brown;
 }
 
 .semanabtn{
@@ -328,12 +329,15 @@ a.desc:after {
 .planostreinobody{
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    
 }
 
 .bodytreino{
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     width: 80%;
     height:100%;
 }

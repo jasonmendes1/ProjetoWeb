@@ -94,7 +94,7 @@
 </div>
 
 
-<div class="bodytreinobody">
+            <div class="bodytreinobody">
                 <div class="bodytreinoitem">
                     <div class="itemtitle">
                         Nome Exercício
