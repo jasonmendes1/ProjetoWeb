@@ -27,14 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'IDPlanoTreino',
-            'nome_exercicio',
-            'repeticoes',
-            'tempo',
-            'serie',
-            //'repouso',
-            //'tempo_total',
-            //'num_maquina',
-            //'id_PT',
+            'id_PT',
+            'dia_treino',
+            'semana',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
