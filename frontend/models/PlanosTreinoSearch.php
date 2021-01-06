@@ -17,8 +17,8 @@ class PlanosTreinoSearch extends PlanosTreino
     public function rules()
     {
         return [
-            [['IDPlanoTreino', 'repeticoes', 'serie', 'num_maquina', 'id_PT'], 'integer'],
-            [['nome_exercicio', 'tempo', 'repouso', 'tempo_total'], 'safe'],
+            [['IDPlanoTreino', 'id_PT'], 'integer'],
+            [['dia_treino', 'semana'], 'safe'],
         ];
     }
 
@@ -59,16 +59,11 @@ class PlanosTreinoSearch extends PlanosTreino
         // grid filtering conditions
         $query->andFilterWhere([
             'IDPlanoTreino' => $this->IDPlanoTreino,
-            'repeticoes' => $this->repeticoes,
-            'tempo' => $this->tempo,
-            'serie' => $this->serie,
-            'repouso' => $this->repouso,
-            'tempo_total' => $this->tempo_total,
-            'num_maquina' => $this->num_maquina,
             'id_PT' => $this->id_PT,
+            'dia_treino' => $this->dia_treino,
         ]);
 
-        $query->andFilterWhere(['like', 'nome_exercicio', $this->nome_exercicio]);
+        $query->andFilterWhere(['like', 'semana', $this->semana]);
 
         return $dataProvider;
     }

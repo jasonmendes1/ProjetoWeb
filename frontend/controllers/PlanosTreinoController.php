@@ -8,6 +8,7 @@ use frontend\models\PlanosTreinoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\ListaPlanos;
 
 /**
  * PlanosTreinoController implements the CRUD actions for PlanosTreino model.
@@ -110,7 +111,19 @@ class PlanosTreinoController extends Controller
     }
 
     public function actionPlanostreino(){
-        return $this->render('planostreino');
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id]);
+
+        $planostreino = [];
+
+        foreach($allplans as $plano){
+            if($plano->IDPlanoTreino != null){
+                array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+            }
+        }
+
+        return $this->render(['planostreino',
+        'planostreino' => $planostreino,
+        ]);
     }
 
     /**

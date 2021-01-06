@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "planonutricao".
+ * This is the model class for table "planos_nutricao".
  *
  * @property int $IDPlanoNutricao
  * @property int|null $Segunda
@@ -32,7 +32,7 @@ class PlanosNutricao extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planonutricao';
+        return 'planos_nutricao';
     }
 
     /**

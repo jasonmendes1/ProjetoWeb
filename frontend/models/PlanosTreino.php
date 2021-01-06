@@ -8,19 +8,14 @@ use Yii;
  * This is the model class for table "planos_treino".
  *
  * @property int $IDPlanoTreino
- * @property string $nome_exercicio
- * @property int|null $repeticoes
- * @property string|null $tempo
- * @property int $serie
- * @property string $repouso
- * @property string $tempo_total
- * @property int|null $num_maquina
  * @property int $id_PT
+ * @property string $dia_treino
+ * @property string $semana
  *
  * @property ListaPlanos[] $listaPlanos
  * @property Funcionario $pT
  */
-class planostreino extends \yii\db\ActiveRecord
+class PlanosTreino extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -36,10 +31,10 @@ class planostreino extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome_exercicio', 'serie', 'repouso', 'tempo_total', 'id_PT'], 'required'],
-            [['repeticoes', 'serie', 'num_maquina', 'id_PT'], 'integer'],
-            [['tempo', 'repouso', 'tempo_total'], 'safe'],
-            [['nome_exercicio'], 'string', 'max' => 255],
+            [['id_PT', 'dia_treino', 'semana'], 'required'],
+            [['id_PT'], 'integer'],
+            [['dia_treino'], 'safe'],
+            [['semana'], 'string', 'max' => 255],
             [['id_PT'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['id_PT' => 'IDFuncionario']],
         ];
     }
@@ -51,14 +46,9 @@ class planostreino extends \yii\db\ActiveRecord
     {
         return [
             'IDPlanoTreino' => 'Id Plano Treino',
-            'nome_exercicio' => 'Nome Exercicio',
-            'repeticoes' => 'Repeticoes',
-            'tempo' => 'Tempo',
-            'serie' => 'Serie',
-            'repouso' => 'Repouso',
-            'tempo_total' => 'Tempo Total',
-            'num_maquina' => 'Num Maquina',
             'id_PT' => 'Id Pt',
+            'dia_treino' => 'Dia Treino',
+            'semana' => 'Semana',
         ];
     }
 
