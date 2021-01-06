@@ -22,40 +22,32 @@ class EmentaTest extends \Codeception\Test\Unit
     {
         $ementa = new Ementa();
         
-        $ementa->PequenoAlmoco = null;
-        $this->assertFalse($ementa->validate(['PequenoAlmoco']));
+
         $ementa->PequenoAlmoco = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['PequenoAlmoco']));
         $ementa->PequenoAlmoco = 'PequenoAlmoco';
         $this->assertTrue($ementa->validate(['PequenoAlmoco']));
 
-        $ementa->Almoco = null;
-        $this->assertFalse($ementa->validate(['Almoco']));
         $ementa->Almoco = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['Almoco']));
         $ementa->Almoco = 'Almoco';
         $this->assertTrue($ementa->validate(['Almoco']));
 
-        $ementa->Lanche1 = null;
-        $this->assertFalse($ementa->validate(['Lanche1']));
         $ementa->Lanche1 = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['Lanche1']));
         $ementa->Lanche1 = 'Lanche1';
         $this->assertTrue($ementa->validate(['Lanche1']));
 
-        $ementa->Lanche2 = null;
-        $this->assertFalse($ementa->validate(['Lanche2']));
         $ementa->Lanche2 = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['Lanche2']));
         $ementa->Lanche2 = 'Lanche2';
         $this->assertTrue($ementa->validate(['Lanche2']));
 
-        $ementa->Jantar = null;
-        $this->assertFalse($ementa->validate(['Jantar']));
         $ementa->Jantar = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['Jantar']));
         $ementa->Jantar = 'Jantar';
         $this->assertTrue($ementa->validate(['Jantar']));
+        
     }
 
     function testSavingUser()
@@ -95,4 +87,5 @@ class EmentaTest extends \Codeception\Test\Unit
 
         $this->tester->dontSeeRecord('common\models\Ementa', ['PequenoAlmoco' => 'PequenoAlmocoTeste']);
     }
+
 }

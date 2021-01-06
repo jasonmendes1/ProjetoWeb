@@ -18,7 +18,18 @@ class FuncionarioTest extends \Codeception\Test\Unit
     {
     }
 
-    // tests
+    // não tá afuncionar
+        // não tá afuncionar
+            // não tá afuncionar
+                // não tá afuncionar
+                    // não tá afuncionar
+                        // não tá afuncionar
+                            // não tá afuncionar
+                                // não tá afuncionar
+                                    // não tá afuncionar
+                                        // não tá afuncionar
+                                            // não tá afuncionar
+                                                // não tá afuncionar
     public function testValidation()
     {
 
