@@ -11,6 +11,7 @@ class UserregisterandloginController extends ActiveController
     public $modelClass = 'common\models\User';
     public $modelProfile = 'common\models\Profile';
     public $modelSignin = 'common\models\SignupForm';
+    public $modelSignupfun = 'common\models\SignupFuncionario';
     public $modelLogin = 'common\models\Loginform';
 
 
@@ -34,7 +35,7 @@ class UserregisterandloginController extends ActiveController
 
     }
 
-    public function actionRegisteruser()
+    public function actionRegistercliente()
     {
         $avatardefaultdir = '/web/ProjetoWeb/frontend/web/images';
 
@@ -50,6 +51,29 @@ class UserregisterandloginController extends ActiveController
         $signinModel->sexo = Yii::$app->request->post('sexo');
         $signinModel->dt_nascimento = Yii::$app->request->post('dt_nascimento');
         $signinModel->nif = Yii::$app->request->post('nif');
+
+        if (!is_null($signinModel->signup($avatardefaultdir))) {
+            return true;
+        }
+
+        return false;
+    }
+    public function actionRegisterfuncionario()
+    {
+        $avatardefaultdir = '/web/ProjetoWeb/frontend/web/images';
+
+        $signinModel = new $this->modelSignupfun;
+
+        $signinModel->username = Yii::$app->request->post('username');
+        $signinModel->email = Yii::$app->request->post('email');
+        $signinModel->password = Yii::$app->request->post('password');
+        $signinModel->primeiroNome = Yii::$app->request->post('primeiroNome');
+        $signinModel->apelido = Yii::$app->request->post('apelido');
+        $signinModel->avatar = Yii::$app->request->post('avatar');
+        $signinModel->num_tele = Yii::$app->request->post('num_tele');
+        $signinModel->sexo = Yii::$app->request->post('sexo');
+        $signinModel->dt_nascimento = Yii::$app->request->post('dt_nascimento');
+        $signinModel->cargo_id = Yii::$app->request->post('cargo_id');
 
         if (!is_null($signinModel->signup($avatardefaultdir))) {
             return true;

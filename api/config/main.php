@@ -44,18 +44,25 @@ return [
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/default'], 'pluralize' => false,],
-
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
-                    ]
+                        'GET {id}/username' => 'usernameget', // 'xxxx' é 'actionXxxx'
+                        'GET {id}/authkey' => 'authkeyget', // 'xxxx' é 'actionXxxx'
+                        'GET {id}/email' => 'emailget', // 'xxxx' é 'actionXxxx'
+                        'GET {id}/cliente' => 'cliente', // 'xxxx' é 'actionXxxx'
+                        'GET {id}/funcionario' => 'funcionario', // 'xxxx' é 'actionXxxx'
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                    ],
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/userregisterandlogin'], 'pluralize' => false,
 
                     'extraPatterns' => [
-                        'POST register' => 'registeruser', // 'xxxx' é 'actionXxxx'
+                        'POST registerc' => 'registercliente', // 'xxxx' é 'actionXxxx'
+                        'POST registerf' => 'registerfuncionario', // 'xxxx' é 'actionXxxx'
                         'POST login' => 'loginuser', // 'xxxx' é 'actionXxxx'
                     ]
                 ],
@@ -64,13 +71,19 @@ return [
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'POST cargocreate' => 'cargocreate', // 'XXX' é 'actionXXX'
-                    ]
+                        'GET {id}/cargofuncionario/{idfuncionario}' => 'cargofuncionario', // 'XXX' é 'actionXXX'
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                        '{idfuncionario}' => '<idfuncionario:\\d+>', //O standard tem que aparecer!
+                    ],
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
-                    ]
+                    ],
+
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/desconto'], 'pluralize' => false,
 

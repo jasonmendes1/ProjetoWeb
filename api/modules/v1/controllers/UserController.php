@@ -9,6 +9,9 @@ use yii\web\Response;
 class UserController extends ActiveController
 {
     public $modelClass = 'common\models\User';
+    public $modelCliente = 'common\models\Cliente';
+    public $modelFuncionario = 'common\models\Funcionario';
+
 
     public function behaviors()
     {
@@ -32,4 +35,39 @@ class UserController extends ActiveController
         $recs = $userModel::find()->all();
         return ['total' => count($recs)];
     }
+
+    public function actionUsernameget($id){
+        $model = new $this->modelClass;
+        $req = $model::findOne($id);
+        return $req->username;
+    }
+
+    public function actionAuthkeyget($id){
+        $model = new $this->modelClass;
+        $req = $model::findOne($id);
+        return $req->auth_key;
+    }
+
+    public function actionEmailget($id){
+        $model = new $this->modelClass;
+        $req = $model::findOne($id);
+        return $req->email;
+    }
+    public function actionCliente($id){
+        $modelsUser = new $this->modelClass;
+        $modelsProfile = new $this->modelCliente;
+
+        $user = $modelsUser->findOne($id);
+        $cliente = $modelsProfile::find()->where(['user_id' => $user->id])->one();
+        return $cliente;
+    }
+    public function actionFuncionario($id){
+        $modelsUser = new $this->modelClass;
+        $modelsProfile = new $this->modelFuncionario;
+
+        $user = $modelsUser->findOne($id);
+        $funcionario = $modelsProfile::find()->where(['user_id' => $user->id])->one();
+        return $funcionario;
+    }
+
 }

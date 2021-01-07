@@ -9,6 +9,8 @@ use yii\web\Response;
 class CargoController extends ActiveController
 {
     public $modelClass = 'common\models\Cargo';
+    public $modelFuncionario = 'common\models\Funcionario';
+
 
     public function behaviors()
     {
@@ -39,5 +41,17 @@ class CargoController extends ActiveController
         $cargoModel->cargo= \Yii::$app->request->post('cargo');
         $ret = $cargoModel->save();
         return ['SaveError' => $ret];
+    }
+    public function actionCargofuncionario($id, $idfuncionario){
+        $modelClass = new $this->modelClass;
+
+        $modelFuncionario = new $this->modelFuncionario;
+        $funcionario = $modelFuncionario::find()->where(['cargo_id' => $id])->one();
+
+        foreach ($funcionario->cargo_id as $funcionarios) {
+            if($funcionarios->id == $idfuncionario){
+                return $funcionario->cargo;
+            }
+        }
     }
 }

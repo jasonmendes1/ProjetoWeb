@@ -5,7 +5,7 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "planonutricao".
+ * This is the model class for table "planos_nutricao".
  *
  * @property int $IDPlanoNutricao
  * @property int|null $Segunda
@@ -32,7 +32,7 @@ class PlanosNutricao extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planonutricao';
+        return 'planos_nutricao';
     }
 
     /**
@@ -77,7 +77,7 @@ class PlanosNutricao extends \yii\db\ActiveRecord
      */
     public function getListaPlanos()
     {
-        return $this->hasMany(ListaPlanos::className(), ['IDPlano' => 'IDPlanoNutricao']);
+        return $this->hasMany(ListaPlanos::className(), ['IDPlanoNutricao' => 'IDPlanoNutricao']);
     }
 
     /**
@@ -148,5 +148,20 @@ class PlanosNutricao extends \yii\db\ActiveRecord
     public function getIDNutricionista()
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
+    }
+
+    public function createPlanoNutricao(){
+        $planonutricao = new PlanosNutricao();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->id]);
+
+        $planonutricao->Segunda = $this->Segunda;
+        $planonutricao->Terca = $this->Terca;
+        $planonutricao->Quarta = $this->Quarta;
+        $planonutricao->Quinta = $this->Quinta;
+        $planonutricao->Sexta = $this->Sexta;
+        $planonutricao->Sabado = $this->Sabado;
+        $planonutricao->IDNutricionista = $funcionario->IDFuncionario;
+
+        return $planonutricao->save();
     }
 }

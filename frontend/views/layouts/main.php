@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use frontend\models\Cliente;
+use frontend\models\Funcionario;
 use frontend\controllers\ClienteController;
 
 AppAsset::register($this);
@@ -77,12 +78,11 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-        $ifguest = Cliente::findOne(Yii::$app->user->identity->getId())->primeiroNome;
 
         echo Nav::widget([
             'items' => [
                 [
-                    'label' => 'Bem Vindo ' . $ifguest,
+                    'label' => 'Bem Vindo',
                     'items' => [
                         ['label' => 'Ver Perfil', 
                         'url' => 'cliente/profile'],
@@ -99,7 +99,14 @@ AppAsset::register($this);
     
                          ['label' => 'Horários Aulas', 
                          'url' => '#'],
+
+                         '<li class="divider"></li>',
+
+                        ['label' => 'Criar Plano Nutricao',
+                            'url' => 'planos-nutricao/planonutriform'],
                         ],
+
+
                 ],
                 
                 [
@@ -111,45 +118,6 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
         ]);
     }
-/*
-    if (Yii::$app->user->isGuest) {
-        $nomecliente[] = ['label' => 'Cliente'];
-    } else {
-        $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-    }
-*/
-
-/*
-    echo Nav::widget([
-        'items' => [
-            [
-                'label' => 'Bem Vindo ' . $ifguest,
-                'items' => [
-                    ['label' => 'Ver Perfil', 
-                    'url' => 'cliente/profile'],
-
-                    '<li class="divider"></li>',    
-
-                     ['label' => 'Planos de Treino', 
-                     'url' => 'planos-treino/index'],
-
-                     ['label' => 'Planos de Nutrição', 
-                     'url' => 'planos-nutricao/index'],
-
-                     '<li class="divider"></li>',
-
-                     ['label' => 'Horários Aulas', 
-                     'url' => '#'],
-                    ],
-            ],
-            [
-                'label' => 'Registar/Login',
-                'items' => $login,
-            ],
-        ],
-        'options' => ['class' => 'navbar-nav navbar-right'],
-    ]);
-    */
     echo Nav::widget([  
         'items' => [
             [
