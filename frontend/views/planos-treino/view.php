@@ -30,14 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'IDPlanoTreino',
-            'nome_exercicio',
-            'repeticoes',
-            'tempo',
-            'serie',
-            'repouso',
-            'tempo_total',
-            'num_maquina',
             'id_PT',
+            'dia_treino',
+            'semana',
         ],
     ]) ?>
 

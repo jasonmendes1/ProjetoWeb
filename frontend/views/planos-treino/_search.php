@@ -17,21 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'IDPlanoTreino') ?>
 
-    <?= $form->field($model, 'nome_exercicio') ?>
+    <?= $form->field($model, 'id_PT') ?>
 
-    <?= $form->field($model, 'repeticoes') ?>
+    <?= $form->field($model, 'dia_treino') ?>
 
-    <?= $form->field($model, 'tempo') ?>
-
-    <?= $form->field($model, 'serie') ?>
-
-    <?php // echo $form->field($model, 'repouso') ?>
-
-    <?php // echo $form->field($model, 'tempo_total') ?>
-
-    <?php // echo $form->field($model, 'num_maquina') ?>
-
-    <?php // echo $form->field($model, 'id_PT') ?>
+    <?= $form->field($model, 'semana') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

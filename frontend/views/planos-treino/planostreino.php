@@ -60,10 +60,10 @@
     <div class="planostreinobody">
         <div class="headerplanostreinonutri">
             <div>
-                Teste
+                Quantos planos de treino existem: <?=count($planostreino);?>
             </div>
             <div>
-                Teste1
+                Quantos exercicios existem: <?=count($exercicios);?>
             </div>
         </div>
         <div class="bodytreino">
@@ -99,36 +99,98 @@
                     </div> 
                 </div>
             </div>
-            <table>
-                <tr>
-                    <th>Nome Exercício</th>
-                    <th>Reps</th>
-                    <th>Tempo</th>
-                    <th>Nº Séries</th>
-                    <th>Feito</th>
-                </tr>
-                <tr>
-                    <td>Teste</td>
-                    <td>Teste</td>
-                    <td>Teste</td>
-                    <td>Teste</td>
-                    <td>Teste</td>
-                </tr>
-                <tr>
-                    <td>Teste1</td>
-                    <td>Teste1</td>
-                    <td>Teste1</td>
-                    <td>Teste1</td>
-                    <td>Teste1</td>
-                </tr>
-                <tr>
-                    <td>Teste2</td>
-                    <td>Teste2</td>
-                    <td>Teste2</td>
-                    <td>Teste2</td>
-                    <td>Teste2</td>
-                </tr>
-            </table>
+            <div class = "bodytreinobody">
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Nome Exercício
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->nome?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Repetições
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->repeticoes?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Tempo
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->tempo?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Séries
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->serie?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Repouso
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->repouso?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Tempo Total
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?=$exercicio->tempo_total?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+                <div class = "bodytreinoitem">
+                    <div class = "itemtitle">
+                        Número da Máquina
+                    </div>
+                    <div class = "itembody">
+                        <?php foreach($exercicios as $exercicio){ ?>
+                            <div class = "item">
+                                <?php if($exercicio->num_maquina == null){
+                                    $nm = "N/A";
+                                }else{
+                                    $nm = $exercicio->num_maquina;
+                                }
+                                ?>
+                                <?=$nm?>
+                            </div>
+                        <?php };?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div> 
 </div>

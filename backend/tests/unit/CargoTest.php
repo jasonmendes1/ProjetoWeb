@@ -35,33 +35,34 @@ class CargoTest extends \Codeception\Test\Unit
     {
 
         $cargo = new Cargo();
-        $cargo->nome_exercicio = 'Treinador';
+        $cargo->cargo = ('Personal Trainer');
 
         $cargo->save();
-        $this->tester->seeInDatabase('cargo', ['cargo' => 'Treinador']);
+        $this->tester->seeInDatabase('cargo', ['cargo' => 'Personal Trainer']);
     }
 
     
     function testNameCanBeChanged()
     {
-        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'Treinador']);
+        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'Personal Trainer']);
 
         $cargo = Cargo::findOne($id);
-        $cargo->cargo = ('TreinadorTeste');
+        $cargo->cargo = ('Personal TrainerTeste');
         $cargo->save();
 
-        $this->tester->seeRecord('common\models\Cargo', ['cargo' => 'TreinadorTeste']);
-        $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Treinador']);
+        $this->tester->seeRecord('common\models\Cargo', ['cargo' => 'Personal TrainerTeste']);
+        $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Personal Trainer']);
     }
     
 
     function testUserDeleted()
     {
-        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'TreinadorTeste']);
+        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'Personal TrainerTeste']);
 
         $cargo = Cargo::findOne($id);
         $cargo->delete();
 
-        $this->tester->dontSeeRecord('common\models\Cargo', ['nome_exercicio' => 'TreinadorTeste']);
+        $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Personal TrainerTeste']);
     }
+    
 }

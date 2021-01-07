@@ -2,12 +2,14 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Exercicio;
 use Yii;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\ListaPlanos;
 
 /**
  * PlanosTreinoController implements the CRUD actions for PlanosTreino model.
@@ -110,7 +112,30 @@ class PlanosTreinoController extends Controller
     }
 
     public function actionPlanostreino(){
-        return $this->render('planostreino');
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+
+        $planostreino = [];
+        $exercicios = [];
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoTreino != null){
+                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+                }
+            }
+        }
+
+        if(count($planostreino) >= 1){
+            foreach($planostreino as $pt){
+                foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
+                    array_push($exercicios,$exer);
+                }
+            }
+        }
+        
+        return $this->render('planostreino', [
+        'planostreino' => $planostreino,
+        'exercicios' => $exercicios
+        ]);
     }
 
     /**
