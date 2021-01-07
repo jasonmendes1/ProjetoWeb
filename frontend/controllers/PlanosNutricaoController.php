@@ -2,12 +2,15 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Ementa;
 use Yii;
 use frontend\models\PlanosNutricao;
 use frontend\models\PlanosNutricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\ListaPlanos;
+use phpDocumentor\Reflection\Types\Null_;
 
 /**
  * PlanosNutricaoController implements the CRUD actions for PlanosNutricao model.
@@ -113,7 +116,46 @@ class PlanosNutricaoController extends Controller
     }
 
     public function actionPlanosnutri(){
-        return $this->render('planosnutri');
+        $allplanos = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+
+        $planosnutri = [];
+        $ementas = [];
+
+        if(count($allplanos) >= 1){
+            foreach($allplanos as $plano){
+                if($plano->IDPlanoNutricao != null){
+                    array_push($planosnutri, PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+                }
+            }
+        }
+
+        if(count($planosnutri) >= 1){
+            foreach($planosnutri as $pn){
+                if($pn->Segunda != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Segunda])->one());
+                }
+                if($pn->Terca != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Terca])->one());
+                }
+                if($pn->Quarta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quarta])->one());
+                }
+                if($pn->Quinta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quinta])->one());
+                }
+                if($pn->Sexta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sexta])->one());
+                }
+                if($pn->Sabado != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sabado])->one());
+                }
+            }
+        }
+
+        return $this->render('planosnutri',[
+            'planosnutricao' => $planosnutri,
+            'ementas' => $ementas,
+        ]);
     }
 
     /**

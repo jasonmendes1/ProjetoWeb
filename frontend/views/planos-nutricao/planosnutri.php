@@ -57,88 +57,51 @@
     }
 </script>
 <div class="main">
-    <div class="headerplanostreinonutri">
-        <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
-            <div class="dia">
-                Segunda-Feira
+    <div class="planostreinobody">
+        <div class="headerplanostreinonutri">
+            <div>
+                Quantos planos de nutrição existem: <?=count($planosnutricao);?>
+            </div>
+            <div>
+                Quantas Ementas existem: <?=count($ementas);?>
             </div>
         </div>
-        <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
-            <div class="dia">
-                Terça-Feira
+        <div class="bodytreino">
+            <div class="bodytreinoheader">
+                <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
+                    <div class="dia">
+                        Segunda-Feira
+                    </div>
+                </div>
+                <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
+                    <div class="dia">
+                        Terça-Feira
+                    </div>
+                </div>
+                <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
+                    <div class="dia">
+                        Quarta-Feira
+                    </div>
+                </div>
+                <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
+                    <div class="dia">
+                        Quinta-Feira
+                    </div>
+                </div>
+                <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
+                    <div class="dia">
+                        Sexta-Feira
+                    </div>
+                </div>
+                <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
+                    <div class="dia">
+                        Sábado
+                    </div> 
+                </div>
+            </div>
+            <div class = "bodytreinobody">
+                
             </div>
         </div>
-        <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
-            <div class="dia">
-                Quarta-Feira
-            </div>
-        </div>
-        <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
-            <div class="dia">
-                Quinta-Feira
-            </div>
-        </div>
-        <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
-            <div class="dia">
-                Sexta-Feira
-            </div>
-        </div>
-        <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
-            <div class="dia">
-                Sábado
-            </div> 
-        </div>
-    </div>
-    <div class="bodynutri">
-    </div>
+    </div> 
 </div>
-
-
-            <div class="bodytreinobody">
-                <div class="bodytreinoitem">
-                    <div class="itemtitle">
-                        Nome Exercício
-                    </div>
-                    <div class="itembody">
-                        <div class="item">
-                            Teste
-                        </div>
-                        <div class="item">
-                            Teste1
-                        </div>
-                    </div>
-                </div>
-                <div class="bodytreinoitem">
-                    <div class="itemtitle">
-                        Reps  
-                    </div>
-                    <div class="itembody">
-                        
-                    </div>
-                </div>
-                <div class="bodytreinoitem">
-                    <div class="itemtitle">
-                        Tempo
-                    </div>
-                    <div class="itembody">
-                        
-                    </div>
-                </div>
-                <div class="bodytreinoitem">
-                    <div class="itemtitle">
-                        Nº Séries
-                    </div>
-                    <div class="itembody">
-                        
-                    </div>
-                </div>
-                <div class="bodytreinoitem">
-                    <div class="itemtitle">
-                        Feito
-                    </div>
-                    <div class="itembody">
-                        
-                    </div>
-                </div>
-            </div>
-            
