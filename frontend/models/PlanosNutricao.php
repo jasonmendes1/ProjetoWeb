@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\Funcionario;
 use Yii;
 
 /**
@@ -32,7 +33,7 @@ class PlanosNutricao extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planonutricao';
+        return 'planosnutricao';
     }
 
     /**
@@ -148,5 +149,20 @@ class PlanosNutricao extends \yii\db\ActiveRecord
     public function getIDNutricionista()
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
+    }
+
+    public function createPlanoNutricao(){
+        $planonutricao = new PlanosNutricao();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->id]);
+
+        $planonutricao->Segunda = $this->Segunda;
+        $planonutricao->Terca = $this->Terca;
+        $planonutricao->Quarta = $this->Quarta;
+        $planonutricao->Quinta = $this->Quinta;
+        $planonutricao->Sexta = $this->Sexta;
+        $planonutricao->Sabado = $this->Sabado;
+        $planonutricao->IDNutricionista = $funcionario->IDFuncionario;
+
+        return $planonutricao->save();
     }
 }

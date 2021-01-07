@@ -77,29 +77,35 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-        $ifguest = Cliente::findOne(Yii::$app->user->identity->getId())->primeiroNome;
+        //$ifguest = Cliente::findOne(Yii::$app->user->identity->getId())->primeiroNome;
 
         echo Nav::widget([
             'items' => [
                 [
-                    'label' => 'Bem Vindo ' . $ifguest,
+                    'label' => 'Bem Vindo ' /*. $ifguest*/,
                     'items' => [
                         ['label' => 'Ver Perfil', 
-                        'url' => 'cliente/profile'],
+                        'url' => ['cliente/profile']],
     
                         '<li class="divider"></li>',    
     
                          ['label' => 'Planos de Treino', 
-                         'url' => 'planos-treino/planostreino'],
+                         'url' => ['planos-treino/planostreino']],
     
                          ['label' => 'Planos de Nutrição', 
-                         'url' => 'planos-nutricao/planosnutri'],
+                         'url' => ['planos-nutricao/planosnutri']],
     
                          '<li class="divider"></li>',
     
                          ['label' => 'Horários Aulas', 
-                         'url' => '#'],
+                         'url' => ['#']],
+
+                        '<li class="divider"></li>',
+
+                        ['label' => 'Criar Plano de Nutrição',
+                            'url' => ['planos-nutricao/create']],
                         ],
+
                 ],
                 
                 [

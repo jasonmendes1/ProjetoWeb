@@ -66,11 +66,14 @@ class PlanosNutricaoController extends Controller
     {
         $model = new PlanosNutricao();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->IDPlanoNutricao]);
+        if ($model->load(Yii::$app->request->post()) && $model->createPlanoNutricao()) {
+            Yii::$app->session->setFlash('success', 'Action Completed');
+            return $this->goHome();
         }
 
-        return $this->render('create', [
+        Yii::$app->session->setFlash('failure', 'Action Failed');
+
+        return $this->render('create',[
             'model' => $model,
         ]);
     }

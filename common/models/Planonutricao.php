@@ -149,4 +149,5 @@ class Planonutricao extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
     }
+
 }
