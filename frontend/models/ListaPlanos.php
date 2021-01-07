@@ -7,12 +7,13 @@ use Yii;
 /**
  * This is the model class for table "lista_planos".
  *
- * @property int $IDPlano
+ * @property int $IDPlanoTreino
+ * @property int $IDPlanoNutricao
  * @property int $IDCliente
  *
- * @property PlanosTreino $iDPlano
  * @property Cliente $iDCliente
- * @property PlanosNutricao $iDPlano0
+ * @property PlanosTreino $iDPlanoTreino
+ * @property PlanosNutricao $iDPlanoNutricao
  */
 class ListaPlanos extends \yii\db\ActiveRecord
 {
@@ -30,11 +31,11 @@ class ListaPlanos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['IDPlano', 'IDCliente'], 'required'],
-            [['IDPlano', 'IDCliente'], 'integer'],
-            [['IDPlano'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosTreino::className(), 'targetAttribute' => ['IDPlano' => 'IDPlanoTreino']],
+            [['IDPlanoTreino', 'IDPlanoNutricao', 'IDCliente'], 'required'],
+            [['IDPlanoTreino', 'IDPlanoNutricao', 'IDCliente'], 'integer'],
             [['IDCliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['IDCliente' => 'IDCliente']],
-            [['IDPlano'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosNutricao::className(), 'targetAttribute' => ['IDPlano' => 'IDPlanoNutricao']],
+            [['IDPlanoTreino'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosTreino::className(), 'targetAttribute' => ['IDPlanoTreino' => 'IDPlanoTreino']],
+            [['IDPlanoNutricao'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosNutricao::className(), 'targetAttribute' => ['IDPlanoNutricao' => 'IDPlanoNutricao']],
         ];
     }
 
@@ -44,19 +45,10 @@ class ListaPlanos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'IDPlano' => 'Id Plano',
+            'IDPlanoTreino' => 'Id Plano Treino',
+            'IDPlanoNutricao' => 'Id Plano Nutricao',
             'IDCliente' => 'Id Cliente',
         ];
-    }
-
-    /**
-     * Gets query for [[IDPlano]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIDPlano()
-    {
-        return $this->hasOne(PlanosTreino::className(), ['IDPlanoTreino' => 'IDPlano']);
     }
 
     /**
@@ -70,12 +62,22 @@ class ListaPlanos extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[IDPlano0]].
+     * Gets query for [[IDPlanoTreino]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIDPlano0()
+    public function getIDPlanoTreino()
     {
-        return $this->hasOne(PlanosNutricao::className(), ['IDPlanoNutricao' => 'IDPlano']);
+        return $this->hasOne(PlanosTreino::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
+    }
+
+    /**
+     * Gets query for [[IDPlanoNutricao]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIDPlanoNutricao()
+    {
+        return $this->hasOne(PlanosNutricao::className(), ['IDPlanoNutricao' => 'IDPlanoNutricao']);
     }
 }

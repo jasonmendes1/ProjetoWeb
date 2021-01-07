@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Exercicio;
 use Yii;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
@@ -111,18 +112,29 @@ class PlanosTreinoController extends Controller
     }
 
     public function actionPlanostreino(){
-        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id]);
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
 
         $planostreino = [];
-
-        foreach($allplans as $plano){
-            if($plano->IDPlanoTreino != null){
-                array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+        $exercicios = [];
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoTreino != null){
+                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+                }
             }
         }
 
-        return $this->render(['planostreino',
+        if(count($planostreino) >= 1){
+            foreach($planostreino as $pt){
+                foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
+                    array_push($exercicios,$exer);
+                }
+            }
+        }
+        
+        return $this->render('planostreino', [
         'planostreino' => $planostreino,
+        'exercicios' => $exercicios
         ]);
     }
 
