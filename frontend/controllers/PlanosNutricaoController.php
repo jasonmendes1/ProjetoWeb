@@ -2,13 +2,9 @@
 
 namespace frontend\controllers;
 
-use frontend\models\Ementa;
-use frontend\models\Funcionario;
-use frontend\models\User;
 use Yii;
 use frontend\models\PlanosNutricao;
 use frontend\models\PlanosNutricaoSearch;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -18,7 +14,6 @@ use yii\filters\VerbFilter;
  */
 class PlanosNutricaoController extends Controller
 {
-
     /**
      * {@inheritdoc}
      */
@@ -33,6 +28,7 @@ class PlanosNutricaoController extends Controller
             ],
         ];
     }
+
     /**
      * Lists all PlanosNutricao models.
      * @return mixed
@@ -131,21 +127,5 @@ class PlanosNutricaoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionPlanonutriform()
-    {
-        $model = new PlanosNutricao();
-
-        if ($model->load(Yii::$app->request->post()) && $model->createPlanoNutricao()) {
-            Yii::$app->session->setFlash('success', 'Action Completed');
-            return $this->goHome();
-        }
-
-        Yii::$app->session->setFlash('failure', 'Action Failed');
-
-        return $this->render('planonutriform',[
-        'model' => $model,
-    ]);
     }
 }
