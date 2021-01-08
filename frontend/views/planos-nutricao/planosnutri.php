@@ -99,8 +99,47 @@
                     </div> 
                 </div>
             </div>
-            <div class = "bodytreinobody">
-                
+            <div class = "bodynutribody">
+                <div class="bodynutriitem">
+                    <div class="bodynutriitemtitle">
+                        Pequeno Almoço
+                    </div>
+                    <div class="bodynutriitembody">
+                        <?=$ementas[0]->PequenoAlmoco?>
+                    </div>
+                </div>
+                <div class="bodynutriitem">
+                    <div class="bodynutriitemtitle">
+                        Almoço
+                    </div>
+                    <div class="bodynutriitembody">
+                        <?=$ementas[0]->Almoco?>
+                    </div>
+                </div>
+                <div class="bodynutriitem">
+                    <div class="bodynutriitemtitle">
+                        1º Lanche
+                    </div>
+                    <div class="bodynutriitembody">
+                        <?=$ementas[0]->Lanche1?>
+                    </div>
+                </div>
+                <div class="bodynutriitem">
+                    <div class="bodynutriitemtitle">
+                        2º Lanche 
+                    </div>
+                    <div class="bodynutriitembody">
+                        <?=$ementas[0]->Lanche2?>
+                    </div>
+                </div>
+                <div class="bodynutriitem">
+                    <div class="bodynutriitemtitle">
+                        Jantar
+                    </div>
+                    <div class="bodynutriitembody">
+                        <?=$ementas[0]->Jantar?>
+                    </div>
+                </div>
             </div>
         </div>
     </div> 

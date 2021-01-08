@@ -354,12 +354,48 @@ a.desc:after {
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.bodynutribody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.bodynutriitem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+.bodynutriitemtitle{
+    width:20%;
+    background-color: #4d4d4d;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+    border-bottom: solid;
+}
+
+.bodynutriitembody{
+    display:flex;
+    background-color: lightgrey;
+    color: black;
+    border-bottom: solid;
+    width: 80%;
 }
 
 .bodytreinoitem{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 100%;
     height: 100%;
 }
