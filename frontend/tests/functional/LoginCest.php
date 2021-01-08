@@ -7,16 +7,17 @@ class LoginCest
     {
         // Login User
         $I->amOnPage(\yii::$app->homeUrl);
+        $I->see('Fitness League');
         $I->click('Registar/Login');
         $I->click('Fazer Login');
         $I->see('Please fill out the following fields to login:');
-        $I->fillField('Username', 'userteste');
+        $I->fillField('Username', 'userteste2');
         $I->fillField('Password', 'passwordteste');
         $I->see('Remember Me');
-        $I->click('Login'); // NÃO CONSEGUE VER ESTE BOTÃO POR ALGUMA RAZÃO, FIXAR ISTO LATER
-        $I->see('O seu ginásio tecnológico');
+        $I->click('login-button');
+        $I->see('Fitness League');
         $I->click('Registar/Login');
-        $I->click( 'logout-button');
+        $I->click('logout-button');
     }
 
 }

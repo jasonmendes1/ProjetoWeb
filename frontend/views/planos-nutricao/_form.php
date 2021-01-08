@@ -37,7 +37,7 @@ $ementas = ArrayHelper::map(Ementa::find()->all(), 'IDEmenta', 'nomeEmenta');
 
     <div class="form-group">
         <br>
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success', 'name' => 'save-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -7,11 +7,13 @@ class RegisterCest
     {
         // Navegação desde Index até Registo
         $I->amOnPage(\yii::$app->homeUrl);
+        $I->see('Fitness League');
         $I->click('Convidado');
         $I->click('Registar');
 
         // Inserção de Dados
-        $I->fillField('Username', 'userteste');
+        $I->see('Signup');
+        $I->fillField('Username', 'userteste2');
         $I->fillField('Email', 'emailteste@emailteste.com');
         $I->fillField('Password', 'passwordteste');
         //$I->click('SignupForm[avatar]');

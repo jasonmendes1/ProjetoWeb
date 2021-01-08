@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use frontend\models\Cliente;
+use frontend\models\Funcionario;
 use frontend\controllers\ClienteController;
 
 AppAsset::register($this);
@@ -77,12 +78,14 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-        $ifguest = Yii::$app->user->identity->username;
+        $ifguest = Cliente::findOne(['User_id' => Yii::$app->user->id]);
+
+
 
         echo Nav::widget([
             'items' => [
                 [
-                    'label' => 'Bem Vindo ' . $ifguest,
+                    'label' => 'Bem Vindo ' . $ifguest->primeiroNome . ' ' . $ifguest->apelido,
                     'items' => [
                         ['label' => 'Ver Perfil', 
                         'url' => ['cliente/profile']],
