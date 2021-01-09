@@ -43,6 +43,46 @@ AppAsset::register($this);
     } else {
         $menuItems[] =['label' => 'Registar Funcionário', 'url' => ['/site/signup']];
         $menuItems[] =['label' => 'Lista Clientes', 'url' => ['/cliente/index']];
+        $menuItems[] =['label' => 'Lista Funcionario', 'url' => ['/funcionario/index']];
+        $menuItems[] =['label' => 'Lista Clientes', 'url' => ['/funcionario/index']];
+
+        echo Nav::widget([
+            'items' => [
+                [
+                    'label' => 'Bem Vindo ', //. $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                    'items' => [
+                        ['label' => 'Registar Funcionário', 
+                        'url' => ['site/signup']],
+    
+                        '<li class="divider"></li>',    
+    
+                         ['label' => 'Lista de Clientes', 
+                         'url' => ['cliente/index']],
+    
+                         ['label' => 'Planos de Nutrição', 
+                         'url' => ['planos-nutricao/planosnutri']],
+    
+                         '<li class="divider"></li>',
+    
+                         ['label' => 'Horários Aulas', 
+                         'url' => ['#']],
+
+                        '<li class="divider"></li>',
+
+                        ['label' => 'Criar Plano de Nutrição',
+                            'url' => ['planos-nutricao/create']
+                        ],
+
+                        ['label' => 'Criar Plano de Treino',
+                            'url' => ['planos-treino/create']
+                        ],
+                    ],
+                ],
+                
+            ],
+            'options' => ['class' => 'navbar-nav navbar-right'],
+        ]);
+
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

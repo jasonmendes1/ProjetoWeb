@@ -1,6 +1,6 @@
 <?php namespace backend\tests;
 
-use common\models\Planotreino;
+use app\models\Planostreino;
 
 class PlanosTreinoTest extends \Codeception\Test\Unit
 {
@@ -19,94 +19,53 @@ class PlanosTreinoTest extends \Codeception\Test\Unit
 
     public function testValidation()
     {
-        $planotreino = new Planotreino();
+        $planotreino = new Planostreino();
         
-        $planotreino->nome_exercicio = null;
-        $this->assertFalse($planotreino->validate(['nome_exercicio']));
-        $planotreino->nome_exercicio = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
-        $this->assertFalse($planotreino->validate(['nome_exercicio']));
-        $planotreino->nome_exercicio = 'Treino';
-        $this->assertTrue($planotreino->validate(['nome_exercicio']));
+        $planotreino->dia_treino = null;
+        $this->assertFalse($planotreino->validate(['dia_treino']));
+        $planotreino->dia_treino = '2021-01-06';
+        $this->assertTrue($planotreino->validate(['dia_treino']));
 
-        $planotreino->repeticoes = 'Texto';
-        $this->assertFalse($planotreino->validate(['repeticoes']));
-        $planotreino->repeticoes = '1';
-        $this->assertTrue($planotreino->validate(['repeticoes']));
-
-        $planotreino->tempo = '60';
-        $this->assertTrue($planotreino->validate(['tempo']));
-        $planotreino->tempo = 'Texto';
-        $this->assertTrue($planotreino->validate(['tempo']));
-        $planotreino->tempo = '00:01:00';
-        $this->assertTrue($planotreino->validate(['tempo']));
-
-        $planotreino->serie = null;
-        $this->assertFalse($planotreino->validate(['serie']));
-        $planotreino->serie = 'Texto';
-        $this->assertFalse($planotreino->validate(['serie']));
-        $planotreino->serie = '1';
-        $this->assertTrue($planotreino->validate(['serie']));
-
-        $planotreino->repouso = null;
-        $this->assertFalse($planotreino->validate(['repouso']));
-        $planotreino->repouso = 'Texto';
-        $this->assertTrue($planotreino->validate(['repouso']));
-        $planotreino->repouso = '00:01:00';
-        $this->assertTrue($planotreino->validate(['repouso']));
-
-        $planotreino->tempo_total = null;
-        $this->assertFalse($planotreino->validate(['tempo_total']));
-        $planotreino->tempo_total = 'Texto';
-        $this->assertTrue($planotreino->validate(['tempo_total']));  
-        $planotreino->tempo_total = '00:01:00';
-        $this->assertTrue($planotreino->validate(['tempo_total']));  
-
-        $planotreino->num_maquina = null;
-        $this->assertTrue($planotreino->validate(['num_maquina']));
-        $planotreino->num_maquina = 'Texto';
-        $this->assertFalse($planotreino->validate(['num_maquina']));   
-        $planotreino->num_maquina = '27';
-        $this->assertTrue($planotreino->validate(['num_maquina'])); 
+        $planotreino->semana = 'textoooooooootooooooooolooooooooooooooonnnnnnnnnnnnngggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggdsadsadsfdgfdsgokgfjdoifjdhgoifdjgoidsfjgoisfdjgofdjgoisfdjgoifdsjgosfdjgfsodjfhgsoijhgoifdjhoifjhfgoijhfgoijhfoijhdgoifjhdgoifjhdgoijfhdgoijhfgoifjghdfdgjohfjdgoigoifdsjgfoidsjgodsfjogi';
+        $this->assertFalse($planotreino->validate(['semana']));
+        $planotreino->semana = '1';
+        $this->assertTrue($planotreino->validate(['semana']));
         
     }
 
     function testSavingUser()
     {
-        $planotreino = new Planotreino();
-        $planotreino->nome_exercicio = 'Treino';
-        $planotreino->repeticoes = '1';
-        $planotreino->tempo = '00:01:00';
-        $planotreino->serie = '1';
-        $planotreino->repouso = '00:01:00';
-        $planotreino->tempo_total = '00:01:00';
-        $planotreino->num_maquina = '27';
+        $planotreino = new Planostreino();
+        $planotreino->id_PT = '1';
+        $planotreino->dia_treino = '2021-01-06';
+        $planotreino->semana = '1';
 
         $planotreino->save();
-        $this->tester->seeInDatabase('planos_treino', ['nome_exercicio' => 'Treino']);
+        $this->tester->seeInDatabase('planostreino', ['semana' => '1']);
     }
-/*
+
     
     function testNameCanBeChanged()
     {
-        $id = $this->tester->grabRecord('common\models\PlanoTreino', ['nome_exercicio' => 'Treino']);
+        $id = $this->tester->grabRecord('common\models\PlanoTreino', ['semana' => '1']);
 
-        $planotreino = Planotreino::findOne($id);
-        $planotreino->primeiroNome = ('TreinoTeste');
+        $planotreino = Planostreino::findOne($id);
+        $planotreino->semana = ('2');
         $planotreino->save();
 
-        $this->tester->seeRecord('common\models\PlanoTreino', ['nome_exercicio' => 'TreinoTeste']);
-        $this->tester->dontSeeRecord('common\models\PlanoTreino', ['nome_exercicio' => 'Treino']);
+        $this->tester->seeRecord('common\models\PlanoTreino', ['semana' => '2']);
+        $this->tester->dontSeeRecord('common\models\PlanoTreino', ['semana' => '1']);
     }
     
-/*
+
     function testUserDeleted()
     {
-        $id = $this->tester->grabRecord('common\models\PlanoTreino', ['nome_exercicio' => 'TreinoTeste']);
+        $id = $this->tester->grabRecord('common\models\PlanoTreino', ['semana' => '2']);
 
-        $planotreino = PlanoTreino::findOne($id);
+        $planotreino = Planostreino::findOne($id);
         $planotreino->delete();
 
-        $this->tester->dontSeeRecord('common\models\PlanoTreino', ['nome_exercicio' => 'TreinoTeste']);
+        $this->tester->dontSeeRecord('common\models\PlanoTreino', ['semana' => '2']);
     }
-    */
+    
 }

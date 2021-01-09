@@ -21,8 +21,16 @@ class EmentaTest extends \Codeception\Test\Unit
     public function testValidation()
     {
         $ementa = new Ementa();
-        
 
+        $ementa->PequenoAlmoco = null;
+        $this->assertTrue($ementa->validate(['PequenoAlmoco']));
+        $ementa->nomeEmenta = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
+        $this->assertTrue($ementa->validate(['nomeEmenta']));
+        $ementa->nomeEmenta = 'Perda de Peso';
+        $this->assertTrue($ementa->validate(['nomeEmenta']));
+
+        $ementa->PequenoAlmoco = null;
+        $this->assertTrue($ementa->validate(['PequenoAlmoco']));
         $ementa->PequenoAlmoco = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['PequenoAlmoco']));
         $ementa->PequenoAlmoco = 'PequenoAlmoco';
@@ -54,6 +62,7 @@ class EmentaTest extends \Codeception\Test\Unit
     {
 
         $ementa = new Ementa();
+        $ementa->nomeEmenta = 'Perda de Peso';
         $ementa->PequenoAlmoco = 'PequenoAlmoco';
         $ementa->Almoco = 'Almoco';
         $ementa->Lanche1 = 'Lanche1';

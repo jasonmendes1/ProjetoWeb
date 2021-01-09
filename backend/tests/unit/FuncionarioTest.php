@@ -84,8 +84,13 @@ class FuncionarioTest extends \Codeception\Test\Unit
 
     function testSavingUser()
     {
-
+        //DÁ ERRO
+        //DÁ ERRO
+        //DÁ ERRO
+        //DÁ ERRO
+        //DÁ ERRO
         $funcionario = new Funcionario();
+        $funcionario->User_id = '1';
         $funcionario->primeiroNome = 'Jason';
         $funcionario->apelido = 'Mendes';
         $funcionario->dt_nascimento = '1999-12-27';
