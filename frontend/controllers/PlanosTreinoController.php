@@ -68,11 +68,14 @@ class PlanosTreinoController extends Controller
     {
         $model = new PlanosTreino();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->IDPlanoTreino]);
+        if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
+            Yii::$app->session->setFlash('success', 'Action Completed');
+            return $this->goHome();
         }
 
-        return $this->render('create', [
+        Yii::$app->session->setFlash('failure', 'Action Failed');
+
+        return $this->render('create',[
             'model' => $model,
         ]);
     }

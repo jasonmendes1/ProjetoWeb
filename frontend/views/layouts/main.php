@@ -107,7 +107,12 @@ AppAsset::register($this);
                         '<li class="divider"></li>',
 
                         ['label' => 'Criar Plano de Nutrição',
-                            'url' => ['planos-nutricao/create']],
+                            'url' => ['planos-nutricao/create']
+                        ],
+
+                        ['label' => 'Criar Plano de Treino',
+                            'url' => ['planos-treino/create']
+                        ],
                         ],
 
                 ],
