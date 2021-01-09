@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\PlanosNutricaoSearch */
+/* @var $searchModel frontend\models\PlanosnutricaoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Planos Nutricaos';
+$this->title = 'Planosnutricaos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="planos-nutricao-index">
+<div class="planosnutricao-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Planos Nutricao', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Planosnutricao', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Sexta',
             //'Sabado',
             //'IDNutricionista',
+            //'Semana',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

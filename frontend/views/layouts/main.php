@@ -113,8 +113,7 @@ AppAsset::register($this);
                         ['label' => 'Criar Plano de Treino',
                             'url' => ['planos-treino/create']
                         ],
-                        ],
-
+                    ],
                 ],
                 
                 [

@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\PlanosNutricaoSearch */
+/* @var $model frontend\models\PlanosnutricaoSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="planos-nutricao-search">
+<div class="planosnutricao-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -30,6 +30,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'Sabado') ?>
 
     <?php // echo $form->field($model, 'IDNutricionista') ?>
+
+    <?php // echo $form->field($model, 'Semana') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\PlanosNutricao;
+use frontend\models\Planosnutricao;
 
 /**
- * PlanosNutricaoSearch represents the model behind the search form of `frontend\models\PlanosNutricao`.
+ * PlanosnutricaoSearch represents the model behind the search form of `frontend\models\Planosnutricao`.
  */
-class PlanosNutricaoSearch extends PlanosNutricao
+class PlanosnutricaoSearch extends Planosnutricao
 {
     /**
      * {@inheritdoc}
@@ -18,6 +18,7 @@ class PlanosNutricaoSearch extends PlanosNutricao
     {
         return [
             [['IDPlanoNutricao', 'Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'IDNutricionista'], 'integer'],
+            [['Semana'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class PlanosNutricaoSearch extends PlanosNutricao
      */
     public function search($params)
     {
-        $query = PlanosNutricao::find();
+        $query = Planosnutricao::find();
 
         // add conditions that should always apply here
 
@@ -66,6 +67,8 @@ class PlanosNutricaoSearch extends PlanosNutricao
             'Sabado' => $this->Sabado,
             'IDNutricionista' => $this->IDNutricionista,
         ]);
+
+        $query->andFilterWhere(['like', 'Semana', $this->Semana]);
 
         return $dataProvider;
     }
