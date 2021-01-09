@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Planosnutricao */
+/* @var $model frontend\models\PlanosNutricao */
 
 $this->title = $model->IDPlanoNutricao;
-$this->params['breadcrumbs'][] = ['label' => 'Planosnutricaos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Planos Nutricaos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="planosnutricao-view">
+<div class="planos-nutricao-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

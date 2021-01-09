@@ -7,13 +7,13 @@ use Yii;
 /**
  * This is the model class for table "lista_planos".
  *
- * @property int $IDPlanoTreino
- * @property int $IDPlanoNutricao
+ * @property int|null $IDPlanoTreino
+ * @property int|null $IDPlanoNutricao
  * @property int $IDCliente
  *
  * @property Cliente $iDCliente
- * @property PlanosTreino $iDPlanoTreino
- * @property PlanosNutricao $iDPlanoNutricao
+ * @property Planostreino $iDPlanoTreino
+ * @property Planosnutricao $iDPlanoNutricao
  */
 class ListaPlanos extends \yii\db\ActiveRecord
 {
@@ -31,11 +31,11 @@ class ListaPlanos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['IDPlanoTreino', 'IDPlanoNutricao', 'IDCliente'], 'required'],
             [['IDPlanoTreino', 'IDPlanoNutricao', 'IDCliente'], 'integer'],
+            [['IDCliente'], 'required'],
             [['IDCliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['IDCliente' => 'IDCliente']],
-            [['IDPlanoTreino'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosTreino::className(), 'targetAttribute' => ['IDPlanoTreino' => 'IDPlanoTreino']],
-            [['IDPlanoNutricao'], 'exist', 'skipOnError' => true, 'targetClass' => PlanosNutricao::className(), 'targetAttribute' => ['IDPlanoNutricao' => 'IDPlanoNutricao']],
+            [['IDPlanoTreino'], 'exist', 'skipOnError' => true, 'targetClass' => Planostreino::className(), 'targetAttribute' => ['IDPlanoTreino' => 'IDPlanoTreino']],
+            [['IDPlanoNutricao'], 'exist', 'skipOnError' => true, 'targetClass' => Planosnutricao::className(), 'targetAttribute' => ['IDPlanoNutricao' => 'IDPlanoNutricao']],
         ];
     }
 
@@ -68,7 +68,7 @@ class ListaPlanos extends \yii\db\ActiveRecord
      */
     public function getIDPlanoTreino()
     {
-        return $this->hasOne(PlanosTreino::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
+        return $this->hasOne(Planostreino::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
     }
 
     /**
@@ -78,6 +78,6 @@ class ListaPlanos extends \yii\db\ActiveRecord
      */
     public function getIDPlanoNutricao()
     {
-        return $this->hasOne(PlanosNutricao::className(), ['IDPlanoNutricao' => 'IDPlanoNutricao']);
+        return $this->hasOne(Planosnutricao::className(), ['IDPlanoNutricao' => 'IDPlanoNutricao']);
     }
 }

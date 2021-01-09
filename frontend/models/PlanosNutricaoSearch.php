@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Planosnutricao;
+use frontend\models\PlanosNutricao;
 
 /**
- * PlanosnutricaoSearch represents the model behind the search form of `frontend\models\Planosnutricao`.
+ * PlanosNutricaoSearch represents the model behind the search form of `frontend\models\PlanosNutricao`.
  */
-class PlanosnutricaoSearch extends Planosnutricao
+class PlanosNutricaoSearch extends PlanosNutricao
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class PlanosnutricaoSearch extends Planosnutricao
      */
     public function search($params)
     {
-        $query = Planosnutricao::find();
+        $query = PlanosNutricao::find();
 
         // add conditions that should always apply here
 
