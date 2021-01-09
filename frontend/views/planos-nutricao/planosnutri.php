@@ -59,11 +59,20 @@
 <div class="main">
     <div class="planostreinobody">
         <div class="headerplanostreinonutri">
+            <?php foreach($planosnutricao as $pn){ ?>
+                <div>
+                    
+                </div>
+            <?php };?>
             <div>
-                Quantos planos de nutrição existem: <?=count($planosnutricao);?>
-            </div>
-            <div>
-                Quantas Ementas existem: <?=count($ementas);?>
+                <?php
+                $ddate = "2021-01-25";
+                $date = new DateTime($ddate);
+                $week = $date->format("W");
+                echo "Week Number: $week";
+                echo "<br>";
+                echo strftime('%V',strtotime("2021-01-09")); 
+                ?>
             </div>
         </div>
         <div class="bodytreino">
