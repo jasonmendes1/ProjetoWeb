@@ -22,7 +22,7 @@ class PlanosTreino extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planos_treino';
+        return 'planostreino';
     }
 
     /**
