@@ -10,6 +10,17 @@ use yii\grid\GridView;
 $this->title = 'Clientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<style>
+    a {
+        color: #800000;
+    }
+
+    a:hover {
+        color: #800000;
+    }
+</style>
+
 <div class="cliente-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -31,14 +42,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'primeiroNome',
             'apelido',
             'dt_nascimento',
-            //'sexo',
-            //'avatar',
-            //'num_tele',
-            //'nif',
-            //'altura',
-            //'peso',
-            //'massa_muscular',
-            //'massa_gorda',
+            'sexo',
+            'avatar',
+            'num_tele',
+            'nif',
+            'altura',
+            'peso',
+            'massa_muscular',
+            'massa_gorda',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
