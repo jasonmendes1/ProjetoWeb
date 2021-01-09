@@ -78,6 +78,7 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
+        $ifguest = Yii::$app->user->identity->username;
         //$ifguest = Cliente::findOne(['User_id' => Yii::$app->user->id]);
 
 
@@ -85,7 +86,7 @@ AppAsset::register($this);
         echo Nav::widget([
             'items' => [
                 [
-                    'label' => 'Bem Vindo ',//. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                    'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
                     'items' => [
                         ['label' => 'Ver Perfil', 
                         'url' => ['cliente/profile']],
@@ -106,11 +107,7 @@ AppAsset::register($this);
                         '<li class="divider"></li>',
 
                         ['label' => 'Criar Plano de Nutrição',
-                            'url' => ['planos-nutricao/create']
-                        ],
-                        ['label' => 'Criar Plano de Treino',
-                            'url' => ['planos-treino/create']
-                        ],
+                            'url' => ['planos-nutricao/create']],
                         ],
 
                 ],
