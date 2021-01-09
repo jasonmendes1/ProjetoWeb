@@ -5,15 +5,12 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "planos_treino".
+ * This is the model class for table "planostreino".
  *
  * @property int $IDPlanoTreino
  * @property int $id_PT
  * @property string $dia_treino
  * @property string $semana
- *
- * @property ListaPlanos[] $listaPlanos
- * @property Funcionario $pT
  */
 class PlanosTreino extends \yii\db\ActiveRecord
 {
@@ -22,7 +19,7 @@ class PlanosTreino extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planos_treino';
+        return 'planostreino';
     }
 
     /**
@@ -35,7 +32,6 @@ class PlanosTreino extends \yii\db\ActiveRecord
             [['id_PT'], 'integer'],
             [['dia_treino'], 'safe'],
             [['semana'], 'string', 'max' => 255],
-            [['id_PT'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['id_PT' => 'IDFuncionario']],
         ];
     }
 
@@ -50,25 +46,5 @@ class PlanosTreino extends \yii\db\ActiveRecord
             'dia_treino' => 'Dia Treino',
             'semana' => 'Semana',
         ];
-    }
-
-    /**
-     * Gets query for [[ListaPlanos]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getListaPlanos()
-    {
-        return $this->hasMany(ListaPlanos::className(), ['IDPlano' => 'IDPlanoTreino']);
-    }
-
-    /**
-     * Gets query for [[PT]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPT()
-    {
-        return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'id_PT']);
     }
 }

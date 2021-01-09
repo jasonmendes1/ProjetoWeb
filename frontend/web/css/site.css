@@ -305,7 +305,7 @@ a.desc:after {
     justify-content: flex-start;
     background-color: grey;
     border-right: solid;
-    width:20%;
+    width:12%;
     height:100%;
 }
 
@@ -338,7 +338,7 @@ a.desc:after {
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 80%;
+    width: 88%;
     height:100%;
 }
 

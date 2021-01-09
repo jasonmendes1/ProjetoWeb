@@ -10,7 +10,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\ListaPlanos;
-use phpDocumentor\Reflection\Types\Null_;
 
 /**
  * PlanosNutricaoController implements the CRUD actions for PlanosNutricao model.

@@ -1,5 +1,8 @@
 <?php
-    $this->title = 'Planos de Treino';
+
+use yii\bootstrap\Html;
+
+$this->title = 'Planos de Treino';
 ?>
 <script>
     function chgcolor($id){
@@ -59,17 +62,17 @@
 <div class="main">
     <div class="planostreinobody">
         <div class="headerplanostreinonutri">
-            <div>
-                Quantos planos de treino existem: <?=count($planostreino);?>
-            </div>
-            <div>
-                Quantos exercicios existem: <?=count($exercicios);?>
-            </div>
+            <?php foreach($planostreino as $pt){?>
+                <div>
+                    <?=$pt->semana?>º Semana
+                </div>
+            <?php };?>
         </div>
         <div class="bodytreino">
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
                     <div class="dia">
+                        <?= Html::a('Segunda-Feira', ['/planos-treino/planostreino/teste', 'album' => $planostreino], ['class' => 'btn btn-default', 'data-method' => 'get']) ?>
                         Segunda-Feira
                     </div>
                 </div>
