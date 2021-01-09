@@ -78,14 +78,15 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
         $nomecliente[] = ['label' => Yii::$app->user->identity->username];
-        $ifguest = Cliente::findOne(['User_id' => Yii::$app->user->id]);
+        $ifguest = Yii::$app->user->identity->username;
+        //$ifguest = Cliente::findOne(['User_id' => Yii::$app->user->id]);
 
 
 
         echo Nav::widget([
             'items' => [
                 [
-                    'label' => 'Bem Vindo ' . $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                    'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
                     'items' => [
                         ['label' => 'Ver Perfil', 
                         'url' => ['cliente/profile']],
