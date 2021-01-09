@@ -15,11 +15,11 @@ class RegistarFuncionarioCest
         
         $I->click('Registar Funcionário');
         // Inserção de Dados
-        $I->fillField('Username', 'funcionarionutricionista');
-        $I->fillField('Email', 'funcionario@nutricionario.com');
-        $I->fillField('Password', 'funcionarionutricionista');
+        $I->fillField('Username', 'funcionariotrainer');
+        $I->fillField('Email', 'funcionariotrainer@nutricionario.com');
+        $I->fillField('Password', 'funcionariotrainer');
         $I->fillField('Primeiro Nome', 'Funcionario');
-        $I->fillField('Apelido', 'Nutricionista');
+        $I->fillField('Apelido', 'Personal Trainer');
         $I->fillField('Dt Nascimento', '1990-01-01');
 
         $option = $I->grabTextFrom('select option:nth-child(2)');
@@ -27,7 +27,7 @@ class RegistarFuncionarioCest
 
         $I->fillField('Num Tele', '912345678');
 
-        $option = $I->grabTextFrom('select option:nth-child(2)');
+        $option = $I->grabTextFrom('select option:nth-child(1)');
         $I->selectOption("select", $option);
 
         $I->click('signup-button');

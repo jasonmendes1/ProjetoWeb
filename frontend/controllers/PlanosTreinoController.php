@@ -141,6 +141,13 @@ class PlanosTreinoController extends Controller
         ]);
     }
 
+    public function actionTeste($album){
+        var_dump($album);
+        die();
+    }
+
+
+
     /**
      * Finds the PlanosTreino model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
