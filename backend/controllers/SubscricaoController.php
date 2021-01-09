@@ -109,6 +109,11 @@ class SubscricaoController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionSubscricoes(){
+        
+        return $this->render('subscricoes');
+    }
+
     /**
      * Finds the Subscricao model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
