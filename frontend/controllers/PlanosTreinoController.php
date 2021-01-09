@@ -3,13 +3,13 @@
 namespace frontend\controllers;
 
 use frontend\models\Exercicio;
+use frontend\models\ListaPlanos;
 use Yii;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use frontend\models\ListaPlanos;
 
 /**
  * PlanosTreinoController implements the CRUD actions for PlanosTreino model.
@@ -68,14 +68,11 @@ class PlanosTreinoController extends Controller
     {
         $model = new PlanosTreino();
 
-        if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
-            Yii::$app->session->setFlash('success', 'Action Completed');
-            return $this->goHome();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->IDPlanoTreino]);
         }
 
-        Yii::$app->session->setFlash('failure', 'Action Failed');
-
-        return $this->render('create',[
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -140,13 +137,6 @@ class PlanosTreinoController extends Controller
         'exercicios' => $exercicios
         ]);
     }
-
-    public function actionTeste($album){
-        var_dump($album);
-        die();
-    }
-
-
 
     /**
      * Finds the PlanosTreino model based on its primary key value.

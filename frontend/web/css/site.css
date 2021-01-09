@@ -305,8 +305,10 @@ a.desc:after {
     justify-content: flex-start;
     background-color: grey;
     border-right: solid;
-    width:12%;
+    width:15%;
     height:100%;
+    padding-left: 15px;
+    color:black;
 }
 
 .semanabtn{
@@ -338,7 +340,7 @@ a.desc:after {
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 88%;
+    width: 85%;
     height:100%;
 }
 

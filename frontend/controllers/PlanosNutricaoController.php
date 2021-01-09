@@ -2,17 +2,19 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Ementa;
+use frontend\models\ListaPlanos;
 use Yii;
-use frontend\models\Planosnutricao;
-use frontend\models\PlanosnutricaoSearch;
+use frontend\models\PlanosNutricao;
+use frontend\models\PlanosNutricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlanosnutricaoController implements the CRUD actions for Planosnutricao model.
+ * PlanosNutricaoController implements the CRUD actions for PlanosNutricao model.
  */
-class PlanosnutricaoController extends Controller
+class PlanosNutricaoController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +32,12 @@ class PlanosnutricaoController extends Controller
     }
 
     /**
-     * Lists all Planosnutricao models.
+     * Lists all PlanosNutricao models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PlanosnutricaoSearch();
+        $searchModel = new PlanosNutricaoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +47,7 @@ class PlanosnutricaoController extends Controller
     }
 
     /**
-     * Displays a single Planosnutricao model.
+     * Displays a single PlanosNutricao model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +60,13 @@ class PlanosnutricaoController extends Controller
     }
 
     /**
-     * Creates a new Planosnutricao model.
+     * Creates a new PlanosNutricao model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Planosnutricao();
+        $model = new PlanosNutricao();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDPlanoNutricao]);
@@ -76,7 +78,7 @@ class PlanosnutricaoController extends Controller
     }
 
     /**
-     * Updates an existing Planosnutricao model.
+     * Updates an existing PlanosNutricao model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +98,7 @@ class PlanosnutricaoController extends Controller
     }
 
     /**
-     * Deletes an existing Planosnutricao model.
+     * Deletes an existing PlanosNutricao model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,16 +111,59 @@ class PlanosnutricaoController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionPlanosnutri(){
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+
+        $planosnutri = [];
+        $ementas = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoNutricao != null){
+                    array_push($planosnutri,PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+                }
+            }
+        }
+
+        if(count($planosnutri) >= 1){
+            foreach($planosnutri as $pn){
+                if($pn->Segunda != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Segunda])->one());
+                }
+                if($pn->Terca != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Terca])->one());
+                }
+                if($pn->Quarta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quarta])->one());
+                }
+                if($pn->Quinta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quinta])->one());
+                }
+                if($pn->Sexta != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sexta])->one());
+                }
+                if($pn->Sabado != null){
+                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sabado])->one());
+                }
+            }
+        }
+
+        return $this->render('planosnutri',[
+            'planosnutricao' => $planosnutri,
+            'ementas' => $ementas
+        ]);
+    }
+
     /**
-     * Finds the Planosnutricao model based on its primary key value.
+     * Finds the PlanosNutricao model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Planosnutricao the loaded model
+     * @return PlanosNutricao the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Planosnutricao::findOne($id)) !== null) {
+        if (($model = PlanosNutricao::findOne($id)) !== null) {
             return $model;
         }
 

@@ -61,19 +61,9 @@
         <div class="headerplanostreinonutri">
             <?php foreach($planosnutricao as $pn){ ?>
                 <div>
-                    
+                    <?=$pn->Semana?>º Semana
                 </div>
             <?php };?>
-            <div>
-                <?php
-                $ddate = "2021-01-25";
-                $date = new DateTime($ddate);
-                $week = $date->format("W");
-                echo "Week Number: $week";
-                echo "<br>";
-                echo strftime('%V',strtotime("2021-01-09")); 
-                ?>
-            </div>
         </div>
         <div class="bodytreino">
             <div class="bodytreinoheader">
@@ -114,7 +104,7 @@
                         Pequeno Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->PequenoAlmoco?>
+                        <?=$ementas[12]->PequenoAlmoco?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -122,7 +112,7 @@
                         Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Almoco?>
+                        <?=$ementas[12]->Almoco?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -130,7 +120,7 @@
                         1º Lanche
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Lanche1?>
+                        <?=$ementas[12]->Lanche1?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -138,7 +128,7 @@
                         2º Lanche 
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Lanche2?>
+                        <?=$ementas[12]->Lanche2?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -146,7 +136,7 @@
                         Jantar
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Jantar?>
+                        <?=$ementas[12]->Jantar?>
                     </div>
                 </div>
             </div>

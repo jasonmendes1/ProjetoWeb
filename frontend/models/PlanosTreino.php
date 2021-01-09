@@ -2,12 +2,10 @@
 
 namespace frontend\models;
 
-use common\models\Funcionario;
-use common\models\Planotreino;
 use Yii;
 
 /**
- * This is the model class for table "planos_treino".
+ * This is the model class for table "planostreino".
  *
  * @property int $IDPlanoTreino
  * @property int $id_PT
@@ -17,7 +15,7 @@ use Yii;
  * @property ListaPlanos[] $listaPlanos
  * @property Funcionario $pT
  */
-class PlanosTreino extends \yii\db\ActiveRecord
+class Planostreino extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -61,7 +59,7 @@ class PlanosTreino extends \yii\db\ActiveRecord
      */
     public function getListaPlanos()
     {
-        return $this->hasMany(ListaPlanos::className(), ['IDPlano' => 'IDPlanoTreino']);
+        return $this->hasMany(ListaPlanos::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
     }
 
     /**
@@ -72,17 +70,5 @@ class PlanosTreino extends \yii\db\ActiveRecord
     public function getPT()
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'id_PT']);
-    }
-
-    public function createPlanoTreino()
-    {
-        $planotreino = new PlanosTreino();
-        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->id]);
-
-        $planotreino->id_PT = $funcionario->IDFuncionario;
-        $planotreino->dia_treino = $this->dia_treino;
-        $planotreino->semana = strftime('%V',strtotime($this->dia_treino));
-
-        $planotreino->save();
     }
 }
