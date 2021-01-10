@@ -23,9 +23,9 @@ class PlanoTreinoCest
 
         $I->see('Create Planos Treino');
 
-        $I->fillField('Id Pt','1');
-        $I->fillField('Dia Treino','');
+        $I->fillField('Dia Treino','2021-1-20');
 
+        $I->see('Save');
         $I->click('Save');
     }
 }
