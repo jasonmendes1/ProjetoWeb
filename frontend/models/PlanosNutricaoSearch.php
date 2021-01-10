@@ -18,6 +18,7 @@ class PlanosNutricaoSearch extends PlanosNutricao
     {
         return [
             [['IDPlanoNutricao', 'Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'IDNutricionista'], 'integer'],
+            [['Semana'], 'safe'],
         ];
     }
 
@@ -66,6 +67,8 @@ class PlanosNutricaoSearch extends PlanosNutricao
             'Sabado' => $this->Sabado,
             'IDNutricionista' => $this->IDNutricionista,
         ]);
+
+        $query->andFilterWhere(['like', 'Semana', $this->Semana]);
 
         return $dataProvider;
     }

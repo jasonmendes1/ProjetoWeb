@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Sexta',
             'Sabado',
             'IDNutricionista',
+            'Semana',
         ],
     ]) ?>
 

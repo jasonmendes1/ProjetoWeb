@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db63d798626ac15dbe21072e8b36fd67",
+    "content-hash": "c9598b210d34761612065fcd1a2f02bc",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -184,6 +184,54 @@
             "time": "2018-03-26T11:24:36+00:00"
         },
         {
+            "name": "daxslab/yii2-calendly",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daxslab/yii2-calendly.git",
+                "reference": "f1b9f71400e2f85a4d51d638bac8a7618853f363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daxslab/yii2-calendly/zipball/f1b9f71400e2f85a4d51d638bac8a7618853f363",
+                "reference": "f1b9f71400e2f85a4d51d638bac8a7618853f363",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "daxslab\\calendly\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel A. López López",
+                    "email": "glpz@daxslab.com"
+                }
+            ],
+            "description": "Embeds the Calendly widgets into Yii2 applications",
+            "keywords": [
+                "calendar",
+                "calendly",
+                "events",
+                "extension",
+                "schedule",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/daxslab/yii2-calendly/issues",
+                "source": "https://github.com/daxslab/yii2-calendly/tree/master"
+            },
+            "time": "2019-11-14T07:30:56+00:00"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.13.0",
             "source": {
@@ -232,6 +280,66 @@
                 "html"
             ],
             "time": "2020-06-29T00:56:53+00:00"
+        },
+        {
+            "name": "kriss/yii2-calendar-schedule",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krissss/yii2-calendar-schedule.git",
+                "reference": "200123772cc30414fe69f138b24c0a480c5456e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krissss/yii2-calendar-schedule/zipball/200123772cc30414fe69f138b24c0a480c5456e0",
+                "reference": "200123772cc30414fe69f138b24c0a480c5456e0",
+                "shasum": ""
+            },
+            "require": {
+                "npm-asset/fullcalendar": "^3.9",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kriss\\calendarSchedule\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "kriss",
+                    "email": "462679766@qq.com"
+                }
+            ],
+            "description": "Yii2 Calendar Schedule",
+            "keywords": [
+                "calendar",
+                "extension",
+                "fullcalendar",
+                "schedule",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/krissss/yii2-calendar-schedule/issues",
+                "source": "https://github.com/krissss/yii2-calendar-schedule/tree/master"
+            },
+            "time": "2018-08-09T02:16:59+00:00"
+        },
+        {
+            "name": "npm-asset/fullcalendar",
+            "version": "3.10.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/fullcalendar/-/fullcalendar-3.10.2.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "swiftmailer/swiftmailer",

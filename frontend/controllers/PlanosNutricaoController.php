@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use frontend\models\Ementa;
+use frontend\models\ListaPlanos;
 use Yii;
 use frontend\models\PlanosNutricao;
 use frontend\models\PlanosNutricaoSearch;
@@ -10,7 +11,6 @@ use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use frontend\models\ListaPlanos;
 
 /**
  * PlanosNutricaoController implements the CRUD actions for PlanosNutricao model.
@@ -121,15 +121,15 @@ class PlanosNutricaoController extends Controller
     }
 
     public function actionPlanosnutri(){
-        $allplanos = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
 
         $planosnutri = [];
         $ementas = [];
 
-        if(count($allplanos) >= 1){
-            foreach($allplanos as $plano){
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
                 if($plano->IDPlanoNutricao != null){
-                    array_push($planosnutri, PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+                    array_push($planosnutri,PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
                 }
             }
         }
@@ -159,7 +159,7 @@ class PlanosNutricaoController extends Controller
 
         return $this->render('planosnutri',[
             'planosnutricao' => $planosnutri,
-            'ementas' => $ementas,
+            'ementas' => $ementas
         ]);
     }
 

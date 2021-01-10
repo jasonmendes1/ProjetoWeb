@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Sexta',
             //'Sabado',
             //'IDNutricionista',
+            //'Semana',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

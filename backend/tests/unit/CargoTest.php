@@ -64,5 +64,5 @@ class CargoTest extends \Codeception\Test\Unit
 
         $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Personal TrainerTeste']);
     }
-    
+   
 }

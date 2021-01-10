@@ -26,13 +26,41 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'IDSubscricao',
+            [
+                'label' => 'Nome do Cliente',
+                'attribute' => 'id_cliente',
+                'value' => function($model){
+                    $cliente = app\models\Cliente::find()->where(['User_id'=>$model->id_cliente])->one();
+                    return $cliente->primeiroNome . ' ' . $cliente->apelido;
+                }
+            ],
+            //'id_cliente',
+            //'IDSubscricao',
             'preco',
-            'id_cliente',
-            'id_desconto',
-            'id_tipo',
-            //'data_subscricao',
-            //'data_expirar',
+            [
+                'label' => 'Desconto',
+                'attribute' => 'id_desconto',
+                'value' => function($model){
+                    $desconto = app\models\Desconto::find()->where(['IDDesconto'=>$model->id_desconto])->one();
+                    return $desconto->nome;
+                }
+            ],
+            //'id_desconto',
+            [
+                'label' => 'Tipo de Subscrição',
+                'attribute' => 'id_tipo',
+                'value' => function($model){
+                    $tiposub = app\models\TipoSubscricao::find()->where(['IDTipoSubscricao'=>$model->id_tipo])->one();
+                    return $tiposub->tipo;
+                }
+            ],
+            //'id_tipo',
+            'data_subscricao',
+            'data_expirar',
+            'total',
+
+
+            
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

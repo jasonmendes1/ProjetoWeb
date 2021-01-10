@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\jui\DatePicker;
-
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\PlanosTreino */
@@ -14,7 +12,11 @@ use yii\jui\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'dia_treino')->widget(DatePicker::className(),['dateFormat' => 'y-M-d']) ?>
+    <?= $form->field($model, 'id_PT')->textInput() ?>
+
+    <?= $form->field($model, 'dia_treino')->textInput() ?>
+
+    <?= $form->field($model, 'semana')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

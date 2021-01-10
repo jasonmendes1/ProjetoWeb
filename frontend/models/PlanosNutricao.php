@@ -152,6 +152,7 @@ class Planosnutricao extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
     }
+
     public function createPlanoNutricao()
     {
         $planonutricao = new PlanosNutricao();
@@ -170,4 +171,5 @@ class Planosnutricao extends \yii\db\ActiveRecord
 
         $planonutricao->save();
     }
+
 }

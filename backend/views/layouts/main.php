@@ -41,7 +41,6 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] =['label' => 'Registar Funcionário', 'url' => ['/site/signup']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -50,6 +49,27 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+    
+            echo Nav::widget([
+                'items' => [
+                    [
+                        'label' => 'Menu Administrativo ', //. $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                        'items' => [ 
+
+                            ['label' => 'Registar Funcionário', 
+                            'url' => ['site/signup']],
+                
+                             ['label' => 'Lista de Clientes', 
+                             'url' => ['cliente/index']],
+                             
+                             ['label' => 'Lista de Subscrições', 
+                             'url' => ['subscricao/index']],
+                        ],
+                    ],
+                    
+                ],
+                'options' => ['class' => 'navbar-nav navbar-right'],
+            ]);
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
