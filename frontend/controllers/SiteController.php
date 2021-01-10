@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Event as AppModelsEvent;
+use Codeception\Events;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -10,10 +12,14 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use Event;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Event as FrontendModelsEvent;
+use yii2fullcalendar\models\Event as ModelsEvent;
+use yii\base\Event as BaseEvent;
 use yii\web\UploadedFile;
 
 /**
