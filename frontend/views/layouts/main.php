@@ -102,7 +102,7 @@ AppAsset::register($this);
                          '<li class="divider"></li>',
     
                          ['label' => 'Horários Aulas', 
-                         'url' => ['#']],
+                         'url' => ['site/horarios']],
 
                         '<li class="divider"></li>',
 

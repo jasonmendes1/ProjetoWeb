@@ -18,7 +18,7 @@ class SubscricaoSearch extends Subscricao
     {
         return [
             [['IDSubscricao', 'id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
-            [['preco'], 'number'],
+            [['preco', 'total'], 'number'],
             [['data_subscricao', 'data_expirar'], 'safe'],
         ];
     }
@@ -66,6 +66,7 @@ class SubscricaoSearch extends Subscricao
             'id_tipo' => $this->id_tipo,
             'data_subscricao' => $this->data_subscricao,
             'data_expirar' => $this->data_expirar,
+            'total' => $this->total,
         ]);
 
         return $dataProvider;

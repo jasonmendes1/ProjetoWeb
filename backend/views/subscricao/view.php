@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_tipo',
             'data_subscricao',
             'data_expirar',
+            'total',
         ],
     ]) ?>
 
