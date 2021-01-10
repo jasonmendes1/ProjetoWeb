@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use yii\grid\GridView;
 use yii\helpers\Url;
 
@@ -8,20 +9,33 @@ use yii\helpers\Url;
 /* @var $searchModel frontend\models\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Events';
+$this->title = 'Calendário de Aulas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="event-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Event', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
+    <?php
+        Modal::begin([
+            'header'=>'<h4>Aulas</h4>',
+            'id'=>'modal',
+            'size'=>'modal-lg',
+        ]);
+        echo "<div id='modalContent'></div>";
+
+        Modal::end();
+    ?>
+    
     <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
+        'options' => [
+            'lang' => 'pt'
+        ],
       'events'=> $events,
   ));
 ?>
 
-</div>
+    <?= \yii2fullcalendar\yii2fullcalendar::widget(array(
+      'events'=> $events,
+  ));
