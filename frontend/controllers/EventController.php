@@ -37,16 +37,18 @@ class EventController extends Controller
     {
         $events = Event::find()->all();
 
-        foreach ($events as $event) {
+        $tasks = [];
+
+        foreach ($events as $eve) {
             $event = new \yii2fullcalendar\models\Event();
             $event->id = $event->id;
-            $event->title = $event->title;
-            $event->start = date('Y-m-d\Th:m:s\Z',strtotime('tomorrow 6am'));
-            $events[] = $event;
+            $event->title = $eve->title;
+            $event->start = $eve->created_date;
+            $tasks[] = $event;
         }
 
         return $this->render('index', [
-            'events' => $events,
+            'events' => $tasks,
         ]);
     }
 
