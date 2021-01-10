@@ -57,4 +57,20 @@ class Exercicio extends \yii\db\ActiveRecord
             'num_maquina' => 'Num Maquina',
         ];
     }
+
+    public function createExercicio()
+    {
+        $exercicio = new Exercicio();
+
+        $exercicio->IDPlanoTreino = $this->IDPlanoTreino;
+        $exercicio->nome = $this->nome;
+        $exercicio->repeticoes = $this->repeticoes;
+        $exercicio->tempo = $this->tempo;
+        $exercicio->serie = $this->serie;
+        $exercicio->repouso = $this->repouso;
+        $exercicio->tempo_total = $this->tempo_total;
+        $exercicio->num_maquina = $this->num_maquina;
+
+        $exercicio->save();
+    }
 }

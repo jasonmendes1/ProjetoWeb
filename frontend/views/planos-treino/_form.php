@@ -7,6 +7,7 @@ use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\PlanosTreino */
+/* @var $modelExercicio frontend\models\Exercicio */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -20,9 +21,29 @@ use yii\jui\DatePicker;
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
 
-        <?php ActiveForm::end(); ?>
     </div>
     <div class = "criarexercicios">
-        Fazer aqui a criação do exercicios
+
+        <?= $form->field($modelExercicio, 'IDPlanoTreino')->textInput() ?>
+
+        <?= $form->field($modelExercicio, 'nome')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($modelExercicio, 'repeticoes')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($modelExercicio, 'tempo')->textInput() ?>
+
+        <?= $form->field($modelExercicio, 'serie')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($modelExercicio, 'repouso')->textInput() ?>
+
+        <?= $form->field($modelExercicio, 'tempo_total')->textInput() ?>
+
+        <?= $form->field($modelExercicio, 'num_maquina')->textInput(['maxlength' => true]) ?>
+
+        <div class="form-group">
+            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
     </div>
 </div>

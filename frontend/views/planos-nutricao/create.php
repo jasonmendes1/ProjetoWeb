@@ -4,6 +4,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\PlanosNutricao */
+/* @var $modelExercicio frontend\models\Exercicio */
+
 
 $this->title = 'Create Planos Nutricao';
 $this->params['breadcrumbs'][] = ['label' => 'Planos Nutricaos', 'url' => ['index']];

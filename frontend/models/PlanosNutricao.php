@@ -165,10 +165,6 @@ class Planosnutricao extends \yii\db\ActiveRecord
         $planonutricao->Sexta = $this->Sexta;
         $planonutricao->Sabado = $this->Sabado;
         $planonutricao->Semana = strftime('%V',strtotime($this->Semana));
-        var_dump($planonutricao->Semana);
-        var_dump($this->Semana);
-        var_dump(strtotime($this->Semana));
-        var_dump(strftime('%V',strtotime($this->Semana)));
 
         $planonutricao->IDNutricionista = $funcionario->IDFuncionario;
 
