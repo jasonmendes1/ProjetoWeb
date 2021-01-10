@@ -18,6 +18,7 @@ class PlanoNutricaoCest
 
         $I->see('Bem Vindo');
         $I->click('Bem Vindo');
+        
         $I->click('Criar Plano de Nutrição');
 
         $option1 = $I->grabTextFrom('select option:nth-child(1)');
@@ -37,9 +38,9 @@ class PlanoNutricaoCest
 
         $option6 = $I->grabTextFrom('select option:nth-child(1)');
         $I->selectOption("select", $option6);
-
-        $I->fillField('Semana','01');
-
+        
+        $I->fillField('Semana','2021-1-20');
+        
         $I->see('Save');
         $I->click('Save');
     }
