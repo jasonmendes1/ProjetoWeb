@@ -7,6 +7,7 @@ use Yii;
 use frontend\models\PlanosNutricao;
 use frontend\models\PlanosNutricaoSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\ListaPlanos;
@@ -66,18 +67,23 @@ class PlanosNutricaoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new PlanosNutricao();
+        if( Yii::$app->user->can('createPlanonutricao') ){
+            $model = new PlanosNutricao();
 
-        if ($model->load(Yii::$app->request->post()) && $model->createPlanoNutricao()) {
-            Yii::$app->session->setFlash('success', 'Action Completed');
-            return $this->goHome();
+            if ($model->load(Yii::$app->request->post()) && $model->createPlanoNutricao()) {
+                Yii::$app->session->setFlash('success', 'Action Completed');
+                return $this->goHome();
+            }
+
+            Yii::$app->session->setFlash('failure', 'Action Failed');
+
+            return $this->render('create',[
+                'model' => $model,
+            ]);
+        }else{
+            throw new ForbiddenHttpException;
         }
 
-        Yii::$app->session->setFlash('failure', 'Action Failed');
-
-        return $this->render('create',[
-            'model' => $model,
-        ]);
     }
 
     /**
