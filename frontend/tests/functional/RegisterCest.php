@@ -13,9 +13,9 @@ class RegisterCest
 
         // Inserção de Dados
         $I->see('Signup');
-        $I->fillField('Username', 'userteste2');
-        $I->fillField('Email', 'emailteste@emailteste.com');
-        $I->fillField('Password', 'passwordteste');
+        $I->fillField('Username', 'testefuncional');
+        $I->fillField('Email', 'testefuncional@emailteste.com');
+        $I->fillField('Password', 'testefuncional');
         //$I->click('SignupForm[avatar]');
        // $I->fillField('avatar', 'web/images/test.png');
         $I->attachFile('#signupform-avatar', 'logo.png');

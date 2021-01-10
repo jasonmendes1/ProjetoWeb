@@ -3,10 +3,6 @@ use frontend\tests\FunctionalTester;
 
 class PlanoTreinoCest
 {
-    public function _before(FunctionalTester $I)
-    {
-    }
-
     public function tryCreatePlanoTreino(FunctionalTester $I)
     {
         // Login User
@@ -18,31 +14,18 @@ class PlanoTreinoCest
         $I->fillField('Password', 'funcionariotrainer');
         $I->see('Remember Me');
         $I->click('login-button');
-        $I->see('Congratulations!');
+        //$I->see('Congratulations!');
 
-        $I->see('Bem Vindo');
+        $I->see('Fitness League');
+        $I->see('O seu ginásio tecnológico!');
         $I->click('Bem Vindo');
-        $I->click('Criar Plano de Nutrição');
+        $I->click('Criar Plano de Treino');
 
-        $option1 = $I->grabTextFrom('select option:nth-child(1)');
-        $I->selectOption("select", $option1);
+        $I->see('Create Planos Treino');
 
-        $option2 = $I->grabTextFrom('select option:nth-child(2)');
-        $I->selectOption("select", $option2);
+        $I->fillField('Id Pt','1');
+        $I->fillField('Dia Treino','');
 
-        $option3 = $I->grabTextFrom('select option:nth-child(1)');
-        $I->selectOption("select", $option3);
-
-        $option4 = $I->grabTextFrom('select option:nth-child(2)');
-        $I->selectOption("select", $option4);
-
-        $option5 = $I->grabTextFrom('select option:nth-child(2)');
-        $I->selectOption("select", $option5);
-
-        $option6 = $I->grabTextFrom('select option:nth-child(1)');
-        $I->selectOption("select", $option6);
-
-        $I->see('Save');
         $I->click('Save');
     }
 }

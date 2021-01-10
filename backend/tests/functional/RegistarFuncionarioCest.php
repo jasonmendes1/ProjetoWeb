@@ -7,11 +7,11 @@ class RegistarFuncionarioCest
     {
         // Login User
         $I->amOnPage(\yii::$app->homeUrl);
-        $I->fillField('Username', 'userteste2');
-        $I->fillField('Password', 'passwordteste');
+        $I->fillField('Username', 'testefuncional');
+        $I->fillField('Password', 'testefuncional');
         $I->see('Remember Me');
         $I->click('login-button');
-        $I->see('Congratulations!');
+        $I->see('Bem vindo');
         
         $I->click('Registar Funcionário');
         // Inserção de Dados
