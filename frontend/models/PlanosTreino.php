@@ -77,7 +77,9 @@ class PlanosTreino extends \yii\db\ActiveRecord
     public function createPlanoTreino()
     {
         $planotreino = new PlanosTreino();
-        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->id]);
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+
+        var_dump(Yii::$app->user->id);
 
         $planotreino->id_PT = $funcionario->IDFuncionario;
         $planotreino->dia_treino = $this->dia_treino;

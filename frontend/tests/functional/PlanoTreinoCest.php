@@ -1,5 +1,6 @@
 <?php namespace frontend\tests\functional;
 use frontend\tests\FunctionalTester;
+use Yii;
 
 class PlanoTreinoCest
 {
@@ -17,7 +18,6 @@ class PlanoTreinoCest
         //$I->see('Congratulations!');
 
         $I->see('Fitness League');
-        $I->see('O seu ginásio tecnológico!');
         $I->click('Bem Vindo');
         $I->click('Criar Plano de Treino');
 
