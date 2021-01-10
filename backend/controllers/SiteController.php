@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\web\ForbiddenHttpException;
 use yii\web\UploadedFile;
 
 
@@ -119,15 +120,19 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-        $model = new SignupFuncionario();
-        $getAvatar = UploadedFile::getInstance($model,'avatar');
-        if ($model->load(Yii::$app->request->post()) && $model->signup($getAvatar)) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
-        }
+        if (\Yii::$app->user->can('signUpFuncionario')){
+            $model = new SignupFuncionario();
+            $getAvatar = UploadedFile::getInstance($model,'avatar');
+            if ($model->load(Yii::$app->request->post()) && $model->signup($getAvatar)) {
+                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+                return $this->goHome();
+            }
 
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
+            return $this->render('signup', [
+                'model' => $model,
+            ]);
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 }

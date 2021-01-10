@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     h1{
-        color: white;c
+        color: white;
     }
     h4 {
         background: #017EEC !important;
@@ -47,28 +47,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="conteiner" style="color:#555!important">
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
-                                    <h4><strong>Instalações</strong></h4>
+                                    <h4><strong>Projeto:</strong></h4>
                                     <div class="texto">
                                     <p><strong>Fitness League</strong></p>
                                     </div>
-                                    <h4><strong>EQUIPAMENTO DE ÚLTIMA GERAÇÃO</strong></h4>
+                                        <h4><strong>Criado por:</strong></h4>
                                     <div class="texto">
-                                        <p>As nossas máquinas de força são de fácil utilização e adequam-se a todos os níveis de aptidão física, permitindo trabalhar todos os músculos do corpo.</p>
+                                        <p>Jason Mendes, número de estudante 2180</p>
+                                        <p>Tiago Antunes, número de estudante 2180</p>
+                                        <p>Tiago Ramos, número de estudante 2180689</p>
                                     </div>
-                                    <h4><strong>NUTRIÇÃO</strong></h4>
+                                    <h4><strong>Sobre:</strong></h4>
                                     <div class="texto">
-                                        <p>A alimentação influencia a saúde e o bem-estar. Todos podemos beneficiar de um aconselhamento alimentar especializado, independentemente do estado de saúde ou aptidão física.</p>
-                                        <p>Conhecendo o seu padrão alimentar habitual é possível identificar os hábitos que necessita corrigir ou adaptar às suas necessidades. As consultas de nutrição e alimentação servem para regular os hábitos alimentares através de planos alimentares personalizados e estruturados, para que não existam carências ou excessos nutricionais ou ainda desequilíbrios metabólicos.</p>
-                                    </div>
-                                    <h4><strong>LIVRE TRÂNSITO</strong> SEM LIMITE DE HORÁRIO</h4>
-                                    <div class="texto">
-                                        <p>Ter mais de um emprego, trabalhar por turnos ou até muito tarde, são factores mais do que comuns nos dias de hoje. Foi pensando nisso que a Fitness League uma vez mais inovou e criou o conceito de GINASIO ABERTO 365 DIAS. Os nossos clubes são o lugar certo para quem tem uma agenda cheia e só encontra tempo para se exercitar em horários diferentes do comercial.</p>
-                                    </div>
-                                    <h4><strong>ESTACIONAMENTO GRATUITO</strong></h4>
-                                    <div class="texto">
-                                        <p> O  Parque de Estacionamento  da Fitness League é um parque moderno com  202 lugares  amplos e com muita luz natural. </p>
-                                        <p> A sua utilização pode ser avulsa, pois o estacionamento é gratuito para todos os sócios do nosso ginásio. </p>
-                                        <p> Parque de Estacionamento protegido 24h pelos nossos seguranças.</p>
+                                        <p>Projeto criado no ambito da Unidade Curricular Plataformas de Sistemas de Informação do segundo ano do CTeSP de Programação de Sistemas de Informação 2020/2021</p>
                                     </div>
                                 </div>
                             </div>

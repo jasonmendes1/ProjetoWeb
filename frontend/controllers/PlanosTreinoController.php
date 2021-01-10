@@ -3,13 +3,14 @@
 namespace frontend\controllers;
 
 use frontend\models\Exercicio;
-use frontend\models\ListaPlanos;
 use Yii;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\models\ListaPlanos;
 
 /**
  * PlanosTreinoController implements the CRUD actions for PlanosTreino model.
@@ -66,15 +67,24 @@ class PlanosTreinoController extends Controller
      */
     public function actionCreate()
     {
-        $model = new PlanosTreino();
+        if( Yii::$app->user->can('createPlanotreino') ) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->IDPlanoTreino]);
+            $model = new PlanosTreino();
+
+            if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
+                Yii::$app->session->setFlash('success', 'Action Completed');
+                return $this->goHome();
+            }
+
+            Yii::$app->session->setFlash('failure', 'Action Failed');
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }else{
+            throw new ForbiddenHttpException;
+
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -86,7 +96,9 @@ class PlanosTreinoController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if( Yii::$app->user->can('updatePlanotreino') ) {
+
+            $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IDPlanoTreino]);
@@ -95,6 +107,9 @@ class PlanosTreinoController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     /**
@@ -106,9 +121,13 @@ class PlanosTreinoController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+       if( Yii::$app->user->can('deletePlanotreino') ){
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }else{
+            throw new ForbiddenHttpException;
+        }
     }
 
     public function actionPlanostreino(){
@@ -137,6 +156,13 @@ class PlanosTreinoController extends Controller
         'exercicios' => $exercicios
         ]);
     }
+
+    public function actionTeste($album){
+        var_dump($album);
+        die();
+    }
+
+
 
     /**
      * Finds the PlanosTreino model based on its primary key value.
