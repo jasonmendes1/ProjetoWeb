@@ -320,12 +320,15 @@
                 "widget",
                 "yii2"
             ],
+<<<<<<< Updated upstream
             "time": "2019-04-17T13:42:59+00:00",
 
             "support": {
                 "issues": "https://github.com/philippfrenzel/yii2fullcalendar/issues",
                 "source": "https://github.com/philippfrenzel/yii2fullcalendar"
             },
+=======
+>>>>>>> Stashed changes
             "time": "2017-09-20T17:11:40+00:00"
         },
         {
