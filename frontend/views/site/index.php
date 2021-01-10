@@ -26,10 +26,12 @@ $this->title = 'Fitness League';
     </div>
 
 </div>
+<center>
 <?php
     $images=['<img src="../images/1.jpg" alt="1"/>','<img src="../images/2.jpg" alt="2"/>','<img src="../images/3.jpg" alt="3"/>'];
     echo yii\bootstrap\Carousel::widget(['items'=>$images]);
 ?>
+</center>
 </body>
 
 
