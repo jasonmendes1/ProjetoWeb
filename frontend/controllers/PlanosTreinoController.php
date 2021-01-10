@@ -72,7 +72,7 @@ class PlanosTreinoController extends Controller
             $model = new PlanosTreino();
             $modelExercicio = new Exercicio();
 
-            if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
+            if ($model->load(Yii::$app->request->post()) && ($model->createPlanoTreino() || $modelExercicio->createExercicio())) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
                 return $this->goHome();
             }

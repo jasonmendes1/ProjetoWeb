@@ -21,10 +21,8 @@ use yii\jui\DatePicker;
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
 
-        <?php ActiveForm::end(); ?>
     </div>
     <div class = "criarexercicios">
-        <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($modelExercicio, 'IDPlanoTreino')->textInput() ?>
 
