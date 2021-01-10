@@ -70,6 +70,7 @@ class PlanosTreinoController extends Controller
         if( Yii::$app->user->can('createPlanotreino') ) {
 
             $model = new PlanosTreino();
+            $modelExercicio = new Exercicio();
 
             if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
@@ -80,6 +81,7 @@ class PlanosTreinoController extends Controller
 
             return $this->render('create', [
                 'model' => $model,
+                'modelExercicio' => $modelExercicio,
             ]);
         }else{
             throw new ForbiddenHttpException;
