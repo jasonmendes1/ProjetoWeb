@@ -13,32 +13,23 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="funcionario-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <h3>Personal Trainers:</h3>
+    <?php foreach ($funcProvider as $func)
+    {?>
+        <?php if($func->cargo_id == 1) {?>
+        <div>
+            <p><?='Nome: ', $func->primeiroNome,' ', $func->apelido, ' | Data de Nascimento: ', $func->dt_nascimento, ' | Sexo: ', $func->sexo , ' | Nr Telemóvel: ', $func->num_tele  ?></p>
+        </div>
+        <?php } ?>
+    <?php } ?>
+    <h3>Nutricionistas:</h3>
+    <?php foreach ($funcProvider as $func)
+    {?>
+        <?php if($func->cargo_id == 2) {?>
 
-    <p>
-        <?= Html::a('Create Funcionario', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <p><?='Nome: ', $func->primeiroNome,' ', $func->apelido, ' | Data de Nascimento: ', $func->dt_nascimento, ' | Sexo: ', $func->sexo , ' | Nr Telemóvel: ', $func->num_tele  ?></p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'User_id',
-            'IDFuncionario',
-            'primeiroNome',
-            'apelido',
-            'dt_nascimento',
-            //'sexo',
-            //'avatar',
-            //'num_tele',
-            //'cargo_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+        <?php } ?>
+    <?php } ?>
 
 </div>

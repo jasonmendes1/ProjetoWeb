@@ -53,8 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                         <h4><strong>Criado por:</strong></h4>
                                     <div class="texto">
-                                        <p>Jason Mendes, número de estudante 2180</p>
-                                        <p>Tiago Antunes, número de estudante 2180</p>
+                                        <p>Jason Mendes, número de estudante 2180601</p>
+                                        <p>Tiago Antunes, número de estudante 2180602</p>
                                         <p>Tiago Ramos, número de estudante 2180689</p>
                                     </div>
                                     <h4><strong>Sobre:</strong></h4>

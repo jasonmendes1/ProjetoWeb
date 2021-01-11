@@ -35,13 +35,12 @@ class FuncionarioController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FuncionarioSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $funcProvider = Funcionario::find()
+            ->orderBy(['IDFuncionario' => SORT_DESC])
+            ->all();
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+
+        return $this->render('index', ['funcProvider' => $funcProvider]);
     }
 
     /**
