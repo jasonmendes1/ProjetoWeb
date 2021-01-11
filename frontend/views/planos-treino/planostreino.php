@@ -65,7 +65,6 @@ $this->title = 'Planos de Treino';
             <?php foreach($planostreino as $pt){?>
                 <div>
                     <?= Html::a($pt->semana.'º Semana', ['teste', 'album' => '1'], ['data-method' => 'get']) ?>
-                    <?=$pt->semana?>º Semana
                 </div>
             <?php };?>
         </div>
@@ -73,33 +72,32 @@ $this->title = 'Planos de Treino';
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
                     <div class="dia">
-                        <?= Html::a('Segunda-Feira', ['teste', 'album' => '1'], ['class' => 'btn btn-default', 'data-method' => 'get']) ?>
-                        Segunda-Feira
+                        <?= Html::a('Segunda-Feira', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
                     <div class="dia">
-                        Terça-Feira
+                        <?= Html::a('Terça-Feira', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
                     <div class="dia">
-                        Quarta-Feira
+                        <?= Html::a('Quarta-Feira', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
                     <div class="dia">
-                        Quinta-Feira
+                        <?= Html::a('Quinta-Feira', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
                     <div class="dia">
-                        Sexta-Feira
+                        <?= Html::a('Sexta-Feira', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
                     <div class="dia">
-                        Sábado
+                        <?= Html::a('Sábado', ['teste', 'album' => '1'], ['class' => 'dia', 'data-method' => 'get']) ?>  
                     </div> 
                 </div>
             </div>

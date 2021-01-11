@@ -63,7 +63,6 @@
         <div class="headerplanostreinonutri">
             <?php foreach($planosnutricao as $pn){ ?>
                 <div>
-                    <?=$pn->Semana?>º Semana
                     <?= Html::a($pn->Semana.'º Semana', ['teste', 'album' => '1'], ['class' => 'btnsemana','data-method' => 'get']) ?>
                 </div>
             <?php };?>
@@ -75,27 +74,27 @@
                 </div>
                 <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
                     <div class="dia">
-                        Terça-Feira
+                        <?= Html::a('Terça-Feira', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
                     <div class="dia">
-                        Quarta-Feira
+                        <?= Html::a('Quarta-Feira', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
                     <div class="dia">
-                        Quinta-Feira
+                        <?= Html::a('Quinta-Feira', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
                     <div class="dia">
-                        Sexta-Feira
+                        <?= Html::a('Sexta-Feira', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                     </div>
                 </div>
                 <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
                     <div class="dia">
-                        Sábado
+                        <?= Html::a('Sábado', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                     </div> 
                 </div>
             </div>
@@ -105,7 +104,7 @@
                         Pequeno Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[12]->PequenoAlmoco?>
+                        <?=$ementas[0]->PequenoAlmoco?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -113,7 +112,7 @@
                         Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[12]->Almoco?>
+                        <?=$ementas[0]->Almoco?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -121,7 +120,7 @@
                         1º Lanche
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[12]->Lanche1?>
+                        <?=$ementas[0]->Lanche1?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -129,7 +128,7 @@
                         2º Lanche 
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[12]->Lanche2?>
+                        <?=$ementas[0]->Lanche2?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -137,7 +136,7 @@
                         Jantar
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[12]->Jantar?>
+                        <?=$ementas[0]->Jantar?>
                     </div>
                 </div>
             </div>
