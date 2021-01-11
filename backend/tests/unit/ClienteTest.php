@@ -1,8 +1,11 @@
 <?php namespace backend\tests;
 
-use app\models\User;
-use common\models\Cliente;
-use Symfony\Component\BrowserKit\Client;
+use app\models\Cliente;
+use common\models\User;
+
+use DateTime;
+
+
 
 class ClienteTest extends \Codeception\Test\Unit
 {
@@ -53,19 +56,27 @@ class ClienteTest extends \Codeception\Test\Unit
         $cliente->apelido = 'Mendes';
         $this->assertTrue($cliente->validate(['apelido']));
 
-
+        /*
         $cliente->dt_nascimento = null;
         $this->assertFalse($cliente->validate(['dt_nascimento']));
-        /*
-        $cliente->dt_nascimento = '1999-12-27 00:00:00';
-        $this->assertFalse($cliente->validate(['dt_nascimento']));
         
-        $cliente->dt_nascimento = 'Texto';
-        $this->assertFalse($cliente->validate(['dt_nascimento']));
-        */
-        $cliente->dt_nascimento = '1999-12-27';
+        $cliente->dt_nascimento = 'a1999-12-27 00:00:00';
         $this->assertTrue($cliente->validate(['dt_nascimento']));
+        
+        //$cliente->dt_nascimento = 'Texto';
+        //$this->assertFalse($cliente->validate(['dt_nascimento']));
 
+        */
+
+        //$cliente->dt_nascimento = 123456789;
+        //$this->assertTrue($cliente->validate(['dt_nascimento']));
+        /*
+        $data = date('Y-m-d');
+        codecept_debug($data);
+        $cliente->dt_nascimento = $data;
+        $this->assertTrue($cliente->validate(['dt_nascimento']));
+        codecept_debug($cliente->errors);
+        */
         $cliente->sexo = null;
         $this->assertFalse($cliente->validate(['sexo']));
         $cliente->sexo = 'fghnvghtoolooooongnafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
@@ -123,35 +134,40 @@ class ClienteTest extends \Codeception\Test\Unit
 
     function testSavingUser()
     {
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
         $user = new User();
+        $cliente = new Cliente();
+
         $user->username = 'testecliente';
         $user->email = 'testecliente@teste.com';
-        $user->password = 'testecliente';
+
+        $user->setPassword('testecliente');
+        $user->generateAuthKey();
+        $user->generateEmailVerificationToken();
+        $user->status = 10;
 
         $user->save();
-
-        $cliente = new Cliente();
-        //$cliente->User_id = '10';
-        $cliente->primeiroNome = 'Jason';
-        $cliente->apelido = 'Mendes';
-        $cliente->dt_nascimento = '1999-12-27';
-        $cliente->sexo = 'Masculino';
-        $cliente->avatar = 'avatar.png';
-        $cliente->num_tele = 'Masculino';
-        $cliente->nif = '123456789';
-        $cliente->altura = '170';
-        $cliente->peso = '65';
-        $cliente->massa_muscular = '50';
-        $cliente->massa_gorda = '50';
-
+      
         $cliente->User_id = $user->id;
+        $cliente->User_id = 14;
+        $cliente->primeiroNome = 'Teste';
+        $cliente->apelido = 'Cliente';
+        $cliente->dt_nascimento = DateTime::createFromFormat('m-d-Y', '12-27-1999')->format('Y-m-d');
+        $cliente->sexo = 'Masculino';
+        $cliente->avatar = "avatar.png";
+        $cliente->num_tele = 123456789;
+        $cliente->nif = 123456789;
+        $cliente->altura = 170;
+        $cliente->peso = 65;
+        $cliente->massa_muscular = 50;
+        $cliente->massa_gorda = 50;
+
+        var_dump($cliente);
+        ob_flush();
         $cliente->save();
-        //$this->tester->seeInDatabase('cliente', ['primeiroNome' => 'Jason']);
+        
+        //$this->tester->seeInDatabase('cliente', ['primeiroNome' => 'tiago']);
+        $this->tester->seeInDatabase('cliente', ['primeiroNome' => 'Teste']);
+
     }
 
     /*

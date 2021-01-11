@@ -1,5 +1,7 @@
 <?php
     $this->title = 'Planos de Treino';
+
+    use yii\bootstrap\Html;
 ?>
 <script>
     function chgcolor($id){
@@ -62,15 +64,14 @@
             <?php foreach($planosnutricao as $pn){ ?>
                 <div>
                     <?=$pn->Semana?>º Semana
+                    <?= Html::a($pn->Semana.'º Semana', ['teste', 'album' => '1'], ['class' => 'btnsemana','data-method' => 'get']) ?>
                 </div>
             <?php };?>
         </div>
         <div class="bodytreino">
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
-                    <div class="dia">
-                        Segunda-Feira
-                    </div>
+                    <?= Html::a('Segunda-Feira', ['teste', 'album' => '1'], ['class' => 'dia','data-method' => 'get']) ?>
                 </div>
                 <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
                     <div class="dia">

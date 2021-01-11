@@ -39,7 +39,7 @@ class Funcionario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar', 'num_tele', 'cargo_id'], 'required'],
+        [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar', 'num_tele', 'cargo_id'], 'required'],
             [['User_id', 'num_tele', 'cargo_id'], 'integer'],
             [['dt_nascimento'], 'safe'],
             [['primeiroNome', 'apelido'], 'string', 'max' => 100],
