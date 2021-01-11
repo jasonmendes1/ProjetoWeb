@@ -24,6 +24,7 @@ use Yii;
  * @property User $user
  * @property ListaPlanos[] $listaPlanos
  * @property Subscricao[] $subscricaos
+ * 
  */
 class Cliente extends \yii\db\ActiveRecord
 {

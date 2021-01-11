@@ -64,6 +64,7 @@ $this->title = 'Planos de Treino';
         <div class="headerplanostreinonutri">
             <?php foreach($planostreino as $pt){?>
                 <div>
+                    <?= Html::a($pt->semana.'º Semana', ['teste', 'album' => '1'], ['data-method' => 'get']) ?>
                     <?=$pt->semana?>º Semana
                 </div>
             <?php };?>
@@ -72,7 +73,7 @@ $this->title = 'Planos de Treino';
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
                     <div class="dia">
-                        <?= Html::a('Segunda-Feira', ['/planos-treino/planostreino/teste', 'album' => $planostreino], ['class' => 'btn btn-default', 'data-method' => 'get']) ?>
+                        <?= Html::a('Segunda-Feira', ['teste', 'album' => '1'], ['class' => 'btn btn-default', 'data-method' => 'get']) ?>
                         Segunda-Feira
                     </div>
                 </div>

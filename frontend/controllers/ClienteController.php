@@ -157,4 +157,10 @@ class ClienteController extends Controller
             throw new ForbiddenHttpException;
         }
     }
+
+    public function actionTeste($teste){
+        return $this->render('profile',[
+            'teste' => $teste,
+        ]);
+    }
 }
