@@ -6,6 +6,7 @@ use Yii;
 use frontend\models\Event;
 use frontend\models\EventSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -71,16 +72,21 @@ class EventController extends Controller
      */
     public function actionCreate($date)
     {
-        $model = new Event();
-        $model->created_date = $date;
+        if( Yii::$app->user->can('criarEvento') ) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            $model = new Event();
+            $model->created_date = $date;
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }else{
+            throw new ForbiddenHttpException;
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
