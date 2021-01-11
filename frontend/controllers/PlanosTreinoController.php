@@ -2,8 +2,8 @@
 
 namespace frontend\controllers;
 
-use frontend\models\Exercicio;
 use Yii;
+use frontend\models\Exercicio;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
 use yii\debug\panels\EventPanel;
@@ -75,14 +75,7 @@ class PlanosTreinoController extends Controller
             $model = new PlanosTreino();
             $modelExercicio = new Exercicio();
 
-            if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
-                Yii::$app->session->setFlash('success', 'Action Completed');
-                return $this->goHome();
-            }else{
-                Yii::$app->session->setFlash('failure', 'Action Failed');
-            }
-
-            if ($model->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()) {
+            if (($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) || ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio())) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
                 return $this->goHome();
             }else{
@@ -95,7 +88,6 @@ class PlanosTreinoController extends Controller
             ]);
         }else{
             throw new ForbiddenHttpException;
-
         }
     }
 

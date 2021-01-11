@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
 
+$this->title = 'Criar Exercicio';
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\PlanosTreino */
@@ -24,7 +25,9 @@ use yii\jui\DatePicker;
 
     </div>
     <div class = "criarexercicios">
+
         <?php $form = ActiveForm::begin(); ?>
+        <h1><?= Html::encode($this->title) ?></h1>
 
         <?= $form->field($modelExercicio, 'IDPlanoTreino')->textInput() ?>
 
@@ -37,8 +40,6 @@ use yii\jui\DatePicker;
         <?= $form->field($modelExercicio, 'serie')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($modelExercicio, 'repouso')->textInput() ?>
-
-        <?= $form->field($modelExercicio, 'tempo_total')->textInput() ?>
 
         <?= $form->field($modelExercicio, 'num_maquina')->textInput(['maxlength' => true]) ?>
 

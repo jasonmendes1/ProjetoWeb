@@ -83,6 +83,6 @@ class PlanosTreino extends \yii\db\ActiveRecord
         $planotreino->dia_treino = $this->dia_treino;
         $planotreino->semana = strftime('%V',strtotime($this->dia_treino));
 
-        $planotreino->save();
+        return $planotreino->save();
     }
 }

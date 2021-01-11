@@ -68,9 +68,9 @@ class Exercicio extends \yii\db\ActiveRecord
         $exercicio->tempo = $this->tempo;
         $exercicio->serie = $this->serie;
         $exercicio->repouso = $this->repouso;
-        $exercicio->tempo_total = $this->tempo_total;
+        $exercicio->tempo_total = ($this->tempo * $this->repeticoes) + ($this->repouso * $this->repeticoes);
         $exercicio->num_maquina = $this->num_maquina;
 
-        $exercicio->save();
+        return $exercicio->save();
     }
 }
