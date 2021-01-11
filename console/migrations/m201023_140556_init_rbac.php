@@ -115,6 +115,10 @@ class m201023_140556_init_rbac extends Migration
         $signUpFuncionario->description = 'Sign Up Funcionario';
         $auth->add($signUpFuncionario);
 
+        $verPerfil = $auth->createPermission('verPerfil');
+        $verPerfil->description = 'Ver o Perfil do Cliente';
+        $auth->add($verPerfil);
+
 
         // roles dos tipos de utilizador
         $admin = $auth->createRole('admin');
@@ -149,6 +153,8 @@ class m201023_140556_init_rbac extends Migration
         $auth->addChild($funcionario, $createTiposubscricao);
         $auth->addChild($funcionario, $updateTiposubscricao);
         $auth->addChild($funcionario, $deleteTiposubscricao);
+        $auth->addChild($cliente, $verPerfil);
+        $auth->addChild($funcionario, $verPerfil);
 
         // Atribui roles para usuários. 1 and 2 são IDs retornados por IdentityInterface::getId()
         // normalmente implementado no seu model User.

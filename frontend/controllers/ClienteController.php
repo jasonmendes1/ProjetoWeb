@@ -8,6 +8,7 @@ use Yii;
 use frontend\models\Cliente;
 use frontend\models\ClienteSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\Funcionario;
@@ -132,25 +133,28 @@ class ClienteController extends Controller
     }
 
     public function actionProfile(){
+        if(Yii::$app->user->can('verPerfil')){
+            $user = Yii::$app->user->identity;
+            $cliente = $this->findModel(Yii::$app->user->identity->getId());
 
-        $user = Yii::$app->user->identity;
-        $cliente = $this->findModel(Yii::$app->user->identity->getId());
+            $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
 
-        $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
-        
-        if($cf != null){
-            $pt = $cf->pT;
-            $nutri = $cf->nutricionista;
+            if($cf != null){
+                $pt = $cf->pT;
+                $nutri = $cf->nutricionista;
+            }else{
+                $pt = "";
+                $nutri = "";
+            }
+
+            return $this->render('profile', [
+                'cliente' => $cliente,
+                'user' => $user,
+                'pt' => $pt,
+                'nutri' => $nutri,
+            ]);
         }else{
-            $pt = "";
-            $nutri = "";
+            throw new ForbiddenHttpException;
         }
-        
-        return $this->render('profile', [
-            'cliente' => $cliente, 
-            'user' => $user,
-            'pt' => $pt,
-            'nutri' => $nutri,
-        ]);
     }
 }

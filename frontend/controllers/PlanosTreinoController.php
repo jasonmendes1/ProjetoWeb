@@ -6,11 +6,14 @@ use frontend\models\Exercicio;
 use Yii;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
+use yii\debug\panels\EventPanel;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\ListaPlanos;
+use yii\base\Model;
+
 
 /**
  * PlanosTreinoController implements the CRUD actions for PlanosTreino model.
@@ -72,12 +75,19 @@ class PlanosTreinoController extends Controller
             $model = new PlanosTreino();
             $modelExercicio = new Exercicio();
 
-            if ($model->load(Yii::$app->request->post()) && ($model->createPlanoTreino() || $modelExercicio->createExercicio())) {
+            if ($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
                 return $this->goHome();
+            }else{
+                Yii::$app->session->setFlash('failure', 'Action Failed');
             }
 
-            Yii::$app->session->setFlash('failure', 'Action Failed');
+            if ($model->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()) {
+                Yii::$app->session->setFlash('success', 'Action Completed');
+                return $this->goHome();
+            }else{
+                Yii::$app->session->setFlash('failure', 'Action Failed');
+            }
 
             return $this->render('create', [
                 'model' => $model,

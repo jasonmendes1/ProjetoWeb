@@ -10,7 +10,7 @@ use Yii;
  * @property int $IDExer
  * @property int $IDPlanoTreino
  * @property string $nome
- * @property string $repeticoes
+ * @property int $repeticoes
  * @property int $tempo
  * @property string $serie
  * @property int $repouso
@@ -34,9 +34,9 @@ class Exercicio extends \yii\db\ActiveRecord
     {
         return [
             [['IDPlanoTreino', 'nome', 'repeticoes', 'tempo', 'serie', 'repouso', 'tempo_total'], 'required'],
-            [['IDPlanoTreino', 'tempo', 'repouso', 'tempo_total'], 'integer'],
+            [['IDPlanoTreino', 'repeticoes', 'tempo', 'repouso', 'tempo_total'], 'integer'],
             [['nome'], 'string', 'max' => 255],
-            [['repeticoes', 'serie', 'num_maquina'], 'string', 'max' => 10],
+            [['serie', 'num_maquina'], 'string', 'max' => 10],
         ];
     }
 

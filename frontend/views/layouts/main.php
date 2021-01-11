@@ -42,20 +42,8 @@ AppAsset::register($this);
         $login[] = ['label' => 'Fazer Login', 'url' => ['/site/login']];
         $login[] = ['label' => 'Registar', 'url' => ['/site/signup']];
         $nomecliente[] = ['label' => 'Área Clientes'];
-        $ifguest = 'Convidado';
-
         echo Nav::widget([
             'items' => [
-                [
-                    'label' => $ifguest,
-                    'items' => [
-                        ['label' => 'Fazer Login', 
-                        'url' => 'site/login'],
-                        ['label' => 'Registar', 
-                        'url' => 'site/signup'],
-                        ],
-                ],
-                
                 [
                     'label' => 'Registar/Login',
                     'items' => $login,
