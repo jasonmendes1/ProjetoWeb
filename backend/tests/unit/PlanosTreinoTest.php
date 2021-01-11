@@ -36,7 +36,7 @@ class PlanosTreinoTest extends \Codeception\Test\Unit
     function testSavingUser()
     {
         $planotreino = new Planostreino();
-        $planotreino->id_PT = '1';
+        $planotreino->id_PT = '6';
         $planotreino->dia_treino = '2021-01-06';
         $planotreino->semana = '1';
 

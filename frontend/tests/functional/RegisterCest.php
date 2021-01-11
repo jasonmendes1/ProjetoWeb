@@ -8,7 +8,7 @@ class RegisterCest
         // Navegação desde Index até Registo
         $I->amOnPage(\yii::$app->homeUrl);
         $I->see('Fitness League');
-        $I->click('Convidado');
+        //$I->click('Convidado');
         $I->click('Registar');
 
         // Inserção de Dados
@@ -28,7 +28,7 @@ class RegisterCest
 
         $I->fillField('Num Tele', '912345678');
         $I->fillField('Nif', '123456789');
-
+        
         //Final Create
         $I->click('signup-button');
         $I->see('Thank you for registration. Please check your inbox for verification email.');

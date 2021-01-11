@@ -15,7 +15,6 @@ class PlanoTreinoCest
         $I->fillField('Password', 'funcionariotrainer');
         $I->see('Remember Me');
         $I->click('login-button');
-        //$I->see('Congratulations!');
 
         $I->see('Fitness League');
         $I->click('Bem Vindo');

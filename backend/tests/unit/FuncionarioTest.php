@@ -18,19 +18,8 @@ class FuncionarioTest extends \Codeception\Test\Unit
     protected function _after()
     {
     }
-
-    // não tá afuncionar
-        // não tá afuncionar
-            // não tá afuncionar
-                // não tá afuncionar
-                    // não tá afuncionar
-                        // não tá afuncionar
-                            // não tá afuncionar
-                                // não tá afuncionar
-                                    // não tá afuncionar
-                                        // não tá afuncionar
-                                            // não tá afuncionar
-                                                // não tá afuncionar
+    
+    
     public function testValidation()
     {
 
@@ -59,8 +48,6 @@ class FuncionarioTest extends \Codeception\Test\Unit
         $this->assertFalse($funcionario->validate(['dt_nascimento']));
         $funcionario->dt_nascimento = '1999-12-27';
         $this->assertTrue($funcionario->validate(['dt_nascimento']));
-
-        NÃ SEIE PORQUIÊ DE ISTO NÃ STAR A DÁRE.
 */
 
         $funcionario->sexo = null;
@@ -85,12 +72,7 @@ class FuncionarioTest extends \Codeception\Test\Unit
 
     function testSavingUser()
     {
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
-        //DÁ ERRO
-        /*
+        
         $user = new User();
         $user->username = 'testefuncionario';
         $user->email = 'testefuncionario@teste.com';
@@ -100,47 +82,43 @@ class FuncionarioTest extends \Codeception\Test\Unit
         $user->generateEmailVerificationToken();
         $user->status = 10;
 
-        $user->save();*/
+        $user->save();
 
         $funcionario = new Funcionario();
-        $funcionario->User_id = 15;
-        $funcionario->primeiroNome = 'Jason';
-        $funcionario->apelido = 'Mendes';
+        $funcionario->User_id = $user->id;
+        $funcionario->primeiroNome= 'Teste';
+        $funcionario->apelido = 'Funcionario';
         $funcionario->dt_nascimento = DateTime::createFromFormat('m-d-Y', '12-27-1999')->format('Y-m-d');
         $funcionario->sexo = 'Masculino';
         $funcionario->avatar = 'avatar.png';
         $funcionario->num_tele = 123456789;
-        $funcionario->cargo_id = 2;
-        var_dump($funcionario);
-        ob_flush();
+        $funcionario->cargo_id = 3;
         $funcionario->save();
-        //var_dump($funcionario);
-        //ob_flush();
 
-        $this->tester->seeInDatabase('funcionario', ['primeiroNome' => 'Jason']);
+        $this->tester->seeInDatabase('funcionario', ['primeiroNome' => 'Teste']);
     }
 
-    /*
+    
     function testNameCanBeChanged()
     {
-        $id = $this->tester->grabRecord('common\models\Funcionario', ['primeiroNome' => 'Jason']);
+        $id = $this->tester->grabRecord('common\models\Funcionario', ['primeiroNome' => 'Teste']);
 
         $funcionario = Funcionario::findOne($id);
-        $funcionario->primeiroNome = ('JasonTeste');
+        $funcionario->primeiroNome = ('Testeteste');
         $funcionario->save();
 
-        $this->tester->seeRecord('common\models\Funcionario', ['primeiroNome' => 'JasonTeste']);
-        $this->tester->dontSeeRecord('common\models\Funcionario', ['primeiroNome' => 'Jason']);
+        $this->tester->seeRecord('common\models\Funcionario', ['primeiroNome' => 'Testeteste']);
+        $this->tester->dontSeeRecord('common\models\Funcionario', ['primeiroNome' => 'Teste']);
     }
     
-    /*
+    
     function testUserDeleted()
     {
-        $id = $this->tester->grabRecord('common\models\Funcionario', ['primeiroNome' => 'JasonTeste']);
+        $id = $this->tester->grabRecord('common\models\Funcionario', ['primeiroNome' => 'Testeteste']);
 
         $funcionario = Funcionario::findOne($id);
         $funcionario->delete();
 
-        $this->tester->dontSeeRecord('common\models\Funcionario', ['primeiroNome' => 'JasonTeste']);
-    }*/
+        $this->tester->dontSeeRecord('common\models\Funcionario', ['primeiroNome' => 'Testeteste']);
+    }
 }

@@ -11,9 +11,9 @@ class RegistarFuncionarioCest
         $I->fillField('Password', 'testefuncional');
         $I->see('Remember Me');
         $I->click('login-button');
-        $I->see('Bem vindo');
+        //$I->see('Bem vindo');
         
-        $I->click('Registar Funcionário');
+        $I->click('Clique aqui para adicionar um funcionário');
         // Inserção de Dados
         $I->fillField('Username', 'funcionariotrainer');
         $I->fillField('Email', 'funcionariotrainer@nutricionario.com');

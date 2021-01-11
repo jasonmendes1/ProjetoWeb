@@ -12,7 +12,7 @@ $this->title = 'My Yii Application';
 
         <p>
         <p>
-        <a class="btn btn-lg btn-success" href="index.php/site/signup">Clique aqui para adicionar um funcionário.</a></p>
+        <a id="addfunc" class="btn btn-lg btn-success" href="index.php/site/signup">Clique aqui para adicionar um funcionário.</a></p>
     </div>
 
     <div class="body-content">

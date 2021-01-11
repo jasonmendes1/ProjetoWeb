@@ -21,23 +21,8 @@ class ClienteTest extends \Codeception\Test\Unit
     protected function _after()
     {
     }
-
-
-    // NÃO TÁ A FUNCIONAR
-        // NÃO TÁ A FUNCIONAR
-            // NÃO TÁ A FUNCIONAR
-                // NÃO TÁ A FUNCIONAR
-                    // NÃO TÁ A FUNCIONAR
-                        // NÃO TÁ A FUNCIONAR
-                            // NÃO TÁ A FUNCIONAR
-                                // NÃO TÁ A FUNCIONAR
-                                    // NÃO TÁ A FUNCIONAR
-                                        // NÃO TÁ A FUNCIONAR
-                                            // NÃO TÁ A FUNCIONAR
-                                                // NÃO TÁ A FUNCIONAR
-                                                    // NÃO TÁ A FUNCIONAR
-                                                        // NÃO TÁ A FUNCIONAR
-                                                        
+      
+    
     public function testValidation()
     {
         $cliente = new Cliente();
@@ -63,20 +48,19 @@ class ClienteTest extends \Codeception\Test\Unit
         $cliente->dt_nascimento = 'a1999-12-27 00:00:00';
         $this->assertTrue($cliente->validate(['dt_nascimento']));
         
-        //$cliente->dt_nascimento = 'Texto';
-        //$this->assertFalse($cliente->validate(['dt_nascimento']));
+        $cliente->dt_nascimento = 'Texto';
+        $this->assertFalse($cliente->validate(['dt_nascimento']));
 
-        */
-
-        //$cliente->dt_nascimento = 123456789;
-        //$this->assertTrue($cliente->validate(['dt_nascimento']));
-        /*
+        $cliente->dt_nascimento = 123456789;
+        $this->assertTrue($cliente->validate(['dt_nascimento']));
+        
         $data = date('Y-m-d');
         codecept_debug($data);
         $cliente->dt_nascimento = $data;
         $this->assertTrue($cliente->validate(['dt_nascimento']));
         codecept_debug($cliente->errors);
         */
+        
         $cliente->sexo = null;
         $this->assertFalse($cliente->validate(['sexo']));
         $cliente->sexo = 'fghnvghtoolooooongnafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
@@ -136,7 +120,6 @@ class ClienteTest extends \Codeception\Test\Unit
     {
         $user = new User();
         $cliente = new Cliente();
-
         $user->username = 'testecliente';
         $user->email = 'testecliente@teste.com';
 
@@ -148,7 +131,7 @@ class ClienteTest extends \Codeception\Test\Unit
         $user->save();
       
         $cliente->User_id = $user->id;
-        $cliente->User_id = 14;
+        //$cliente->User_id = 11;
         $cliente->primeiroNome = 'Teste';
         $cliente->apelido = 'Cliente';
         $cliente->dt_nascimento = DateTime::createFromFormat('m-d-Y', '12-27-1999')->format('Y-m-d');
@@ -165,34 +148,33 @@ class ClienteTest extends \Codeception\Test\Unit
         ob_flush();
         $cliente->save();
         
-        //$this->tester->seeInDatabase('cliente', ['primeiroNome' => 'tiago']);
         $this->tester->seeInDatabase('cliente', ['primeiroNome' => 'Teste']);
 
     }
 
-    /*
+    
     function testNameCanBeChanged()
     {
-        $id = $this->tester->grabRecord('common\models\Cliente', ['primeiroNome' => 'Jason']);
+        $id = $this->tester->grabRecord('common\models\Cliente', ['primeiroNome' => 'Teste']);
 
         $cliente = Cliente::findOne($id);
-        $cliente->primeiroNome = ('JasonTeste');
+        $cliente->primeiroNome = ('Testeteste');
         $cliente->save();
 
-        $this->tester->seeRecord('common\models\Cliente', ['primeiroNome' => 'JasonTeste']);
-        $this->tester->dontSeeRecord('common\models\Cliente', ['primeiroNome' => 'Jason']);
+        $this->tester->seeRecord('common\models\Cliente', ['primeiroNome' => 'Testeteste']);
+        $this->tester->dontSeeRecord('common\models\Cliente', ['primeiroNome' => 'Teste']);
     }
     
 
     function testUserDeleted()
     {
-        $id = $this->tester->grabRecord('common\models\Cliente', ['primeiroNome' => 'JasonTeste']);
+        $id = $this->tester->grabRecord('common\models\Cliente', ['primeiroNome' => 'Testeteste']);
 
         $cliente = Cliente::findOne($id);
         $cliente->delete();
 
-        $this->tester->dontSeeRecord('common\models\Cliente', ['primeiroNome' => 'JasonTeste']);
+        $this->tester->dontSeeRecord('common\models\Cliente', ['primeiroNome' => 'Testeteste']);
     }
-    */
+    
 
 }

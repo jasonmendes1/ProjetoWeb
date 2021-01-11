@@ -35,23 +35,23 @@ class CargoTest extends \Codeception\Test\Unit
     {
 
         $cargo = new Cargo();
-        $cargo->cargo = ('Personal Trainer');
+        $cargo->cargo = ('Personal Trainer Teste');
 
         $cargo->save();
-        $this->tester->seeInDatabase('cargo', ['cargo' => 'Personal Trainer']);
+        $this->tester->seeInDatabase('cargo', ['cargo' => 'Personal Trainer Teste']);
     }
 
     
     function testNameCanBeChanged()
     {
-        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'Personal Trainer']);
+        $id = $this->tester->grabRecord('common\models\Cargo', ['cargo' => 'Personal Trainer Teste']);
 
         $cargo = Cargo::findOne($id);
         $cargo->cargo = ('Personal TrainerTeste');
         $cargo->save();
 
         $this->tester->seeRecord('common\models\Cargo', ['cargo' => 'Personal TrainerTeste']);
-        $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Personal Trainer']);
+        $this->tester->dontSeeRecord('common\models\Cargo', ['cargo' => 'Personal Trainer Teste']);
     }
     
 
