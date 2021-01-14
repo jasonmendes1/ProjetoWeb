@@ -326,6 +326,7 @@ a.desc:after {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    text-decoration: none;
 }
 
 .planostreinobody{
@@ -457,4 +458,10 @@ tr:nth-child(even){
 
 .btnsemanas{
     color:black;
+}
+
+.diasemana{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
