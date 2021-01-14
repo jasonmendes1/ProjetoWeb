@@ -133,6 +133,7 @@ class PlanosNutricaoController extends Controller
 
         $planosnutri = [];
         $ementas = [];
+        $semanas = [];
 
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
@@ -143,31 +144,93 @@ class PlanosNutricaoController extends Controller
         }
 
         if(count($planosnutri) >= 1){
-            foreach($planosnutri as $pn){
-                if($pn->Segunda != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Segunda])->one());
-                }
-                if($pn->Terca != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Terca])->one());
-                }
-                if($pn->Quarta != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quarta])->one());
-                }
-                if($pn->Quinta != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Quinta])->one());
-                }
-                if($pn->Sexta != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sexta])->one());
-                }
-                if($pn->Sabado != null){
-                    array_push($ementas, Ementa::find()->where(['IDEmenta' => $pn->Sabado])->one());
-                }
+            if($planosnutri[0]->Segunda != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Segunda])->one());
             }
+            if($planosnutri[0]->Terca != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Terca])->one());
+            }
+            if($planosnutri[0]->Quarta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quarta])->one());
+            }
+            if($planosnutri[0]->Quinta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quinta])->one());
+            }
+            if($planosnutri[0]->Sexta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sexta])->one());
+            }
+            if($planosnutri[0]->Sabado != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sabado])->one());
+            }
+        }
+        
+        if(count($planosnutri) >= 1){
+            foreach($planosnutri as $pn){
+                array_push($semanas, $pn->Semana);
+            }
+            asort($semanas);
         }
 
         return $this->render('planosnutri',[
             'planosnutricao' => $planosnutri,
-            'ementas' => $ementas
+            'ementas' => $ementas,
+            'semanas' => $semanas,
+            'selectedsemana' => $semanas[0],
+        ]);
+    }
+
+    public function actionSelectsemana($semana){
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoNutricao != null){
+                    array_push($planosnutri,PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+                }
+            }
+        }
+
+        
+
+        $ementas = [];
+        $planosnutri = [];
+        $planontri = [];
+        $semanas = [];
+
+        array_push($planontri,PlanosNutricao::find()->where(['Semana' => $semana])->one());
+
+        if($planosnutri[0]->Segunda != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Segunda])->one());
+        }
+        if($planosnutri[0]->Terca != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Terca])->one());
+        }
+        if($planosnutri[0]->Quarta != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quarta])->one());
+        }
+        if($planosnutri[0]->Quinta != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quinta])->one());
+        }
+        if($planosnutri[0]->Sexta != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sexta])->one());
+        }
+        if($planosnutri[0]->Sabado != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sabado])->one());
+        }
+
+        if(count($planosnutri) >= 1){
+            foreach($planosnutri as $pn){
+                array_push($semanas, $pn->Semana);
+            }
+            asort($semanas);
+        }
+        
+
+        return $this->render('planosnutri', [
+            'planosnutricao' => $planosnutri,
+            'ementas' => $ementas,
+            'semanas' => $semanas,
+            'selectedsemana' => $semana,
         ]);
     }
 
