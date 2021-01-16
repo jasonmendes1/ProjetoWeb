@@ -63,7 +63,7 @@
         <div class="headerplanostreinonutri">
             <?php foreach($semanas as $smn){ ?>
                 <div>
-                    <?= Html::a($smn.'º Semana', ['selectsemana', 'semana' => $smn], ['class' => 'btnsemana','data-method' => 'get']) ?>
+                    <?= Html::a($smn.'º Semana', ['selectsemana', 'semana' => $smn], ['class' => 'btnsemana']) ?>
                 </div>
             <?php };?>
         </div>
@@ -75,7 +75,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Segunda-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Segunda'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>
@@ -87,7 +87,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Terça-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Terca'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>
@@ -99,7 +99,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Quarta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Quarta'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>
@@ -111,7 +111,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Quinta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Quinta'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>
@@ -123,7 +123,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Sexta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Sexta'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>
@@ -135,7 +135,7 @@
                                     $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                     $data = date('Y-m-d',$tsforweekday);
                                 ?>
-                                <?= Html::a('Sábado', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                                <?= Html::a('Sábado', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Sabado'], ['class' => 'dia']) ?>
                                 <?php 
                                 echo $data;
                             ?>

@@ -182,6 +182,11 @@ class PlanosNutricaoController extends Controller
     public function actionSelectsemana($semana){
         $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
 
+        $ementas = [];
+        $planosnutri = [];
+        //$planontri = [];
+        $semanas = [];
+
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
                 if($plano->IDPlanoNutricao != null){
@@ -190,18 +195,12 @@ class PlanosNutricaoController extends Controller
             }
         }
 
-        
-
-        $ementas = [];
-        $planosnutri = [];
-        $planontri = [];
-        $semanas = [];
-
-        array_push($planontri,PlanosNutricao::find()->where(['Semana' => $semana])->one());
+        //array_push($planontri,PlanosNutricao::find()->where(['Semana' => $semana])->one());
 
         if($planosnutri[0]->Segunda != null){
             array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Segunda])->one());
         }
+        /*
         if($planosnutri[0]->Terca != null){
             array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Terca])->one());
         }
@@ -216,7 +215,7 @@ class PlanosNutricaoController extends Controller
         }
         if($planosnutri[0]->Sabado != null){
             array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sabado])->one());
-        }
+        }*/
 
         if(count($planosnutri) >= 1){
             foreach($planosnutri as $pn){
@@ -227,7 +226,55 @@ class PlanosNutricaoController extends Controller
         
 
         return $this->render('planosnutri', [
-            'planosnutricao' => $planosnutri,
+            //'planosnutricao' => $planosnutri,
+            'ementas' => $ementas,
+            'semanas' => $semanas,
+            'selectedsemana' => $semana,
+        ]);
+    }
+
+
+    public function actionSelectdia($semana,$diasemana){
+        $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
+
+        $ementas = [];
+        $planosnutri = [];
+        $semanas = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoNutricao != null){
+                    $find = PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao, 'Semana' => $semana])->one();
+                    if($find != null){
+                        array_push($planosnutri,$find);
+                    }
+                }
+            }
+        }
+        
+        if($planosnutri[0]->$diasemana != null){
+            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->$diasemana])->one());
+        }
+
+        unset($planosnutri);
+        $planosnutri = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoNutricao != null){
+                    array_push($planosnutri,PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+                }
+            }
+        }
+
+        if(count($planosnutri) >= 1){
+            foreach($planosnutri as $pn){
+                array_push($semanas, $pn->Semana);
+            }
+            asort($semanas);
+        }
+
+        return $this->render('planosnutri',[
             'ementas' => $ementas,
             'semanas' => $semanas,
             'selectedsemana' => $semana,
