@@ -56,7 +56,7 @@ return [
 
                     'extraPatterns' => [
                         'POST register' => 'registeruser', // 'xxxx' é 'actionXxxx'
-                        'POST login' => 'loginuser', // 'xxxx' é 'actionXxxx'
+                        'POST verificaLogin' => 'verifica', // 'xxxx' é 'actionXxxx'
                     ]
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cargo'], 'pluralize' => false,

@@ -76,4 +76,37 @@ class UserregisterandloginController extends ActiveController
 
     }
 
+    public function actionVerifica()
+    {
+        $userModel = new $this->modelClass;
+        $request = Yii::$app->request;
+        $userInfo = array();
+
+
+        $user = $request->get('username');
+        $pw = $request->get('password_hash');
+        $key = "tHeApAcHe6410111";
+
+
+        $dec = openssl_decrypt(base64_decode($pw), "aes-128-ecb", $key, OPENSSL_RAW_DATA);
+        if (!($userModel::find()->where("username=" . '\'' . $user . '\'')->one())) {
+            return ['id' => -1];
+        }
+
+        $rec = $userModel::find()->where("username=" . '\'' . $user . '\'')->one();
+        array_push(
+            $userInfo,
+            [
+                "id" => $rec->Id,
+                "username" => $rec->username,
+                "email" => $rec->email,
+            ]
+        );
+        if ($rec->validatePassword($dec)) {
+            return $userInfo;
+        } else {
+            return ['id' => -1];
+        }
+    }
+
 }
