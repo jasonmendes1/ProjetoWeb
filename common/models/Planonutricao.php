@@ -32,7 +32,7 @@ class Planonutricao extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planonutricao';
+        return 'planosnutricao';
     }
 
     /**

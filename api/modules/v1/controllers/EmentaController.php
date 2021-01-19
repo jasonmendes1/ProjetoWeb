@@ -32,4 +32,34 @@ class EmentaController extends ActiveController
         $recs = $ementaModel::find()->all();
         return ['total' => count($recs)];
     }
+    public function actionNomeementa($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->nomeEmenta;
+    }
+    public function actionPequenoalmoco($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->PequenoAlmoco;
+    }
+    public function actionAlmoco($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->Almoco;
+    }
+    public function actionLanche1($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->Lanche1;
+    }
+    public function actionLanche2($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->Lanche2;
+    }
+    public function actionJantar($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->Jantar;
+    }
 }

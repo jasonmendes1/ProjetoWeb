@@ -40,4 +40,9 @@ class CargoController extends ActiveController
         $ret = $cargoModel->save();
         return ['SaveError' => $ret];
     }
+    public function actionCargo($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->cargo;
+    }
 }

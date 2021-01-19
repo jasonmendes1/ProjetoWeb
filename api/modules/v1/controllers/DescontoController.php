@@ -32,4 +32,14 @@ class DescontoController extends ActiveController
         $recs = $descontoModel::find()->all();
         return ['total' => count($recs)];
     }
+    public function actionNome($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->nome;
+    }
+    public function actionQuantidade($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->quantidade;
+    }
 }

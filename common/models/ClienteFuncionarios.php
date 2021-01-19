@@ -7,7 +7,8 @@ use Yii;
 /**
  * This is the model class for table "cliente_funcionarios".
  *
- * @property int|null $id_cliente
+ * @property int $id
+ * @property int $id_cliente
  * @property int $id_PT
  * @property int $id_nutricionista
  *
@@ -31,8 +32,8 @@ class ClienteFuncionarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id_cliente', 'id_PT', 'id_nutricionista'], 'required'],
             [['id_cliente', 'id_PT', 'id_nutricionista'], 'integer'],
-            [['id_PT', 'id_nutricionista'], 'required'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
             [['id_PT'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['id_PT' => 'IDFuncionario']],
             [['id_nutricionista'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['id_nutricionista' => 'IDFuncionario']],
@@ -45,6 +46,7 @@ class ClienteFuncionarios extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'id_cliente' => 'Id Cliente',
             'id_PT' => 'Id Pt',
             'id_nutricionista' => 'Id Nutricionista',

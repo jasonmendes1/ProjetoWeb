@@ -9,7 +9,6 @@ use Yii;
 class UserregisterandloginController extends ActiveController
 {
     public $modelClass = 'common\models\User';
-    public $modelProfile = 'common\models\Profile';
     public $modelSignin = 'common\models\SignupForm';
     public $modelLogin = 'common\models\Loginform';
 
