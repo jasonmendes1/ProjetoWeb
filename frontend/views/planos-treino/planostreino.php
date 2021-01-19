@@ -64,7 +64,7 @@ $this->title = 'Planos de Treino';
         <div class="headerplanostreinonutri">
             <?php foreach($semanas as $smn){?>
                 <div>
-                    <?= Html::a($smn.'º Semana', ['selectsemana', 'semana' => $smn]) ?>
+                    <?= Html::a($smn.'º Semana', ['selectsemana', 'smn' => $smn]) ?>
                 </div>
             <?php };?>
         </div>
@@ -72,11 +72,18 @@ $this->title = 'Planos de Treino';
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Monday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Segunda-Feira', ['selectdia', 'selectedsemana' => $semana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                         ?>
@@ -84,11 +91,18 @@ $this->title = 'Planos de Treino';
                 </div>
                 <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php   
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 2);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Tuesday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Terça-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -96,11 +110,18 @@ $this->title = 'Planos de Treino';
                 </div>
                 <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 3);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Wednesday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Quarta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -108,11 +129,18 @@ $this->title = 'Planos de Treino';
                 </div>
                 <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 4);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Thursday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Quinta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -120,11 +148,18 @@ $this->title = 'Planos de Treino';
                 </div>
                 <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 5);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Friday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Sexta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -132,11 +167,18 @@ $this->title = 'Planos de Treino';
                 </div>
                 <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
                                 $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 6);
                                 $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Saturday this week'));
+                                $semana = -1;
+                            }
                             ?>
-                            <?= Html::a('Sábado', ['selectdia', 'smn' => $selectedsemana, 'dia' => $data], ['class' => 'dia', 'data-method' => 'get']) ?>
+                            <?= Html::a('Sábado', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
                             <?php 
                             echo $data;
                             ?>

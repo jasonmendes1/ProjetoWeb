@@ -141,6 +141,7 @@ class PlanosTreinoController extends Controller
         $planostreino = [];
         $semanas = [];
         $exercicios = [];
+        $selectedsemana = null;
 
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
@@ -159,23 +160,45 @@ class PlanosTreinoController extends Controller
         if(count($semanas) >= 1){
             $semanas = array_unique($semanas);
             asort($semanas);
+
+            $timestamp = mktime(0,0,0,1,1,2021) + ($semanas[0] *7*24*60*60);
+            $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
+            $data = date('Y-m-d',$tsforweekday);
+        }
+
+        unset($planostreino);
+        $planostreino = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoTreino != null){
+                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino, 'dia_treino' => $data])->one());
+                }
+            }
         }
 
         if(count($planostreino) >= 1){
             foreach($planostreino as $pt){
-                if($pt->semana == $semanas[0]){
-                    foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
-                        array_push($exercicios,$exer);
+                if($pt != null){
+                    if($pt->semana == $semanas[0]){
+                        foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
+                            array_push($exercicios,$exer);
+                        }
                     }
                 }
             }
         }
+
+        if(count($semanas) >= 1){
+            $selectedsemana = $semanas[0];
+        }
+
         
         return $this->render('planostreino', [
         'planostreino' => $planostreino,
         'semanas' => $semanas,
         'exercicios' => $exercicios,
-        'selectedsemana' => $semanas[0],
+        'selectedsemana' => $selectedsemana,
         ]);
     }
 
@@ -187,24 +210,14 @@ class PlanosTreinoController extends Controller
 
         $allplans = ListaPlanos::find()->where(['IDCliente' => Yii::$app->user->identity->id])->all();
 
-
         $planostreino = [];
         $semanas = [];
         $exercicios = [];
+
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
                 if($plano->IDPlanoTreino != null){
                     array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
-                }
-            }
-        }
-
-        if(count($planostreino) >= 1){
-            foreach($planostreino as $pt){
-                if($pt->semana == $smn){
-                    foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
-                        array_push($exercicios,$exer);
-                    }
                 }
             }
         }
@@ -218,11 +231,38 @@ class PlanosTreinoController extends Controller
         if(count($semanas) >= 1){
             $semanas = array_unique($semanas);
             asort($semanas);
+
+            $timestamp = mktime(0,0,0,1,1,2021) + ($semanas[0] *7*24*60*60);
+            $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
+            $data = date('Y-m-d',$tsforweekday);
         }
 
+        
+        unset($planostreino);
+        $planostreino = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoTreino != null){
+                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino, 'dia_treino' => $data])->one());
+                }
+            }
+        }
+
+        if(count($planostreino) >= 1){
+            foreach($planostreino as $pt){
+                if($pt != null){
+                    if($pt->semana == $smn){
+                        foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
+                            array_push($exercicios,$exer);
+                        }
+                    }
+                }
+            }
+        }
 
         return $this->render('planostreino', [
-            'planostreino' => $planostreino,
+            //'planostreino' => $planostreino,
             'exercicios' => $exercicios,
             'semanas' => $semanas,
             'selectedsemana' => $smn,
@@ -235,6 +275,31 @@ class PlanosTreinoController extends Controller
         $planostreino = [];
         $semanas = [];
         $exercicios = [];
+
+        if(count($allplans) >= 1){
+            foreach($allplans as $plano){
+                if($plano->IDPlanoTreino != null){
+                    if(PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino, 'dia_treino' => $dia])->one() != null){
+                        array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino, 'dia_treino' => $dia])->one());
+                    }
+                }
+            }
+        }
+
+
+        if(count($planostreino) >= 1){
+            foreach($planostreino as $pt){
+                if(($pt->semana == $selectedsemana) && ($selectedsemana != -1)){
+                    foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino])->all() as $exer){
+                        array_push($exercicios,$exer);
+                    }
+                }
+            }
+        }
+
+        unset($planostreino);
+        $planostreino = [];
+        
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
                 if($plano->IDPlanoTreino != null){
@@ -242,20 +307,12 @@ class PlanosTreinoController extends Controller
                 }
             }
         }
-        
-        if(count($planostreino) >= 1){
-            foreach($planostreino as $pt){
-                if($pt->semana == $selectedsemana){
-                    foreach(Exercicio::find()->where(['IDPlanoTreino' => $pt->IDPlanoTreino, 'dia_treino' => $dia])->all() as $exer){
-                        array_push($exercicios,$exer);
-                    }
-                }
-            }
-        }
 
         if(count($planostreino) >= 1){
             foreach($planostreino as $pt){
-                array_push($semanas,$pt->semana);
+                array_push($semanas, $pt->semana);
+                $semanas = array_unique($semanas);
+                asort($semanas);
             }
         }
 
@@ -264,8 +321,12 @@ class PlanosTreinoController extends Controller
             asort($semanas);
         }
 
+        if($selectedsemana == -1){
+            $selectedsemana = date('W',strtotime('Monday this week'));
+        }
+
         return $this->render('planostreino',[
-            'planostreino' => $planostreino,
+            //'planostreino' => $planostreino,
             'exercicios' => $exercicios,
             'semanas' => $semanas,
             'selectedsemana' => $selectedsemana,
