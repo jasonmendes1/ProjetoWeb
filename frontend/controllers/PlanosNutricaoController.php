@@ -134,6 +134,7 @@ class PlanosNutricaoController extends Controller
         $planosnutri = [];
         $ementas = [];
         $semanas = [];
+        $selectedsemana = null;
 
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
@@ -164,6 +165,7 @@ class PlanosNutricaoController extends Controller
             }
         }
         
+        
         if(count($planosnutri) >= 1){
             foreach($planosnutri as $pn){
                 array_push($semanas, $pn->Semana);
@@ -171,11 +173,15 @@ class PlanosNutricaoController extends Controller
             asort($semanas);
         }
 
+        if(count($semanas) >= 1){
+            $selectedsemana = $semanas[0];
+        }
+
         return $this->render('planosnutri',[
             'planosnutricao' => $planosnutri,
             'ementas' => $ementas,
             'semanas' => $semanas,
-            'selectedsemana' => $semanas[0],
+            'selectedsemana' => $selectedsemana,
         ]);
     }
 
@@ -243,7 +249,7 @@ class PlanosNutricaoController extends Controller
 
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
-                if($plano->IDPlanoNutricao != null){
+                if(($plano->IDPlanoNutricao != null) && ($semana != -1)){
                     $find = PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao, 'Semana' => $semana])->one();
                     if($find != null){
                         array_push($planosnutri,$find);
@@ -252,8 +258,10 @@ class PlanosNutricaoController extends Controller
             }
         }
         
-        if($planosnutri[0]->$diasemana != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->$diasemana])->one());
+        if(count($planosnutri) >= 1){
+            if($planosnutri[0]->$diasemana != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->$diasemana])->one());
+            }
         }
 
         unset($planosnutri);
@@ -272,6 +280,10 @@ class PlanosNutricaoController extends Controller
                 array_push($semanas, $pn->Semana);
             }
             asort($semanas);
+        }
+
+        if($semana == -1){
+            $semana = date('W',strtotime('Monday this week'));
         }
 
         return $this->render('planosnutri',[

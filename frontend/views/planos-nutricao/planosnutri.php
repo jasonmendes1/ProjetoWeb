@@ -71,74 +71,105 @@
             <div class="bodytreinoheader">
                 <div id="segunda" class="semanabtn" onclick="chgcolor('segunda')">
                     <div class = "diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Segunda'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                
+                                $data = date('Y-m-d',strtotime('monday this week'));
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Segunda'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div>
                 </div>
                 <div id="terca" class="semanabtn" onclick="chgcolor('terca')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Terca'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 2);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('Tuesday this week'));
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Terca'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div>
                 </div>
                 <div id="quarta" class="semanabtn" onclick="chgcolor('quarta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Quarta'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 3);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('wednesday this week'));
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quarta'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div>
                 </div>
                 <div id="quinta" class="semanabtn" onclick="chgcolor('quinta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Quinta'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 4);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('thursday this week'));;
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quinta'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div>
                 </div>
                 <div id="sexta" class="semanabtn" onclick="chgcolor('sexta')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Sexta'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 5);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('friday this week'));
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sexta'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div>
                 </div>
                 <div id="sabado" class="semanabtn" onclick="chgcolor('sabado')">
                     <div class="diasemana">
-                        <?php $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
-                                    $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 1);
-                                    $data = date('Y-m-d',$tsforweekday);
-                                ?>
-                                <?= Html::a('Sábado', ['selectdia', 'semana' => $selectedsemana, 'diasemana' => 'Sabado'], ['class' => 'dia']) ?>
-                                <?php 
-                                echo $data;
-                            ?>
+                        <?php 
+                            if($selectedsemana != null){
+                                $timestamp = mktime(0,0,0,1,1,2021) + ($selectedsemana *7*24*60*60);
+                                $tsforweekday = $timestamp - 86400 * (date('N', $timestamp) - 6);
+                                $data = date('Y-m-d',$tsforweekday);
+                                $semana = $selectedsemana;
+                            }else{
+                                $data = date('Y-m-d',strtotime('saturday this week'));
+                                $semana = -1;
+                            }
+                        ?>
+                        <?= Html::a('Sábado', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sabado'], ['class' => 'dia']) ?>
+                        <?=$data?>
                     </div> 
                 </div>
             </div>
@@ -148,7 +179,11 @@
                         Pequeno Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->PequenoAlmoco?>
+                        <?php
+                            if(count($ementas) >= 1){
+                                echo $ementas[0]->PequenoAlmoco;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -156,7 +191,11 @@
                         Almoço
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Almoco?>
+                        <?php
+                            if(count($ementas) >= 1){
+                                echo $ementas[0]->Almoco;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -164,7 +203,11 @@
                         1º Lanche
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Lanche1?>
+                        <?php
+                            if(count($ementas) >= 1){
+                                echo $ementas[0]->Lanche1;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -172,7 +215,11 @@
                         2º Lanche 
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Lanche2?>
+                        <?php
+                            if(count($ementas) >= 1){
+                                echo $ementas[0]->Lanche2;
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="bodynutriitem">
@@ -180,7 +227,11 @@
                         Jantar
                     </div>
                     <div class="bodynutriitembody">
-                        <?=$ementas[0]->Jantar?>
+                        <?php
+                            if(count($ementas) >= 1){
+                                echo $ementas[0]->Jantar;
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
