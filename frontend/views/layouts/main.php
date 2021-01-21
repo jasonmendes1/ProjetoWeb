@@ -111,7 +111,7 @@ AppAsset::register($this);
                             'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
                             'items' => [
                                 ['label' => 'Ver Perfil', 
-                                'url' => ['funcionario/profile']],
+                                'url' => ['funcionario/profilefunc']],
             
                                 '<li class="divider"></li>',    
             
@@ -147,7 +147,7 @@ AppAsset::register($this);
                             'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
                             'items' => [
                                 ['label' => 'Ver Perfil', 
-                                'url' => ['funcionario/profile']],
+                                'url' => ['funcionario/profilefunc']],
             
                                 '<li class="divider"></li>',    
             

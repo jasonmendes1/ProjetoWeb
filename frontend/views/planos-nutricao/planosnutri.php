@@ -63,7 +63,7 @@
         <div class="headerplanostreinonutri">
             <?php foreach($semanas as $smn){ ?>
                 <div>
-                    <?= Html::a($smn.'º Semana', ['selectsemana', 'semana' => $smn], ['class' => 'btnsemana']) ?>
+                    <?= Html::a($smn.'º Semana', ['selectsemana', 'semana' => $smn], ['class' => 'btnsemanas']) ?>
                 </div>
             <?php };?>
         </div>
