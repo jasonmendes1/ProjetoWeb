@@ -34,6 +34,7 @@ class PlanonutricaoController extends ActiveController
         $recs = $planonutricaoModel::find()->all();
         return ['total' => count($recs)];
     }
+    //por acabar
     public function actionNomeementa($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);

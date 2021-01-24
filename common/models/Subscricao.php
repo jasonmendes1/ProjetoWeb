@@ -10,10 +10,11 @@ use Yii;
  * @property int $IDSubscricao
  * @property float $preco
  * @property int $id_cliente
- * @property int $id_desconto
+ * @property int|null $id_desconto
  * @property int $id_tipo
  * @property string $data_subscricao
  * @property string $data_expirar
+ * @property float|null $total
  *
  * @property Cliente $cliente
  * @property Desconto $desconto
@@ -35,8 +36,8 @@ class Subscricao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['preco', 'id_cliente', 'id_desconto', 'id_tipo', 'data_subscricao', 'data_expirar'], 'required'],
-            [['preco'], 'number'],
+            [['preco', 'id_cliente', 'id_tipo', 'data_subscricao', 'data_expirar'], 'required'],
+            [['preco', 'total'], 'number'],
             [['id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
             [['data_subscricao', 'data_expirar'], 'safe'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
@@ -58,6 +59,7 @@ class Subscricao extends \yii\db\ActiveRecord
             'id_tipo' => 'Id Tipo',
             'data_subscricao' => 'Data Subscricao',
             'data_expirar' => 'Data Expirar',
+            'total' => 'Total',
         ];
     }
 

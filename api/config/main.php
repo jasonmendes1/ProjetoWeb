@@ -172,6 +172,36 @@ return [
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/personaltrainer' => 'personaltrainer', // 'XXX' é 'actionXXX'
+                        'GET {id}/diatreino' => 'diatreino', // 'XXX' é 'actionXXX'
+                        'GET {id}/semana' => 'semana', // 'XXX' é 'actionXXX'
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                    ],
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/clientefuncionarios'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/cliente' => 'cliente', // 'XXX' é 'actionXXX'
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                    ],
+                ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/exercicio'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/planotreino' => 'planotreino', // 'XXX' é 'actionXXX'
+                        'GET {id}/nome' => 'nome', // 'XXX' é 'actionXXX'
+                        'GET {id}/repeticoes' => 'repeticoes', // 'XXX' é 'actionXXX'
+                        'GET {id}/tempo' => 'tempo', // 'XXX' é 'actionXXX'
+                        'GET {id}/serie' => 'serie', // 'XXX' é 'actionXXX'
+                        'GET {id}/repouso' => 'repouso', // 'XXX' é 'actionXXX'
+                        'GET {id}/tempototal' => 'tempototal', // 'XXX' é 'actionXXX'
+                        'GET {id}/nummaquina' => 'nummaquina', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
@@ -181,6 +211,12 @@ return [
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/preco' => 'preco', // 'XXX' é 'actionXXX'
+                        'GET {id}/cliente' => 'cliente', // 'XXX' é 'actionXXX'
+                        'GET {id}/desconto' => 'desconto', // 'XXX' é 'actionXXX'
+                        'GET {id}/datasubscricao' => 'datasubscricao', // 'XXX' é 'actionXXX'
+                        'GET {id}/dataexpirar' => 'dataexpirar', // 'XXX' é 'actionXXX'
+                        'GET {id}/vertotal' => 'vertotal', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
@@ -190,6 +226,7 @@ return [
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/tipo' => 'tipo', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!

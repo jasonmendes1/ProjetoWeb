@@ -32,4 +32,10 @@ class TiposubscricaoController extends ActiveController
         $recs = $tiposubscricaoModel::find()->all();
         return ['total' => count($recs)];
     }
+
+    public function actionTipo($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+        return $model->tipo;
+    }
 }
