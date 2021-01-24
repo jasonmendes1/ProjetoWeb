@@ -119,10 +119,6 @@ AppAsset::register($this);
                                  'url' => ['/event']],
         
                                 '<li class="divider"></li>',
-
-                                ['label' => 'Ver Planos de Treino',
-                                    'url' => ['planos-treino/create']
-                                ],
         
                                 ['label' => 'Criar Plano de Treino',
                                     'url' => ['planos-treino/create']
@@ -155,10 +151,6 @@ AppAsset::register($this);
                                  'url' => ['/event']],
         
                                 '<li class="divider"></li>',
-                                
-                                ['label' => 'Ver Planos de Nutrição',
-                                    'url' => ['planos-nutricao/create']
-                                ],
 
                                 ['label' => 'Criar Plano de Nutrição',
                                     'url' => ['planos-nutricao/create']
