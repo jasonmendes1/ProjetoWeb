@@ -94,7 +94,7 @@ AppAsset::register($this);
                     ],
                     
                     [
-                        'label' => 'Registar/Login',
+                        'label' => 'Logout',
                         'items' => $login,
                     ],
                     
@@ -131,7 +131,7 @@ AppAsset::register($this);
                         ],
                         
                         [
-                            'label' => 'Registar/Login',
+                            'label' => 'Logout',
                             'items' => $login,
                         ],
                         
