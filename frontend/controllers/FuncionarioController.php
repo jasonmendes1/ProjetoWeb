@@ -2,9 +2,14 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Cliente;
+use frontend\models\ClienteFuncionarios;
+use frontend\models\Exercicio;
 use Yii;
 use frontend\models\Funcionario;
 use frontend\models\FuncionarioSearch;
+use frontend\models\ListaPlanos;
+use frontend\models\PlanosTreino;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -123,5 +128,153 @@ class FuncionarioController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionProfilefunc(){
+        $user = Yii::$app->user->identity;
+        $func = Funcionario::find()->where(['User_id' => $user->getId()])->one();
+
+        $cf = [];
+        $clientes = [];
+        $planos = [];
+        $exercicios = [];
+        $client = null;
+        
+
+        if($func->cargo_id == 1){
+            $cargo = "Personal Trainer";
+            foreach(ClienteFuncionarios::find()->where(['id_PT' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+        }elseif($func->cargo_id == 2){
+            $cargo = "Nutricionista";
+            foreach(ClienteFuncionarios::find()->where(['id_nutricionista' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+        }
+
+        foreach($cf as $clifunc){
+            array_push($clientes, Cliente::findOne($clifunc->id_cliente));
+        }
+
+        if(count($clientes) >= 1){
+            $client = $clientes[0];
+        }
+
+        return $this->render('profilefunc',[
+            'func' => $func,
+            'user' => $user,
+            'cargo' => $cargo,
+            'clientes' => $clientes,
+            'planos' => $planos,
+            'exercicios' => $exercicios,
+            'selected' => $client,
+        ]);
+    }
+
+    public function actionSelectcliente($cliente){
+        $user = Yii::$app->user->identity;
+        $func = Funcionario::find()->where(['User_id' => $user->getId()])->one();
+
+        $cf = [];
+        $clientes = [];
+        $planos = [];
+        $exercicios = [];
+        $client = null;
+
+        if($func->cargo_id == 1){
+            $cargo = "Personal Trainer";
+            foreach(ClienteFuncionarios::find()->where(['id_PT' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+            foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
+                if($lp->IDPlanoTreino != null){
+                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoTreino));
+                }
+            }
+        }elseif($func->cargo_id == 2){
+            $cargo = "Nutricionista";
+            foreach(ClienteFuncionarios::find()->where(['id_nutricionista' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+            foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
+                if($lp->IDPlanoNutricao != null){
+                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoNutricao));
+                }
+            }
+        }
+
+        foreach($cf as $clifunc){
+            array_push($clientes, Cliente::findOne($clifunc->id_cliente));
+        }
+
+        if(count($clientes) >= 1){
+            $client = Cliente::findOne($cliente);
+        }
+
+        return $this->render('profilefunc',[
+            'func' => $func,
+            'user' => $user,
+            'cargo' => $cargo,
+            'clientes' => $clientes,
+            'planos' => $planos,
+            'exercicios' => $exercicios,
+            'selected' => $client,
+        ]);
+    }
+
+    public function actionSelectplano($plano,$cliente){
+        $user = Yii::$app->user->identity;
+        $func = Funcionario::find()->where(['User_id' => $user->getId()])->one();
+
+        $cf = [];
+        $clientes = [];
+        $planos = [];
+        $exercicios = [];
+        $client = null;
+
+        if($func->cargo_id == 1){
+            $cargo = "Personal Trainer";
+            foreach(ClienteFuncionarios::find()->where(['id_PT' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+            foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
+                if($lp->IDPlanoTreino != null){
+                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoTreino));
+                }
+            }
+        }elseif($func->cargo_id == 2){
+            $cargo = "Nutricionista";
+            foreach(ClienteFuncionarios::find()->where(['id_nutricionista' => $func->IDFuncionario])->all() as $clifunc){
+                array_push($cf,$clifunc);
+            }
+            foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
+                if($lp->IDPlanoNutricao != null){
+                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoNutricao));
+                }
+            }
+        }
+
+        foreach(Exercicio::find()->where(['IDPlanoTreino' => $plano])->all() as $exercicio){
+            array_push($exercicios,$exercicio);
+        }
+
+        foreach($cf as $clifunc){
+            array_push($clientes, Cliente::findOne($clifunc->id_cliente));
+        }
+
+        if(count($clientes) >= 1){
+            $client = Cliente::findOne($cliente);
+        }
+
+        return $this->render('profilefunc',[
+            'func' => $func,
+            'user' => $user,
+            'cargo' => $cargo,
+            'clientes' => $clientes,
+            'planos' => $planos,
+            'exercicios' => $exercicios,
+            'selected' => $client,
+        ]);
     }
 }

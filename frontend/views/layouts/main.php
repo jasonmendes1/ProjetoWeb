@@ -69,49 +69,116 @@ AppAsset::register($this);
         $ifguest = Yii::$app->user->identity->username;
         //$ifguest = Cliente::findOne(['User_id' => Yii::$app->user->id]);
 
-
-
-        echo Nav::widget([
-            'items' => [
-                [
-                    'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
-                    'items' => [
-                        ['label' => 'Ver Perfil', 
-                        'url' => ['cliente/profile']],
-    
-                        '<li class="divider"></li>',    
-    
-                         ['label' => 'Planos de Treino', 
-                         'url' => ['planos-treino/planostreino']],
-    
-                         ['label' => 'Planos de Nutrição', 
-                         'url' => ['planos-nutricao/planosnutri']],
-    
-                         '<li class="divider"></li>',
-    
-                         ['label' => 'Horários Aulas', 
-                         'url' => ['/event']],
-
-                        '<li class="divider"></li>',
-
-                        ['label' => 'Criar Plano de Nutrição',
-                            'url' => ['planos-nutricao/create']
-                        ],
-
-                        ['label' => 'Criar Plano de Treino',
-                            'url' => ['planos-treino/create']
+        if(Cliente::findOne(['User_id' => Yii::$app->user->identity->id])){
+            echo Nav::widget([
+                'items' => [
+                    [
+                        'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                        'items' => [
+                            ['label' => 'Ver Perfil', 
+                            'url' => ['cliente/profile']],
+        
+                            '<li class="divider"></li>',    
+        
+                             ['label' => 'Planos de Treino', 
+                             'url' => ['planos-treino/planostreino']],
+        
+                             ['label' => 'Planos de Nutrição', 
+                             'url' => ['planos-nutricao/planosnutri']],
+        
+                             '<li class="divider"></li>',
+        
+                             ['label' => 'Horários Aulas', 
+                             'url' => ['/event']],
                         ],
                     ],
+                    
+                    [
+                        'label' => 'Registar/Login',
+                        'items' => $login,
+                    ],
+                    
                 ],
-                
-                [
-                    'label' => 'Registar/Login',
-                    'items' => $login,
-                ],
-                
-            ],
-            'options' => ['class' => 'navbar-nav navbar-right'],
-        ]);
+                'options' => ['class' => 'navbar-nav navbar-right'],
+            ]);
+        }else if(Funcionario::findOne(['User_id' => Yii::$app->user->identity->id])){
+            $func = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+            //Se o cargo do funcionario for Personal Trainer
+            if($func->cargo_id == 1){
+                echo Nav::widget([
+                    'items' => [
+                        [
+                            'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                            'items' => [
+                                ['label' => 'Ver Perfil', 
+                                'url' => ['funcionario/profilefunc']],
+            
+                                '<li class="divider"></li>',    
+            
+                                 ['label' => 'Horários Aulas', 
+                                 'url' => ['/event']],
+        
+                                '<li class="divider"></li>',
+
+                                ['label' => 'Ver Planos de Treino',
+                                    'url' => ['planos-treino/create']
+                                ],
+        
+                                ['label' => 'Criar Plano de Treino',
+                                    'url' => ['planos-treino/create']
+                                ],
+                            ],
+                        ],
+                        
+                        [
+                            'label' => 'Registar/Login',
+                            'items' => $login,
+                        ],
+                        
+                    ],
+                    'options' => ['class' => 'navbar-nav navbar-right'],
+                ]);
+
+                //Se o cargo for Nutricionista
+            }elseif($func->cargo_id == 2){
+                echo Nav::widget([
+                    'items' => [
+                        [
+                            'label' => 'Bem Vindo ' . $ifguest, //. $ifguest->primeiroNome . ' ' . $ifguest->apelido,
+                            'items' => [
+                                ['label' => 'Ver Perfil', 
+                                'url' => ['funcionario/profilefunc']],
+            
+                                '<li class="divider"></li>',    
+            
+                                 ['label' => 'Horários Aulas', 
+                                 'url' => ['/event']],
+        
+                                '<li class="divider"></li>',
+                                
+                                ['label' => 'Ver Planos de Nutrição',
+                                    'url' => ['planos-nutricao/create']
+                                ],
+
+                                ['label' => 'Criar Plano de Nutrição',
+                                    'url' => ['planos-nutricao/create']
+                                ],
+                            ],
+                        ],
+                        
+                        [
+                            'label' => 'Registar/Login',
+                            'items' => $login,
+                        ],
+                        
+                    ],
+                    'options' => ['class' => 'navbar-nav navbar-right'],
+                ]);
+            }
+            
+        }
+
+        
     }
 /*
     if (Yii::$app->user->isGuest) {

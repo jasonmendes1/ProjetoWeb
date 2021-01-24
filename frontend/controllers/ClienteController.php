@@ -135,7 +135,7 @@ class ClienteController extends Controller
     public function actionProfile(){
         if(Yii::$app->user->can('verPerfil')){
             $user = Yii::$app->user->identity;
-            $cliente = $this->findModel(Yii::$app->user->identity->getId());
+            $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
 
             $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
 
