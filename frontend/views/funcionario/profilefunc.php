@@ -64,33 +64,98 @@ $this->title = 'Perfil ';
             <?php }; ?>
         </div>
         <div class = "profilebody-planos">
-            <div class = "profilebody-title"><b>Planos Treino</b></div>
-            <?php foreach($planos as $plano){ ?>
-                <div class = "planos">
-                    <div><b>ID: </b><?= Html::a($plano->IDPlanoTreino, ['selectplano', 'plano' => $plano->IDPlanoTreino,'cliente' => $selected->IDCliente], ['class' => 'btnsemanas']) ?></div>
-                    <div style="padding-left:15px"><b>Dia Treino: </b> <?=$plano->dia_treino?></div>
-                </div>
+            <?php
+                if($func->cargo_id == 1){?>
+                    <div class = "profilebody-title"><b>Planos Treino</b></div>
+                <?php }elseif($func->cargo_id == 2){ ?>
+                    <div class = "profilebody-title"><b>Planos Nutrição</b></div>
+                <?php }
+            ?>
+            <?php foreach($planos as $plano){ 
+                if($func->cargo_id == 1){?>
+                    <div class = "planos">
+                        <div><b>ID: </b><?= Html::a($plano->IDPlanoTreino, ['selectplano', 'plano' => $plano->IDPlanoTreino,'cliente' => $selected->IDCliente], ['class' => 'btnsemanas']) ?></div>
+                        <div style="padding-left:15px"><b>Dia Treino: </b> <?=$plano->dia_treino?></div>
+                    </div>
+                <?php }elseif($func->cargo_id == 2){ ?>
+                    <div class = "planos">
+                        <div><b>ID: </b><?= Html::a($plano->IDPlanoNutricao, ['selectplano', 'plano' => $plano->IDPlanoNutricao,'cliente' => $selected->IDCliente], ['class' => 'btnsemanas']) ?></div>
+                        <div style="padding-left:15px"><b>Semana: </b> <?=$plano->Semana?></div>
+                    </div>
+                <?php } ?>
+            
+                
             <?php };?>
         </div>
         <div class = "profilebody-exers">
-            <div class = "profilebody-title"><b>Exercícios</b></div>
-            <?php foreach($exercicios as $exercicio){?>
-                <div class = "exercicios">
-                    <div class="exercicios-up">
-                        <div><b>ID: </b><?=$exercicio->IDExer?></div>
-                        <div><b>Nome: </b><?=$exercicio->nome?></div>
-                        <div><b>Repetições: </b><?=$exercicio->repeticoes?></div>
-                        <div><b>Tempo: </b><?=$exercicio->tempo?> <b> seg</b></div>
-                    </div>
-                    <div class = "exercicios-down">
-                        <div><b>Serie: </b><?=$exercicio->serie?></div>
-                        <div><b>Repouso: </b><?=$exercicio->repouso?><b> seg</b></div>
-                        <div><b>Tempo Total: </b><?=$exercicio->tempo_total?><b> seg</b></div>
-                        <div><b>Nº Maquina: </b><?=$exercicio->num_maquina?></div>
-                    </div>
-                    
-                </div>
-            <?php };?>
+                <?php
+                    if($func->cargo_id == 1){?>
+                        <div class = "profilebody-title"><b>Exercícios</b></div>
+                        <?php foreach($exercicios as $exercicio){?>
+                            <div class = "exercicios">
+                                <div class="exercicios-up">
+                                    <div><b>ID: </b><?=$exercicio->IDExer?></div>
+                                    <div><b>Nome: </b><?=$exercicio->nome?></div>
+                                    <div><b>Repetições: </b><?=$exercicio->repeticoes?></div>
+                                    <div><b>Tempo: </b><?=$exercicio->tempo?> <b> seg</b></div>
+                                </div>
+                                <div class = "exercicios-down">
+                                    <div><b>Serie: </b><?=$exercicio->serie?></div>
+                                    <div><b>Repouso: </b><?=$exercicio->repouso?><b> seg</b></div>
+                                    <div><b>Tempo Total: </b><?=$exercicio->tempo_total?><b> seg</b></div>
+                                    <div><b>Nº Maquina: </b><?=$exercicio->num_maquina?></div>
+                                </div>
+                            </div>
+                        <?php };?>
+                    <?php }elseif($func->cargo_id == 2){ $id = 0;?>
+                        <div class = "profilebody-title"><b>Ementas</b></div>
+                        <?php foreach($ementas as $ementa){?>
+                            <div class = "exercicios">
+                                <?php
+                                    switch($id){
+                                        case 0:
+                                            echo "<div><b>Segunda-Feira</b></div>";
+                                            $id++;
+                                            break;
+                                        case 1:
+                                            echo "<div><b>Terça-Feira</b></div>";
+                                            $id++;
+                                            break;    
+                                        case 2:
+                                            echo "<div><b>Quarta-Feira</b></div>";
+                                            $id++;
+                                            break;
+                                        case 3:
+                                            echo "<div><b>Quinta-Feira</b></div>";
+                                            $id++;
+                                            break;
+                                        case 4:
+                                            echo "<div><b>Sexta-Feira</b></div>";
+                                            $id++;
+                                            break;
+                                        case 5:
+                                            echo "<div><b>Sábado</b></div>";
+                                            $id++;
+                                            break;
+                                    }
+                                ?>
+                                <div class="exercicios-up">
+                                    <div><b>Nome: </b><?=$ementa->nomeEmenta?></div>
+                                    <div><b>Pequeno Almoço: </b><?=$ementa->PequenoAlmoco?></div>
+                                </div>
+                                    <div class="exercicios-up"><div><b>Almoço: </b><?=$ementa->Almoco?></div>
+                                    <div><b>Lanche1: </b><?=$ementa->Lanche1?></div>
+                                </div>
+                                <div class="exercicios-up">
+                                    <div><b>Lanche2: </b><?=$ementa->Lanche2?></div>
+                                    <div><b>Jantar: </b><?=$ementa->Jantar?></div>
+                                </div>
+                                
+                            </div>
+                        <?php };?>
+                    <?php }
+                ?>
+            
         </div>
     </div>
 </div>

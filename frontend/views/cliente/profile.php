@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="profile-btn">
-            <button type="button" onclick="alert('Inscrição Atualizada, Ver como ligar função a button pelo controller')">
+            <button type="button" onclick="alert('Inscrição Atualizada')">
                 Atualizar Inscrição
             </button>
             <button type="button" onclick="alert('Pedido de Personal Trainer enviado')">

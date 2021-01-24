@@ -64,7 +64,7 @@ $this->title = 'Planos de Treino';
         <div class="headerplanostreinonutri">
             <?php foreach($semanas as $smn){?>
                 <div>
-                    <?= Html::a($smn.'º Semana', ['selectsemana', 'smn' => $smn]) ?>
+                    <?= Html::a($smn.'º Semana', ['selectsemana', 'smn' => $smn],['class' => 'btnsemanas']) ?>
                 </div>
             <?php };?>
         </div>
@@ -83,7 +83,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Segunda-Feira', ['selectdia', 'selectedsemana' => $semana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Segunda-Feira', ['selectdia', 'selectedsemana' => $semana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                         ?>
@@ -102,7 +102,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Terça-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Terça-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -121,7 +121,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Quarta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Quarta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -140,7 +140,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Quinta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Quinta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -159,7 +159,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Sexta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Sexta-Feira', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                             ?>
@@ -178,7 +178,7 @@ $this->title = 'Planos de Treino';
                                 $semana = -1;
                             }
                             ?>
-                            <?= Html::a('Sábado', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'dia']) ?>
+                            <?= Html::a('Sábado', ['selectdia', 'selectedsemana' => $selectedsemana, 'dia' => $data], ['class' => 'btnsemanas']) ?>
                             <?php 
                             echo $data;
                             ?>
