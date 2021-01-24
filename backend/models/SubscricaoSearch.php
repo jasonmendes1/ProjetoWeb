@@ -18,7 +18,6 @@ class SubscricaoSearch extends Subscricao
     {
         return [
             [['IDSubscricao', 'id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
-            [['preco', 'total'], 'number'],
             [['data_subscricao', 'data_expirar'], 'safe'],
         ];
     }
@@ -60,7 +59,6 @@ class SubscricaoSearch extends Subscricao
         // grid filtering conditions
         $query->andFilterWhere([
             'IDSubscricao' => $this->IDSubscricao,
-            'preco' => $this->preco,
             'id_cliente' => $this->id_cliente,
             'id_desconto' => $this->id_desconto,
             'id_tipo' => $this->id_tipo,
