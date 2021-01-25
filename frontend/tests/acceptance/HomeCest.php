@@ -19,9 +19,9 @@ class HomeCest
         $I->click('Fazer Login');
         $I->wait(2); // wait for page to be opened
         $I->see('Username');
-        $I->fillField('LoginForm[username]', 'testefuncional');
+        $I->fillField('LoginForm[username]', 'jason');
         $I->wait(1); // wait for page to be opened
-        $I->fillField('LoginForm[password]', 'testefuncional');
+        $I->fillField('LoginForm[password]', '123123123');
         $I->wait(1); // wait for page to be opened
         $I->click('login-button');
         $I->wait(5); // wait for page to be opened
