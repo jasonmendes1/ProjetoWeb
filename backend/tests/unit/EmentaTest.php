@@ -28,8 +28,6 @@ class EmentaTest extends \Codeception\Test\Unit
         $ementa->nomeEmenta = 'Perda de Peso';
         $this->assertTrue($ementa->validate(['nomeEmenta']));
 
-        $ementa->PequenoAlmoco = null;
-        $this->assertTrue($ementa->validate(['PequenoAlmoco']));
         $ementa->PequenoAlmoco = 'fghnvghtoolooooongndsdsadsadsadsadsadsadsadsazdsfsdfdsgfdgsgsbrsgbsbgsfersgsfdgsdsadsadsadsdsadsadsadsadsadasfbfasefebsabfasbfabdsfsfbebaesbfasefbasebfaesfbaesfesbfaesfbasdsadasdadasdsadasafghnvghtoolooooongnaaaaaaameeeefghjkcxdftyhfghjkcxdfghjkcxhsshfgvhjvgjhgjhgjhgjhgj';
         $this->assertFalse($ementa->validate(['PequenoAlmoco']));
         $ementa->PequenoAlmoco = 'PequenoAlmoco';
