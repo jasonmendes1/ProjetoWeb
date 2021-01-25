@@ -16,7 +16,7 @@ class LoginCest
         $I->see('Remember Me');
         $I->click('login-button');
         $I->see('Fitness League');
-        $I->click('Registar/Login');
+        $I->click('Logout');
         $I->click('logout-button');
     }
 
