@@ -15,10 +15,7 @@ class LoginCest
         $I->fillField('Password', '123123123');
         $I->see('Remember Me');
         $I->click('login-button');
-<<<<<<< Updated upstream
         $I->see('Fitness League');
-=======
->>>>>>> Stashed changes
         $I->click('Logout');
         $I->click('logout-button');
     }

@@ -10,13 +10,10 @@ class PlanoNutricaoCest
         $I->see('Fitness League');
         $I->click('Registar/Login');
         $I->click('Fazer Login');
-<<<<<<< Updated upstream
         $I->fillField('Username', 'funcionarionutri');
         $I->fillField('Password', 'funcionarionutri');
-=======
         $I->fillField('Username', 'teste4');
         $I->fillField('Password', 'testeteste');
->>>>>>> Stashed changes
         $I->see('Remember Me');
         $I->click('login-button');
     

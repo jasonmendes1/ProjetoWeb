@@ -8,13 +8,10 @@ class RegisterCest
         // Navegação desde Index até Registo
         $I->amOnPage(\yii::$app->homeUrl);
         $I->see('Fitness League');
-<<<<<<< Updated upstream
         $I->click('Registar/Login');
-=======
 
 
         //$I->click('Convidado');
->>>>>>> Stashed changes
         $I->click('Registar');
 
         // Inserção de Dados
