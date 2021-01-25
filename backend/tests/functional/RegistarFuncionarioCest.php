@@ -16,13 +16,11 @@ class RegistarFuncionarioCest
         $I->click('Menu Administrativo');
         $I->click('Registar Funcionário');
         
-<<<<<<< Updated upstream
         $I->click('Menu Administrativo');
         $I->click('Registar Funcionário');
 
-=======
+
         $I->see('Username');
->>>>>>> Stashed changes
         // Inserção de Dados
         $I->see('Username');
         $I->fillField('Username', 'funcionariotrainer');
@@ -40,13 +38,9 @@ class RegistarFuncionarioCest
         $option = $I->grabTextFrom('select option:nth-child(1)');
         $I->selectOption("select", $option);
 
-        $I->see('signup-button');
-        $I->click('signup-button');
-<<<<<<< Updated upstream
-        $I->see('Thank you for registration.');
+        $I->see('Signup');
+        $I->click('Signup');
 
-=======
         $I->see('Página Administrativa da Fitness League.');
->>>>>>> Stashed changes
     }
 }
