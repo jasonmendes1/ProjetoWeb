@@ -11,11 +11,14 @@ class LoginCest
         $I->click('Registar/Login');
         $I->click('Fazer Login');
         $I->see('Please fill out the following fields to login:');
-        $I->fillField('Username', 'testefuncional');
-        $I->fillField('Password', 'testefuncional');
+        $I->fillField('Username', 'jason');
+        $I->fillField('Password', '123123123');
         $I->see('Remember Me');
         $I->click('login-button');
+<<<<<<< Updated upstream
         $I->see('Fitness League');
+=======
+>>>>>>> Stashed changes
         $I->click('Logout');
         $I->click('logout-button');
     }

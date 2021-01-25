@@ -11,11 +11,18 @@ class RegistarFuncionarioCest
         $I->fillField('Password', '123123123');
         $I->see('Remember Me');
         $I->click('login-button');
-        //$I->see('Bem vindo');
+        $I->see('Página Administrativa da Fitness League.');
+
+        $I->click('Menu Administrativo');
+        $I->click('Registar Funcionário');
         
+<<<<<<< Updated upstream
         $I->click('Menu Administrativo');
         $I->click('Registar Funcionário');
 
+=======
+        $I->see('Username');
+>>>>>>> Stashed changes
         // Inserção de Dados
         $I->see('Username');
         $I->fillField('Username', 'funcionariotrainer');
@@ -35,7 +42,11 @@ class RegistarFuncionarioCest
 
         $I->see('signup-button');
         $I->click('signup-button');
+<<<<<<< Updated upstream
         $I->see('Thank you for registration.');
 
+=======
+        $I->see('Página Administrativa da Fitness League.');
+>>>>>>> Stashed changes
     }
 }
