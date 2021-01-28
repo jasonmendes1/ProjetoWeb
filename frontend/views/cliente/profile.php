@@ -1,6 +1,8 @@
 <?php
 
-    $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
+use yii\bootstrap\Html;
+
+$this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
 
     if($pt != null){
         $ptavatar = $pt->avatar;
@@ -95,14 +97,14 @@
             </div>
         </div>
         <div class="profile-btn">
-            <button type="button" onclick="alert('Inscrição Atualizada')">
-                Atualizar Inscrição
+            <button type="button">
+                <?= Html::a('Atualizar Inscrição',['inscricao'],['class' => 'nohover'])?>
             </button>
-            <button type="button" onclick="alert('Pedido de Personal Trainer enviado')">
-                Pedir Personal Trainer
+            <button type="button">
+                <?= Html::a('Pedir Personal Trainer',['pt'],['class' => 'nohover'])?>
             </button>
-            <button type="button" onclick="alert('Pedido de Nutricionista enviado')">
-                Pedir Nutricionista
+            <button type="button">
+                <?= Html::a('Pedir Nutricionista',['nutri'],['class' => 'nohover'])?>
             </button>
         </div>
     </div>

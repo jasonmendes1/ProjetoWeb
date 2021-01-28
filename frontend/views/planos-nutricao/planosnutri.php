@@ -83,7 +83,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Segunda'], ['class' => 'dia']) ?>
+                        <?= Html::a('Segunda-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Segunda'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Terca'], ['class' => 'dia']) ?>
+                        <?= Html::a('Terça-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Terca'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quarta'], ['class' => 'dia']) ?>
+                        <?= Html::a('Quarta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quarta'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quinta'], ['class' => 'dia']) ?>
+                        <?= Html::a('Quinta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Quinta'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sexta'], ['class' => 'dia']) ?>
+                        <?= Html::a('Sexta-Feira', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sexta'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                                 $semana = -1;
                             }
                         ?>
-                        <?= Html::a('Sábado', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sabado'], ['class' => 'dia']) ?>
+                        <?= Html::a('Sábado', ['selectdia', 'semana' => $semana, 'diasemana' => 'Sabado'], ['class' => 'btnsemanas']) ?>
                         <?=$data?>
                     </div> 
                 </div>

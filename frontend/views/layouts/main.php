@@ -221,6 +221,10 @@ AppAsset::register($this);
                 'label' => 'Contacto',
                 'url' => ['site/contact']
             ],
+            [
+                'label' => 'Imovel',
+                'url' => ['imoveis/imovel']
+            ],
         ],
         'options' => ['class' => 'navbar-nav navbar-right'],
     ]);

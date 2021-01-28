@@ -38,7 +38,7 @@ class PlanosTreinoTest extends \Codeception\Test\Unit
         $planotreino = new Planostreino();
         $planotreino->id_PT = '6';
         $planotreino->dia_treino = '2021-01-06';
-        $planotreino->semana = '1';
+        $planotreino->semana = '01';
 
         $planotreino->save();
         $this->tester->seeInDatabase('planostreino', ['semana' => '1']);

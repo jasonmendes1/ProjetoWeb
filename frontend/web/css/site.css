@@ -563,3 +563,99 @@ tr:nth-child(even){
     border-bottom: solid;
     font-size: x-large;
 }
+
+.nohover{
+    text-decoration: none !important;
+    color: black;
+}
+
+.nohoverr{
+    text-decoration: none !important;
+    pointer-events: none !important;
+    color: black;
+}
+
+.inscbody{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+    border-right: solid;
+    
+}
+
+.options{
+    display: flex;
+    width: 34%;
+    height: 100%;
+    border-right: solid;
+    flex-direction: column;
+}
+
+.conta{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+}   
+
+.infohead{
+    display: flex;
+    height: 20%;
+    border-bottom: solid;
+}
+
+.infobody{
+    display: flex;
+    height: 70%;
+}
+
+.buttons{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 5%;
+}
+
+.pagarconta{
+    display: flex;
+    flex-direction: column;
+    height:90%;
+}
+
+.itemsconta{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.total{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.itemconta{
+    display:flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.opbody{
+    display :flex;
+    flex-direction: column;
+    height:90%;
+}
+
+.opitem{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}

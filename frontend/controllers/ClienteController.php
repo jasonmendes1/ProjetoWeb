@@ -13,6 +13,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use frontend\models\Funcionario;
 use frontend\models\ClienteFuncionarios;
+use frontend\models\Desconto;
+use frontend\models\Subscricao;
+use frontend\models\TipoSubscricao;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -161,6 +164,74 @@ class ClienteController extends Controller
     public function actionTeste($teste){
         return $this->render('profile',[
             'teste' => $teste,
+        ]);
+    }
+
+    public function actionInscricao(){
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+        $tipos_subs = TipoSubscricao::find()->all();
+        $descontos = Desconto::find()->all();
+
+        return $this->render('inscricao',[
+            'cliente' => $cliente,
+            'sub' => $sub,
+            'tipossub' => $tipos_subs,
+            'descontos' => $descontos,
+        ]);
+    }
+
+    public function actionCriarsubscricao(){
+        //1 para criar
+        $option = 1;
+        return $this->render('inscricao',[
+
+            ]);
+    }
+
+    public function actionRenovarsubscricao(){
+        //2 para renovar
+        $option = 2;
+        return $this->render('inscricao',[
+
+            ]);
+    }
+
+    public function actionCalcularsubs($tipo,$desconto,$meses){
+
+        var_dump($meses);
+        var_dump($tipo);
+        var_dump($desconto);
+        die();
+        return $this->render('inscricao',[
+
+        ]);
+    }
+
+    public function actionEliminiarsubscricao(){
+
+        return $this->render('inscricao',[
+
+            ]);
+    }
+
+    public function actionPagarsubs(){
+        return $this->render('',[
+
+        ]);
+    }
+    
+
+    public function actionPt(){
+
+        return $this->render('pedirpt',[
+
+        ]);
+    }
+
+    public function actionNutri(){
+        return $this->render('pedirnutri',[
+            
         ]);
     }
 }
