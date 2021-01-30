@@ -1,5 +1,7 @@
 <?php
 
+use frontend\models\Desconto;
+use frontend\models\TipoSubscricao;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
@@ -21,8 +23,18 @@ $this->title = 'Inscrição';
                 Subscrição:
                 <?php
                     if($sub != null){ ?>
-                        Data Subscrição/Renovação: <?= $sub->data_expirar?>
-                        Expira: <?= $sub->data_expirar?>
+                        <div class = "infobodyitem">Tipo de Subscricao: <?php
+                            $tipo = TipoSubscricao::find()->where(['IDTipoSubscricao' => $sub->id_tipo])->one(); 
+                            echo $tipo->tipo . " / " . $tipo->valor . "€";
+                         ?>
+                        </div>
+                        <div class = "infobodyitem">Desconto: <?php 
+                        $descon = Desconto::find()->where(['IDDesconto' => $sub->id_desconto])->one(); 
+                        echo $descon->nome . " / " . $descon->quantidade * 100 . "%";?>
+                        </div>
+                        <div class = "infobodyitem">Data Subscrição/Renovação: <?= $sub->data_subscricao?></div>
+                        <div class = "infobodyitem">Expira: <?= $sub->data_expirar?></div>
+                        <div class = "infobodyitem">Montante do Ultimo Pagamento: <?=$sub->total?>€</div>
                     <?php }else{
                         echo "Não tem Subscrição feita";
                     }
@@ -42,50 +54,68 @@ $this->title = 'Inscrição';
             </div>
         </div>
         <div class = "options">
-            <div class = "opbody">
-                <?php
-                    if($sub != null){?>
-                        Tipo de Subscrição: <?=$sub->id_tipo?>
-                        Desconto: <?=$sub->id_desconto?>
-                    <?php }else{?>
-                        <div class = "opitem">
-                            Tipo de Subscrição: <select name="tiposub"><?php
-                                foreach($tipossub as $tipo){?>
-                                    <option value=<?=$tipo->IDTipoSubscricao?>><?=$tipo->tipo?></option>
-                                <?php }
-                            ?></select>
+            <?php
+                if(isset($option)){
+                    if($option == 1){?>
+                        <div class = "opbody">
+                            <?php $form = ActiveForm::begin();?>
+                                <div class = "opitem">
+                                    Tipo de Subscrição: <?= Html::activeDropDownList($model, 'id_tipo', $tipossub)?>
+                                </div>
+                                <div class = "opitem">
+                                    Desconto: <?= Html::activeDropDownList($model, 'id_desconto', $descontos)?>
+                                </div>
+                                <div class = "opitem">
+                                    <?= $form->field($model, 'meses') ?>
+                                </div>
                         </div>
-                        <div class = "opitem">
-                            Desconto: <select name="desconto"><?php
-                                foreach($descontos as $desc){?>
-                                    <option value=<?=$desc->IDDesconto?>><?=$desc->nome?></option>
-                                <?php }
-                            ?></select>
+                        <div class = "buttons">
+                            <?= Html::submitButton('Calcular Total') ?>
                         </div>
-                        <div class = "opitem">
-                            Meses : <input name="meses">
+                        <?php ActiveForm::end();?>
+                    <?php }elseif($option == 2){ ?>
+                        <div class = "opbody">
+                            <?php $form = ActiveForm::begin();?>
+                                <div class = "opitem">
+                                    <?= $form->field($model, 'meses') ?>
+                                </div>
+                            </div>
+                        <div class = "buttons">
+                            <?= Html::submitButton('Calcular Total') ?>
                         </div>
+                        <?php ActiveForm::end();?>
+                    <?php }?>
+                    
                 <?php }
-                ?>
-            </div>
-            <div class = "buttons">
-                <button type="button"><?= Html::a('Calcular Subscrição',['tipo' => $_POST['tiposub'],'desconto' => $_POST['desconto'],'meses' => $_POST['meses']],['class' => 'nohover'])?></button>
-            </div>
+            ?>
         </div>
         <div class = "conta">
-            <div></div>
-            <div class = "pagarconta">
-                <div class = "itemsconta">
-                    <div class = "itemconta">Preço Base: </div>
-                    <div class = "itemconta">Desconto: </div>
-                </div>
-                <div class = "total">
-                    <div><h3>Total:</h3></div>
-                </div>
-            </div>
-            <div class = "buttons">
-                <button type="button"><?= Html::a('Pagar Subscrição',['pagar'],['class' => 'nohover'])?></button>
-            </div>
-        </div>  
+            <?php
+                if(isset($precobase)){?>
+                    <div class = "pagarconta">
+                        <div class = "itemsconta">
+                            <?php
+                                if(isset($precobase)){?>
+                                    <div class = "itemconta">Preço Base: <?=$precobase?>€ </div>
+                                    <div class = "itemconta">Número Meses: <?=$multi?></div>
+                                    <div class = "itemconta">Desconto: <?=$desconto?>%</div>
+                                    <div class = "itemconta">--------------------------</div>
+                                    <div class = "itemconta"></div>
+                                <?php }else{ ?>
+
+                                <?php }
+                            ?>
+                            
+                        </div>
+                        <div class = "total">
+                            <div><h3>Total: <?=$total?>€</h3></div>
+                        </div>
+                        </div>
+                        <div class = "buttons">
+                            <button type="button"><?= Html::a('Pagar Subscrição',['pagarsubs','iddesconto' => $model->id_desconto,'idtipo' => $model->id_tipo,'meses' => $model->meses,'total' => $total,'op' => $option],['class' => 'nohover'])?></button>
+                        </div>
+                    </div>  
+                <?php }
+            ?>
     </div>
 </div>

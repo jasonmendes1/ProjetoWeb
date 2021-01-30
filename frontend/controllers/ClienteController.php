@@ -18,6 +18,7 @@ use frontend\models\Subscricao;
 use frontend\models\TipoSubscricao;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use yii\helpers\ArrayHelper;
 
 /**
  * ClienteController implements the CRUD actions for Cliente model.
@@ -170,54 +171,138 @@ class ClienteController extends Controller
     public function actionInscricao(){
         $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
         $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
-        $tipos_subs = TipoSubscricao::find()->all();
-        $descontos = Desconto::find()->all();
+        $tipos_subs = ArrayHelper::map(TipoSubscricao::find()->all(), 'IDTipoSubscricao','tipo');
+        $descontos = ArrayHelper::map(Desconto::find()->all(),'IDDesconto','nome');
+        if(!isset($model)){
+            $model = new Subscricao();
+        }
 
         return $this->render('inscricao',[
             'cliente' => $cliente,
             'sub' => $sub,
             'tipossub' => $tipos_subs,
             'descontos' => $descontos,
+            'model' => $model,
         ]);
     }
 
     public function actionCriarsubscricao(){
         //1 para criar
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+        $tipos_subs = ArrayHelper::map(TipoSubscricao::find()->all(), 'IDTipoSubscricao','tipo');
+        $descontos = ArrayHelper::map(Desconto::find()->all(),'IDDesconto','nome');
+        $model = new Subscricao();
+        
         $option = 1;
-        return $this->render('inscricao',[
 
+        if($model->load(Yii::$app->request->post())){
+            $tipo = TipoSubscricao::findOne($model->id_tipo);
+            $desc = Desconto::findOne($model->id_desconto);
+            $total = ($tipo->valor - ($tipo->valor * $desc->quantidade)) * $model->meses;
+            $option = 1;
+
+            return $this->render('inscricao',[
+                'cliente' => $cliente,
+                'sub' => $sub,
+                'tipossub' => $tipos_subs,
+                'descontos' => $descontos,
+                'model' => $model,
+                'precobase' => $tipo->valor,
+                'multi' => $model->meses,
+                'precobasemulti' => $tipo->valor * $model->meses,
+                'desconto'=> $desc->quantidade * 100,
+                'total' => $total,
+                'option' => $option,
+            ]);
+        }
+
+        return $this->render('inscricao',[
+                'cliente' => $cliente,
+                'sub' => $sub,
+                'tipossub' => $tipos_subs,
+                'descontos' => $descontos,
+                'model' => $model,
+                'option' => $option,
             ]);
     }
 
     public function actionRenovarsubscricao(){
         //2 para renovar
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
         $option = 2;
-        return $this->render('inscricao',[
+        $model = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
 
+        if($model->load(Yii::$app->request->post())){
+            $tipo = TipoSubscricao::findOne($model->id_tipo);
+            $desc = Desconto::findOne($model->id_desconto);
+            $total = ($tipo->valor - ($tipo->valor * $desc->quantidade)) * $model->meses;
+            $tipos_subs = ArrayHelper::map(TipoSubscricao::find()->all(), 'IDTipoSubscricao','tipo');
+            $descontos = ArrayHelper::map(Desconto::find()->all(),'IDDesconto','nome');
+            $option = 2;
+
+            return $this->render('inscricao',[
+                'cliente' => $cliente,
+                'sub' => $sub,
+                'tipossub' => $tipos_subs,
+                'descontos' => $descontos,
+                'model' => $model,
+                'precobase' => $tipo->valor,
+                'multi' => $model->meses,
+                'precobasemulti' => $tipo->valor * $model->meses,
+                'desconto'=> $desc->quantidade * 100,
+                'total' => $total,
+                'option' => $option,
             ]);
-    }
-
-    public function actionCalcularsubs($tipo,$desconto,$meses){
-
-        var_dump($meses);
-        var_dump($tipo);
-        var_dump($desconto);
-        die();
+        }
         return $this->render('inscricao',[
-
-        ]);
+            'cliente' => $cliente,
+            'sub' => $sub,
+            'option' => $option,
+            'model' => $model,
+            ]);
     }
 
     public function actionEliminiarsubscricao(){
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+        if($sub != null){
+            $sub->delete();
+        }
+
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
 
         return $this->render('inscricao',[
-
+            'cliente' => $cliente,
+            'sub' => $sub,
             ]);
     }
 
-    public function actionPagarsubs(){
-        return $this->render('',[
+    public function actionPagarsubs($iddesconto,$idtipo,$meses,$total,$op){
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $subs = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
 
+        if($op == 1){
+            $subscricao = new Subscricao();
+            $subscricao->id_cliente = $cliente->IDCliente;
+            $subscricao->id_desconto = $iddesconto;
+            $subscricao->id_tipo = $idtipo;
+            $subscricao->data_subscricao = date('Y-m-d',strtotime('Today'));
+            $subscricao->data_expirar = date('Y-m-d',strtotime("+" . $meses . " months",strtotime($subscricao->data_subscricao)));
+            $subscricao->total = $total;
+            $subscricao->save();
+        }elseif($op == 2){
+            $subs->data_expirar = date('Y-m-d',strtotime("+" . $meses . " months",strtotime($subs->data_expirar)));
+            $subs->total = $total;
+            $subs->save();
+        }
+        
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+
+        return $this->render('inscricao',[
+            'cliente' => $cliente,
+            'sub' => $sub,
         ]);
     }
     

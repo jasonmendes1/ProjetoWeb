@@ -1,5 +1,6 @@
 <?php
 
+use frontend\models\Subscricao;
 use yii\bootstrap\Html;
 
 $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
@@ -91,8 +92,14 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <h4>Subscrição:</h4>
                 </div>
                 <div class="header-info" style="padding-left:75px;">
-                    <h6>Feita a:</h6>
-                    <h6>Expira a:</h6>
+                    <h6>Feita a: <?php
+                    $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one(); 
+                    echo $sub->data_subscricao;
+                    ?></h6>
+                    <h6>Expira a: <?php
+                    $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one(); 
+                    echo $sub->data_expirar;
+                    ?></h6>
                 </div>
             </div>
         </div>

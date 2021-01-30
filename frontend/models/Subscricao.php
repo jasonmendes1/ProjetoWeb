@@ -8,12 +8,12 @@ use Yii;
  * This is the model class for table "subscricao".
  *
  * @property int $IDSubscricao
- * @property float $preco
  * @property int $id_cliente
- * @property int $id_desconto
+ * @property int|null $id_desconto
  * @property int $id_tipo
  * @property string $data_subscricao
  * @property string $data_expirar
+ * @property float|null $total
  *
  * @property Cliente $cliente
  * @property Desconto $desconto
@@ -21,6 +21,7 @@ use Yii;
  */
 class Subscricao extends \yii\db\ActiveRecord
 {
+    public $meses;
     /**
      * {@inheritdoc}
      */
@@ -35,10 +36,11 @@ class Subscricao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['preco', 'id_cliente', 'id_desconto', 'id_tipo', 'data_subscricao', 'data_expirar'], 'required'],
-            [['preco'], 'number'],
+            [['meses'],'integer'],
+            [['id_cliente', 'id_tipo', 'data_subscricao', 'data_expirar'], 'required'],
             [['id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
             [['data_subscricao', 'data_expirar'], 'safe'],
+            [['total'], 'number'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
             [['id_desconto'], 'exist', 'skipOnError' => true, 'targetClass' => Desconto::className(), 'targetAttribute' => ['id_desconto' => 'IDDesconto']],
             [['id_tipo'], 'exist', 'skipOnError' => true, 'targetClass' => TipoSubscricao::className(), 'targetAttribute' => ['id_tipo' => 'IDTipoSubscricao']],
@@ -52,12 +54,12 @@ class Subscricao extends \yii\db\ActiveRecord
     {
         return [
             'IDSubscricao' => 'Id Subscricao',
-            'preco' => 'Preco',
             'id_cliente' => 'Id Cliente',
             'id_desconto' => 'Id Desconto',
             'id_tipo' => 'Id Tipo',
             'data_subscricao' => 'Data Subscricao',
             'data_expirar' => 'Data Expirar',
+            'total' => 'Total',
         ];
     }
 

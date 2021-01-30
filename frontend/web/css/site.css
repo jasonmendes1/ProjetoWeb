@@ -614,7 +614,15 @@ tr:nth-child(even){
 .infobody{
     display: flex;
     height: 70%;
+    flex-direction: column;
 }
+
+.infobodyitem{
+    display:flex;
+    padding-left: 20px;
+}
+
+
 
 .buttons{
 
