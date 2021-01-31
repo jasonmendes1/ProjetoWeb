@@ -94,11 +94,15 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                 <div class="header-info" style="padding-left:75px;">
                     <h6>Feita a: <?php
                     $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one(); 
-                    echo $sub->data_subscricao;
+                        if($sub != null){
+                            echo $sub->data_subscricao;
+                        }
                     ?></h6>
                     <h6>Expira a: <?php
                     $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one(); 
-                    echo $sub->data_expirar;
+                        if($sub != null){
+                            echo $sub->data_expirar;
+                        }
                     ?></h6>
                 </div>
             </div>

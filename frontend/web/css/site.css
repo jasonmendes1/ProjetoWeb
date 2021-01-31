@@ -667,3 +667,82 @@ tr:nth-child(even){
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
+.pedirbody{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height:90vh;
+    background-color: grey;
+}
+
+.funcbody{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border-right: solid;
+}
+
+.cliente_func{
+    display:flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.func{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid;
+    
+}
+
+.func-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.func-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.func-body-up{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.func-body-down{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cliente-func-header{
+    display:flex;
+    height: 10%;
+    
+}
+
+.cliente-func-body{
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.cliente-func-buttons{
+    display:flex;
+    height:5%;
+    justify-content: space-evenly;
+}
+
+.cliente-func-body-item{
+    display: flex;
+    flex-direction: row;
+}

@@ -308,15 +308,103 @@ class ClienteController extends Controller
     
 
     public function actionPt(){
-
+        $todospt = Funcionario::find()->where(["cargo_id" => 1])->all();
         return $this->render('pedirpt',[
+            'pts' => $todospt,
+        ]);
+    }
 
+    public function actionVerpts($id){
+        $todospt = Funcionario::find()->where(["cargo_id" => 1])->all();
+        $func = Funcionario::find()->where(['IDFuncionario' => $id])->one();
+        return $this->render('pedirpt',[
+            'pts' => $todospt,
+            'personal' => $func,
+        ]);
+    }
+
+    public function actionAtribuirpt($id){
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $func = Funcionario::find()->where(['IDFuncionario' => $id])->one();
+        $funccliente = ClienteFuncionarios::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+
+        if($funccliente != null){
+            $funccliente->id_PT = $func->IDFuncionario;
+        }else{
+            $funccliente = new ClienteFuncionarios();
+            $funccliente->id_cliente = $cliente->IDCliente;
+            $funccliente->id_PT = $func->IDFuncionario;
+        }
+        $funccliente->save();
+
+        $user = Yii::$app->user->identity;
+        $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+        if($cf != null){
+            $pt = $cf->pT;
+            $nutri = $cf->nutricionista;
+        }else{
+            $pt = "";
+            $nutri = "";
+        }
+
+        return $this->render('profile',[
+            'cliente' => $cliente,
+            'user' => $user,
+            'pt' => $pt,
+            'nutri' => $nutri,
         ]);
     }
 
     public function actionNutri(){
+        $todosnutri = Funcionario::find()->where(["cargo_id" => 2])->all();
+
         return $this->render('pedirnutri',[
-            
+            'nutris' => $todosnutri,
+        ]);
+    }
+
+    public function actionVernutri($id){
+        $todosnutri = Funcionario::find()->where(["cargo_id" => 2])->all();
+        $func = Funcionario::find()->where(['IDFuncionario' => $id])->one();
+
+        return $this->render('pedirnutri',[
+            'nutris' => $todosnutri,
+            'nutricionista' => $func,
+        ]);
+    }
+
+    public function actionAtribuirnutri($id){
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $func = Funcionario::find()->where(['IDFuncionario' => $id])->one();
+        $funccliente = ClienteFuncionarios::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+
+        if($funccliente != null){
+            $funccliente->id_nutricionista = $func->IDFuncionario;
+        }else{
+            $funccliente = new ClienteFuncionarios();
+            $funccliente->id_cliente = $cliente->IDCliente;
+            $funccliente->id_nutricionista = $func->IDFuncionario;
+        }
+        $funccliente->save();
+
+        $user = Yii::$app->user->identity;
+
+        $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+        if($cf != null){
+            $pt = $cf->pT;
+            $nutri = $cf->nutricionista;
+        }else{
+            $pt = "";
+            $nutri = "";
+        }
+
+        return $this->render('profile',[
+            'cliente' => $cliente,
+            'user' => $user,
+            'pt' => $pt,
+            'nutri' => $nutri,
         ]);
     }
 }
