@@ -1,6 +1,7 @@
 <?php
 
 use frontend\models\Desconto;
+use frontend\models\Subscricao;
 use frontend\models\TipoSubscricao;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -10,14 +11,19 @@ $this->title = 'Inscrição';
 
 <div class = "main">
     <div class = "header">
-        <div>
-            Incrição
+        <div class="tituloincricao">
+            <H1>Incrição</H1>
         </div>
     </div>
     <div class = "profilebody">
         <div class = "info">
             <div class="infohead">
-                <?=$cliente->primeiroNome . " " . $cliente->apelido?>
+                <div><?=$cliente->primeiroNome . " " . $cliente->apelido?></div>
+                <?php $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+                    if($sub != null){ ?>
+                        <div>Data de expiração da subscrição: <?=$sub->data_expirar?></div>
+                    <?php }
+                ?>
             </div>
             <div class = "infobody">
                 Subscrição:

@@ -609,6 +609,9 @@ tr:nth-child(even){
     display: flex;
     height: 20%;
     border-bottom: solid;
+    padding-left: 15px;
+    padding-top: 10px;
+    flex-direction: column;
 }
 
 .infobody{
@@ -621,8 +624,6 @@ tr:nth-child(even){
     display:flex;
     padding-left: 20px;
 }
-
-
 
 .buttons{
 
@@ -745,4 +746,10 @@ tr:nth-child(even){
 .cliente-func-body-item{
     display: flex;
     flex-direction: row;
+}
+
+.tituloincricao{
+    padding-top: 10px;
+    padding-left: 15px;
+    color: white;
 }
