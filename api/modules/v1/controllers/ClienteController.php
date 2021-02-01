@@ -121,7 +121,7 @@ class ClienteController extends ActiveController
         $idUser = $request->get('IdUser');
         $user = new $this->modelClass;
         $cliente = new $this->modelCliente;
-        $userRecord = $user::find()->where("Id=" . '\'' . $idUser . '\'')->one();
+        $userRecord = $user::find()->where("User_ID=" . '\'' . $idUser . '\'')->one();
         $clienteRecord = $cliente::find()->where("Id=" . '\'' . $userRecord->cliente->Id . '\'')->one();
         
         $clienteNome = $request->get('ClientePrimeiroNome');
