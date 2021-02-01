@@ -7,14 +7,22 @@ class RegistarFuncionarioCest
     {
         // Login User
         $I->amOnPage(\yii::$app->homeUrl);
-        $I->fillField('Username', 'testefuncional');
-        $I->fillField('Password', 'testefuncional');
+        $I->fillField('Username', 'jason');
+        $I->fillField('Password', '123123123');
         $I->see('Remember Me');
         $I->click('login-button');
-        //$I->see('Bem vindo');
+        $I->see('Página Administrativa da Fitness League.');
+
+        $I->click('Menu Administrativo');
+        $I->click('Registar Funcionário');
         
-        $I->click('Clique aqui para adicionar um funcionário');
+        $I->click('Menu Administrativo');
+        $I->click('Registar Funcionário');
+
+
+        $I->see('Username');
         // Inserção de Dados
+        $I->see('Username');
         $I->fillField('Username', 'funcionariotrainer');
         $I->fillField('Email', 'funcionariotrainer@nutricionario.com');
         $I->fillField('Password', 'funcionariotrainer');
@@ -30,7 +38,9 @@ class RegistarFuncionarioCest
         $option = $I->grabTextFrom('select option:nth-child(1)');
         $I->selectOption("select", $option);
 
-        $I->click('signup-button');
+        $I->see('Signup');
+        $I->click('Signup');
 
+        $I->see('Página Administrativa da Fitness League.');
     }
 }

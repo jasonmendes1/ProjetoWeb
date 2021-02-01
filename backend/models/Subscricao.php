@@ -37,7 +37,6 @@ class Subscricao extends \yii\db\ActiveRecord
     {
         return [
             [['preco', 'id_cliente', 'id_tipo', 'data_subscricao', 'data_expirar', 'total'], 'required'],
-            [['preco', 'total'], 'number'],
             [['id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
             [['data_subscricao', 'data_expirar'], 'safe'],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'IDCliente']],
@@ -53,7 +52,6 @@ class Subscricao extends \yii\db\ActiveRecord
     {
         return [
             'IDSubscricao' => 'Id Subscricao',
-            'preco' => 'Preco',
             'id_cliente' => 'Id Cliente',
             'id_desconto' => 'Id Desconto',
             'id_tipo' => 'Id Tipo',

@@ -4,11 +4,14 @@ namespace frontend\controllers;
 
 use frontend\models\Cliente;
 use frontend\models\ClienteFuncionarios;
+use frontend\models\Ementa;
 use frontend\models\Exercicio;
 use Yii;
 use frontend\models\Funcionario;
 use frontend\models\FuncionarioSearch;
 use frontend\models\ListaPlanos;
+use frontend\models\Planosnutricao;
+use frontend\models\PlanosNutricaoSearch;
 use frontend\models\PlanosTreino;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -138,6 +141,7 @@ class FuncionarioController extends Controller
         $clientes = [];
         $planos = [];
         $exercicios = [];
+        $ementas = [];
         $client = null;
         
 
@@ -169,6 +173,7 @@ class FuncionarioController extends Controller
             'planos' => $planos,
             'exercicios' => $exercicios,
             'selected' => $client,
+            'ementas' => $ementas,
         ]);
     }
 
@@ -180,6 +185,7 @@ class FuncionarioController extends Controller
         $clientes = [];
         $planos = [];
         $exercicios = [];
+        $ementas = [];
         $client = null;
 
         if($func->cargo_id == 1){
@@ -199,7 +205,7 @@ class FuncionarioController extends Controller
             }
             foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
                 if($lp->IDPlanoNutricao != null){
-                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoNutricao));
+                    array_push($planos,Planosnutricao::findOne($lp->IDPlanoNutricao));
                 }
             }
         }
@@ -220,6 +226,7 @@ class FuncionarioController extends Controller
             'planos' => $planos,
             'exercicios' => $exercicios,
             'selected' => $client,
+            'ementas' => $ementas,
         ]);
     }
 
@@ -231,6 +238,7 @@ class FuncionarioController extends Controller
         $clientes = [];
         $planos = [];
         $exercicios = [];
+        $ementas = [];
         $client = null;
 
         if($func->cargo_id == 1){
@@ -243,6 +251,9 @@ class FuncionarioController extends Controller
                     array_push($planos,PlanosTreino::findOne($lp->IDPlanoTreino));
                 }
             }
+            foreach(Exercicio::find()->where(['IDPlanoTreino' => $plano])->all() as $exercicio){
+                array_push($exercicios,$exercicio);
+            }
         }elseif($func->cargo_id == 2){
             $cargo = "Nutricionista";
             foreach(ClienteFuncionarios::find()->where(['id_nutricionista' => $func->IDFuncionario])->all() as $clifunc){
@@ -250,13 +261,30 @@ class FuncionarioController extends Controller
             }
             foreach(ListaPlanos::find()->where(['IDCliente' => $cliente])->all() as $lp){
                 if($lp->IDPlanoNutricao != null){
-                    array_push($planos,PlanosTreino::findOne($lp->IDPlanoNutricao));
+                    array_push($planos,Planosnutricao::findOne($lp->IDPlanoNutricao));
                 }
             }
-        }
-
-        foreach(Exercicio::find()->where(['IDPlanoTreino' => $plano])->all() as $exercicio){
-            array_push($exercicios,$exercicio);
+            
+            $plan = Planosnutricao::find()->where(['IDPlanoNutricao' => $plano])->one();
+            
+            if($plan->Segunda != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Segunda])->one());
+            }
+            if($plan->Terca != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Terca])->one());
+            }
+            if($plan->Quarta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Quarta])->one());
+            }
+            if($plan->Quinta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Quinta])->one());
+            }
+            if($plan->Sexta != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Sexta])->one());
+            }
+            if($plan->Sabado != null){
+                array_push($ementas, Ementa::find()->where(['IDEmenta' => $plan->Sabado])->one());
+            }
         }
 
         foreach($cf as $clifunc){
@@ -275,6 +303,7 @@ class FuncionarioController extends Controller
             'planos' => $planos,
             'exercicios' => $exercicios,
             'selected' => $client,
+            'ementas' => $ementas,
         ]);
     }
 }

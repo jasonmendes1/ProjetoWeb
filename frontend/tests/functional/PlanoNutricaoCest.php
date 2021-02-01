@@ -10,12 +10,12 @@ class PlanoNutricaoCest
         $I->see('Fitness League');
         $I->click('Registar/Login');
         $I->click('Fazer Login');
-        $I->fillField('Username', 'funcionariotrainer');
-        $I->fillField('Password', 'funcionariotrainer');
+        $I->fillField('Username', 'funcionarionutri');
+        $I->fillField('Password', 'funcionarionutri');
         $I->see('Remember Me');
+        $I->see('login-button');
         $I->click('login-button');
     
-
         $I->see('Bem Vindo');
         $I->click('Bem Vindo');
         

@@ -563,3 +563,193 @@ tr:nth-child(even){
     border-bottom: solid;
     font-size: x-large;
 }
+
+.nohover{
+    text-decoration: none !important;
+    color: black;
+}
+
+.nohoverr{
+    text-decoration: none !important;
+    pointer-events: none !important;
+    color: black;
+}
+
+.inscbody{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+    border-right: solid;
+    
+}
+
+.options{
+    display: flex;
+    width: 34%;
+    height: 100%;
+    border-right: solid;
+    flex-direction: column;
+}
+
+.conta{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+}   
+
+.infohead{
+    display: flex;
+    height: 20%;
+    border-bottom: solid;
+    padding-left: 15px;
+    padding-top: 10px;
+    flex-direction: column;
+}
+
+.infobody{
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+}
+
+.infobodyitem{
+    display:flex;
+    padding-left: 20px;
+}
+
+.buttons{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 5%;
+}
+
+.pagarconta{
+    display: flex;
+    flex-direction: column;
+    height:90%;
+}
+
+.itemsconta{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+}
+
+.total{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.itemconta{
+    display:flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.opbody{
+    display :flex;
+    flex-direction: column;
+    height:90%;
+}
+
+.opitem{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.pedirbody{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height:90vh;
+    background-color: grey;
+}
+
+.funcbody{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border-right: solid;
+}
+
+.cliente_func{
+    display:flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.func{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid;
+    
+}
+
+.func-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.func-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.func-body-up{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.func-body-down{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cliente-func-header{
+    display:flex;
+    height: 10%;
+    
+}
+
+.cliente-func-body{
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.cliente-func-buttons{
+    display:flex;
+    height:5%;
+    justify-content: space-evenly;
+}
+
+.cliente-func-body-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.tituloincricao{
+    padding-top: 10px;
+    padding-left: 15px;
+    color: white;
+}

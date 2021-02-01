@@ -99,7 +99,7 @@ AppAsset::register($this);
                     ],
                     
                     [
-                        'label' => 'Registar/Login',
+                        'label' => 'Logout',
                         'items' => $login,
                     ],
                     
@@ -124,10 +124,6 @@ AppAsset::register($this);
                                  'url' => ['/event']],
         
                                 '<li class="divider"></li>',
-
-                                ['label' => 'Ver Planos de Treino',
-                                    'url' => ['planos-treino/create']
-                                ],
         
                                 ['label' => 'Criar Plano de Treino',
                                     'url' => ['planos-treino/create']
@@ -136,7 +132,7 @@ AppAsset::register($this);
                         ],
                         
                         [
-                            'label' => 'Registar/Login',
+                            'label' => 'Logout',
                             'items' => $login,
                         ],
                         
@@ -160,10 +156,6 @@ AppAsset::register($this);
                                  'url' => ['/event']],
         
                                 '<li class="divider"></li>',
-                                
-                                ['label' => 'Ver Planos de Nutrição',
-                                    'url' => ['planos-nutricao/create']
-                                ],
 
                                 ['label' => 'Criar Plano de Nutrição',
                                     'url' => ['planos-nutricao/create']
@@ -233,6 +225,10 @@ AppAsset::register($this);
             [
                 'label' => 'Contacto',
                 'url' => ['site/contact']
+            ],
+            [
+                'label' => 'Imovel',
+                'url' => ['imoveis/imovel']
             ],
         ],
         'options' => ['class' => 'navbar-nav navbar-right'],

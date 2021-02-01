@@ -72,12 +72,11 @@ class FuncionarioTest extends \Codeception\Test\Unit
 
     function testSavingUser()
     {
-        
         $user = new User();
-        $user->username = 'testefuncionario';
-        $user->email = 'testefuncionario@teste.com';
+        $user->username = 'funcionariotrainer';
+        $user->email = 'funcionariotrainer@teste.com';
 
-        $user->setPassword('testefuncionario');
+        $user->setPassword('funcionariotrainer');
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
         $user->status = 10;
@@ -97,8 +96,7 @@ class FuncionarioTest extends \Codeception\Test\Unit
 
         $this->tester->seeInDatabase('funcionario', ['primeiroNome' => 'Teste']);
     }
-
-    
+    /*
     function testNameCanBeChanged()
     {
         $id = $this->tester->grabRecord('common\models\Funcionario', ['primeiroNome' => 'Teste']);
@@ -120,5 +118,5 @@ class FuncionarioTest extends \Codeception\Test\Unit
         $funcionario->delete();
 
         $this->tester->dontSeeRecord('common\models\Funcionario', ['primeiroNome' => 'Testeteste']);
-    }
+    }*/
 }
