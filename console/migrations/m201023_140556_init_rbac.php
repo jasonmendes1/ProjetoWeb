@@ -123,6 +123,10 @@ class m201023_140556_init_rbac extends Migration
         $criarEvento->description = 'Criar Evento no Horario';
         $auth->add($criarEvento);
 
+        $verImovel = $auth->createPermission('verImovel');
+        $verImovel->description = 'Ver Imovel';
+        $auth->add($verImovel);
+
 
         // roles dos tipos de utilizador
         $admin = $auth->createRole('admin');
@@ -160,6 +164,8 @@ class m201023_140556_init_rbac extends Migration
         $auth->addChild($cliente, $verPerfil);
         $auth->addChild($funcionario, $verPerfil);
         $auth->addChild($funcionario, $criarEvento);
+        $auth->addChild($funcionario, $verImovel);
+
 
         // Atribui roles para usuários. 1 and 2 são IDs retornados por IdentityInterface::getId()
         // normalmente implementado no seu model User.

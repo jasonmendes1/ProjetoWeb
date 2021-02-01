@@ -30,7 +30,6 @@ class PlanosTreinoTest extends \Codeception\Test\Unit
         $this->assertFalse($planotreino->validate(['semana']));
         $planotreino->semana = '1';
         $this->assertTrue($planotreino->validate(['semana']));
-        
     }
 
     function testSavingUser()
@@ -67,5 +66,4 @@ class PlanosTreinoTest extends \Codeception\Test\Unit
 
         $this->tester->dontSeeRecord('common\models\PlanoTreino', ['semana' => '2']);
     }
-    
 }

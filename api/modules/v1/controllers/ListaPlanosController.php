@@ -2,13 +2,12 @@
 
 namespace api\modules\v1\controllers;
 
-use common\models\ClienteFuncionarios;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
-class ClienteFuncionariosController extends ActiveController
+class ListaPlanosController extends ActiveController
 {
-    public $modelClass = 'common\models\ClienteFuncionarios';
+    public $modelClass = 'common\models\ListaPlanos';
 
     public function behaviors()
     {
@@ -32,9 +31,5 @@ class ClienteFuncionariosController extends ActiveController
         $recs = $descontoModel::find()->all();
         return ['total' => count($recs)];
     }
-    public function actionCliente($id){
-        $models = new $this->modelClass;
-        $model = $models::findOne($id);
-        return $model->cliente->primeiroNome;
-    }
+
 }

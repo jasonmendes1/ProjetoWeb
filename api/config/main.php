@@ -190,6 +190,15 @@ return [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
                     ],
                 ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/listaplanos'], 'pluralize' => false,
+
+                    'extraPatterns' => [
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
+                    ],
+                    'tokens' => [
+                        '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                    ],
+                ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/exercicio'], 'pluralize' => false,
 
                     'extraPatterns' => [

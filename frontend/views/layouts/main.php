@@ -85,11 +85,16 @@ AppAsset::register($this);
         
                              ['label' => 'Planos de Nutrição', 
                              'url' => ['planos-nutricao/planosnutri']],
+
         
-                             '<li class="divider"></li>',
-        
+
                              ['label' => 'Horários Aulas', 
                              'url' => ['/event']],
+
+                            '<li class="divider"></li>',
+
+                            ['label' => 'Imovel',
+                                'url' => ['site/imoveis']],
                         ],
                     ],
                     

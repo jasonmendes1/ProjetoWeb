@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use app\models\Event as AppModelsEvent;
 use Codeception\Events;
+use frontend\models\Imovel;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -18,6 +19,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Event as FrontendModelsEvent;
+use yii\web\ForbiddenHttpException;
 use yii2fullcalendar\models\Event as ModelsEvent;
 use yii\base\Event as BaseEvent;
 use yii\web\UploadedFile;
@@ -264,5 +266,18 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    public function actionImoveis(){
+
+        if( Yii::$app->user->can('verImovel') ) {
+            $imovelProvider = Imovel::find()
+                ->orderBy(['id' => SORT_DESC])
+                ->all();
+
+            return $this->render('imoveis', ['imovelProvider' => $imovelProvider]);
+        }else{
+            throw new ForbiddenHttpException();
+        }
     }
 }
