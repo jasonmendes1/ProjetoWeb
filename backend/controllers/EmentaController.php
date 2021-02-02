@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Ementa;
-use app\models\EmentaSearch;
+use backend\models\Ementa;
+use backend\models\EmentaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

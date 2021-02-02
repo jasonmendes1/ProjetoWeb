@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\FuncionarioSearch */
+/* @var $searchModel backend\models\FuncionarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Funcionarios';
+$this->title = 'Funcionários';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="funcionario-index">
@@ -31,5 +31,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php } ?>
     <?php } ?>
-
 </div>

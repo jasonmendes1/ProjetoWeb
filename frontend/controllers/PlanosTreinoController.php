@@ -152,9 +152,13 @@ class PlanosTreinoController extends Controller
         }
 
         if(count($planostreino) >= 1){
+            
             foreach($planostreino as $pt){
-                array_push($semanas,$pt->semana);
+                var_dump($pt);
+                
+                //array_push($semanas,$pt->semana);
             }
+            die();
         }
 
         if(count($semanas) >= 1){

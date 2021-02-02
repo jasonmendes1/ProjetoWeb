@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Desconto;
+use backend\models\Desconto;
 
 /**
- * DescontoSearch represents the model behind the search form of `app\models\Desconto`.
+ * DescontoSearch represents the model behind the search form of `backend\models\Desconto`.
  */
 class DescontoSearch extends Desconto
 {

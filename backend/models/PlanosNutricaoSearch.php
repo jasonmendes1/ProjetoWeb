@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\PlanosNutricao;
+use backend\models\PlanosNutricao;
 
 /**
- * PlanosNutricaoSearch represents the model behind the search form of `app\models\PlanosNutricao`.
+ * PlanosNutricaoSearch represents the model behind the search form of `backend\models\PlanosNutricao`.
  */
 class PlanosNutricaoSearch extends PlanosNutricao
 {
@@ -18,6 +18,7 @@ class PlanosNutricaoSearch extends PlanosNutricao
     {
         return [
             [['IDPlanoNutricao', 'Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'IDNutricionista'], 'integer'],
+            [['Semana'], 'safe'],
         ];
     }
 
@@ -66,6 +67,8 @@ class PlanosNutricaoSearch extends PlanosNutricao
             'Sabado' => $this->Sabado,
             'IDNutricionista' => $this->IDNutricionista,
         ]);
+
+        $query->andFilterWhere(['like', 'Semana', $this->Semana]);
 
         return $dataProvider;
     }

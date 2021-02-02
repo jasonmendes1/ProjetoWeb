@@ -4,13 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ementa */
+/* @var $model backend\models\Ementa */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="ementa-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'nomeEmenta')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'PequenoAlmoco')->textInput(['maxlength' => true]) ?>
 

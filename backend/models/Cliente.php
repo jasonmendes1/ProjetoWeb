@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
@@ -22,9 +22,9 @@ use Yii;
  * @property int|null $massa_gorda
  *
  * @property User $user
+ * @property ClienteFuncionarios[] $clienteFuncionarios
  * @property ListaPlanos[] $listaPlanos
  * @property Subscricao[] $subscricaos
- * 
  */
 class Cliente extends \yii\db\ActiveRecord
 {
@@ -86,13 +86,23 @@ class Cliente extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[ClienteFuncionarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClienteFuncionarios()
+    {
+        return $this->hasMany(ClienteFuncionarios::className(), ['id_cliente' => 'IDCliente']);
+    }
+
+    /**
      * Gets query for [[ListaPlanos]].
      *
      * @return \yii\db\ActiveQuery
      */
     public function getListaPlanos()
     {
-        return $this->hasMany(ListaPlanos::className(), ['IDCliente' => 'IDCliente']);
+        return $this->hasMany(ListaPlanos::className(), ['IDCliente' => 'User_id']);
     }
 
     /**

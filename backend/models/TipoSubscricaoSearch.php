@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\TipoSubscricao;
+use backend\models\TipoSubscricao;
 
 /**
- * TipoSubscricaoSearch represents the model behind the search form of `app\models\TipoSubscricao`.
+ * TipoSubscricaoSearch represents the model behind the search form of `backend\models\TipoSubscricao`.
  */
 class TipoSubscricaoSearch extends TipoSubscricao
 {
@@ -17,7 +17,7 @@ class TipoSubscricaoSearch extends TipoSubscricao
     public function rules()
     {
         return [
-            [['IDTipoSubscricao'], 'integer'],
+            [['IDTipoSubscricao', 'valor'], 'integer'],
             [['tipo'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class TipoSubscricaoSearch extends TipoSubscricao
         // grid filtering conditions
         $query->andFilterWhere([
             'IDTipoSubscricao' => $this->IDTipoSubscricao,
+            'valor' => $this->valor,
         ]);
 
         $query->andFilterWhere(['like', 'tipo', $this->tipo]);

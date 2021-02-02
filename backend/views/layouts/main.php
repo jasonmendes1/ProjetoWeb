@@ -65,7 +65,7 @@ AppAsset::register($this);
                              ['label' => 'Lista de Subscrições', 
                              'url' => ['subscricao/index']],
 
-                            ['label' => 'Lista de Funcionarios',
+                            ['label' => 'Lista de Funcionários',
                                 'url' => ['funcionario/index']],
                         ],
                     ],

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Subscricao */
+/* @var $model backend\models\Subscricao */
 
 $this->title = $model->IDSubscricao;
 $this->params['breadcrumbs'][] = ['label' => 'Subscricaos', 'url' => ['index']];
@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'IDSubscricao',
-            'preco',
             'id_cliente',
             'id_desconto',
             'id_tipo',

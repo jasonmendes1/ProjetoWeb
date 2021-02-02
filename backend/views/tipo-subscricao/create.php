@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\TipoSubscricao */
+/* @var $model backend\models\TipoSubscricao */
 
 $this->title = 'Create Tipo Subscricao';
 $this->params['breadcrumbs'][] = ['label' => 'Tipo Subscricaos', 'url' => ['index']];
