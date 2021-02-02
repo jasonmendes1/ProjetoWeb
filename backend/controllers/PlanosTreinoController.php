@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\PlanosTreino;
-use app\models\PlanosTreinoSearch;
+use backend\models\PlanosTreino;
+use backend\models\PlanosTreinoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

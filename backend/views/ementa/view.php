@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ementa */
+/* @var $model backend\models\Ementa */
 
 $this->title = $model->IDEmenta;
 $this->params['breadcrumbs'][] = ['label' => 'Ementas', 'url' => ['index']];
@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'IDEmenta',
+            'nomeEmenta',
             'PequenoAlmoco',
             'Almoco',
             'Lanche1',

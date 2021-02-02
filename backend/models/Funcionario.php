@@ -1,8 +1,7 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
-use frontend\models\PlanosNutricao;
 use Yii;
 
 /**
@@ -18,10 +17,12 @@ use Yii;
  * @property int $num_tele
  * @property int $cargo_id
  *
+ * @property ClienteFuncionarios[] $clienteFuncionarios
+ * @property ClienteFuncionarios[] $clienteFuncionarios0
  * @property Cargo $cargo
  * @property User $user
- * @property Planonutricao[] $planonutricaos
- * @property PlanosTreino[] $planosTreinos
+ * @property Planosnutricao[] $planosnutricaos
+ * @property Planostreino[] $planostreinos
  */
 class Funcionario extends \yii\db\ActiveRecord
 {
@@ -39,7 +40,7 @@ class Funcionario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-        [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar', 'num_tele', 'cargo_id'], 'required'],
+            [['User_id', 'primeiroNome', 'apelido', 'dt_nascimento', 'sexo', 'avatar', 'num_tele', 'cargo_id'], 'required'],
             [['User_id', 'num_tele', 'cargo_id'], 'integer'],
             [['dt_nascimento'], 'safe'],
             [['primeiroNome', 'apelido'], 'string', 'max' => 100],
@@ -69,6 +70,26 @@ class Funcionario extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[ClienteFuncionarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClienteFuncionarios()
+    {
+        return $this->hasMany(ClienteFuncionarios::className(), ['id_PT' => 'IDFuncionario']);
+    }
+
+    /**
+     * Gets query for [[ClienteFuncionarios0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClienteFuncionarios0()
+    {
+        return $this->hasMany(ClienteFuncionarios::className(), ['id_nutricionista' => 'IDFuncionario']);
+    }
+
+    /**
      * Gets query for [[Cargo]].
      *
      * @return \yii\db\ActiveQuery
@@ -89,22 +110,22 @@ class Funcionario extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Planonutricaos]].
+     * Gets query for [[Planosnutricaos]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPlanonutricaos()
+    public function getPlanosnutricaos()
     {
-        return $this->hasMany(PlanosNutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
+        return $this->hasMany(Planosnutricao::className(), ['IDNutricionista' => 'IDFuncionario']);
     }
 
     /**
-     * Gets query for [[PlanosTreinos]].
+     * Gets query for [[Planostreinos]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPlanosTreinos()
+    public function getPlanostreinos()
     {
-        return $this->hasMany(PlanosTreino::className(), ['id_PT' => 'IDFuncionario']);
+        return $this->hasMany(Planostreino::className(), ['id_PT' => 'IDFuncionario']);
     }
 }

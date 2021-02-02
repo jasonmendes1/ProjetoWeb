@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
@@ -12,7 +12,7 @@ use Yii;
  * @property string $dia_treino
  * @property string $semana
  *
- * @property ListaPlanos[] $listaPlanos
+ * @property Exercicio[] $exercicios
  * @property Funcionario $pT
  */
 class Planostreino extends \yii\db\ActiveRecord
@@ -53,13 +53,13 @@ class Planostreino extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[ListaPlanos]].
+     * Gets query for [[Exercicios]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getListaPlanos()
+    public function getExercicios()
     {
-        return $this->hasMany(ListaPlanos::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
+        return $this->hasMany(Exercicio::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
     }
 
     /**

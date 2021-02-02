@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\PlanosNutricao;
-use app\models\PlanosNutricaoSearch;
+use backend\models\PlanosNutricao;
+use backend\models\PlanosNutricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

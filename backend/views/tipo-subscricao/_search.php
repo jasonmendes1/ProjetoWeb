@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\TipoSubscricaoSearch */
+/* @var $model backend\models\TipoSubscricaoSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'IDTipoSubscricao') ?>
 
     <?= $form->field($model, 'tipo') ?>
+
+    <?= $form->field($model, 'valor') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

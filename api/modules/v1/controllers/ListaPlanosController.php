@@ -2,12 +2,16 @@
 
 namespace api\modules\v1\controllers;
 
+use common\models\Cliente;
+use common\models\ListaPlanos;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
 class ListaPlanosController extends ActiveController
 {
     public $modelClass = 'common\models\ListaPlanos';
+    public $modelCliente = 'common\models\Cliente';
+
 
     public function behaviors()
     {
@@ -50,4 +54,10 @@ class ListaPlanosController extends ActiveController
         return $cliente;
     }
 
+    public function actionCliente($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->idcliente->primeiroNome;
+    }
 }

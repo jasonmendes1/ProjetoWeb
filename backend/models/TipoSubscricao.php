@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $IDTipoSubscricao
  * @property string $tipo
+ * @property int $valor
  *
  * @property Subscricao[] $subscricaos
  */
@@ -28,7 +29,8 @@ class TipoSubscricao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tipo'], 'required'],
+            [['tipo', 'valor'], 'required'],
+            [['valor'], 'integer'],
             [['tipo'], 'string', 'max' => 255],
         ];
     }
@@ -41,6 +43,7 @@ class TipoSubscricao extends \yii\db\ActiveRecord
         return [
             'IDTipoSubscricao' => 'Id Tipo Subscricao',
             'tipo' => 'Tipo',
+            'valor' => 'Valor',
         ];
     }
 

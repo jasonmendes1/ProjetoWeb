@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SubscricaoSearch */
+/* @var $model backend\models\SubscricaoSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -17,15 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'IDSubscricao') ?>
 
-    <?= $form->field($model, 'preco') ?>
-
     <?= $form->field($model, 'id_cliente') ?>
 
     <?= $form->field($model, 'id_desconto') ?>
 
     <?= $form->field($model, 'id_tipo') ?>
 
-    <?php // echo $form->field($model, 'data_subscricao') ?>
+    <?= $form->field($model, 'data_subscricao') ?>
 
     <?php // echo $form->field($model, 'data_expirar') ?>
 

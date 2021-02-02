@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Desconto */
+/* @var $model backend\models\Desconto */
 
 $this->title = 'Create Desconto';
 $this->params['breadcrumbs'][] = ['label' => 'Descontos', 'url' => ['index']];

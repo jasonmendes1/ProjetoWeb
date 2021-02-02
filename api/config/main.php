@@ -49,7 +49,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
 
                     'extraPatterns' => [
-                        'GET total' => 'total' // 'XXX' é 'actionXXX'
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
                     ]
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/userregisterandlogin'], 'pluralize' => false,
@@ -70,7 +70,6 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
 
                     'extraPatterns' => [
-                        'GET get/{id}' => 'get',
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/primeironome' => 'primeironome', // 'XXX' é 'actionXXX'
                         'GET {id}/apelido' => 'apelido', // 'XXX' é 'actionXXX'
@@ -133,32 +132,43 @@ return [
                     'extraPatterns' => [
                         'GET getplanonutricao/{id}' => 'getplanonutricao', 
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
-                        'GET {id}/nomeementa' => 'nomeementa', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementaseg' => 'nomeementaseg', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementater' => 'nomeementater', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementaqua' => 'nomeementaqua', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementaqui' => 'nomeementaqui', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementasex' => 'nomeementasex', // 'XXX' é 'actionXXX'
+                        'GET {id}/nomeementasab' => 'nomeementasab', // 'XXX' é 'actionXXX'
+                        //segunda
                         'GET {id}/segundapeqalmoco' => 'segundapeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/segundaalmoco' => 'segundaalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/segundalanche1' => 'segundalanche1', // 'XXX' é 'actionXXX'
                         'GET {id}/segundalanche2' => 'segundalanche2', // 'XXX' é 'actionXXX'
                         'GET {id}/segundajantar' => 'segundajantar', // 'XXX' é 'actionXXX'
+                        //terca
                         'GET {id}/tercapeqalmoco' => 'tercapeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/tercaalmoco' => 'tercaalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/tercalanche1' => 'tercalanche1', // 'XXX' é 'actionXXX'
                         'GET {id}/tercalanche2' => 'tercalanche2', // 'XXX' é 'actionXXX'
                         'GET {id}/tercajantar' => 'tercajantar', // 'XXX' é 'actionXXX'
+                        //quarta
                         'GET {id}/quartapeqalmoco' => 'quartapeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/quartaalmoco' => 'quartaalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/quartalanche1' => 'quartalanche1', // 'XXX' é 'actionXXX'
                         'GET {id}/quartalanche2' => 'quartalanche2', // 'XXX' é 'actionXXX'
                         'GET {id}/quartajantar' => 'quartajantar', // 'XXX' é 'actionXXX'
+                        //quinta
                         'GET {id}/quintapeqalmoco' => 'quintapeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/quintaalmoco' => 'quintaalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/quintalanche1' => 'quintalanche1', // 'XXX' é 'actionXXX'
                         'GET {id}/quintalanche2' => 'quintalanche2', // 'XXX' é 'actionXXX'
                         'GET {id}/quintajantar' => 'quintajantar', // 'XXX' é 'actionXXX'
+                        //sexta
                         'GET {id}/sextapeqalmoco' => 'sextapeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/sextaalmoco' => 'sextaalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/sextalanche1' => 'sextalanche1', // 'XXX' é 'actionXXX'
                         'GET {id}/sextalanche2' => 'sextalanche2', // 'XXX' é 'actionXXX'
                         'GET {id}/sextajantar' => 'sextajantar', // 'XXX' é 'actionXXX'
+                        //sabado
                         'GET {id}/sabadopeqalmoco' => 'sabadopeqalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/sabadoalmoco' => 'sabadoalmoco', // 'XXX' é 'actionXXX'
                         'GET {id}/sabadolanche1' => 'sabadolanche1', // 'XXX' é 'actionXXX'
@@ -167,7 +177,6 @@ return [
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
-                        '{idementa}' => '<idementa:\\d+>', //O standard tem que aparecer!
                     ],
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/planotreino'], 'pluralize' => false,
@@ -198,6 +207,7 @@ return [
                     'extraPatterns' => [
                         'GET getplano/{id}' => 'getplano', 
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
+                        'GET {id}/cliente' => 'cliente', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!

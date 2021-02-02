@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PlanosNutricaoSearch */
+/* @var $searchModel backend\models\PlanosNutricaoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Planos Nutricaos';
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Sexta',
             //'Sabado',
             //'IDNutricionista',
+            //'Semana',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

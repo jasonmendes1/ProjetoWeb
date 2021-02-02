@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EmentaSearch */
+/* @var $searchModel backend\models\EmentaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Ementas';
@@ -27,10 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'IDEmenta',
+            'nomeEmenta',
             'PequenoAlmoco',
             'Almoco',
             'Lanche1',
-            'Lanche2',
+            //'Lanche2',
             //'Jantar',
 
             ['class' => 'yii\grid\ActionColumn'],

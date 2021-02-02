@@ -34,12 +34,12 @@ class PlanotreinoController extends ActiveController
         $recs = $planotreinoModel::find()->all();
         return ['total' => count($recs)];
     }
-    public function actionPersonaltrainer($id){
+    public function actionPersonaltrainer($id){ 
         $models = new $this->modelClass;
         $model = $models::findOne($id);
-
-        return $model->funcionario->primeiroNome;
+        return $model->pT->primeiroNome;
     }
+
     public function actionDiatreino($id){
         $models = new $this->modelClass;
         $model = $models::findOne($id);

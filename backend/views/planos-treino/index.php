@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PlanosTreinoSearch */
+/* @var $searchModel backend\models\PlanosTreinoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Planos Treinos';
@@ -27,14 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'IDPlanoTreino',
-            'nome_exercicio',
-            'repeticoes',
-            'tempo',
-            'serie',
-            //'repouso',
-            //'tempo_total',
-            //'num_maquina',
-            //'id_PT',
+            'id_PT',
+            'dia_treino',
+            'semana',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
