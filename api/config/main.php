@@ -49,7 +49,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user'], 'pluralize' => false,
 
                     'extraPatterns' => [
-                        'GET total' => 'total' // 'XXX' é 'actionXXX'
+                        'GET total' => 'total', // 'XXX' é 'actionXXX'
                     ]
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/userregisterandlogin'], 'pluralize' => false,
@@ -70,7 +70,6 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
 
                     'extraPatterns' => [
-                        'GET get/{id}' => 'get',
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/primeironome' => 'primeironome', // 'XXX' é 'actionXXX'
                         'GET {id}/apelido' => 'apelido', // 'XXX' é 'actionXXX'
@@ -205,7 +204,7 @@ return [
 
                     'extraPatterns' => [
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
-                        'GET planocliente/{id}' => 'planocliente', // 'XXX' é 'actionXXX'
+                        'GET {id}/cliente' => 'cliente', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
