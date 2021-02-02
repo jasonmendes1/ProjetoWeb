@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\EmentaSearch */
+/* @var $model backend\models\EmentaSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -17,13 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'IDEmenta') ?>
 
+    <?= $form->field($model, 'nomeEmenta') ?>
+
     <?= $form->field($model, 'PequenoAlmoco') ?>
 
     <?= $form->field($model, 'Almoco') ?>
 
     <?= $form->field($model, 'Lanche1') ?>
 
-    <?= $form->field($model, 'Lanche2') ?>
+    <?php // echo $form->field($model, 'Lanche2') ?>
 
     <?php // echo $form->field($model, 'Jantar') ?>
 

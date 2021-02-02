@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PlanosNutricao */
+/* @var $model backend\models\PlanosNutricao */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'Sabado')->textInput() ?>
 
     <?= $form->field($model, 'IDNutricionista')->textInput() ?>
+
+    <?= $form->field($model, 'Semana')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

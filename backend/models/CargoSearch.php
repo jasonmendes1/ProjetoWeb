@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Cargo;
+use backend\models\Cargo;
 
 /**
- * CargoSearch represents the model behind the search form of `app\models\Cargo`.
+ * CargoSearch represents the model behind the search form of `backend\models\Cargo`.
  */
 class CargoSearch extends Cargo
 {

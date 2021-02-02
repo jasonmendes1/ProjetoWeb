@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Ementa */
+/* @var $model backend\models\Ementa */
 
 $this->title = 'Update Ementa: ' . $model->IDEmenta;
 $this->params['breadcrumbs'][] = ['label' => 'Ementas', 'url' => ['index']];

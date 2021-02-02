@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\TipoSubscricao;
-use app\models\TipoSubscricaoSearch;
+use backend\models\TipoSubscricao;
+use backend\models\TipoSubscricaoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

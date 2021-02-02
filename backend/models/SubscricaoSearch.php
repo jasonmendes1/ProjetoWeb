@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Subscricao;
+use backend\models\Subscricao;
 
 /**
- * SubscricaoSearch represents the model behind the search form of `app\models\Subscricao`.
+ * SubscricaoSearch represents the model behind the search form of `backend\models\Subscricao`.
  */
 class SubscricaoSearch extends Subscricao
 {
@@ -19,6 +19,7 @@ class SubscricaoSearch extends Subscricao
         return [
             [['IDSubscricao', 'id_cliente', 'id_desconto', 'id_tipo'], 'integer'],
             [['data_subscricao', 'data_expirar'], 'safe'],
+            [['total'], 'number'],
         ];
     }
 

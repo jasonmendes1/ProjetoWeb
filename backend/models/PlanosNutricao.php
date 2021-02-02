@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
 /**
- * This is the model class for table "planonutricao".
+ * This is the model class for table "planosnutricao".
  *
  * @property int $IDPlanoNutricao
  * @property int|null $Segunda
@@ -15,15 +15,15 @@ use Yii;
  * @property int|null $Sexta
  * @property int|null $Sabado
  * @property int $IDNutricionista
+ * @property string $Semana
  *
- * @property ListaPlanos[] $listaPlanos
+ * @property Funcionario $iDNutricionista
  * @property Ementa $segunda
  * @property Ementa $terca
  * @property Ementa $quarta
  * @property Ementa $quinta
  * @property Ementa $sexta
  * @property Ementa $sabado
- * @property Funcionario $iDNutricionista
  */
 class Planosnutricao extends \yii\db\ActiveRecord
 {
@@ -32,7 +32,7 @@ class Planosnutricao extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'planonutricao';
+        return 'planosnutricao';
     }
 
     /**
@@ -42,14 +42,15 @@ class Planosnutricao extends \yii\db\ActiveRecord
     {
         return [
             [['Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'IDNutricionista'], 'integer'],
-            [['IDNutricionista'], 'required'],
+            [['IDNutricionista', 'Semana'], 'required'],
+            [['Semana'], 'string', 'max' => 10],
+            [['IDNutricionista'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['IDNutricionista' => 'IDFuncionario']],
             [['Segunda'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Segunda' => 'IDEmenta']],
             [['Terca'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Terca' => 'IDEmenta']],
             [['Quarta'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Quarta' => 'IDEmenta']],
             [['Quinta'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Quinta' => 'IDEmenta']],
             [['Sexta'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Sexta' => 'IDEmenta']],
             [['Sabado'], 'exist', 'skipOnError' => true, 'targetClass' => Ementa::className(), 'targetAttribute' => ['Sabado' => 'IDEmenta']],
-            [['IDNutricionista'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionario::className(), 'targetAttribute' => ['IDNutricionista' => 'IDFuncionario']],
         ];
     }
 
@@ -67,17 +68,18 @@ class Planosnutricao extends \yii\db\ActiveRecord
             'Sexta' => 'Sexta',
             'Sabado' => 'Sabado',
             'IDNutricionista' => 'Id Nutricionista',
+            'Semana' => 'Semana',
         ];
     }
 
     /**
-     * Gets query for [[ListaPlanos]].
+     * Gets query for [[IDNutricionista]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getListaPlanos()
+    public function getIDNutricionista()
     {
-        return $this->hasMany(ListaPlanos::className(), ['IDPlano' => 'IDPlanoNutricao']);
+        return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
     }
 
     /**
@@ -138,15 +140,5 @@ class Planosnutricao extends \yii\db\ActiveRecord
     public function getSabado()
     {
         return $this->hasOne(Ementa::className(), ['IDEmenta' => 'Sabado']);
-    }
-
-    /**
-     * Gets query for [[IDNutricionista]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIDNutricionista()
-    {
-        return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'IDNutricionista']);
     }
 }

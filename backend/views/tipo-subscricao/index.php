@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\TipoSubscricaoSearch */
+/* @var $searchModel backend\models\TipoSubscricaoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tipo Subscricaos';
@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'IDTipoSubscricao',
             'tipo',
+            'valor',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

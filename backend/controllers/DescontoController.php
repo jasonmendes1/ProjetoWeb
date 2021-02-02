@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Desconto;
-use app\models\DescontoSearch;
+use backend\models\Desconto;
+use backend\models\DescontoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
