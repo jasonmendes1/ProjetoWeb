@@ -32,4 +32,22 @@ class ListaPlanosController extends ActiveController
         return ['total' => count($recs)];
     }
 
+    public function actionGetplano($id)
+    {
+        $user = new $this->modelClass;
+        $userRecord = $user::find()->where("User_ID=" . $id)->one();
+        $cliente = array();
+
+
+        array_push(
+            $cliente,
+            [
+                "IDPlanoTreino" => $userRecord->IDPlanoTreino,
+                "IDPlanoNutricao" => $userRecord->IDPlanoNutricao,
+                "IDCliente" => $userRecord->IDCliente,
+            ]
+        );
+        return $cliente;
+    }
+
 }

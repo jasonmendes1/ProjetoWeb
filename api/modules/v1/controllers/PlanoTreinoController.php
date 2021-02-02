@@ -50,4 +50,23 @@ class PlanotreinoController extends ActiveController
         $model = $models::findOne($id);
         return $model->semana;
     }
+
+    public function actionGetplanotreino($id)
+    {
+        $user = new $this->modelClass;
+        $userRecord = $user::find()->where("IDPlanoTreino=" . $id)->one();
+        $planotreino = array();
+
+
+        array_push(
+            $planotreino,
+            [
+                "IDPlanoTreino" => $userRecord->IDPlanoTreino,
+                "id_PT" => $userRecord->id_PT,
+                "dia_treino" => $userRecord->dia_treino,
+                "semana" => $userRecord->semana,
+            ]
+        );
+        return $planotreino;
+    }
 }

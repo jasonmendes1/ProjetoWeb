@@ -223,4 +223,27 @@ class PlanonutricaoController extends ActiveController
 
         return $model->Jantar;
     }
+
+    
+    public function actionGetplanonutricao($id)
+    {
+        $user = new $this->modelClass;
+        $userRecord = $user::find()->where("IDPlanoNutricao=" . $id)->one();
+        $planonutricao = array();
+
+
+        array_push(
+            $planonutricao,
+            [
+                "IDPlanoNutricao" => $userRecord->IDPlanoNutricao,
+                "Segunda" => $userRecord->segunda,
+                "Terca" => $userRecord->terca,
+                "Quarta" => $userRecord->quarta,
+                "Quinta" => $userRecord->quinta,
+                "Sexta" => $userRecord->sexta,
+                "Sabado" => $userRecord->sabado,
+            ]
+        );
+        return $planonutricao;
+    }
 }
