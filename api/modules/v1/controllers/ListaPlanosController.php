@@ -8,6 +8,8 @@ use yii\web\Response;
 class ListaPlanosController extends ActiveController
 {
     public $modelClass = 'common\models\ListaPlanos';
+    public $modelCliente = 'common\models\Cliente';
+
 
     public function behaviors()
     {
@@ -31,5 +33,4 @@ class ListaPlanosController extends ActiveController
         $recs = $descontoModel::find()->all();
         return ['total' => count($recs)];
     }
-
 }

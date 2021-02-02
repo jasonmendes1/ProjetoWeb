@@ -34,193 +34,226 @@ class PlanonutricaoController extends ActiveController
         $recs = $planonutricaoModel::find()->all();
         return ['total' => count($recs)];
     }
-    //por acabar
-    public function actionNomeementa($id){
-        $models = new $this->modelEmenta;
+    public function actionNomeementaseg($id){
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->nomeEmenta;
+        return $model->segunda->nomeEmenta;
     }
+    public function actionNomeementater($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->terca->nomeEmenta;
+    }
+    public function actionNomeementaqua($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->quarta->nomeEmenta;
+    }
+    public function actionNomeementaqui($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->quinta->nomeEmenta;
+    }
+    public function actionNomeementasex($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->sexta->nomeEmenta;
+    }
+    public function actionNomeementasab($id){
+        $models = new $this->modelClass;
+        $model = $models::findOne($id);
+
+        return $model->sabado->nomeEmenta;
+    }
+    //Segunda
     public function actionSegundapeqalmoco($id){
         $models = new $this->modelClass;
-        $modelEmenta = new $this->modelEmenta;
         $model = $models::findOne($id);
-        $modelEmenta->IDEmenta = $model->Segunda;
 
-        return $model->ementa->PequenoAlmoco;
+        return $model->segunda->PequenoAlmoco;
     }
     public function actionSegundaalmoco($id){
         $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->segunda->Almoco;
     }
     public function actionSegundalanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->segunda->Lanche1;
     }
     public function actionSegundalanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->segunda->Lanche2;
     }
     public function actionSegundajantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->segunda->Jantar;
     }
+    //terca
     public function actionTercapeqalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->PequenoAlmoco;
+        return $model->terca->PequenoAlmoco;
     }
     public function actionTercaalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->terca->Almoco;
     }
     public function actionTercalanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->terca->Lanche1;
     }
     public function actionTercalanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->terca->Lanche2;
     }
     public function actionTercajantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->terca->Jantar;
     }
+    //quarta
     public function actionQuartapeqalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->PequenoAlmoco;
+        return $model->quarta->PequenoAlmoco;
     }
     public function actionQuartaalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->quarta->Almoco;
     }
     public function actionQuartalanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->quarta->Lanche1;
     }
     public function actionQuartalanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->quarta->Lanche2;
     }
     public function actionQuartajantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->quarta->Jantar;
     }
+    //quinta
     public function actionQuintapeqalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->PequenoAlmoco;
+        return $model->quinta->PequenoAlmoco;
     }
     public function actionQuintaalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->quinta->Almoco;
     }
     public function actionQuintalanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->quinta->Lanche1;
     }
     public function actionQuintalanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->quinta->Lanche2;
     }
     public function actionQuintajantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->quinta->Jantar;
     }
+    //sexta
     public function actionSextapeqalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->PequenoAlmoco;
+        return $model->sexta->PequenoAlmoco;
     }
     public function actionSextaalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->sexta->Almoco;
     }
     public function actionSextalanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->sexta->Lanche1;
     }
     public function actionSextalanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->sexta->Lanche2;
     }
     public function actionSextajantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->sexta->Jantar;
     }
+    //sabado
     public function actionSabadopeqalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->PequenoAlmoco;
+        return $model->sabado->PequenoAlmoco;
     }
     public function actionSabadoalmoco($id){
-        $models = new $this->modelEmenta;
+        $models = new $this->modelClass;
         $model = $models::findOne($id);
 
-        return $model->Almoco;
+        return $model->sabado->Almoco;
     }
     public function actionSabadolanche1($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche1;
+        return $model->sabado->Lanche1;
     }
     public function actionSabadolanche2($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Lanche2;
+        return $model->sabado->Lanche2;
     }
     public function actionSabadojantar($id){
         $models = new $this->modelEmenta;
         $model = $models::findOne($id);
 
-        return $model->Jantar;
+        return $model->sabado->Jantar;
     }
 }
