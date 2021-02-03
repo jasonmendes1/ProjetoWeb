@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
+use frontend\models\Funcionario; 
+use frontend\models\PlanosTreino; 
+use yii\data\ActiveDataProvider;
+
 
 $this->title = 'Criar Exercicio';
 
@@ -21,15 +25,22 @@ $this->title = 'Criar Exercicio';
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         </div>
+        <div>
+        <h1>Seus Planos de Treino</h1>
+            <?php 
+                foreach ($planoProvider as $plano){?>
+                 <br> 
+                 <p><?='ID: ', Html::a($plano->IDPlanoTreino, ['criarexercicio', 'idplanotreino' => $plano->IDPlanoTreino]), ' Data: ', $plano->dia_treino?></p>
+                <?php }
+            ?>
+        </div>  
         <?php ActiveForm::end(); ?>
-
     </div>
+
     <div class = "criarexercicios">
 
         <?php $form = ActiveForm::begin(); ?>
         <h1><?= Html::encode($this->title) ?></h1>
-
-        <?= $form->field($modelExercicio, 'IDPlanoTreino')->textInput() ?>
 
         <?= $form->field($modelExercicio, 'nome')->textInput(['maxlength' => true]) ?>
 
