@@ -269,12 +269,13 @@ class PlanonutricaoController extends ActiveController
             $planonutricao,
             [
                 "IDPlanoNutricao" => $userRecord->IDPlanoNutricao,
-                "Segunda" => $userRecord->segunda,
-                "Terca" => $userRecord->terca,
-                "Quarta" => $userRecord->quarta,
-                "Quinta" => $userRecord->quinta,
-                "Sexta" => $userRecord->sexta,
-                "Sabado" => $userRecord->sabado,
+                "Segunda" => $userRecord->segunda->IDEmenta,
+                "Terca" => $userRecord->terca->IDEmenta,
+                "Quarta" => $userRecord->quarta->IDEmenta,
+                "Quinta" => $userRecord->quinta->IDEmenta,
+                "Sexta" => $userRecord->sexta->IDEmenta,
+                "Sabado" => $userRecord->sabado->IDEmenta,
+                "Semana" => $userRecord->Semana,
             ]
         );
         return $planonutricao;
