@@ -93,10 +93,10 @@ class ClienteController extends ActiveController
         $userRecord = $user::find()->where("User_ID=" . $id)->one();
         $cliente = array();
 
-
         array_push(
             $cliente,
             [
+                "IDCliente" => $userRecord->IDCliente,
                 "UserUsername" => $userRecord->user->username,
                 "ClientePrimeiroNome" => $userRecord->primeiroNome,
                 "ClienteApelido" => $userRecord->apelido,
