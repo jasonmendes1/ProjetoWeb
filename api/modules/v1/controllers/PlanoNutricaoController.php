@@ -11,6 +11,7 @@ class PlanonutricaoController extends ActiveController
 {
     public $modelClass = 'common\models\Planonutricao';
     public $modelEmenta = 'common\models\Ementa';
+    public $modelCliente = 'common\models\Cliente';
 
     public function behaviors()
     {
@@ -255,5 +256,32 @@ class PlanonutricaoController extends ActiveController
         $model = $models::findOne($id);
 
         return $model->sabado->Jantar;
+    }
+
+    
+    public function actionGetplanonutricao($id)
+    {
+        $user = new $this->modelClass;
+        $userRecord = $user::find()->where("IDPlanoNutricao=" . $id)->one();
+        $planonutricao = array();
+        //$clienteModel = new $this->modelCliente;
+        //$clienteRecord = $clienteModel::find()->where("User_ID=" . $userRecord->IDCliente)->one();
+
+
+        array_push(
+            $planonutricao,
+            [
+                "IDPlanoNutricao" => $userRecord->IDPlanoNutricao,
+                "Segunda" => $userRecord->segunda->IDEmenta,
+                "Terca" => $userRecord->terca->IDEmenta,
+                "Quarta" => $userRecord->quarta->IDEmenta,
+                "Quinta" => $userRecord->quinta->IDEmenta,
+                "Sexta" => $userRecord->sexta->IDEmenta,
+                "Sabado" => $userRecord->sabado->IDEmenta,
+                "Semana" => $userRecord->Semana,
+                //"IDCliente" => $clienteRecord->IDCliente,
+            ]
+        );
+        return $planonutricao;
     }
 }

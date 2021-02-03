@@ -70,6 +70,8 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/cliente'], 'pluralize' => false,
 
                     'extraPatterns' => [
+                        'GET get/{id}' => 'get', 
+
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/primeironome' => 'primeironome', // 'XXX' é 'actionXXX'
                         'GET {id}/apelido' => 'apelido', // 'XXX' é 'actionXXX'
@@ -130,6 +132,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/planonutricao'], 'pluralize' => false,
 
                     'extraPatterns' => [
+                        'GET getplanonutricao/{id}' => 'getplanonutricao', 
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/nomeementaseg' => 'nomeementaseg', // 'XXX' é 'actionXXX'
                         'GET {id}/nomeementater' => 'nomeementater', // 'XXX' é 'actionXXX'
@@ -181,6 +184,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/planotreino'], 'pluralize' => false,
 
                     'extraPatterns' => [
+                        'GET getplanotreino/{id}' => 'getplanotreino', 
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/personaltrainer' => 'personaltrainer', // 'XXX' é 'actionXXX'
                         'GET {id}/diatreino' => 'diatreino', // 'XXX' é 'actionXXX'
@@ -203,6 +207,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/listaplanos'], 'pluralize' => false,
 
                     'extraPatterns' => [
+                        'GET getplano/{id}' => 'getplano', 
                         'GET total' => 'total', // 'XXX' é 'actionXXX'
                         'GET {id}/cliente' => 'cliente', // 'XXX' é 'actionXXX'
                     ],

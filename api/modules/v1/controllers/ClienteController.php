@@ -91,14 +91,12 @@ class ClienteController extends ActiveController
     {
         $user = new $this->modelClass;
         $userRecord = $user::find()->where("User_ID=" . $id)->one();
-        //$subscricaoModel = new $this->modelSubscricao;
         $cliente = array();
-
-        //$subscricaoRecord = $subscricaoModel::find()->where("User_ID=" . $userRecord->cliente->subscricao->IDSubscricao)->one();
 
         array_push(
             $cliente,
             [
+                "IDCliente" => $userRecord->IDCliente,
                 "UserUsername" => $userRecord->user->username,
                 "ClientePrimeiroNome" => $userRecord->primeiroNome,
                 "ClienteApelido" => $userRecord->apelido,
