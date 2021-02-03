@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Exercicio;
+use frontend\models\Funcionario;
 use frontend\models\PlanosTreino;
 use frontend\models\PlanosTreinoSearch;
 use yii\debug\panels\EventPanel;
@@ -75,6 +76,10 @@ class PlanosTreinoController extends Controller
 
             $model = new PlanosTreino();
             $modelExercicio = new Exercicio();
+            $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+            $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+            ->orderBy(['IDPlanoTreino' => SORT_ASC])
+            ->all();
 
             if (($model->load(Yii::$app->request->post()) && $model->createPlanoTreino()) || ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio())) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
@@ -86,12 +91,36 @@ class PlanosTreinoController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
             ]);
         }else{
             throw new ForbiddenHttpException;
         }
     }
+    public function actionCriarexercicio($idplanotreino)
+    {
+            $modelExercicio = new Exercicio();
+            $model = new PlanosTreino();
+            $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+            $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+            ->orderBy(['IDPlanoTreino' => SORT_ASC])
+            ->all();
 
+
+            if ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()){
+                Yii::$app->session->setFlash('success', 'Action Completed');
+                return $this->goHome();
+            }else{
+                Yii::$app->session->setFlash('failure', 'Action Failed');
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'idplanotreino' => $idplanotreino,
+                'planoProvider' => $planoProvider,
+            ]);
+    }
     /**
      * Updates an existing PlanosTreino model.
      * If update is successful, the browser will be redirected to the 'view' page.

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'repeticoes')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'repeticoes')->textInput() ?>
 
     <?= $form->field($model, 'tempo')->textInput() ?>
 
