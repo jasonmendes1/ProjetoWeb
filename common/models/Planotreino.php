@@ -12,6 +12,7 @@ use Yii;
  * @property string $dia_treino
  * @property string $semana
  *
+ * @property Exercicio[] $exercicios
  * @property ListaPlanos[] $listaPlanos
  * @property Funcionario $pT
  */
@@ -71,4 +72,10 @@ class Planotreino extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Funcionario::className(), ['IDFuncionario' => 'id_PT']);
     }
+
+    public function getExercicios()
+    {
+        return $this->hasMany(Exercicio::className(), ['IDPlanoTreino' => 'IDPlanoTreino']);
+    }
+
 }
