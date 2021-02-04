@@ -81,7 +81,6 @@ class PlanotreinoController extends ActiveController
         $modelLista = new $this->modelListaPlanos;
         $modelListaFind = $modelLista::find()->where("IDCliente=" . $idcliente)->one();
         $modelExercicioFind = $modelsExercicio::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
-        $modelExercicioFind = $modelsExercicio::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
         $modelPlanoFind = $models::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
 
         $planotreino = array();
