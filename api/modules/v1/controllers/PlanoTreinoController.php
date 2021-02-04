@@ -3,6 +3,8 @@
 namespace api\modules\v1\controllers;
 
 use common\models\Planotreino;
+use common\models\Exercicio;
+use common\models\ListaPlanos;
 use common\models\Funcionario;
 use yii\rest\ActiveController;
 use yii\web\Response;
@@ -10,7 +12,9 @@ use yii\web\Response;
 class PlanotreinoController extends ActiveController
 {
     public $modelClass = 'common\models\Planotreino';
+    public $modelExercicios = 'common\models\Exercicio';
     public $modelFuncionario = 'common\models\Funcionario';
+    public $modelListaPlanos = 'common\models\ListaPlanos';
 
     public function behaviors()
     {
@@ -69,5 +73,36 @@ class PlanotreinoController extends ActiveController
             ]
         );
         return $planotreino;
+    }
+
+    public function actionGetexercicios($idcliente){
+        $models = new $this->modelClass;
+        $modelsExercicio = new $this->modelExercicios;
+        $modelLista = new $this->modelListaPlanos;
+        $modelListaFind = $modelLista::find()->where("IDCliente=" . $idcliente)->one();
+        $modelExercicioFind = $modelsExercicio::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
+        $modelExercicioFind = $modelsExercicio::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
+        $modelPlanoFind = $models::find()->where("IDPlanoTreino=" . $modelListaFind->IDPlanoTreino)->one();
+
+        $planotreino = array();
+
+        array_push(
+            $planotreino,
+            [
+                "IDPlanoTreino" => $modelListaFind->IDPlanoTreino,
+                "IDCliente" => $modelListaFind->IDCliente,
+                "Personal Trainer" => $modelPlanoFind->pT->primeiroNome,
+                "Nome" => $modelExercicioFind->nome,
+                "repeticoes" => $modelExercicioFind->repeticoes,
+                "tempo" => $modelExercicioFind->tempo,
+                "serie" => $modelExercicioFind->serie,
+                "repouso" => $modelExercicioFind->repouso,
+                "tempo_total" => $modelExercicioFind->tempo_total,
+                "num_maquina" => $modelExercicioFind->num_maquina,
+            ]
+        );
+        
+        return $planotreino;
+
     }
 }

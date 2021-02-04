@@ -189,9 +189,11 @@ return [
                         'GET {id}/personaltrainer' => 'personaltrainer', // 'XXX' é 'actionXXX'
                         'GET {id}/diatreino' => 'diatreino', // 'XXX' é 'actionXXX'
                         'GET {id}/semana' => 'semana', // 'XXX' é 'actionXXX'
+                        'GET getexercicios/{idcliente}' => 'getexercicios', // 'XXX' é 'actionXXX'
                     ],
                     'tokens' => [
                         '{id}' => '<id:\\d+>', //O standard tem que aparecer!
+                        '{idcliente}' => '<idcliente:\\d+>', //O standard tem que aparecer!
                     ],
                 ],
                 ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/clientefuncionarios'], 'pluralize' => false,
