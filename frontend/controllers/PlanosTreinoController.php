@@ -97,29 +97,67 @@ class PlanosTreinoController extends Controller
             throw new ForbiddenHttpException;
         }
     }
+
+    public function actionSelectplano($id){
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $id])->all();
+
+
+        return $this->render('create', [
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'idplanotreino' => $id,
+            'planoProvider' => $planoProvider,
+            'exercicios' => $exercicios
+        ]);
+    }
+
+    
+    
     public function actionCriarexercicio($idplanotreino)
     {
-            $modelExercicio = new Exercicio();
-            $model = new PlanosTreino();
-            $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
-            $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
-            ->orderBy(['IDPlanoTreino' => SORT_ASC])
-            ->all();
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $idplanotreino])->all();
 
+        $op = 1;
+        $modelExercicio->IDPlanoTreino = $idplanotreino;
 
-            if ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()){
-                Yii::$app->session->setFlash('success', 'Action Completed');
-                return $this->goHome();
-            }else{
-                Yii::$app->session->setFlash('failure', 'Action Failed');
-            }
-
+        if($modelExercicio->load(Yii::$app->request->post())){
+            $modelExercicio->save();
+            $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $idplanotreino])->all();
             return $this->render('create', [
                 'model' => $model,
                 'modelExercicio' => $modelExercicio,
                 'idplanotreino' => $idplanotreino,
                 'planoProvider' => $planoProvider,
+                'exercicios' => $exercicios,
             ]);
+        }
+
+        if ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()){
+            Yii::$app->session->setFlash('success', 'Action Completed');
+            return $this->goHome();
+        }else{
+            Yii::$app->session->setFlash('failure', 'Action Failed');
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'idplanotreino' => $idplanotreino,
+            'planoProvider' => $planoProvider,
+            'exercicios' => $exercicios,
+            'option' => $op,
+        ]);
     }
     /**
      * Updates an existing PlanosTreino model.
