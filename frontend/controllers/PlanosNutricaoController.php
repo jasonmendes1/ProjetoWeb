@@ -165,7 +165,6 @@ class PlanosNutricaoController extends Controller
             }
         }
         
-        
         if(count($planosnutri) >= 1){
             foreach($planosnutri as $pn){
                 array_push($semanas, $pn->Semana);
@@ -190,7 +189,6 @@ class PlanosNutricaoController extends Controller
 
         $ementas = [];
         $planosnutri = [];
-        //$planontri = [];
         $semanas = [];
 
         if(count($allplans) >= 1){
@@ -201,27 +199,9 @@ class PlanosNutricaoController extends Controller
             }
         }
 
-        //array_push($planontri,PlanosNutricao::find()->where(['Semana' => $semana])->one());
-
         if($planosnutri[0]->Segunda != null){
             array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Segunda])->one());
         }
-        /*
-        if($planosnutri[0]->Terca != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Terca])->one());
-        }
-        if($planosnutri[0]->Quarta != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quarta])->one());
-        }
-        if($planosnutri[0]->Quinta != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Quinta])->one());
-        }
-        if($planosnutri[0]->Sexta != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sexta])->one());
-        }
-        if($planosnutri[0]->Sabado != null){
-            array_push($ementas, Ementa::find()->where(['IDEmenta' => $planosnutri[0]->Sabado])->one());
-        }*/
 
         if(count($planosnutri) >= 1){
             foreach($planosnutri as $pn){
@@ -232,7 +212,6 @@ class PlanosNutricaoController extends Controller
         
 
         return $this->render('planosnutri', [
-            //'planosnutricao' => $planosnutri,
             'ementas' => $ementas,
             'semanas' => $semanas,
             'selectedsemana' => $semana,

@@ -175,19 +175,17 @@ class PlanosTreinoController extends Controller
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
                 if($plano->IDPlanoTreino != null){
-                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
-                }
+                    if(PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one() != null){
+                        array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+                    }
+                }   
             }
         }
 
         if(count($planostreino) >= 1){
-            
             foreach($planostreino as $pt){
-                var_dump($pt);
-                
-                //array_push($semanas,$pt->semana);
+                array_push($semanas,$pt->semana);
             }
-            die();
         }
 
         if(count($semanas) >= 1){
