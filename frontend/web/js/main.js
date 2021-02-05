@@ -15,3 +15,11 @@ $(function(){
             .load($(this).attr('value'));
     });
 });
+
+$(function(){
+    $('#criarExercicioButton').click(function (){
+        $('#exercicio').modal('show')
+            .find('#modalExercicio')
+            .load($(this).attr('value'));
+    });
+});

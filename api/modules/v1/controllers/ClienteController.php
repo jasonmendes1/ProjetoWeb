@@ -11,6 +11,7 @@ class ClienteController extends ActiveController
 {
     public $modelClass = 'common\models\Cliente';
     public $modelSubscricao = 'common\models\Subscricao';
+    public $modelCliente = 'common\models\Cliente';
 
 
     public function behaviors()
@@ -90,28 +91,28 @@ class ClienteController extends ActiveController
     public function actionGet($id)
     {
         $user = new $this->modelClass;
-        $userRecord = $user::find()->where("User_ID=" . $id)->one();
+        $clientRecord = $user::find()->where("User_ID=" . $id)->one();
         $cliente = array();
 
         array_push(
             $cliente,
             [
-                "IDCliente" => $userRecord->IDCliente,
-                "UserUsername" => $userRecord->user->username,
-                "ClientePrimeiroNome" => $userRecord->primeiroNome,
-                "ClienteApelido" => $userRecord->apelido,
-                "ClienteDataNasc" => $userRecord->dt_nascimento,
-                "ClienteSexo" => $userRecord->sexo,
-                "ClienteAvatar" => $userRecord->avatar,
-                "ClienteNumTele" => $userRecord->num_tele,
-                "ClienteNIF" => $userRecord->nif,
-                "ClienteAltura" => $userRecord->altura,
-                "ClientePeso" => $userRecord->peso,
-                "ClienteMassaMuscular" => $userRecord->massa_muscular,
-                "ClienteMassaGorda" => $userRecord->massa_gorda,
-                "UserEmail" => $userRecord->user->email,
-                "DataSubscricao" => $userRecord->subscricaos[0]->data_subscricao,
-                "DataExpirar" => $userRecord->subscricaos[0]->data_expirar,
+                "IDCliente" => $clientRecord->IDCliente,
+                "UserUsername" => $clientRecord->user->username,
+                "ClientePrimeiroNome" => $clientRecord->primeiroNome,
+                "ClienteApelido" => $clientRecord->apelido,
+                "ClienteDataNasc" => $clientRecord->dt_nascimento,
+                "ClienteSexo" => $clientRecord->sexo,
+                "ClienteAvatar" => $clientRecord->avatar,
+                "ClienteNumTele" => $clientRecord->num_tele,
+                "ClienteNIF" => $clientRecord->nif,
+                "ClienteAltura" => $clientRecord->altura,
+                "ClientePeso" => $clientRecord->peso,
+                "ClienteMassaMuscular" => $clientRecord->massa_muscular,
+                "ClienteMassaGorda" => $clientRecord->massa_gorda,
+                "UserEmail" => $clientRecord->user->email,
+                "DataSubscricao" => $clientRecord->subscricaos[0]->data_subscricao,
+                "DataExpirar" => $clientRecord->subscricaos[0]->data_expirar,
             ]
         );
         return $cliente;
@@ -125,14 +126,14 @@ class ClienteController extends ActiveController
         $user = new $this->modelClass;
         $cliente = new $this->modelCliente;
         $userRecord = $user::find()->where("User_ID=" . '\'' . $idUser . '\'')->one();
-        $clienteRecord = $cliente::find()->where("Id=" . '\'' . $userRecord->cliente->Id . '\'')->one();
+        $clienteRecord = $cliente::find()->where("User_ID=" . '\'' . $userRecord->cliente->IDCliente . '\'')->one();
         
         $clienteNome = $request->get('ClientePrimeiroNome');
         $clienteApelido = $request->get('ClienteApelido');
         $clienteDataNasc = $request->get('ClienteDataNasc');
-        $clienteSexo = $request->get('ClienteSexo');
         $clienteNumTele = $request->get('ClienteNumTele');
         $clienteNIF = $request->get('ClienteNIF');
+        $clienteSexo = $request->get('ClienteSexo');
         $clienteAltura = $request->get('ClienteAltura');
         $clientePeso = $request->get('ClientePeso');
         $clienteMassaMuscular = $request->get('ClienteMassaMuscular');
@@ -141,9 +142,9 @@ class ClienteController extends ActiveController
         $clienteRecord->primeiroNome = $clienteNome;
         $clienteRecord->apelido = $clienteApelido;
         $clienteRecord->dt_nascimento = $clienteDataNasc;
-        $clienteRecord->sexo = $clienteSexo;
         $clienteRecord->num_tele = $clienteNumTele;
         $clienteRecord->nif = $clienteNIF;
+        $clienteRecord->sexo = $clienteSexo;
         $clienteRecord->altura = $clienteAltura;
         $clienteRecord->peso = $clientePeso;
         $clienteRecord->massa_muscular = $clienteMassaMuscular;

@@ -4,6 +4,7 @@ namespace api\modules\v1\controllers;
 
 use common\models\Planonutricao;
 use common\models\Ementa;
+use common\models\ListaPlanos;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
@@ -12,6 +13,7 @@ class PlanonutricaoController extends ActiveController
     public $modelClass = 'common\models\Planonutricao';
     public $modelEmenta = 'common\models\Ementa';
     public $modelCliente = 'common\models\Cliente';
+    public $modelListaPlanos = 'common\models\ListaPlanos';
 
     public function behaviors()
     {
@@ -283,5 +285,58 @@ class PlanonutricaoController extends ActiveController
             ]
         );
         return $planonutricao;
+    }
+
+    public function actionGetementas($idcliente){
+        $models = new $this->modelClass;
+        $modelEmenta = new $this->modelEmenta;
+        $modelLista = new $this->modelListaPlanos;
+        $modelListaFind = $modelLista::find()->where("IDCliente=" . $idcliente)->one();
+        $modelFind = $models::find()->where("IDPlanoNutricao=" . $modelListaFind->IDPlanoNutricao)->one();
+
+
+        $planonutricao = array();
+
+        array_push(
+            $planonutricao,
+            [
+                "IDPlanoNutricao" => $modelListaFind->IDPlanoNutricao,
+                "IDCliente" => $modelListaFind->IDCliente,
+                "Nutricionista" => $modelFind->IDNutricionista,
+                "Segunda Pequeno Almoco" => $modelFind->segunda->PequenoAlmoco,
+                "Segunda Almoco" => $modelFind->segunda->Almoco,
+                "Segunda Lanche 1" => $modelFind->segunda->Lanche1,
+                "Segunda Lanche 2" => $modelFind->segunda->Lanche2,
+                "Segunda Jantar" => $modelFind->segunda->Jantar,
+                "Terca Pequeno Almoco" => $modelFind->terca->PequenoAlmoco,
+                "Terca Almoco" => $modelFind->terca->Almoco,
+                "Terca Lanche 1" => $modelFind->terca->Lanche1,
+                "Terca Lanche 2" => $modelFind->terca->Lanche2,
+                "Terca Jantar" => $modelFind->terca->Jantar,
+                "Quarta Pequeno Almoco" => $modelFind->quarta->PequenoAlmoco,
+                "Quarta Almoco" => $modelFind->quarta->Almoco,
+                "Quarta Lanche 1" => $modelFind->quarta->Lanche1,
+                "Quarta Lanche 2" => $modelFind->quarta->Lanche2,
+                "Quarta Jantar" => $modelFind->quarta->Jantar,
+                "Quinta Pequeno Almoco" => $modelFind->quinta->PequenoAlmoco,
+                "Quinta Almoco" => $modelFind->quinta->Almoco,
+                "Quinta Lanche 1" => $modelFind->quinta->Lanche1,
+                "Quinta Lanche 2" => $modelFind->quinta->Lanche2,
+                "Quinta Jantar" => $modelFind->quinta->Jantar,
+                "Sexta Pequeno Almoco" => $modelFind->sexta->PequenoAlmoco,
+                "Sexta Almoco" => $modelFind->sexta->Almoco,
+                "Sexta Lanche 1" => $modelFind->sexta->Lanche1,
+                "Sexta Lanche 2" => $modelFind->sexta->Lanche2,
+                "Sexta Jantar" => $modelFind->sexta->Jantar,
+                "Sabado Pequeno Almoco" => $modelFind->sabado->PequenoAlmoco,
+                "Sabado Almoco" => $modelFind->sabado->Almoco,
+                "Sabado Lanche 1" => $modelFind->sabado->Lanche1,
+                "Sabado Lanche 2" => $modelFind->sabado->Lanche2,
+                "Sabado Jantar" => $modelFind->sabado->Jantar,
+            ]
+        );
+        
+        return $planonutricao;
+
     }
 }
