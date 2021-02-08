@@ -30,6 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'selectedid' => $idplanotreino,
                 'exercicios' => $exercicios,
             ]) ?>
+        <?php }else if(isset($clientes)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'clientes' => $clientes
+            ]) ?>
         <?php }else{?>
             <?= $this->render('_form', [
                 'model' => $model,

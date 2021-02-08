@@ -764,7 +764,7 @@ tr:nth-child(even){
 
 .criar-planostreino{
     display: flex;
-    height: 20%;
+    height: 30%;
     width:100%;
     padding-left: 20px;
     flex-direction: column;
@@ -772,7 +772,7 @@ tr:nth-child(even){
 
 .mostrar-planostreino{
     display: flex;
-    height: 80%;
+    height: 70%;
     width: 100%;
     flex-direction: column;
 }

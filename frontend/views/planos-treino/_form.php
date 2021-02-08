@@ -21,6 +21,7 @@ $this->title = 'Criar Exercicio';
         <div class = "criar-planostreino">
             <h1>Planos de Treino</h1>
             <br>
+            <button><?=Html::a('Select Clientes', ['apresentarcliente'])?></button>
             <?php $form = ActiveForm::begin(); ?>
             
                 <?= $form->field($model, 'dia_treino')->widget(DatePicker::className(),['dateFormat' => 'y-M-d']) ?>
@@ -66,7 +67,21 @@ $this->title = 'Criar Exercicio';
                         </div>
                     </div>
                 <?php }
-            }
+            }else if(isset($clientes)){ ?>
+                <?php foreach($clientes as $cliente){ ?>
+                    <div class = "exer-title">
+                        <div><h1>Clientes</h1></div>
+                    </div>
+                    <div class = "exer">
+                        <div class = "exer-top">
+                            <div><img src="<?=$cliente->avatar?>" align="left" style="border-radius: 10000px; width:50px; height:50px;"></div>
+                            <div><b>Id: </b><?=Html::a($cliente->IDCliente, ['selectcliente', 'idcliente' => $cliente->IDCliente],['class' => 'btnsemanas'])?></div>
+                            <div><b>Nome: </b><?=$cliente->primeiroNome . " " . $cliente->apelido?></div>
+                            <div><b>Data Nascimento: </b><?=$cliente->dt_nascimento?></div>
+                        </div>
+                    </div>
+                <?php }?>
+            <?php }
             ?>     
         </div>  
         <div class = "criar-exercicios">

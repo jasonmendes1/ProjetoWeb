@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Cliente;
+use frontend\models\ClienteFuncionarios;
 use Yii;
 use frontend\models\Exercicio;
 use frontend\models\Funcionario;
@@ -98,6 +100,60 @@ class PlanosTreinoController extends Controller
         }
     }
 
+    public function actionApresentarcliente(){
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $clientesfunc = ClienteFuncionarios::find()->where(['id_PT' => $funcionario->IDFuncionario])->all();
+        $clientes = [];
+
+        foreach($clientesfunc as $cf){
+            array_push($clientes,Cliente::find()->where(['IDCliente' => $cf->id_cliente])->one());
+        }
+
+        return $this->render('create',[
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'planoProvider' => $planoProvider,
+            'clientes' => $clientes,
+        ]);
+    }
+
+    public function actionSelectcliente($idcliente){
+        $model = new PlanosTreino();
+        $modelExercicio = new Exercicio();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $modellista = ListaPlanos::find()->all();
+        $modellista = new ListaPlanos();
+        $modellista->IDCliente = $idcliente;
+
+        if($model->load(Yii::$app->request->post())){
+            $model->id_PT = $funcionario->IDFuncionario;
+            $model->semana = strftime('%V',strtotime($model->dia_treino));
+            $model->save();
+
+            $modellista->IDPlanoTreino = $model->IDPlanoTreino;
+            $modellista->save();
+            
+            return $this->render('create',[
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+            ]);
+        }
+        return $this->render('create',[
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'planoProvider' => $planoProvider,
+        ]);
+    }
+
     public function actionSelectplano($id){
         $modelExercicio = new Exercicio();
         $model = new PlanosTreino();
@@ -117,8 +173,6 @@ class PlanosTreinoController extends Controller
         ]);
     }
 
-    
-    
     public function actionCriarexercicio($idplanotreino)
     {
         $modelExercicio = new Exercicio();
@@ -133,6 +187,7 @@ class PlanosTreinoController extends Controller
         $modelExercicio->IDPlanoTreino = $idplanotreino;
 
         if($modelExercicio->load(Yii::$app->request->post())){
+            $modelExercicio->tempo_total = ($modelExercicio->tempo + $modelExercicio->repouso) * $modelExercicio->serie;
             $modelExercicio->save();
             $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $idplanotreino])->all();
             return $this->render('create', [
