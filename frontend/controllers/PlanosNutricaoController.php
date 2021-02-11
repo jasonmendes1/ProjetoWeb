@@ -2,7 +2,10 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Cliente;
+use frontend\models\ClienteFuncionarios;
 use frontend\models\Ementa;
+use frontend\models\Funcionario;
 use frontend\models\ListaPlanos;
 use Yii;
 use frontend\models\PlanosNutricao;
@@ -69,6 +72,14 @@ class PlanosNutricaoController extends Controller
     {
         if( Yii::$app->user->can('createPlanonutricao') ){
             $model = new PlanosNutricao();
+            $nutricionista = Funcionario::find()->where(['User_id' => Yii::$app->user->identity->id])->one();
+            $cf = ClienteFuncionarios::find()->where(['id_nutricionista' => $nutricionista->IDFuncionario])->all();
+            $clientes = [];
+            if(count($cf) >= 1){
+                foreach($cf as $cli){
+                    array_push($clientes,Cliente::find()->where(['IDCliente' => $cli->id_cliente])->one());
+                }
+            }
 
             if ($model->load(Yii::$app->request->post()) && $model->createPlanoNutricao()) {
                 Yii::$app->session->setFlash('success', 'Action Completed');
@@ -79,6 +90,7 @@ class PlanosNutricaoController extends Controller
 
             return $this->render('create',[
                 'model' => $model,
+                'clientes' => $clientes,
             ]);
         }else{
             throw new ForbiddenHttpException;
@@ -169,10 +181,11 @@ class PlanosNutricaoController extends Controller
             foreach($planosnutri as $pn){
                 array_push($semanas, $pn->Semana);
             }
-            asort($semanas);
         }
 
         if(count($semanas) >= 1){
+            $semanas = array_unique($semanas);
+            asort($semanas);
             $selectedsemana = $semanas[0];
         }
 
@@ -207,6 +220,10 @@ class PlanosNutricaoController extends Controller
             foreach($planosnutri as $pn){
                 array_push($semanas, $pn->Semana);
             }
+        }
+
+        if(count($semanas) >= 1){
+            $semanas = array_unique($semanas);
             asort($semanas);
         }
         
@@ -258,6 +275,10 @@ class PlanosNutricaoController extends Controller
             foreach($planosnutri as $pn){
                 array_push($semanas, $pn->Semana);
             }
+        }
+
+        if(count($semanas) >= 1){
+            $semanas = array_unique($semanas);
             asort($semanas);
         }
 
@@ -286,5 +307,60 @@ class PlanosNutricaoController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionSelectcliente($id){
+        $model = new PlanosNutricao();
+        $nutricionista = Funcionario::find()->where(['User_id' => Yii::$app->user->identity->id])->one();
+        $cf = ClienteFuncionarios::find()->where(['id_nutricionista' => $nutricionista->IDFuncionario])->all();
+        $clientes = [];
+        $reps = 0;
+        if(count($cf) >= 1){
+            foreach($cf as $cli){
+                array_push($clientes,Cliente::find()->where(['IDCliente' => $cli->id_cliente])->one());
+            }
+        }
+
+        $planos = ListaPlanos::find()->where(['IDCliente' => $id])->all();
+        $planosnutricao = [];
+
+        foreach($planos as $plano){
+            if($plano->IDPlanoNutricao != null){
+                array_push($planosnutricao,PlanosNutricao::find()->where(['IDPlanoNutricao' => $plano->IDPlanoNutricao])->one());
+            }
+        }
+
+        if ($model->load(Yii::$app->request->post())) { 
+            foreach($planosnutricao as $pn){
+                if($pn->Semana == strftime('%V',strtotime($model->Semana))){
+                    $reps++;
+                }
+            }
+
+            if($reps >= 1){
+                Yii::$app->session->setFlash('error', 'Já existe algum plano nessa semana');
+            }else{
+                $modellista = new ListaPlanos();
+                $model->IDNutricionista = $nutricionista->IDFuncionario;
+                $model->Semana = strftime('%V',strtotime($model->Semana));
+                $model->save();
+                $modellista->IDPlanoNutricao = $model->IDPlanoNutricao;
+                $modellista->IDCliente = $id;
+                $modellista->save();
+            }
+            return $this->render('create',[
+                'model' => $model,
+                'clientes' => $clientes,
+                'clienteselect' => $id,
+                'planos' => $planosnutricao,
+            ]);
+        }
+
+        return $this->render('create',[
+            'model' => $model,
+            'clientes' => $clientes,
+            'clienteselect' => $id,
+            'planos' => $planosnutricao,
+        ]);
     }
 }

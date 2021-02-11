@@ -12,38 +12,39 @@ $this->title = 'Inscrição';
 <div class = "main">
     <div class = "header">
         <div class="tituloincricao">
-            <H1>Incrição</H1>
+            <div class = "tituloincricaotitulo"><H1>Incrição/Subscrição</H1></div>
+            <div class = "tituloincricaobotao"><button><?= Html::a('<- Voltar ao Perfil',['profile'],['class' => 'nohover'])?></button></div>
         </div>
     </div>
     <div class = "profilebody">
         <div class = "info">
             <div class="infohead">
-                <div><?=$cliente->primeiroNome . " " . $cliente->apelido?></div>
+                <div><b><?=$cliente->primeiroNome . " " . $cliente->apelido?></b></div>
                 <?php $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
                     if($sub != null){ ?>
-                        <div>Data de expiração da subscrição: <?=$sub->data_expirar?></div>
+                        <div><b>Data de expiração da subscrição: </b><?=$sub->data_expirar?></div>
                     <?php }
                 ?>
             </div>
             <div class = "infobody">
-                Subscrição:
+                <h4><b>Subscrição:</b></h4>
                 <?php
                     if($sub != null){ ?>
-                        <div class = "infobodyitem">Tipo de Subscricao: <?php
+                        <div class = "infobodyitem"><b>Tipo de Subscricao: </b><?php
                             $tipo = TipoSubscricao::find()->where(['IDTipoSubscricao' => $sub->id_tipo])->one(); 
-                            echo $tipo->tipo . " / " . $tipo->valor . "€";
-                         ?>
+                            echo " " . $tipo->tipo . " / " . $tipo->valor . "€";
+                        ?>
                         </div>
-                        <div class = "infobodyitem">Desconto: <?php 
+                        <div class = "infobodyitem"><b>Desconto: </b><?php 
                         $descon = Desconto::find()->where(['IDDesconto' => $sub->id_desconto])->one(); 
                         echo $descon->nome . " / " . $descon->quantidade * 100 . "%";?>
                         </div>
-                        <div class = "infobodyitem">Data Subscrição/Renovação: <?= $sub->data_subscricao?></div>
-                        <div class = "infobodyitem">Expira: <?= $sub->data_expirar?></div>
-                        <div class = "infobodyitem">Montante do Ultimo Pagamento: <?=$sub->total?>€</div>
-                    <?php }else{
-                        echo "Não tem Subscrição feita";
-                    }
+                        <div class = "infobodyitem"><b>Data Subscrição/Renovação: </b><?= $sub->data_subscricao?></div>
+                        <div class = "infobodyitem"><b>Expira: </b><?= $sub->data_expirar?></div>
+                        <div class = "infobodyitem"><b>Montante do Ultimo Pagamento: </b><?=$sub->total?>€</div>
+                    <?php }else{?>
+                        <div class = "infobodyitem"><b>Não tem subscrição feita</b></div>
+                    <?php }
                 ?>
             </div>
             <div class = "buttons">
@@ -66,10 +67,10 @@ $this->title = 'Inscrição';
                         <div class = "opbody">
                             <?php $form = ActiveForm::begin();?>
                                 <div class = "opitem">
-                                    Tipo de Subscrição: <?= Html::activeDropDownList($model, 'id_tipo', $tipossub)?>
+                                    <b>Tipo de Subscrição: </b><?= Html::activeDropDownList($model, 'id_tipo', $tipossub)?>
                                 </div>
                                 <div class = "opitem">
-                                    Desconto: <?= Html::activeDropDownList($model, 'id_desconto', $descontos)?>
+                                    <b>Desconto: </b><?= Html::activeDropDownList($model, 'id_desconto', $descontos)?>
                                 </div>
                                 <div class = "opitem">
                                     <?= $form->field($model, 'meses') ?>
@@ -102,9 +103,9 @@ $this->title = 'Inscrição';
                         <div class = "itemsconta">
                             <?php
                                 if(isset($precobase)){?>
-                                    <div class = "itemconta">Preço Base: <?=$precobase?>€ </div>
-                                    <div class = "itemconta">Número Meses: <?=$multi?></div>
-                                    <div class = "itemconta">Desconto: <?=$desconto?>%</div>
+                                    <div class = "itemconta"><b>Preço Base: </b><?=$precobase?>€ </div>
+                                    <div class = "itemconta"><b>Número Meses: </b><?=$multi?></div>
+                                    <div class = "itemconta"><b>Desconto: </b><?=$desconto?>%</div>
                                     <div class = "itemconta">--------------------------</div>
                                     <div class = "itemconta"></div>
                                 <?php }else{ ?>
