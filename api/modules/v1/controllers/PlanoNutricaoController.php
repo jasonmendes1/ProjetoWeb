@@ -303,6 +303,15 @@ class PlanonutricaoController extends ActiveController
                 "IDPlanoNutricao" => $modelListaFind->IDPlanoNutricao,
                 "IDCliente" => $modelListaFind->IDCliente,
                 "Nutricionista" => $modelFind->IDNutricionista,
+                "Segunda" => $modelFind->Segunda,
+                "Terca" => $modelFind->Terca,
+                "Quarta" => $modelFind->Quarta,
+                "Quinta" => $modelFind->Quinta,
+                "Sexta" => $modelFind->Sexta,
+                "Sabado" => $modelFind->Sabado,
+                "Semana" => $modelFind->Semana,
+
+
                 "Segunda Pequeno Almoco" => $modelFind->segunda->PequenoAlmoco,
                 "Segunda Almoco" => $modelFind->segunda->Almoco,
                 "Segunda Lanche 1" => $modelFind->segunda->Lanche1,

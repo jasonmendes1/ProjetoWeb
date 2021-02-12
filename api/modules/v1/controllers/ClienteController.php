@@ -134,6 +134,7 @@ class ClienteController extends ActiveController
         $clienteNumTele = $request->get('ClienteNumTele');
         $clienteNIF = $request->get('ClienteNIF');
         $clienteSexo = $request->get('ClienteSexo');
+        $clienteAvatar = $request->get('ClienteAvatar');
         $clienteAltura = $request->get('ClienteAltura');
         $clientePeso = $request->get('ClientePeso');
         $clienteMassaMuscular = $request->get('ClienteMassaMuscular');
@@ -145,6 +146,7 @@ class ClienteController extends ActiveController
         $clienteRecord->num_tele = $clienteNumTele;
         $clienteRecord->nif = $clienteNIF;
         $clienteRecord->sexo = $clienteSexo;
+        $clienteRecord->avatar = $clienteAvatar;
         $clienteRecord->altura = $clienteAltura;
         $clienteRecord->peso = $clientePeso;
         $clienteRecord->massa_muscular = $clienteMassaMuscular;
