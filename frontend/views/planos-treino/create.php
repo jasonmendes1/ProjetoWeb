@@ -12,13 +12,48 @@ $this->params['breadcrumbs'][] = ['label' => 'Planos Treinos', 'url' => ['index'
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="planos-treino-create">
+    <?php
+        if(isset($option)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'selectedid' => $idplanotreino,
+                'exercicios' => $exercicios,
+                'op' => $option,
+            ]) ?>
+        <?php }else if(isset($idplanotreino)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'selectedid' => $idplanotreino,
+                'exercicios' => $exercicios,
+            ]) ?>
+        <?php }else if(isset($clientes)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'clientes' => $clientes
+            ]) ?>
+        <?php }else if(isset($idcliente)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'idcliente' => $idcliente,
+            ]) ?>
+        <?php } else{?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+            ]) ?>
+        <?php }
+    ?>
+    
+    
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-        'modelExercicio' => $modelExercicio,
-        'planoProvider' => $planoProvider,
-    ]) ?>
-
+    
 </div>

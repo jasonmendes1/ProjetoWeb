@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Cliente;
+use frontend\models\ClienteFuncionarios;
 use Yii;
 use frontend\models\Exercicio;
 use frontend\models\Funcionario;
@@ -97,29 +99,131 @@ class PlanosTreinoController extends Controller
             throw new ForbiddenHttpException;
         }
     }
+
+    public function actionApresentarcliente(){
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $clientesfunc = ClienteFuncionarios::find()->where(['id_PT' => $funcionario->IDFuncionario])->all();
+        $clientes = [];
+
+        foreach($clientesfunc as $cf){
+            array_push($clientes,Cliente::find()->where(['IDCliente' => $cf->id_cliente])->one());
+        }
+
+        return $this->render('create',[
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'planoProvider' => $planoProvider,
+            'clientes' => $clientes,
+        ]);
+    }
+
+    public function actionSelectcliente($idcliente){
+        $model = new PlanosTreino();
+        $modelExercicio = new Exercicio();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $modellista = ListaPlanos::find()->all();
+        $modellista = new ListaPlanos();
+        $modellista->IDCliente = $idcliente;
+        $reps = 0;
+        if($model->load(Yii::$app->request->post())){
+            $model->id_PT = $funcionario->IDFuncionario;
+            $model->dia_treino = date('Y-m-d',strtotime($model->dia_treino));
+            foreach($planoProvider as $plano){
+                if($plano->dia_treino == $model->dia_treino){
+                    $reps++;
+                } 
+            }
+            if($reps >= 1){
+                Yii::$app->session->setFlash('error', 'Já existe algum plano nesse dia');
+            }else{
+                $model->semana = strftime('%V',strtotime($model->dia_treino));
+                $model->save();
+    
+                $modellista->IDPlanoTreino = $model->IDPlanoTreino;
+                $modellista->save();
+            }
+            
+            return $this->render('create',[
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+            ]);
+        }
+        return $this->render('create',[
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'planoProvider' => $planoProvider,
+            'idcliente' => $idcliente,
+        ]);
+    }
+
+    public function actionSelectplano($id){
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $id])->all();
+
+
+        return $this->render('create', [
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'idplanotreino' => $id,
+            'planoProvider' => $planoProvider,
+            'exercicios' => $exercicios
+        ]);
+    }
+
     public function actionCriarexercicio($idplanotreino)
     {
-            $modelExercicio = new Exercicio();
-            $model = new PlanosTreino();
-            $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
-            $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
-            ->orderBy(['IDPlanoTreino' => SORT_ASC])
-            ->all();
+        $modelExercicio = new Exercicio();
+        $model = new PlanosTreino();
+        $funcionario = Funcionario::findOne(['User_id' => Yii::$app->user->identity->id]);
+        $planoProvider = PlanosTreino::find()->where(['id_PT' => $funcionario->IDFuncionario])
+        ->orderBy(['IDPlanoTreino' => SORT_ASC])
+        ->all();
+        $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $idplanotreino])->all();
 
+        $op = 1;
+        $modelExercicio->IDPlanoTreino = $idplanotreino;
 
-            if ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()){
-                Yii::$app->session->setFlash('success', 'Action Completed');
-                return $this->goHome();
-            }else{
-                Yii::$app->session->setFlash('failure', 'Action Failed');
-            }
-
+        if($modelExercicio->load(Yii::$app->request->post())){
+            $modelExercicio->tempo_total = ($modelExercicio->tempo + $modelExercicio->repouso) * $modelExercicio->serie;
+            $modelExercicio->save();
+            $exercicios = Exercicio::find()->where(['IDPlanoTreino' => $idplanotreino])->all();
             return $this->render('create', [
                 'model' => $model,
                 'modelExercicio' => $modelExercicio,
                 'idplanotreino' => $idplanotreino,
                 'planoProvider' => $planoProvider,
+                'exercicios' => $exercicios,
             ]);
+        }
+
+        if ($modelExercicio->load(Yii::$app->request->post()) && $modelExercicio->createExercicio()){
+            Yii::$app->session->setFlash('success', 'Action Completed');
+            return $this->goHome();
+        }else{
+            Yii::$app->session->setFlash('failure', 'Action Failed');
+        }
+        return $this->render('create', [
+            'model' => $model,
+            'modelExercicio' => $modelExercicio,
+            'idplanotreino' => $idplanotreino,
+            'planoProvider' => $planoProvider,
+            'exercicios' => $exercicios,
+            'option' => $op,
+        ]);
     }
     /**
      * Updates an existing PlanosTreino model.
@@ -175,19 +279,17 @@ class PlanosTreinoController extends Controller
         if(count($allplans) >= 1){
             foreach($allplans as $plano){
                 if($plano->IDPlanoTreino != null){
-                    array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
-                }
+                    if(PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one() != null){
+                        array_push($planostreino,PlanosTreino::find()->where(['IDPlanoTreino' => $plano->IDPlanoTreino])->one());
+                    }
+                }   
             }
         }
 
         if(count($planostreino) >= 1){
-            
             foreach($planostreino as $pt){
-                var_dump($pt);
-                
-                //array_push($semanas,$pt->semana);
+                array_push($semanas,$pt->semana);
             }
-            die();
         }
 
         if(count($semanas) >= 1){
