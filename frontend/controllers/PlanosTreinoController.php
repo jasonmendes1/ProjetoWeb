@@ -132,14 +132,24 @@ class PlanosTreinoController extends Controller
         $modellista = ListaPlanos::find()->all();
         $modellista = new ListaPlanos();
         $modellista->IDCliente = $idcliente;
-
+        $reps = 0;
         if($model->load(Yii::$app->request->post())){
             $model->id_PT = $funcionario->IDFuncionario;
-            $model->semana = strftime('%V',strtotime($model->dia_treino));
-            $model->save();
-
-            $modellista->IDPlanoTreino = $model->IDPlanoTreino;
-            $modellista->save();
+            $model->dia_treino = date('Y-m-d',strtotime($model->dia_treino));
+            foreach($planoProvider as $plano){
+                if($plano->dia_treino == $model->dia_treino){
+                    $reps++;
+                } 
+            }
+            if($reps >= 1){
+                Yii::$app->session->setFlash('error', 'Já existe algum plano nesse dia');
+            }else{
+                $model->semana = strftime('%V',strtotime($model->dia_treino));
+                $model->save();
+    
+                $modellista->IDPlanoTreino = $model->IDPlanoTreino;
+                $modellista->save();
+            }
             
             return $this->render('create',[
                 'model' => $model,
@@ -151,6 +161,7 @@ class PlanosTreinoController extends Controller
             'model' => $model,
             'modelExercicio' => $modelExercicio,
             'planoProvider' => $planoProvider,
+            'idcliente' => $idcliente,
         ]);
     }
 

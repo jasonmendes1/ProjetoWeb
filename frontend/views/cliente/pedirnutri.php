@@ -9,6 +9,12 @@ $this->title = "Pedir Nutricionista";
 ?>
 
 <div class = "main">
+    <div class = "header">
+        <div class="tituloincricao">
+            <div class = "tituloincricaotitulo"><H1>Atribuir Nutricionista</H1></div>
+            <div class = "tituloincricaobotao"><button><?= Html::a('<- Voltar ao Perfil',['profile'],['class' => 'nohover'])?></button></div>
+        </div>
+    </div>
     <div class = "pedirbody">
         <div class = "funcbody">
             <?php

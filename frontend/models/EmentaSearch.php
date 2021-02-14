@@ -18,7 +18,7 @@ class EmentaSearch extends Ementa
     {
         return [
             [['IDEmenta'], 'integer'],
-            [['PequenoAlmoco', 'Almoco', 'Lanche1', 'Lanche2', 'Jantar'], 'safe'],
+            [['nomeEmenta', 'PequenoAlmoco', 'Almoco', 'Lanche1', 'Lanche2', 'Jantar'], 'safe'],
         ];
     }
 
@@ -61,7 +61,8 @@ class EmentaSearch extends Ementa
             'IDEmenta' => $this->IDEmenta,
         ]);
 
-        $query->andFilterWhere(['like', 'PequenoAlmoco', $this->PequenoAlmoco])
+        $query->andFilterWhere(['like', 'nomeEmenta', $this->nomeEmenta])
+            ->andFilterWhere(['like', 'PequenoAlmoco', $this->PequenoAlmoco])
             ->andFilterWhere(['like', 'Almoco', $this->Almoco])
             ->andFilterWhere(['like', 'Lanche1', $this->Lanche1])
             ->andFilterWhere(['like', 'Lanche2', $this->Lanche2])

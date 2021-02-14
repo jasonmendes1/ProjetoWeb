@@ -175,7 +175,7 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
         <div class="other-info">
             <div class="Funci">
                 <div class="title">
-                    <b>Personal Trainer</b>
+                    <h4><b>Personal Trainer</b></h4>
                 </div>
                 <div class="Funcinfo">
                     <div class="Funciavatar">
@@ -184,19 +184,19 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <div class="Funcinfobody">
                         <div class="fbody">
                             <div>
-                                Nome: <?=$ptnome?>
+                                <b>Nome: </b><?=$ptnome?>
                             </div>
                             <div>
-                                Idade: <?=$ptnasci?>
+                                <b>Idade: </b><?=$ptnasci?>
                             </div>
                             <div>
-                                Sexo: <?=$ptsexo?>
+                                <b>Sexo: </b><?=$ptsexo?>
                             </div>
                             <div>
-                                Num Telemovel: <?=$ptnumtele?>
+                                <b>Num Telemóvel: </b><?=$ptnumtele?>
                             </div>
                             <div>
-                                Email: <?=$ptemail?>
+                                <b>Email: </b><?=$ptemail?>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
             </div>
             <div class="Funci">
                 <div class="title">
-                    <b>Nutricionista</b>
+                    <h4><b>Nutricionista</b></h4>
                 </div>
                 <div class="Funcinfo">
                     <div class="Funciavatar">
@@ -213,19 +213,19 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <div class="Funcinfobody">
                         <div class="fbody">
                             <div>
-                                Nome: <?=$nutrinome?>
+                                <b>Nome: </b><?=$nutrinome?>
                             </div>
                             <div>
-                                Idade: <?=$nutrinasci?>
+                                <b>Idade: </b><?=$nutrinasci?>
                             </div>
                             <div>
-                                Sexo: <?=$nutrisexo?>
+                                <b>Sexo: </b><?=$nutrisexo?>
                             </div>
                             <div>
-                                Num Telemovel: <?=$nutrinumtele?>
+                                <b>Num Telemóvel: </b><?=$nutrinumtele?>
                             </div>
                             <div>
-                                Email: <?=$nutriemail?>
+                                <b>Email: </b><?=$nutriemail?>
                             </div>
                         </div>
                     </div>

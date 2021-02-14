@@ -749,9 +749,28 @@ tr:nth-child(even){
 }
 
 .tituloincricao{
-    padding-top: 10px;
     padding-left: 15px;
     color: white;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.tituloincricaotitulo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.tituloincricaobotao{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-right: 20px;
+    width: 10%;
+    color: black
 }
 
 /*planos treino no form do create*/
@@ -783,7 +802,7 @@ tr:nth-child(even){
 
 
 /*exercicios no form do create*/
-.exercicios{
+.exercicioscreate{
     display:flex;
     height: 100%;
     width: 70%;
@@ -827,4 +846,40 @@ tr:nth-child(even){
     flex-direction: row;
     padding-bottom: 15px;
     justify-content: space-evenly;
+}
+
+.Form-Nutricao{
+    display:flex;
+    height: 100%;
+    width:100%
+}
+
+.Form-Nutricao-Plano{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+}
+
+
+.Form-Nutricao-Clientes{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+}
+
+.cliente-item{
+    display: flex;
+    border: solid;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Form-Nutricao-Planos{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+    padding-left: 15px;
 }

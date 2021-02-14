@@ -19,8 +19,16 @@ $this->title = 'Criar Exercicio';
 <div class="planos-treino-form">
     <div class = "planostreino">
         <div class = "criar-planostreino">
+            
             <h1>Planos de Treino</h1>
             <br>
+            <?php
+                if(isset($idcliente)){?>
+                    <b>Cliente Selecionado: <?=$idcliente?></b>
+                <?php }else{ ?>
+                    <b>Cliente Selecionado: Nenhum</b>
+                <?php }
+            ?>
             <button><?=Html::a('Select Clientes', ['apresentarcliente'])?></button>
             <?php $form = ActiveForm::begin(); ?>
             
@@ -45,7 +53,7 @@ $this->title = 'Criar Exercicio';
             </div>  
         </div>
     </div>
-    <div class = "exercicios">
+    <div class = "exercicioscreate">
         <div class = "mostrar-exercicios">
             <?php if(isset($exercicios)){?>
                 <div class = "exer-title">

@@ -37,7 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'planoProvider' => $planoProvider,
                 'clientes' => $clientes
             ]) ?>
-        <?php }else{?>
+        <?php }else if(isset($idcliente)){?>
+            <?= $this->render('_form', [
+                'model' => $model,
+                'modelExercicio' => $modelExercicio,
+                'planoProvider' => $planoProvider,
+                'idcliente' => $idcliente,
+            ]) ?>
+        <?php } else{?>
             <?= $this->render('_form', [
                 'model' => $model,
                 'modelExercicio' => $modelExercicio,

@@ -6,16 +6,26 @@ use yii\helpers\Html;
 /* @var $model frontend\models\PlanosNutricao */
 
 
-$this->title = 'Create Planos Nutricao';
+$this->title = 'Criar Planos Nutricão';
 $this->params['breadcrumbs'][] = ['label' => 'Planos Nutricaos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="planos-nutricao-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+    <?php if(isset($clienteselect)){?>
+        <?= $this->render('_form', [
         'model' => $model,
+        'clientes' => $clientes,
+        'clienteselect' => $clienteselect,
+        'planos' => $planos,
     ]) ?>
+    <?php }else{?>
+        <?= $this->render('_form', [
+        'model' => $model,
+        'clientes' => $clientes,
+    ]) ?>
+    <?php }
+    ?>
+    
 
 </div>

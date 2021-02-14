@@ -308,10 +308,57 @@ class ClienteController extends Controller
     
 
     public function actionPt(){
-        $todospt = Funcionario::find()->where(["cargo_id" => 1])->all();
-        return $this->render('pedirpt',[
-            'pts' => $todospt,
-        ]);
+        $todospt = Funcionario::find()->where(['cargo_id' => 1])->all();
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+        $datahoje = date("Y-m-d");
+        if($sub != null){
+            if($sub->data_expirar > $datahoje){
+                return $this->render('pedirpt',[
+                    'pts' => $todospt,
+                ]);
+            }else{
+                $user = Yii::$app->user->identity;
+                $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
+
+                $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+                if($cf != null){
+                    $pt = $cf->pT;
+                    $nutri = $cf->nutricionista;
+                }else{
+                    $pt = "";
+                    $nutri = "";
+                }
+
+                return $this->render('profile', [
+                    'cliente' => $cliente,
+                    'user' => $user,
+                    'pt' => $pt,
+                    'nutri' => $nutri,
+                ]);
+            }
+        }else{
+            $user = Yii::$app->user->identity;
+            $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
+
+            $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+            if($cf != null){
+                $pt = $cf->pT;
+                $nutri = $cf->nutricionista;
+            }else{
+                $pt = "";
+                $nutri = "";
+            }
+
+            return $this->render('profile', [
+                'cliente' => $cliente,
+                'user' => $user,
+                'pt' => $pt,
+                'nutri' => $nutri,
+            ]);
+        }
     }
 
     public function actionVerpts($id){
@@ -358,10 +405,57 @@ class ClienteController extends Controller
 
     public function actionNutri(){
         $todosnutri = Funcionario::find()->where(["cargo_id" => 2])->all();
+        $cliente = Cliente::find()->where(['User_id' => Yii::$app->user->identity->getId()])->one();
+        $sub = Subscricao::find()->where(['id_cliente' => $cliente->IDCliente])->one();
+        $datahoje = date("Y-m-d");
+        if($sub != null){
+            if($sub->data_expirar > $datahoje){
+                return $this->render('pedirnutri',[
+                    'nutris' => $todosnutri,
+                ]);
+            }else{
+                $user = Yii::$app->user->identity;
+                $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
+    
+                $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+    
+                if($cf != null){
+                    $pt = $cf->pT;
+                    $nutri = $cf->nutricionista;
+                }else{
+                    $pt = "";
+                    $nutri = "";
+                }
+    
+                return $this->render('profile', [
+                    'cliente' => $cliente,
+                    'user' => $user,
+                    'pt' => $pt,
+                    'nutri' => $nutri,
+                ]);
+            }
+        }else{
+            $user = Yii::$app->user->identity;
+            $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
 
-        return $this->render('pedirnutri',[
-            'nutris' => $todosnutri,
-        ]);
+            $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+            if($cf != null){
+                $pt = $cf->pT;
+                $nutri = $cf->nutricionista;
+            }else{
+                $pt = "";
+                $nutri = "";
+            }
+
+            return $this->render('profile', [
+                'cliente' => $cliente,
+                'user' => $user,
+                'pt' => $pt,
+                'nutri' => $nutri,
+            ]);
+        }
+        
     }
 
     public function actionVernutri($id){

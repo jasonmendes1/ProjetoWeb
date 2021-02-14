@@ -90,11 +90,6 @@ AppAsset::register($this);
 
                              ['label' => 'Horários Aulas', 
                              'url' => ['/event']],
-
-                            '<li class="divider"></li>',
-
-                            ['label' => 'Imovel',
-                                'url' => ['site/imoveis']],
                         ],
                     ],
                     
@@ -159,6 +154,10 @@ AppAsset::register($this);
 
                                 ['label' => 'Criar Plano de Nutrição',
                                     'url' => ['planos-nutricao/create']
+                                ],
+
+                                ['label' => 'Criar Ementas',
+                                    'url' => ['ementa/create']
                                 ],
                             ],
                         ],
@@ -225,10 +224,6 @@ AppAsset::register($this);
             [
                 'label' => 'Contacto',
                 'url' => ['site/contact']
-            ],
-            [
-                'label' => 'Imovel',
-                'url' => ['imoveis/imovel']
             ],
         ],
         'options' => ['class' => 'navbar-nav navbar-right'],
