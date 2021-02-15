@@ -2,6 +2,7 @@
 
 use frontend\models\Subscricao;
 use yii\bootstrap\Html;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
 
@@ -126,7 +127,20 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <b>Altura:</b>
                 </div>
                 <div class="bodyinfo">
-                    <?=$cliente->altura?> cm
+                    <?php
+                        if((isset($option)) && ($option == 1)){?>
+                            <div class = "bodyinfoitem">
+                                <?php $form = ActiveForm::begin(); ?>
+                                <?= $form->field($cliente, 'altura')->textInput() ?>
+                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?php ActiveForm::end(); ?>
+                            </div>
+                            
+                        <?php }else{ ?>
+                            <div class = "bodyinfoitem"><?=$cliente->altura?> cm</div>
+                            <div class = "bodyinfobutton"><button><?=Html::a('Atualizar Altura',['alterarcampo','option' => 1],['class' => 'nohover'])?></button></div>
+                        <?php }
+                    ?>
                 </div>
             </div>    
             <div class="info-panel">
@@ -134,7 +148,19 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <b>Peso:</b>
                 </div>
                 <div class="bodyinfo">
-                    <?=$cliente->peso?> Kg
+                    <?php
+                        if((isset($option)) && ($option == 2)){?>
+                            <div class = "bodyinfoitem">
+                                <?php $form = ActiveForm::begin(); ?>
+                                    <?= $form->field($cliente, 'peso')->textInput() ?>
+                                    <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?php ActiveForm::end(); ?>
+                            </div>
+                        <?php }else{ ?>
+                            <div class = "bodyinfoitem"><?=$cliente->peso?> Kg</div>
+                            <div class = "bodyinfobutton"><button><?=Html::a('Atualizar Peso',['alterarcampo','option' => 2],['class' => 'nohover'])?></button></div>
+                        <?php }
+                    ?>
                 </div>
             </div>      
             <div class="info-panel">
@@ -142,7 +168,19 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <b>Massa Muscular:</b>
                 </div>
                 <div class="bodyinfo">
-                    <?=$cliente->massa_muscular?> %
+                    <?php
+                        if((isset($option)) && ($option == 3)){?>
+                            <div class = "bodyinfoitem">
+                                <?php $form = ActiveForm::begin(); ?>
+                                <?= $form->field($cliente, 'massa_muscular')->textInput() ?>
+                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?php ActiveForm::end(); ?>
+                            </div>
+                        <?php }else{ ?>
+                            <div class = "bodyinfoitem"><?=$cliente->massa_muscular?> %</div>
+                            <div class = "bodyinfobutton"><button><?=Html::a('Atualizar Massa Muscular',['alterarcampo','option' => 3],['class' => 'nohover'])?></button></div>
+                        <?php }
+                    ?>
                 </div>
             </div>
             <div class="info-panel">
@@ -150,7 +188,19 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <b>Massa Gorda:</b>
                 </div>
                 <div class="bodyinfo">
-                    <?=$cliente->massa_gorda?> %
+                    <?php
+                        if((isset($option)) && ($option == 4)){?>
+                            <div class = "bodyinfoitem">
+                                <?php $form = ActiveForm::begin(); ?>
+                                <?= $form->field($cliente, 'massa_gorda')->textInput() ?>
+                                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                                <?php ActiveForm::end(); ?>
+                            </div>
+                        <?php }else{ ?>
+                            <div class = "bodyinfoitem"><?=$cliente->massa_gorda?> %</div>
+                            <div class = "bodyinfobutton"><button><?=Html::a('Atualizar Massa Gorda',['alterarcampo','option' => 4],['class' => 'nohover'])?></button></div>
+                        <?php }
+                    ?>
                 </div>
             </div>
             <div class="info-panel">
@@ -158,15 +208,17 @@ $this->title = 'Perfil '. $cliente->primeiroNome . " " . $cliente->apelido;
                     <b>Índice de Massa Corporal:</b>
                 </div>
                 <div class="bodyinfo">
-                    <div>
-                        IMC: <?=$IMC?> Kg/m²
-                    </div>
-                    <div class="IMCclass">
+                    <div class = "bodyinfoitem">
                         <div>
-                            Classificação:
+                            IMC: <?=$IMC?> Kg/m²
                         </div>
-                        <div style="<?=$style?>">
-                            <?=$cls?>
+                        <div class="IMCclass">
+                            <div>
+                                Classificação:
+                            </div>
+                            <div style="<?=$style?>">
+                                <?=$cls?>
+                            </div>
                         </div>
                     </div>
                 </div>

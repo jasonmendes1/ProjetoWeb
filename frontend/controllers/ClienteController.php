@@ -501,4 +501,37 @@ class ClienteController extends Controller
             'nutri' => $nutri,
         ]);
     }
+
+    public function actionAlterarcampo($option){
+        $user = Yii::$app->user->identity;
+        $cliente = Cliente::find()->where(['User_id' => $user->getId()])->one();
+        $cf = ClienteFuncionarios::find()->where(['id_cliente' => $user->getId()])->one();
+
+        if($cf != null){
+            $pt = $cf->pT;
+            $nutri = $cf->nutricionista;
+        }else{
+            $pt = "";
+            $nutri = "";
+        }
+
+        if($cliente->load(Yii::$app->request->post())){
+            $cliente->save();
+
+            return $this->render('profile', [
+                'cliente' => $cliente,
+                'user' => $user,
+                'pt' => $pt,
+                'nutri' => $nutri,
+            ]);
+        }
+
+        return $this->render('profile', [
+            'cliente' => $cliente,
+            'user' => $user,
+            'pt' => $pt,
+            'nutri' => $nutri,
+            'option' => $option,
+        ]);
+    }
 }

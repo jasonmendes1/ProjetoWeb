@@ -220,13 +220,25 @@ a.desc:after {
 
 .bodyinfo{
     display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-content: center;
     border-top: solid;
     width: 100%;
     height: 70%;
     padding-left: 50px;
+}
+
+.bodyinfoitem{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width:65%;
+}
+
+.bodyinfobutton{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .innerbodyinfo{
