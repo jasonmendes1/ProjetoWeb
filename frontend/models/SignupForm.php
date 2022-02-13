@@ -79,7 +79,7 @@ class SignupForm extends Model
         $cliente->num_tele = $this->num_tele;
         $cliente->nif = $this->nif;
 
-        if($getAvatar == null){
+        if($getAvatar == null){ 
             $cliente->avatar = '/web/ProjetoWeb/frontend/web/images/avatar-windows-10-person-ico-115628997732fatjfxg5s.png';
         }else{
             $cliente->avatar = $avatardefaultdir . "/" . $getAvatar;

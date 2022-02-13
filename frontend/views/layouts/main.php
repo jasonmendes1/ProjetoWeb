@@ -57,9 +57,6 @@ AppAsset::register($this);
         $login[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-              // Yii::$app->cliente->avatar, // AVATAR DO CLIENTE NO BOTAO LOGOUT
-              // $cliente = Cliente::find()->where(['user_id' => Yii::$app->user->id])->one(),
-              // $foto = $cliente->avatar,
                 'Logout (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout', 'name' => 'logout-button']
             )
